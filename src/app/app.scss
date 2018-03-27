@@ -14,3 +14,92 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.bg {
+  background-image: url("../assets/imgs/bg.png");
+  background-repeat:no-repeat;
+  background-size: cover;
+}
+
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.centered-content-wrapper{
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.with-header {
+  position: relative;
+  .content-wrapper{
+    margin-top: 48px;
+  }
+}
+
+.header {
+  margin-left: 0!important;
+  margin-right: 0!important;
+  &.blue {
+    font-size: 18px;
+    color: #008AD6;
+    letter-spacing: 1px;
+    font-weight: normal;
+  }
+  &.no-wrap{
+    white-space: nowrap;
+  }
+  .toolbar-background {
+    border-style: none;
+    border-color: transparent;
+  }
+}
+.select-popover{
+  .item{
+    color: $grey;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
+  border-bottom: 2px solid #0066cc;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[icon-left] i.fa, [icon-start] i.fa {
+  padding-right: .3em;
+}
+
+[icon-right] i.fa, [icon-end] i.fa {
+  padding-left: .3em;
+}
