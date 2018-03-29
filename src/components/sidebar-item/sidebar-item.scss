@@ -10,7 +10,9 @@ sidebar-item {
     position: relative;
   }
   .sidebar-icon {
-    font-size: 24px;
+    display: inline-block;
+    width: 50px;
+    height: 45px;
   }
   .sidebar-item-text {
     display: block;

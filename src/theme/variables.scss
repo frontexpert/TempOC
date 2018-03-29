@@ -103,8 +103,11 @@ $toolbar-ios-title-text-color: #008AD6;
 
 @import "roboto";
 @import "noto-sans";
-
 @import "open-sans";
 
 $font-family-base: "Open Sans", sans-serif !default;
+
+// Base App Styles
+// --------------------------------------------------
+@import "icons";
 
