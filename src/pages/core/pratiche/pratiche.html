@@ -1,0 +1,62 @@
+<ion-content padding>
+  <div class="columns-container">
+
+    <!-- BEGIN LEFT COLUMN WITH HEADER -->
+    <div class="left-column with-header">
+
+      <div class="column-header">
+        <ion-toolbar>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <ion-searchbar
+                  [placeholder]="''"
+                  [(ngModel)]="searchTerm">
+                </ion-searchbar>
+              </ion-col>
+              <ion-col col-6>
+                <ion-row class="no-margin" align-items-center justify-content-between>                  
+                  <ion-col col-6>
+                    <button ion-button class="btn-new">+ NUOVO</button>
+                  </ion-col>
+                  <ion-col col-6 class="col-with-buttons">
+                    <button ion-button clear icon-only class="options-button">
+                      <span class="filter-icon">
+                        <span class="icon-line"></span>
+                        <span class="icon-line"></span>
+                        <span class="icon-line"></span>
+                      </span>
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-toolbar>
+      </div>
+
+      <div class="content-wrapper">
+        <ion-scroll scrollY="true">
+          <ion-list>
+            <ion-item *ngFor="let item of data" class="pratiche-item" [class.active]="activeItem === item.name" (click)="selectPraticeItem(item.name)">
+              <h2>{{item.name}}</h2>
+              <p>{{item.date | date: 'dd MMM y'}}</p>
+              <button ion-button icon-only item-end>
+                <i class="far fa-clock"></i>
+              </button>
+            </ion-item>
+          </ion-list>
+        </ion-scroll>
+      </div>
+    </div>
+    <!-- END LEFT COLUMN -->
+
+    <!-- BEGIN RIGHT COLUMN WITH HEADER -->
+    <div class="right-column with-header">
+      <div class="column-header"></div>
+
+    </div>
+    <!-- END RIGHT COLUMN -->
+
+  </div>
+</ion-content>

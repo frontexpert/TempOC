@@ -1,0 +1,18 @@
+<div class="sidebar">
+  <div class="logo-wrapper">
+    <img src="assets/imgs/app-small-logo.png" />
+  </div>
+  <div class="sidebar-list">
+    <sidebar-item *ngFor="let item of sidebarItems"
+                  [class.active]="globals.activeSideMenuItem === item.icon"
+                  (onSelectItem)="onSelectItem($event)"
+                  [icon]="item.icon" [notifications]="item.notification" [name]="item.title"></sidebar-item>
+  </div>
+  <div class="sidebar-footer">
+    <div class="buttons-block">
+      <a href="javascript:false" (click)="logout()">
+        <i class="sidebar-icon fa fa-sign-out" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>

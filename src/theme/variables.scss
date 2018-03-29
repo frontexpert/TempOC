@@ -41,13 +41,35 @@ $colors: (
   dark:       #222
 );
 
-$green-bg: #0a7723;
+$green-bg: #188b37;
 $grey: #5c5c5c;
+$header-bg: #188b37;
+
+
+$list-border-color: #e9e9e9;
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+$toolbar-background: transparent !default;
+$toolbar-ios-padding: 0 !default;
+
+$text-input-ios-background-color: #fff;
+$searchbar-ios-toolbar-input-background: #fff;
+$searchbar-ios-input-search-icon-color: $green-bg;
+
+$toggle-ios-background-color-off: #fff;
+$toggle-ios-border-color-off: #EBEBEB;
+$toggle-ios-background-color-on:  #7ED321;
+$modal-inset-width: calc(100% - 117px);
+$modal-inset-height-large: 98%;
+
+$toolbar-ios-title-text-color: #008AD6;
+
+
+
+$item-ios-padding-left: 0 !default;
 
 
 
@@ -88,8 +110,20 @@ $grey: #5c5c5c;
 
 @import "roboto";
 @import "noto-sans";
-
 @import "open-sans";
 
+// Font-awesome 5.1.0
+$fa-font-path: "../assets/fonts/font-awesome" !default;
+
+@import "fontawesome/fontawesome";
+@import "fontawesome/fa-brands";
+@import "fontawesome/fa-regular";
+@import "fontawesome/fa-solid";
+
 $font-family-base: "Open Sans", sans-serif !default;
+
+
+// Base App Styles
+// --------------------------------------------------
+@import "icons";
 
