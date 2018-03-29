@@ -1,3 +1,136 @@
 page-core {
+  font-family: 'Roboto', sans-serif;
 
+  .no-scroll .scroll-content{
+    overflow: hidden;
+  }
+  .sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 91px;
+    background: linear-gradient(to top, #6dc37f, #4cac5f, #3b9b4d, #288637, $green-bg);
+    background: -moz-linear-gradient(top, #6dc37f, #4cac5f, #3b9b4d, #288637, $green-bg); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #6dc37f, #4cac5f, #3b9b4d, #288637, $green-bg); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to top, #6dc37f, #4cac5f, #3b9b4d, #288637, $green-bg); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  .content {
+    padding: 0 !important;
+    & .scroll-content {
+      padding: 0 !important;
+    }
+
+    .menu-inner {
+      background: transparent;
+      .content, .item {
+        background: transparent;
+      }
+    }
+
+    .scroll-content {
+      padding: 0;
+    }
+  }
+  ion-nav {
+    margin-left: 90px;
+    width: calc(100% - 90px);
+  }
+  .core-content {
+    width: 100%;
+    min-height: 100%;
+  }
+  .columns-container {
+    display: flex;
+    justify-content: space-between;
+    .left-column {
+      width: 38%;
+      box-shadow: 0 1px 0 0 #FFFFFF;
+    }
+    .right-column {
+      box-shadow: 1px 1px 4px 0 #6F7477;
+      width: 62%;
+    }
+  }
+  .column-header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 49px;
+    background-color: $header-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+
+    .grid {
+      padding: 0;
+    }
+
+    .btn-new{
+      height: 30px;
+      border-radius: 2px;      
+      font-size: 12px;
+      font-weight: 700;
+      color: #000;
+      letter-spacing: 1.5px;
+      background-color: #f0f0f0;
+    }
+    .filter-icon{
+      text-align: center;
+      display: inline-block;
+      padding-top: 4px;
+      padding-right: 8px;
+      .icon-line{
+        display: block;
+        margin: 0 auto 3px;
+        background: #fff;
+        height: 2px;
+        width: 10px;
+        &:first-child{
+            width: 16px;
+        }
+        &:last-child{
+            width: 4px;
+        }
+      }
+    }
+    .col-with-buttons{
+      flex-direction: row;
+      justify-content: flex-end;
+      display: flex;
+      min-height: 44px;
+    }
+    .options-button{
+      height: 30px;
+    }
+    .pdf-button{
+      position: absolute;
+      right: 10px;
+      top:0;
+      color: #fff;
+      font-size: 20px;
+      height: 100%;
+      margin: 0;
+    }
+    i {
+      color: #fff;
+    }
+  }
+  .toolbar .searchbar-ios{
+    height: 100%;
+    padding: 0;
+  }
+  .col {
+    padding: 0 5px;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
 }

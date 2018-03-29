@@ -7,6 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { CorePageModule } from '../pages/core/core.module';
+import { ComponentsModule } from '../components/components.module';
+import { Globals } from '../shared/globals';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { CorePageModule } from '../pages/core/core.module';
   ],
   imports: [
     BrowserModule,
+    IonicModule.forRoot(MyApp),
     CorePageModule,
-    IonicModule.forRoot(MyApp)
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -26,6 +29,7 @@ import { CorePageModule } from '../pages/core/core.module';
   providers: [
     StatusBar,
     SplashScreen,
+    Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

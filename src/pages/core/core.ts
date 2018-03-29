@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PratichePage } from './pratiche/pratiche';
+import { TemparioPage } from './tempario/tempario';
+import { NoleggioPage } from './noleggio/noleggio';
 
 /**
  * Generated class for the CorePage page.
@@ -14,12 +17,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'core.html',
 })
 export class CorePage {
+  @ViewChild('coreNav') nav: NavController;
+  rootPage = PratichePage;
+
+  pages = {
+    'pratiche': PratichePage,
+    'tempario': TemparioPage,
+    'noleggio': NoleggioPage,
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CorePage');
+  }
+
+  onSidebarNavigate(item) {
+    this.nav.push(this.pages[item]);
+  }
+
+  /**
+   * Log out the app
+   */
+  doLogout(): void {
   }
 
 }

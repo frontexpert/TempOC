@@ -1,0 +1,44 @@
+sidebar {
+  .sidebar{
+    padding: 10px 0 6px;
+    // border-right: 1.5px ridge #fff;
+  }
+  .logo-wrapper {
+    margin-bottom: 48px;
+    padding: 0 30px 10px;
+  }
+  .avatar{
+    text-align: center;
+    margin-bottom: 50px;
+    min-height: 60px;
+  }
+  .sidebar-footer{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .buttons-block{
+      display: flex;
+      justify-content: space-around;      
+
+      a {
+        display: block;
+        color: white;
+        flex: 1;
+        padding: 8px;
+        text-align: center;
+      }
+    }
+    .date-time{
+      display: block;
+      font-size: 10px;
+      white-space: nowrap;
+      text-align: center;
+      margin-bottom: 3px;
+    }
+    .sidebar-icon{
+      font-size: 24px;
+    }
+  }
+}

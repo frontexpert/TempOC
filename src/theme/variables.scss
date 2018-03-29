@@ -41,13 +41,28 @@ $colors: (
   dark:       #222
 );
 
-$green-bg: #0a7723;
+$green-bg: #188b37;
 $grey: #5c5c5c;
+$header-bg: #188b37;
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+$toolbar-background: transparent !default;
+$toolbar-ios-padding: 0 !default;
+
+$text-input-ios-background-color: #fff;
+$searchbar-ios-toolbar-input-background: #fff;
+$searchbar-ios-input-search-icon-color: $green-bg;
+
+$toggle-ios-background-color-off: #fff;
+$toggle-ios-border-color-off: #EBEBEB;
+$toggle-ios-background-color-on:  #7ED321;
+$modal-inset-width: calc(100% - 117px);
+$modal-inset-height-large: 98%;
+
+$toolbar-ios-title-text-color: #008AD6;
 
 
 

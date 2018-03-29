@@ -1,6 +1,6 @@
 <ion-content padding class="bg">
   <div class="centered-content-wrapper">
-    <form #form="ngForm" class="auth-form">
+    <form #form="ngForm" class="auth-form" (ngSubmit)="doLogin(form)">
       <div class="logo-wrapper">
         <img src="assets/imgs/app-logo.png" />
       </div>

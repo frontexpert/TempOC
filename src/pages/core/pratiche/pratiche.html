@@ -1,0 +1,50 @@
+<ion-content padding>
+  <div class="columns-container">
+
+    <!-- BEGIN LEFT COLUMN WITH HEADER -->
+    <div class="left-column with-header">
+
+      <div class="column-header">
+        <ion-toolbar>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <ion-searchbar
+                  [placeholder]="''"
+                  [(ngModel)]="searchTerm">
+                </ion-searchbar>
+              </ion-col>
+              <ion-col col-6>
+                <ion-row class="no-margin" align-items-center justify-content-between>                  
+                  <ion-col col-6>
+                    <button ion-button class="btn-new">+ NUOVO</button>
+                  </ion-col>
+                  <ion-col col-6 class="col-with-buttons">
+                    <button ion-button clear icon-only class="options-button">
+                      <span class="filter-icon">
+                        <span class="icon-line"></span>
+                        <span class="icon-line"></span>
+                        <span class="icon-line"></span>
+                      </span>
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-toolbar>
+      </div>
+
+
+    </div>
+    <!-- END LEFT COLUMN -->
+
+    <!-- BEGIN RIGHT COLUMN WITH HEADER -->
+    <div class="right-column with-header">
+      <div class="column-header"></div>
+      
+    </div>
+    <!-- END RIGHT COLUMN -->
+
+  </div>
+</ion-content>
