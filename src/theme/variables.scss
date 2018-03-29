@@ -112,12 +112,16 @@ $item-ios-padding-left: 0 !default;
 @import "noto-sans";
 @import "open-sans";
 
-// Font-awesome 4.7.0
+// Font-awesome 5.1.0
 $fa-font-path: "../assets/fonts/font-awesome" !default;
 
-@import "font-awesome/font-awesome";
+@import "fontawesome/fontawesome";
+@import "fontawesome/fa-brands";
+@import "fontawesome/fa-regular";
+@import "fontawesome/fa-solid";
 
 $font-family-base: "Open Sans", sans-serif !default;
+
 
 // Base App Styles
 // --------------------------------------------------
