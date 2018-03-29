@@ -1,7 +1,8 @@
 page-core {
   font-family: 'Roboto', sans-serif;
 
-  .no-scroll .scroll-content{
+  .no-scroll .scroll-content,
+  .scroll-content {
     overflow: hidden;
   }
   .sidebar {
@@ -35,6 +36,9 @@ page-core {
   ion-nav {
     margin-left: 90px;
     width: calc(100% - 90px);
+  }
+  ion-scroll {
+    height: 100%;
   }
   .core-content {
     width: 100%;
@@ -133,4 +137,5 @@ page-core {
       padding-right: 0;
     }
   }
+
 }

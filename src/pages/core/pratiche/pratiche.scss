@@ -1,3 +1,51 @@
 page-pratiche {
+  .pratiche-item {
+    // color: $grey;
+    // padding: 20px 0 7px 0;    
+    min-height: 6rem;
+    
+    .item-inner {
+      padding-left: 10px!important;
+    }
+    p {
+      color: $grey;
+    }
+    .button {
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      background: $green-bg;
+      border-radius: 0;
+      margin: 0 15px 10px;
+    }
 
+    &.active {
+      background-color: #ececec;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) and (orientation: portrait) {
+    .content-wrapper {
+        height: 976px;
+    }
+  }
+  
+  @media only screen and (max-width: 1365px) and (orientation: landscape) {
+    .content-wrapper {
+      height: 720px;
+    }
+  }
+  
+  @media only screen and (min-width: 1025px) and (orientation: portrait) {
+    .content-wrapper {
+      height: 1316px;
+    }
+  }
+  
+  @media only screen and (min-width: 1366px) and (orientation: landscape) {
+    .content-wrapper {
+      height: 976px;
+    }
+  }
 }
