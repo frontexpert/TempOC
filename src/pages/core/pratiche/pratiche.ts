@@ -32,6 +32,9 @@ export class PratichePage {
     {name: 'Mabelle Thompson', type:'electricity', number: '41319', date: '2017-08-16'},
     {name: 'Don Smith', type:'electricity', number: '42582', date: '2017-11-11'},
     {name: 'Myrtie Roberson', type:'electricity', number: '00757-1568', date: '2017-11-14'},
+    {name: 'Mabelle Thompson', type:'electricity', number: '41319', date: '2017-08-16'},
+    {name: 'Don Smith', type:'electricity', number: '42582', date: '2017-11-11'},
+    {name: 'Myrtie Roberson', type:'electricity', number: '00757-1568', date: '2017-11-14'},
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
