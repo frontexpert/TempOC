@@ -1,0 +1,12 @@
+<div class="input-item-label">{{label}}</div>
+<ion-segment [(ngModel)]="value" disabled="{{disabled}}" 
+             [style.border-left]="values.length==1 ? '1px solid #979797' : '0px'">
+  <ion-segment-button *ngFor="let v of values; let i = index"
+  										(ionSelect)="selectValue(v.value)"
+                      [value]="v.value">
+    <span *ngIf="withCheckMark" class="icon-wrapper">
+      <i class="fas fa-check-circle" *ngIf="checkedTabs.indexOf(v.value) !== -1"></i>
+    </span>
+    {{v.text}}
+  </ion-segment-button>
+</ion-segment>

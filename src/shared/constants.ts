@@ -1,0 +1,8 @@
+export const PRATICHE_TAB_VALUES = [
+  {text: 'outlook', value: 0}, 
+  {text: 'pagamento', value: 1},
+  {text: 'foto', value: 2},
+  {text: 'documenti', value: 3},
+  {text: 'preventivi', value: 4},
+  {text: 'noleggi', value: 5}
+];

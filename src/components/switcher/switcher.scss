@@ -1,0 +1,62 @@
+switcher {
+  .segment-ios {
+
+    .segment-button {
+      border: 1px solid #979797;
+      text-transform: uppercase;
+      border-radius: 0 !important;
+      color: #6F7477;
+      letter-spacing: 1.12px;
+
+      &:last-of-type {
+        border-left: none;
+      }
+    }
+    .segment-activated{
+      font-weight: bold;
+    }
+  }
+  .segment-buttons-label {
+    font-family: Monaco;
+    font-size: 10px;
+    color: $grey;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+  }
+  &.green {
+    .segment {
+      padding: 10px;
+    }
+    .segment {
+      &-button {
+        background: #e2fae9;
+        border-color: $green-bg;
+        font-size: 9px;        
+        font-weight: bold;
+        color: $green-bg;
+        letter-spacing: 0.1px;
+        border-radius: 0 !important;
+        text-transform: uppercase;
+      }
+      &-activated {
+        background: #FFFFFF !important;
+        color: $green-bg !important;   
+        border-color: $green-bg;
+      }
+    }
+  }
+  .icon-wrapper{
+    position: absolute;
+    left: 4px;
+    top: 0;
+  }
+  i {
+    font-size: 10px;
+    &.fa-check-circle{
+      color: #27AE60;
+    }
+    &.fa-circle-o{
+      color: #008AD6;
+    }
+  }
+}

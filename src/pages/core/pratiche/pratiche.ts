@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import * as Constants from '../../../shared/constants';
 /**
  * Generated class for the PratichePage page.
  *
@@ -17,7 +18,13 @@ export class PratichePage {
 
   searchTerm: string = "";
 
-  activeItem: string;
+  activeItem: string;         // active item name
+
+  tabValues = Constants.PRATICHE_TAB_VALUES;
+
+  checkedTabs: Array<number> = [2, 3, 5];
+
+  selectedTab: number = 0;
 
   data = [
     {name: 'Glenn Lambert', type:'electricity', number: '170651', date: '2017-11-11', color:'orange'},

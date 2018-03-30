@@ -50,9 +50,6 @@
                   <i class="fas fa-wrench"></i>
                 </span>
               </div>
-              <!-- <button ion-button icon-only item-end>
-                <i class="far fa-clock"></i>
-              </button> -->
             </ion-item>
           </ion-list>
         </ion-scroll>
@@ -65,6 +62,19 @@
       <div class="column-header">
         {{activeItem}}
       </div>
+
+      <div class="content-wrapper" *ngIf="activeItem">
+        <div class="padding-content top">
+					<switcher class="green no-padding" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
+                    [(ngModel)]="selectedTab"></switcher>
+          <div [ngSwitch]="selectedTab">
+          </div>
+	        <!-- <div [ngSwitch]="selectedTab">
+		        <details-form *ngSwitchCase="0" (onSaveChanges)="handleSelectTab(1)" [offer]="selectedOffer"></details-form>
+		        <document-form *ngSwitchCase="1"></document-form>
+		      </div> -->
+        </div>
+			</div>
 
     </div>
     <!-- END RIGHT COLUMN -->
