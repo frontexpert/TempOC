@@ -1,3 +1,32 @@
 <div class="padding-content">
   
+
+  <ion-list>
+    <ion-item class="car-info">
+      <div item-start>
+        <div class="car-number">
+          BJ642FF
+        </div>
+      </div>
+      <h2>Fiat Punto 1.4 GPL 5P. ACTIVE</h2>
+      <p>Telaio: V9FPMCFAC89454149</p>
+      <p>Assicurato: Unipolsai</p>
+      <div item-end>
+        <div class="yello-circle">15</div>
+      </div>
+    </ion-item>
+
+    <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
+      <i class="fas fa-wrench" item-start></i>
+      <h2>My Neighbor Totoro</h2>
+      <p>Hayao Miyazaki • 1988</p>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+          Hello people
+      </expandable>
+      <button ion-button clear item-end icon-only>
+        <ion-icon name="arrow-down" *ngIf="!item.expanded"></ion-icon>
+        <ion-icon name="arrow-up" *ngIf="item.expanded"></ion-icon>
+      </button>
+    </button>
+  </ion-list>
 </div>
