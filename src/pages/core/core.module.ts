@@ -6,6 +6,7 @@ import { PracticesPageModule } from './practices/practices.module';
 import { TemparioPageModule } from './tempario/tempario.module';
 import { RentalPageModule } from './rental/rental.module';
 import { CoreComponentsModule } from './shared/core-compoentns.module';
+import { PdfPreviewPageModule } from './pdf-preview/pdf-preview.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CoreComponentsModule } from './shared/core-compoentns.module';
     CoreComponentsModule,
     PracticesPageModule,
     TemparioPageModule,
-    RentalPageModule
+    RentalPageModule,
+    PdfPreviewPageModule
   ],
 })
 export class CorePageModule {}

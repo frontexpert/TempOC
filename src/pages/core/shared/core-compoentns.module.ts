@@ -7,6 +7,7 @@ import { DocumentsTabComponent } from './documents-tab/documents-tab';
 import { PaymentTabComponet } from './payment-tab/payment-tab';
 import { PhotoTabComponet } from './photo-tab/photo-tab';
 import { RentTabComponet } from './rent-tab/rent-tab';
+import { PdfPreviewPageModule } from '../pdf-preview/pdf-preview.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { RentTabComponet } from './rent-tab/rent-tab';
   ],
 	imports: [IonicModule,
     ComponentsModule,
+    PdfPreviewPageModule
   ],
 	exports: [
     OutlookTabComponet,
