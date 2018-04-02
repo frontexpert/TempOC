@@ -14,7 +14,7 @@ export class SidebarItemComponent {
 
   @Input() name: string;
   @Input() icon: string;
-  @Input() notifications: number;
+  @Input() notifications?: number;
   @Output() onSelectItem: EventEmitter<any> = new EventEmitter();
 
   constructor() {

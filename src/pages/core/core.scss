@@ -156,6 +156,13 @@ page-core {
       &.activated {
         background-color: #cbcbcb;
       }
+
+      i.fas {
+        font-size: inherit;
+        line-height: .67;
+        pointer-events: none;
+        padding-right: 0.3em;
+      }
     }
   }
 }
