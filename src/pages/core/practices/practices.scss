@@ -1,4 +1,4 @@
-page-pratiche {
+page-practices {
   .list {
     margin-bottom: 0;
   }
@@ -11,36 +11,36 @@ page-pratiche {
     &.item-block .item-inner {
       padding-left: 10px!important;
       padding-right: 0;
-      border-right: 16px solid #d0e8d7;
+      border-right: 16px solid $light-green;
     }
 
     &.green {
       .item-inner {
-        border-right: 16px solid #d0e8d7;
+        border-right: 16px solid $light-green;
       }
     }
 
     &.orange {
       .item-inner {
-        border-right: 16px solid #f2d499;
+        border-right: 16px solid $light-orange;
       }
     }
 
     &.pink {
       .item-inner {
-        border-right: 16px solid #ffcccc;
+        border-right: 16px solid $light-pink;
       }
     }
 
     &.yello {
       .item-inner {
-        border-right: 16px solid #fff5cc;
+        border-right: 16px solid $light-yello;
       }
     }
 
     &.lightblue {
       .item-inner {
-        border-right: 16px solid lightblue;
+        border-right: 16px solid $light-blue;
       }
     }
 
@@ -49,7 +49,7 @@ page-pratiche {
       margin-bottom: 8px;
     }
     p {
-      color: #484848;
+      color: $text-color;
     }
     .button {
       padding: 0;
@@ -77,15 +77,15 @@ page-pratiche {
         font-size: 2rem;
 
         &.car-red {
-          color: #cc0000;
+          color: $icon-red;
         }
 
         &.car-green {
-          color: $green-bg;
+          color: $icon-green;
         }
 
         &.blue {
-          color: #06599f;
+          color: $icon-blue;
         }
       }
 

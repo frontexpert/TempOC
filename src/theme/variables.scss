@@ -37,7 +37,7 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
+  light:      #f0f0f0,
   dark:       #222
 );
 
@@ -45,8 +45,25 @@ $green-bg: #188b37;
 $grey: #5c5c5c;
 $header-bg: #188b37;
 
+// app colurs 
+$light-blue: lightblue;
+$light-yello: #fff5cc;
+$light-pink: #ffcccc;
+$light-orange: #f2d499;
+$light-green: #d0e8d7;
+
+$text-color: #484848;
+
+$icon-red: #cc0000;
+$icon-green: $green-bg;
+$icon-blue: #06599f;
+
+// App Global Variables
+// --------------------------------------------------
+// All platform Sass variables can go here
 
 $list-border-color: #e9e9e9;
+
 
 // App iOS Variables
 // --------------------------------------------------
@@ -62,8 +79,11 @@ $searchbar-ios-input-search-icon-color: $green-bg;
 $toggle-ios-background-color-off: #fff;
 $toggle-ios-border-color-off: #EBEBEB;
 $toggle-ios-background-color-on:  #7ED321;
-$modal-inset-width: calc(100% - 117px);
+// $modal-inset-width: calc(100% - 117px);
 $modal-inset-height-large: 98%;
+$modal-ios-border-radius: 0;
+$modal-inset-width: 720px;
+$modal-inset-height-small: 444px;
 
 $toolbar-ios-title-text-color: #008AD6;
 
@@ -111,6 +131,8 @@ $item-ios-padding-left: 0 !default;
 @import "roboto";
 @import "noto-sans";
 @import "open-sans";
+
+@import "simple-line-icons";
 
 // Font-awesome 5.1.0
 $fa-font-path: "../assets/fonts/font-awesome" !default;

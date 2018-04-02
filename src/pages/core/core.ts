@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PratichePage } from './pratiche/pratiche';
+import { PracticesPage } from './practices/practices';
 import { TemparioPage } from './tempario/tempario';
-import { NoleggioPage } from './noleggio/noleggio';
+import { RentalPage } from './rental/rental';
 
 /**
  * Generated class for the CorePage page.
@@ -18,12 +18,12 @@ import { NoleggioPage } from './noleggio/noleggio';
 })
 export class CorePage {
   @ViewChild('coreNav') nav: NavController;
-  rootPage = PratichePage;
+  rootPage = PracticesPage;
 
   pages = {
-    'pratiche': PratichePage,
+    'pratiche': PracticesPage,
     'tempario': TemparioPage,
-    'noleggio': NoleggioPage,
+    'noleggio': RentalPage,
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

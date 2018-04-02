@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button clear navPop icon-left>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        INDIETRO
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      {{title}}
+    </ion-title>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="pdf-container">    
+    <pdf-viewer [src]="pdfSrc" 
+              [render-text]="true"
+              [fit-to-page]="true"
+              [original-size]="false"
+              style="display: block;"
+    ></pdf-viewer>
+  </div>
+</ion-content>
+
+<ion-footer class="text-center">
+  <button ion-button small color="light" (click)="firstSign()">Firma 1</button>
+  <button ion-button small color="light" (click)="secondSign()">Firma 2</button>
+</ion-footer>

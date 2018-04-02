@@ -11,10 +11,10 @@ import * as Constants from '../../../shared/constants';
 
 @IonicPage()
 @Component({
-  selector: 'page-pratiche',
-  templateUrl: 'pratiche.html',
+  selector: 'page-practices',
+  templateUrl: 'practices.html',
 })
-export class PratichePage {
+export class PracticesPage {
 
   searchTerm: string = "";
 

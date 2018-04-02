@@ -1,5 +1,5 @@
 <div class="sidebar-item" (click)="handleClick()">
-  <ion-badge [hidden]="!notification">{{notifications}}</ion-badge>
+  <ion-badge [hidden]="notifications == undefined">{{notifications}}</ion-badge>
   <i class="sidebar-icon icon-{{icon}}"></i>
   <div class="sidebar-item-text">{{name}}</div>
 </div>

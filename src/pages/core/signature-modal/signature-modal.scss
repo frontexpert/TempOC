@@ -1,0 +1,34 @@
+page-signature-modal {
+  .header .toolbar-background {
+    background-color: $green-bg;
+  }
+  .toolbar-title-ios {
+		color: #fff;
+	}
+  .drawpad-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+	}
+	.drawpad {
+	  background-color: #f7f7f7;
+	  // border: 1px solid #979797;
+	  width: 100%;
+	  height: 100%;
+  }
+  signature-pad {
+    display: block;
+  }
+  .btn-clear-sign {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #000;
+    z-index: 9;
+
+    &.button-clear-ios:hover:not(.disable-hover) {
+      color: #000;
+      opacity: 1;
+    }
+  }
+}

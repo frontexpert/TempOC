@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the NoleggioPage page.
+ * Generated class for the RentalPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-noleggio',
-  templateUrl: 'noleggio.html',
+  selector: 'page-rental',
+  templateUrl: 'rental.html',
 })
-export class NoleggioPage {
+export class RentalPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NoleggioPage');
+    console.log('ionViewDidLoad RentalPage');
   }
 
 }

@@ -1,0 +1,25 @@
+page-pdf-preview {
+	.scroll-content {
+    // padding: 0 !important;
+    overflow: auto;
+  }
+  .header .toolbar-background {
+    background-color: $green-bg;
+  }
+	.toolbar-title-ios {
+		color: #fff;
+	}
+	.pdf-container {
+		background-color: #eaeaea;
+  }
+  
+  ion-footer {
+    background-color: #6dc37f;
+    padding: 4px 0;
+
+    button[ion-button] {
+      border: 3px solid #cbcbcb;
+      border-radius: 2px;
+    }
+  }
+}

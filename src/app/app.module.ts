@@ -17,7 +17,9 @@ import { Globals } from '../shared/globals';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      mode: "ios"
+    }),
     CorePageModule,
     ComponentsModule
   ],

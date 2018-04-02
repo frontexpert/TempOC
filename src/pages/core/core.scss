@@ -137,5 +137,32 @@ page-core {
       padding-right: 0;
     }
   }
+  .padding-content {
+    padding: 5px 10px 15px;
+  }
 
+  // Component header buttons style  
+  .buttons-header {
+    margin-bottom: 10px;
+
+    .button-outline-ios-light {
+      background-color: #f0f0f0;
+      border-color: #cbcbcb;
+      border-width: 3px;
+      border-radius: 2px;
+      color: #000;
+      text-transform: uppercase;
+
+      &.activated {
+        background-color: #cbcbcb;
+      }
+
+      i.fas {
+        font-size: inherit;
+        line-height: .67;
+        pointer-events: none;
+        padding-right: 0.3em;
+      }
+    }
+  }
 }
