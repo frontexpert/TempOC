@@ -1,3 +1,45 @@
 documents-tab {
-  
+  .padding-content {
+    padding-top: 0;
+  }
+  .grid {
+    padding: 0;
+  }
+	ion-row {
+    height: 100%;
+    flex-wrap: wrap;
+  }
+	ion-col.col {
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+    padding: 2px;
+
+    img {
+    	display: block;
+    	width: 100%;
+    	height: 200px;
+    	max-height: 200px;    	
+    }
+    &:first-child {
+    	padding-left: 2px;
+    }
+    &:last-child {
+    	padding-right: 2px;
+    }
+
+    h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #000;
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+
+    .doc-date {
+      font-size: 12px;
+      color: #000;
+      margin-bottom: 1.6rem;
+    }
+  }
 }

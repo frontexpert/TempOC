@@ -17,7 +17,7 @@ export class SidebarComponent {
   @Output() doLogout: EventEmitter<any> = new EventEmitter();
 
   sidebarItems = [
-    {icon: 'pratiche', title: 'pratiche'},
+    {icon: 'pratiche', title: 'pratiche', notification: 0},
     {icon: 'tempario', title: 'tempario'},
     {icon: 'noleggio', title: 'noleggio'}
   ];

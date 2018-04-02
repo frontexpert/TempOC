@@ -141,4 +141,21 @@ page-core {
     padding: 5px 10px 15px;
   }
 
+  // Component header buttons style  
+  .buttons-header {
+    margin-bottom: 10px;
+
+    .button-outline-ios-light {
+      background-color: #f0f0f0;
+      border-color: #cbcbcb;
+      border-width: 3px;
+      border-radius: 2px;
+      color: #000;
+      text-transform: uppercase;
+
+      &.activated {
+        background-color: #cbcbcb;
+      }
+    }
+  }
 }
