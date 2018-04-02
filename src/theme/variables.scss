@@ -79,8 +79,11 @@ $searchbar-ios-input-search-icon-color: $green-bg;
 $toggle-ios-background-color-off: #fff;
 $toggle-ios-border-color-off: #EBEBEB;
 $toggle-ios-background-color-on:  #7ED321;
-$modal-inset-width: calc(100% - 117px);
+// $modal-inset-width: calc(100% - 117px);
 $modal-inset-height-large: 98%;
+$modal-ios-border-radius: 0;
+$modal-inset-width: 720px;
+$modal-inset-height-small: 444px;
 
 $toolbar-ios-title-text-color: #008AD6;
 

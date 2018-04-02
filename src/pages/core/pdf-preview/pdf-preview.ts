@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { SignatureModalPage } from '../signature-modal/signature-modal';
 // import { DatePipe } from '@angular/common';
 
 @IonicPage()
@@ -11,7 +12,7 @@ export class PdfPreviewPage {
   pdfSrc: string = './assets/pdf-test.pdf';
   title: string = 'Privacy';
 
-  constructor(public viewCtrl: ViewController, params: NavParams) {
+  constructor(public navCtrl: NavController, params: NavParams, public modalCtrl: ModalController) {
     // set the title if params are exist
     if (params.get('name')) {
       // this.title = params.get('name') + ' ' + this.datePipe.transform(params.get('created'), 'dd. MMM yyyy');
@@ -23,7 +24,11 @@ export class PdfPreviewPage {
     console.log('ionViewDidLoad PdfPreviewModalPage');
   }
 
-  closeModal() {
-    this.viewCtrl.dismiss();
+  firstSign(): void {
+    this.modalCtrl.create(SignatureModalPage, {title: "Firma 1"}).present();
+  }
+
+  secondSign(): void {
+    this.modalCtrl.create(SignatureModalPage, {title: "Firma 2"}).present();
   }
 }

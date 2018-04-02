@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      Firma 1
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done()">
+        Fatto
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+
+<ion-content class="no-scroll">
+  <div class="drawpad-container">
+    <div #drawPad class="drawpad">
+      <signature-pad (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+    </div>    
+    <button ion-button clear class="btn-clear-sign" (click)="clearSign()">Cancella</button>
+  </div>
+</ion-content>

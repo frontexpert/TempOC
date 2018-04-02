@@ -96,10 +96,6 @@
   clear: both;
 }
 
-[icon-left] i.fa, [icon-start] i.fa {
-  padding-right: .3em;
-}
-
-[icon-right] i.fa, [icon-end] i.fa {
-  padding-left: .3em;
+.no-scroll .scroll-content{
+  overflow: hidden;
 }
