@@ -5,14 +5,14 @@
     <ion-item class="car-info">
       <div item-start>
         <div class="car-number">
-          BJ642FF
+          {{pratica.P1_Targa}}
         </div>
       </div>
-      <h2>Fiat Punto 1.4 GPL 5P. ACTIVE</h2>
-      <p>Telaio: V9FPMCFAC89454149</p>
-      <p>Assicurato: Unipolsai</p>
-      <div item-end>
-        <div class="yello-circle">15</div>
+      <h2>{{pratica.P1_Veicolo}}</h2>
+      <p>Telaio: {{pratica.P1_VeicoloNumeroTelaio}}</p>
+      <p>Assicurato: <span *ngIf="pratica.Tipo.Assicurativa == true">{{pratica.P1_Assicurazione}}</span></p>
+      <div item-end *ngIf="pratica.Lavorazione">
+        <div class="yello-circle">{{pratica.Lavorazione.CodiceTappo != null ? pratica.Lavorazione.CodiceTappo : '..'}}</div>
       </div>
     </ion-item>
 
