@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import * as Constants from '../../../shared/constants';
+import { PracticesProvider } from '../../../providers/practices/practices';
 /**
  * Generated class for the PratichePage page.
  *
@@ -44,11 +45,20 @@ export class PracticesPage {
     {name: 'Myrtie Roberson', type:'electricity', number: '00757-1568', date: '2017-11-14', color:'green'},
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  praticaList: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _psp: PracticesProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PratichePage');
+
+    // load list 
+    this._psp.get().then((res: any) => {
+      console.log(res);
+      this.praticaList = res;
+    })
+    .catch(err => console.log(err));
   }
 
   /**

@@ -9,6 +9,9 @@ import { LoginPage } from '../pages/login/login';
 import { CorePageModule } from '../pages/core/core.module';
 import { ComponentsModule } from '../components/components.module';
 import { Globals } from '../shared/globals';
+import { PracticesProvider } from '../providers/practices/practices';
+import { Api } from '../providers/api/api';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { Globals } from '../shared/globals';
     IonicModule.forRoot(MyApp, {
       mode: "ios"
     }),
+    HttpClientModule,
     CorePageModule,
     ComponentsModule
   ],
@@ -32,7 +36,9 @@ import { Globals } from '../shared/globals';
     StatusBar,
     SplashScreen,
     Globals,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Api,
+    PracticesProvider
   ]
 })
 export class AppModule {}

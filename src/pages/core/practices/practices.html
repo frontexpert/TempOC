@@ -38,9 +38,9 @@
       <div class="content-wrapper">
         <ion-scroll scrollY="true">
           <ion-list>
-            <ion-item *ngFor="let item of data" class="pratiche-item" [class.active]="activeItem === item.name" [ngClass]="item.color" (click)="selectPraticeItem(item.name)">
-              <h2>{{item.name}}</h2>
-              <p>{{item.date | date: 'dd MMM y'}}</p>
+            <ion-item *ngFor="let item of praticaList" class="pratiche-item" [class.active]="activeItem === item.P1_Targa" [ngClass]="item.color" (click)="selectPraticeItem(item.name)">
+              <h2>{{item.P1_Targa}} - {{item.P1_Nome}} {{item.P1_Cognome}}</h2>
+              <p>{{item.P1_Veicolo}}</p>
               <div item-end>
                 <span class="car-red">
                   <i class="fas fa-car"></i>
