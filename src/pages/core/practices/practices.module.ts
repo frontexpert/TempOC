@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { PracticesPage } from './practices';
 import { ComponentsModule } from '../../../components/components.module';
 import { CoreComponentsModule } from '../shared/core-compoentns.module';
+import { PipesModule } from '../../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CoreComponentsModule } from '../shared/core-compoentns.module';
   imports: [
     IonicPageModule.forChild(PracticesPage),
     ComponentsModule,
-    CoreComponentsModule
+    CoreComponentsModule,
+    PipesModule
   ],
 })
 export class PracticesPageModule {}

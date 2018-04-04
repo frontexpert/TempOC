@@ -17,7 +17,7 @@ import { PracticesProvider } from '../../../providers/practices/practices';
 })
 export class PracticesPage {
 
-  searchTerm: string = "";
+  searchTerm: string = '';
 
   activeItem: string;         // active item name
 
