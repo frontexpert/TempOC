@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -11,7 +15,6 @@ import { ComponentsModule } from '../components/components.module';
 import { Globals } from '../shared/globals';
 import { PracticesProvider } from '../providers/practices/practices';
 import { Api } from '../providers/api/api';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
       mode: "ios"
     }),
     HttpClientModule,
+    IonicStorageModule.forRoot(),
     CorePageModule,
     ComponentsModule
   ],
@@ -35,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    ImagePicker,
     Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,
