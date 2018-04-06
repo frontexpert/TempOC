@@ -42,7 +42,7 @@ export class PracticesProvider {
     };
 
     let promise = new Promise((resolve, reject) => {
-      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo/?Page=1&Pagesize=10', params).subscribe((res: any) => {
         if (res.success)
           resolve(res.data);
         else

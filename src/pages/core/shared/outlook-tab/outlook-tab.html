@@ -16,16 +16,79 @@
       </div>
     </ion-item>
 
-    <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
-      <i class="fas fa-wrench" item-start></i>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+    <button detail-none class="three-lines" (click)="expandItem(items[0])" ion-item>
+      <i class="fas fa-user" item-start></i>
+      <div class="item-header" *ngIf="pratica.Tipo.Assicurativa == true; else elseBlock">Cliente Proprietario Danneggiato</div>
+      <ng-template #elseBlock>
+        <div class="item-header">Cliente	Proprietario</div>
+      </ng-template>
+      <h2>{{pratica.P1_Nome}}	{{pratica.P1_Cognome}}</h2>
+      <p>Tel.: {{pratica.P1_Telefono}} - E-mail: {{pratica.P1_Email}}</p>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="items[0].expanded">
           Hello people
       </expandable>
       <button ion-button clear item-end icon-only>
-        <i class="icon-arrow-down" *ngIf="!item.expanded"></i>
-        <i class="icon-arrow-up" *ngIf="item.expanded"></i>
+        <i class="icon-arrow-down" *ngIf="!items[0].expanded"></i>
+        <i class="icon-arrow-up" *ngIf="items[0].expanded"></i>
+      </button>
+    </button>
+
+    <button detail-none (click)="expandItem(items[1])" ion-item *ngIf="pratica.Lavorazione">
+      <i class="fas fa-wrench" item-start></i>      
+      <div class="item-header">Lavorazione</div>
+      <h2>
+        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione">{{pratica.Lavorazione.DataInizioLavorazione}}</span>
+        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione == null && pratica.Lavorazione.DataAccettazione">{{pratica.Lavorazione.DataAccettazione}}</span>
+        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione == null && pratica.Lavorazione.DataAccettazione == null && pratica.Lavorazione.DataPrenotazione">{{pratica.Lavorazione.DataPrenotazione}}</span>
+      </h2>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="items[1].expanded">
+          Hello people
+      </expandable>
+      <button ion-button clear item-end icon-only>
+        <i class="icon-arrow-down" *ngIf="!items[1].expanded"></i>
+        <i class="icon-arrow-up" *ngIf="items[1].expanded"></i>
+      </button>
+    </button>
+
+    <button detail-none (click)="expandItem(items[2])" ion-item>
+      <i class="fas fa-euro-sign" item-start></i>
+      <div class="item-header">
+        <span *ngIf="pratica.Tipo.Assicurativa">{{pratica.Tipo.Assicurativa}}</span>
+        <span *ngIf="!pratica.Tipo.Assicurativa">{{pratica.Tipo.Sigla}}</span> del {{pratica.DataInserimento | date: 'dd/MM/yyyy'}}
+      </div>
+      <h2>My Neighbor Totoro</h2>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="items[2].expanded">
+          Hello people
+      </expandable>
+      <button ion-button clear item-end icon-only>
+        <i class="icon-arrow-down" *ngIf="!items[2].expanded"></i>
+        <i class="icon-arrow-up" *ngIf="items[2].expanded"></i>
+      </button>
+    </button>
+
+    <button detail-none (click)="expandItem(items[3])" ion-item>
+      <i class="fas fa-user" item-start></i>
+      <div class="item-header">Cliente Proprietario Danneggiato</div>
+      <h2>My Neighbor Totoro</h2>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="items[3].expanded">
+          Hello people
+      </expandable>
+      <button ion-button clear item-end icon-only>
+        <i class="icon-arrow-down" *ngIf="!items[3].expanded"></i>
+        <i class="icon-arrow-up" *ngIf="items[3].expanded"></i>
+      </button>
+    </button>
+
+    <button detail-none (click)="expandItem(items[4])" ion-item>
+      <i class="fas fa-car" item-start></i>
+      <div class="item-header">Cliente Proprietario Danneggiato</div>
+      <h2>My Neighbor Totoro</h2>
+      <expandable [expandHeight]="itemExpandHeight" [expanded]="items[4].expanded">
+          Hello people
+      </expandable>
+      <button ion-button clear item-end icon-only>
+        <i class="icon-arrow-down" *ngIf="!items[4].expanded"></i>
+        <i class="icon-arrow-up" *ngIf="items[4].expanded"></i>
       </button>
     </button>
   </ion-list>
