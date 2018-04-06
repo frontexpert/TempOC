@@ -17,13 +17,15 @@ import { PracticesProvider } from '../../../providers/practices/practices';
 })
 export class PracticesPage {
 
-  searchTerm: string = "";
+  searchTerm: string = '';
 
-  activeItem: string;         // active item name
+  activeItemID: number;         // active item ID
+
+  selectedItem: any; // selected a pratica item
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
-  checkedTabs: Array<number> = [2, 3, 5];
+  checkedTabs: Array<number> = [];
 
   selectedTab: number = 0;
 
@@ -63,10 +65,27 @@ export class PracticesPage {
 
   /**
    * On select a pratice item
-   * @param name item name
+   * @param item selected item
    */
-  selectPraticeItem(name: string): void {
-    this.activeItem = name;    
+  selectPraticeItem(item: any): void {
+    this.selectedItem = item;
+    this.activeItemID = item.ID;    
+
+    if (this.selectedItem.ImmaginiCount > 0) {
+      this.checkedTabs.push(2); // photo marked
+    }
+
+    if (this.selectedItem.DocumentiCount > 0) {
+      this.checkedTabs.push(3); // documenti marked
+    }
+
+    if (this.selectedItem.PreventiviCount > 0) {
+      this.checkedTabs.push(4); // preventivi marked
+    }
+
+    if (this.selectedItem.NoleggiCount > 0) {
+      this.checkedTabs.push(5); // Noleggi marked
+    }
   }
 
 }

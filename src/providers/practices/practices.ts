@@ -14,9 +14,35 @@ export class PracticesProvider {
     console.log('Hello PracticesProvider Provider');
   }
 
+  /**
+   * Get pratica list
+   */
   get() {
     let promise = new Promise((resolve, reject) => {
-      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo/', {}).subscribe((res: any) => {
+      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo/').subscribe((res: any) => {
+        if (res.success)
+          resolve(res.data);
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
+  /**
+   * Get a pratica by id
+   * @param id pratica id
+   */
+  getByID(id: number) {
+    let params = {
+      ID: id
+    };
+
+    let promise = new Promise((resolve, reject) => {
+      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
         if (res.success)
           resolve(res.data);
         else
