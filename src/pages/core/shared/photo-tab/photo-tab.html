@@ -1,17 +1,17 @@
 <div class="padding-content">
   <div class="buttons-header">
 		<div class="pull-left">
-      <button ion-button outline small color="light" icon-left>
+      <button ion-button outline small color="light" icon-left (click)="takeNewPhoto()">
         <ion-icon name="add"></ion-icon> 
         Nuovo
       </button>
-      <button ion-button outline small color="light" icon-left>
+      <button ion-button outline small color="light" icon-left (click)="selectNewPhoto()">
         <i class="fas fa-paperclip"></i>
         Rullino
       </button>
     </div>
     <div class="pull-right">
-      <button ion-button outline small color="light" icon-left>
+      <button ion-button outline small color="light" icon-left (click)="deletePhoto()">
         <ion-icon name="close"></ion-icon>
         Elimina
       </button>
@@ -21,7 +21,10 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col *ngFor=" let photo of photos; let i = index">
+        <img [src]="photo.url" alt="" [style.border]="photo.checked==true ? 'solid 4px #55f': ''" (click)="toggle(i)">
+      </ion-col>
+      <!-- <ion-col>
         <img src="./assets/imgs/pic-01.jpg" alt="">
       </ion-col>
       <ion-col>
@@ -53,10 +56,10 @@
       </ion-col>
       <ion-col>
         <img src="./assets/imgs/pic-11.jpg" alt="">
-      </ion-col>
+      </ion-col>solid 4px #55f
       <ion-col>
         <img src="./assets/imgs/pic-12.jpg" alt="">
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </ion-grid>
 </div>

@@ -63,14 +63,15 @@
         <span *ngIf="selectedItem">{{selectedItem.P1_Targa}} - {{selectedItem.P1_Nome}} {{selectedItem.P1_Cognome}}</span>
       </div>
 
-      <div class="content-wrapper" *ngIf="selectedItem"> 
-        <!-- *ngIf="activeItem" -->
+      <div class="content-wrapper"> 
+      <!-- <div class="content-wrapper" *ngIf="selectedItem">  -->
+          <!-- *ngIf="activeItem" -->
 
         <switcher class="green no-padding" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
                   [(ngModel)]="selectedTab"></switcher>
                   
         <div [ngSwitch]="selectedTab">
-          <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab>
+          <!-- <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab> -->
           <payment-tab *ngSwitchCase="1"></payment-tab>
           <photo-tab *ngSwitchCase="2"></photo-tab>
           <documents-tab *ngSwitchCase="3"></documents-tab>
