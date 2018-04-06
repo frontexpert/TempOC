@@ -6,8 +6,10 @@ photo-tab {
     padding: 0;
   }
 	ion-row {
-    height: 100%;
+    height: 80vh;
+    overflow: scroll;
     flex-wrap: wrap;
+    align-content: flex-start;
   }
 	ion-col.col {
     flex: 0 0 25%;
