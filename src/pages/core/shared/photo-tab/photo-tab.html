@@ -21,8 +21,8 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor=" let photo of photos; let i = index">
-        <img [src]="photo.url" alt="" [style.border]="photo.checked==true ? 'solid 4px #55f': ''" (click)="toggle(i)">
+      <ion-col *ngFor=" let photo of photos; let i = index" (click)="toggle(i)">
+        <img [src]="photo.url" alt="" [style.border]="photo.checked==true ? 'solid 4px #55f': ''">
       </ion-col>
       <!-- <ion-col>
         <img src="./assets/imgs/pic-01.jpg" alt="">
