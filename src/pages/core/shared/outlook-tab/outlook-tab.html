@@ -27,6 +27,9 @@
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[0].expanded">
           Hello people
       </expandable>
+      <span item-end *ngIf="pratica.P1_IsValid">
+        <i class="icon-alert"></i>        
+      </span>
       <button ion-button clear item-end icon-only>
         <i class="icon-arrow-down" *ngIf="!items[0].expanded"></i>
         <i class="icon-arrow-up" *ngIf="items[0].expanded"></i>
@@ -67,6 +70,9 @@
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[2].expanded">
           Hello people
       </expandable>
+      <span item-end>
+        <i class="icon-warning"></i>        
+      </span>
       <button ion-button clear item-end icon-only>
         <i class="icon-arrow-down" *ngIf="!items[2].expanded"></i>
         <i class="icon-arrow-up" *ngIf="items[2].expanded"></i>
