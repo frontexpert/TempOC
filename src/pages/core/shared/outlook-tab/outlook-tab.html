@@ -23,7 +23,7 @@
         <div class="item-header">Cliente	Proprietario</div>
       </ng-template>
       <h2>{{pratica.P1_Nome}}	{{pratica.P1_Cognome}}</h2>
-      <p>Tel.: {{pratica.P1_Telefono}} - E-mail: {{pratica.P1_Email}}</p>
+      <p><span *ngIf="pratica.P1_Telefono">Tel.: {{pratica.P1_Telefono}} </span><span *ngIf="pratica.P1_Email">- E-mail: {{pratica.P1_Email}}</span></p>
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[0].expanded">
           Hello people
       </expandable>
@@ -36,10 +36,10 @@
     <button detail-none (click)="expandItem(items[1])" ion-item *ngIf="pratica.Lavorazione">
       <i class="fas fa-wrench" item-start></i>      
       <div class="item-header">Lavorazione</div>
-      <h2>
-        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione">{{pratica.Lavorazione.DataInizioLavorazione}}</span>
-        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione == null && pratica.Lavorazione.DataAccettazione">{{pratica.Lavorazione.DataAccettazione}}</span>
-        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione == null && pratica.Lavorazione.DataAccettazione == null && pratica.Lavorazione.DataPrenotazione">{{pratica.Lavorazione.DataPrenotazione}}</span>
+      <h2>Inizio lavoro il:
+        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione">{{pratica.Lavorazione.DataInizioLavorazione | date: 'dd/MM/yyyy'}}</span>
+        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione == null && pratica.Lavorazione.DataAccettazione">{{pratica.Lavorazione.DataAccettazione | date: 'dd/MM/yyyy'}}</span>
+        <span *ngIf="pratica.Lavorazione.DataInizioLavorazione == null && pratica.Lavorazione.DataAccettazione == null && pratica.Lavorazione.DataPrenotazione">{{pratica.Lavorazione.DataPrenotazione | date: 'dd/MM/yyyy'}}</span>
       </h2>
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[1].expanded">
           Hello people
@@ -53,10 +53,17 @@
     <button detail-none (click)="expandItem(items[2])" ion-item>
       <i class="fas fa-euro-sign" item-start></i>
       <div class="item-header">
-        <span *ngIf="pratica.Tipo.Assicurativa">{{pratica.Tipo.Assicurativa}}</span>
-        <span *ngIf="!pratica.Tipo.Assicurativa">{{pratica.Tipo.Sigla}}</span> del {{pratica.DataInserimento | date: 'dd/MM/yyyy'}}
+        <span *ngIf="pratica.Tipo.Assicurativa == true; else elseTipoAssicurativa">Pratica assicurativa</span>
+        <ng-template #elseTipoAssicurativa>{{pratica.Tipo.Sigla}}</ng-template> del {{pratica.DataInserimento | date: 'dd/MM/yyyy'}}
       </div>
-      <h2>My Neighbor Totoro</h2>
+      <h2>
+        Assegnata	a: <span *ngIf="pratica.GaranteID !== null; else elseGaranteID">{{pratica.Garante.Nome}}</span>
+        <ng-template #elseGaranteID>
+          <span *ngIf="pratica.GaranteAutoGestione == true">In autogestione</span>
+          <span *ngIf="pratica.GaranteAutoGestione == false">Nessun	garante	assegnato</span>
+        </ng-template>
+        <span *ngIf="pratica.GaranteID != null && pratica.ColoreID != null" [style.color]="pratica.Colore.Colore">- Valutazione	Garante: {{pratica.Colore.Nome}}</span>
+      </h2>
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[2].expanded">
           Hello people
       </expandable>
@@ -66,10 +73,10 @@
       </button>
     </button>
 
-    <button detail-none (click)="expandItem(items[3])" ion-item>
+    <button detail-none (click)="expandItem(items[3])" ion-item *ngIf="pratica.Tipo.ObbligoControparte == true">
       <i class="fas fa-user" item-start></i>
-      <div class="item-header">Cliente Proprietario Danneggiato</div>
-      <h2>My Neighbor Totoro</h2>
+      <div class="item-header">Controparte</div>
+      <h2>{{pratica.Controparte}}</h2>
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[3].expanded">
           Hello people
       </expandable>
@@ -79,10 +86,13 @@
       </button>
     </button>
 
-    <button detail-none (click)="expandItem(items[4])" ion-item>
+    <button detail-none (click)="expandItem(items[4])" ion-item *ngIf="pratica.AutoSostitutiva">
       <i class="fas fa-car" item-start></i>
-      <div class="item-header">Cliente Proprietario Danneggiato</div>
-      <h2>My Neighbor Totoro</h2>
+      <div class="item-header">
+        <span *ngIf="pratica.AutoSostitutiva == true; else elseAutoSostitutiva">Noleggio in	corso</span>
+        <ng-template #elseAutoSostitutiva>Auto riconsegnata</ng-template>
+      </div>
+      <h2>Auto di cortesia consegnata il: <span *ngIf="pratica.AutoSostitutiva == true">{{pratica.ConsegnaAutoSostitutiva | date: 'dd/MM/yyyy'}}</span></h2>
       <expandable [expandHeight]="itemExpandHeight" [expanded]="items[4].expanded">
           Hello people
       </expandable>
