@@ -47,7 +47,15 @@
                 </span>
                 <span class="blue" *ngIf="item.Lavorazione">
                   <ion-badge *ngIf="item.Lavorazione">{{item.Lavorazione.CodiceTappo != null ? item.Lavorazione.CodiceTappo : '..'}}</ion-badge>
-                  <i class="fas fa-wrench"></i>
+                  <div [ngSwitch]="item.Lavorazione.StatoID">
+                    <b *ngSwitchCase="1" style="color: blue;">1</b>
+                    <i *ngSwitchCase="2" class="far fa-clock" style="color: orange;"></i>
+                    <b *ngSwitchCase="3" style="color: red;">A</b>
+                    <i *ngSwitchCase="4" class="fas fa-wrench"></i>
+                    <b *ngSwitchCase="5" style="color: green;">U</b>
+                    <ion-icon *ngSwitchCase="6" name="md-checkmark" style="color: black;"></ion-icon>
+                    <i *ngSwitchDefault>&nbsp;</i>
+                  </div>                  
                 </span>
               </div>
             </ion-item>
