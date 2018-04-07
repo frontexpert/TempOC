@@ -39,15 +39,23 @@
         <ion-scroll scrollY="true">
           <ion-list>
             <ion-item *ngFor="let item of praticaList | filterPratica: searchTerm" class="pratiche-item" [class.active]="activeItemID === item.ID" [ngClass]="item.Colore.Colore" (click)="selectPraticeItem(item)">
-              <h2>{{item.P1_Targa}} - {{item.P1_Nome}} {{item.P1_Cognome}}</h2>
-              <p>{{item.P1_Veicolo}}</p>
+              <h2>{{item.P1_Targa}} - <span *ngIf="item.P1_Nome && item.P1_Cognome; else elseNome">{{item.P1_Nome}} {{item.P1_Cognome}}</span><ng-template #elseNome>{{item.P1_NomeCompleto}}</ng-template></h2>
+              <p><span *ngIf="item.P1_Veicolo; else elseVeicolo">{{item.P1_Veicolo}}</span><ng-template #elseVeicolo>{{item.P1_Marca}} {{item.P1_Modello}}</ng-template></p>
               <div item-end>
                 <span [ngClass]="(item.AutoSostitutiva == true) ? 'car-red' : 'car-green'" *ngIf="item.AutoSostitutiva != null">
                   <i class="fas fa-car"></i>
                 </span>
                 <span class="blue" *ngIf="item.Lavorazione">
                   <ion-badge *ngIf="item.Lavorazione">{{item.Lavorazione.CodiceTappo != null ? item.Lavorazione.CodiceTappo : '..'}}</ion-badge>
-                  <i class="fas fa-wrench"></i>
+                  <div [ngSwitch]="item.Lavorazione.StatoID">
+                    <b *ngSwitchCase="1" style="color: blue;">1</b>
+                    <i *ngSwitchCase="2" class="far fa-clock" style="color: orange;"></i>
+                    <b *ngSwitchCase="3" style="color: red;">A</b>
+                    <i *ngSwitchCase="4" class="fas fa-wrench"></i>
+                    <b *ngSwitchCase="5" style="color: green;">U</b>
+                    <ion-icon *ngSwitchCase="6" name="md-checkmark" style="color: black;"></ion-icon>
+                    <i *ngSwitchDefault>&nbsp;</i>
+                  </div>                  
                 </span>
               </div>
             </ion-item>

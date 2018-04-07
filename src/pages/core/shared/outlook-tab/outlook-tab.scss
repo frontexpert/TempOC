@@ -75,5 +75,35 @@ outlook-tab {
       margin-bottom: auto;
       color: #999999;
     }
+
+    span[item-end] {      
+      margin-top: 18px;
+      margin-bottom: auto;
+      margin-right: 17px;
+    }
+
+    .item-header {
+      font-weight: 300;
+      font-size: 1.4rem;
+      margin: 0 0 2px;
+    }
+
+    &.item-ios {
+      h2 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+      }
+      p {
+        font-size: 1.3rem;
+      }
+    }
+
+    &.three-lines {
+      .label-ios {
+        margin-top: 7px;
+        margin-bottom: 7px;
+      }
+    }
+
   }
 }

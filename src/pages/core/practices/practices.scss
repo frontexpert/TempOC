@@ -26,13 +26,13 @@ page-practices {
       }
     }
 
-    &.pink {
+    &.purple {
       .item-inner {
-        border-right: 16px solid $light-pink;
+        border-right: 16px solid $light-purple;
       }
     }
 
-    &.yello {
+    &.yellow {
       .item-inner {
         border-right: 16px solid $light-yello;
       }
@@ -41,6 +41,12 @@ page-practices {
     &.lightblue {
       .item-inner {
         border-right: 16px solid $light-blue;
+      }
+    }
+
+    &.red {
+      .item-inner {
+        border-right: 16px solid $icon-red;
       }
     }
 

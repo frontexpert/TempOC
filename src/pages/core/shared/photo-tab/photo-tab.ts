@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -15,6 +15,7 @@ export class PhotoTabComponet {
 
   constructor(private imagePicker: ImagePicker, private camera: Camera, private sanitizer: DomSanitizer, private alert: AlertController, public storage: Storage) {
   }
+
   ngOnInit() {
     this.storage.get('potoData').then(data => {
       if (data != null) {
@@ -35,6 +36,7 @@ export class PhotoTabComponet {
       console.log(err);
     });
   }
+
   takeNewPhoto() {
     let cameraOptions = {
       destinationType: this.camera.DestinationType.DATA_URL,      
