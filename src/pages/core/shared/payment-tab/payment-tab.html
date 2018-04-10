@@ -1,3 +1,80 @@
 <div class="padding-content">
-  Here is Payment tab content  
+  <div class="inner-content">
+    <div class="payment-details">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-9>
+            <h2>Stato: in attesa di liquidazione</h2>
+            <h2>Tipo Pagamento: </h2>
+            <h2>Scadenza: </h2>
+            <h2>Data pagamento: </h2>
+          </ion-col>
+          <ion-col col-3>
+            <div class="chart-inner">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [results]="single"
+                [scheme]="colorScheme"
+                [legend]="false"
+                [tooltipDisabled]="true"
+                [explodeSlices]="explodeSlices"
+                [labels]="false"
+                [doughnut]="doughnut"
+                (select)="onSelect($event)">
+              </ngx-charts-pie-chart>  
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="payment-invoice">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-9>
+            <p>Fattura Carrozzeria</p>
+            <p>Fattura Nolo</p>
+            <p>A Carico del Cliente</p>
+            <p>Offerta / Pagamento</p>
+            <h4>Differenza</h4>
+          </ion-col>
+          <ion-col col-3 class="text-right">
+            <p>€ 2.308,00 +</p>
+            <p>€ 0,00 +</p>
+            <p>€ 0,00 -</p>
+            <p>€ 0,00 -</p>
+            <hr>
+            <p>€ 238,00</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="pratica-left">      
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <h2>Pratica sinistro del 23/02/2018</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-8>
+            <p><b>Garante:</b> Stefano Mannaccio</p>
+            <p><b>RCA FUORI INDENNIZZO DIRECTTO - NO CARD</b></p>
+            <p><b>Data invio PEC:</b></p>
+            <p><b>Controparte:</b> Mirco Rossi</p>
+            <p><b>Perito:</b> Giovanni Fiore</p>
+            <p><b>Perito:</b></p>
+          </ion-col>
+          <ion-col col-4 class="text-right">
+            <p>051262008  3396938361</p>
+            <p>Pagamento in 60 giorni</p>
+            <p>12/04/2018</p>
+            <p></p>
+            <p>051262008  3396938361</p>
+            <p></p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>  
 </div>

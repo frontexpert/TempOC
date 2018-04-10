@@ -1,3 +1,71 @@
 payment-tab {
-  
+  .inner-content {
+    padding: 15px;
+  }
+
+  .payment-details {
+    border: 1px solid lightgray;
+    padding: 15px 15px 15px 12px;
+    border-bottom: 0 none;
+
+    h2 {
+      font-size: 1.5rem;      
+      margin-top: -3px;
+      margin-bottom: 5px;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .chart-inner{
+      width: 130px;
+      margin-top: -20px;
+      margin-right: -20px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .payment-invoice {
+    border: 1px solid lightgray;
+    padding: 15px 15px 15px 12px;
+    margin-bottom: 10px;
+
+    p {
+      margin: 0 0 5px;
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: 1.4rem;      
+      margin-top: 14px;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+  }
+
+  .pratica-left {
+    border: 1px solid lightgray;
+    padding: 15px 15px 15px 12px;
+    background-color: $light-green;
+
+    p {
+      margin: 0 0 5px;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h2 {
+      margin: 0 0 5px;
+      font-size: 1.8rem;
+      line-height: 1.5;
+    }
+  }
+
 }

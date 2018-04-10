@@ -24,7 +24,7 @@ export class PracticesPage {
 
   checkedTabs: Array<number> = [2, 3, 5];
 
-  selectedTab: number = 0;
+  selectedTab: number = 1;
 
   data = [
     {name: 'Glenn Lambert', type:'electricity', number: '170651', date: '2017-11-11', color:'orange'},
