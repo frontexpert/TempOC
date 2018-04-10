@@ -5,6 +5,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   templateUrl: 'outlook-tab.html'
 })
 export class OutlookTabComponet {
+  @Input() pratica: any;
 
   items: any = [];
   itemExpandHeight: number = 100;

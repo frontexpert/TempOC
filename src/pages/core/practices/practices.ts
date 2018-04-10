@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import * as Constants from '../../../shared/constants';
+import { PracticesProvider } from '../../../providers/practices/practices';
 /**
  * Generated class for the PratichePage page.
  *
@@ -16,13 +17,15 @@ import * as Constants from '../../../shared/constants';
 })
 export class PracticesPage {
 
-  searchTerm: string = "";
+  searchTerm: string = '';
 
-  activeItem: string;         // active item name
+  activeItemID: number;         // active item ID
+
+  selectedItem: any; // selected a pratica item
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
-  checkedTabs: Array<number> = [2, 3, 5];
+  checkedTabs: Array<number> = [];
 
   selectedTab: number = 1;
 
@@ -44,19 +47,45 @@ export class PracticesPage {
     {name: 'Myrtie Roberson', type:'electricity', number: '00757-1568', date: '2017-11-14', color:'green'},
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  praticaList: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _psp: PracticesProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PratichePage');
+
+    // load list 
+    this._psp.get().then((res: any) => {
+      console.log(res);
+      this.praticaList = res;
+    })
+    .catch(err => console.log(err));
   }
 
   /**
    * On select a pratice item
-   * @param name item name
+   * @param item selected item
    */
-  selectPraticeItem(name: string): void {
-    this.activeItem = name;    
+  selectPraticeItem(item: any): void {
+    this.selectedItem = item;
+    this.activeItemID = item.ID;    
+
+    if (this.selectedItem.ImmaginiCount > 0) {
+      this.checkedTabs.push(2); // photo marked
+    }
+
+    if (this.selectedItem.DocumentiCount > 0) {
+      this.checkedTabs.push(3); // documenti marked
+    }
+
+    if (this.selectedItem.PreventiviCount > 0) {
+      this.checkedTabs.push(4); // preventivi marked
+    }
+
+    if (this.selectedItem.NoleggiCount > 0) {
+      this.checkedTabs.push(5); // Noleggi marked
+    }
   }
 
 }

@@ -42,7 +42,7 @@
               <h2>{{item.P1_Targa}} - {{item.P1_Nome}} {{item.P1_Cognome}}</h2>
               <p>{{item.P1_Veicolo}}</p>
               <div item-end>
-                <span class="car-red">
+                <span [ngClass]="(item.AutoSostitutiva == true) ? 'car-red' : 'car-green'" *ngIf="item.AutoSostitutiva != null">
                   <i class="fas fa-car"></i>
                 </span>
                 <span class="blue" *ngIf="item.Lavorazione">
@@ -68,17 +68,16 @@
     <!-- BEGIN RIGHT COLUMN WITH HEADER -->
     <div class="right-column with-header">
       <div class="column-header">
-        {{activeItem}}
+        <span *ngIf="selectedItem">{{selectedItem.P1_Targa}} - {{selectedItem.P1_Nome}} {{selectedItem.P1_Cognome}}</span>
       </div>
 
-      <div class="content-wrapper"> 
-        <!-- *ngIf="activeItem" -->
+      <div class="content-wrapper" *ngIf="selectedItem"> 
 
         <switcher class="green no-padding" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
                   [(ngModel)]="selectedTab"></switcher>
                   
         <div [ngSwitch]="selectedTab">
-          <outlook-tab *ngSwitchCase="0"></outlook-tab>
+          <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab>
           <payment-tab *ngSwitchCase="1"></payment-tab>
           <photo-tab *ngSwitchCase="2"></photo-tab>
           <documents-tab *ngSwitchCase="3"></documents-tab>
