@@ -1,13 +1,13 @@
 <div class="padding-content">
-  <div class="inner-content">
+  <div class="inner-content" padding>
     <div class="payment-details">
       <ion-grid>
         <ion-row>
           <ion-col col-9>
-            <h2>Stato: in attesa di liquidazione</h2>
-            <h2>Tipo Pagamento: </h2>
-            <h2>Scadenza: </h2>
-            <h2>Data pagamento: </h2>
+            <p><b>Stato:</b> <span class="stato">{{pratica.Stato | lowercase}}</span></p>
+            <p><b>Tipo Pagamento:</b> </p>
+            <p><b>Scadenza:</b> </p>
+            <p><b>Data pagamento:</b> </p>
           </ion-col>
           <ion-col col-3>
             <div class="chart-inner">
@@ -43,7 +43,7 @@
             <p>€ 0,00 -</p>
             <p>€ 0,00 -</p>
             <hr>
-            <p>€ 238,00</p>
+            <p style="color: green; font-weight: 700">€ 238,00</p>
           </ion-col>
         </ion-row>
       </ion-grid>

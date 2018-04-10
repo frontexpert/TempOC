@@ -1,3 +1,10 @@
 budgets-tab {
-  
+  .text-fiat {
+    font-weight: normal;
+    font-size: 1.8rem;
+    color: $text-color;
+  }
+  .budgets-detail {
+    border: 0.55px solid #e9e9e9;
+  }
 }

@@ -5,6 +5,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   templateUrl: 'payment-tab.html'
 })
 export class PaymentTabComponet {
+  @Input() pratica: any;
 
   // pie
   colorScheme = {
