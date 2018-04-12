@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PracticesPage } from './practices';
 import { ComponentsModule } from '../../../components/components.module';
-import { CoreComponentsModule } from '../shared/core-compoentns.module';
+import { PraticaComponentsModule } from './shared/pratica-compoentns.module';
 import { PipesModule } from '../../../pipes/pipes.module';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { PipesModule } from '../../../pipes/pipes.module';
   imports: [
     IonicPageModule.forChild(PracticesPage),
     ComponentsModule,
-    CoreComponentsModule,
+    PraticaComponentsModule,
     PipesModule
   ],
 })
