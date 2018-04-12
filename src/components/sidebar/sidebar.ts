@@ -19,7 +19,8 @@ export class SidebarComponent {
   sidebarItems = [
     {icon: 'pratiche', title: 'pratiche'},
     {icon: 'tempario', title: 'tempario'},
-    {icon: 'noleggio', title: 'noleggio'}
+    {icon: 'noleggio', title: 'noleggio'},
+    {icon: 'noleggio', title: 'car'}
   ];
 
   constructor(public globals: Globals) {
