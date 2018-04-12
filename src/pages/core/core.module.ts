@@ -7,6 +7,7 @@ import { TemparioPageModule } from './tempario/tempario.module';
 import { RentalPageModule } from './rental/rental.module';
 import { PdfPreviewPageModule } from './pdf-preview/pdf-preview.module';
 import { SignatureModalPageModule } from './signature-modal/signature-modal.module';
+import { ApertePageModule } from './aperte/aperte.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SignatureModalPageModule } from './signature-modal/signature-modal.modu
     TemparioPageModule,
     RentalPageModule,
     PdfPreviewPageModule,
+    ApertePageModule,
     SignatureModalPageModule
   ],
 })

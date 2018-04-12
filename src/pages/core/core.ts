@@ -5,6 +5,7 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 import { PracticesPage } from './practices/practices';
 import { TemparioPage } from './tempario/tempario';
 import { RentalPage } from './rental/rental';
+import { ApertePage } from './aperte/aperte';
 
 /**
  * Generated class for the CorePage page.
@@ -20,9 +21,10 @@ import { RentalPage } from './rental/rental';
 })
 export class CorePage {
   @ViewChild('coreNav') nav: NavController;
-  rootPage = PracticesPage;
+  rootPage = ApertePage;
 
   pages = {
+    'aperte': ApertePage,
     'pratiche': PracticesPage,
     'tempario': TemparioPage,
     'noleggio': RentalPage,
