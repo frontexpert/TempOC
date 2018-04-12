@@ -27,36 +27,18 @@ export class PracticesPage {
 
   checkedTabs: Array<number> = [];
 
-  selectedTab: number = 0;
-
-  data = [
-    {name: 'Glenn Lambert', type:'electricity', number: '170651', date: '2017-11-11', color:'orange'},
-    {name: 'Earl Guerrero', type:'electricity', number: '170345', date: '2017-10-27', color:'yello'},
-    {name: 'Glen Andrews', type:'electricity', number: '73635', date: '2017-01-11', color:'green'},
-    {name: 'Ann Briggs', type:'electricity', number: '39783-2602', date: '2017-10-01', color:'green'},
-    {name: 'Stella Hudson', type:'electricity', number: '71250-4469', date: '2017-10-11', color:'green'},
-    {name: 'Cole Moore', type:'electricity', number: '03298-8402', date: '2017-03-11', color:'green'},
-    {name: 'Brent Clayton', type:'electricity', number: '95673-7966', date: '2017-05-14', color:'pink'},
-    {name: 'Essie Swanson', type:'electricity', number: '60338', date: '2017-02-27', color:'pink'},
-    {name: 'Edith Graves', type:'electricity', number: '37087-0100', date: '2017-11-21', color:'pink'},
-    {name: 'Mabelle Thompson', type:'electricity', number: '41319', date: '2017-08-16', color:'pink'},
-    {name: 'Don Smith', type:'electricity', number: '42582', date: '2017-11-11', color:'pink'},
-    {name: 'Myrtie Roberson', type:'electricity', number: '00757-1568', date: '2017-11-14', color:'yello'},
-    {name: 'Mabelle Thompson', type:'electricity', number: '41319', date: '2017-08-16', color:'yello'},
-    {name: 'Don Smith', type:'electricity', number: '42582', date: '2017-11-11', color:'lightblue'},
-    {name: 'Myrtie Roberson', type:'electricity', number: '00757-1568', date: '2017-11-14', color:'green'},
-  ];
+  selectedTab: number = 4;
 
   praticaList: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _psp: PracticesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _practice: PracticesProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PratichePage');
 
     // load list 
-    this._psp.get().then((res: any) => {
+    this._practice.get().then((res: any) => {
       console.log(res);
       this.praticaList = res;
     })

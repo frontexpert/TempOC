@@ -5,6 +5,109 @@ budgets-tab {
     color: $text-color;
   }
   .budgets-detail {
-    border: 0.55px solid #e9e9e9;
+    margin-top: 25px;
+    border: 0.55px solid #9e9e9e;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+
+    .header {
+      background-color: #ececec;
+      padding: 10px;
+      margin: 0 2px !important;
+      @include clearfix();      
+
+      p {
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        margin: 0;
+
+        &.green {
+          color: $green-bg;
+        }
+      }
+
+      button {
+        margin: 6px 0;
+      }
+    }
+
+    .budgets-body {
+      padding: 10px;
+      border-bottom: 0.55px solid #c2c2c2;
+    }
+    
+    .budgets-result {
+      padding: 0 10px;
+      border-bottom: 0.55px solid #c2c2c2;
+    }
+
+    .budgets-footer {
+      padding: 10px;
+      text-align: right;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    .legends {
+      padding-right: 50px;
+      line-height: 1.5;
+
+      .legend-row {
+        margin-bottom: 3px;
+
+        @include clearfix();
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        span.color-mark {
+          display: inline-block;
+          vertical-align: middle;
+          margin-bottom: 2px;
+          margin-right: 4px;
+          width: 13px;
+          height: 13px;
+
+          &.ricambi {
+            background-color: map-get($colorSchema, ricambi);
+          }
+          &.voci_compl {
+            background-color: map-get($colorSchema, voci_compl);
+          }
+          &.smaltimento {
+            background-color: map-get($colorSchema, smaltimento);
+          }
+          &.mat_consumo {
+            background-color: map-get($colorSchema, mat_consumo);
+          }
+          &.meccanica {
+            background-color: map-get($colorSchema, meccanica);
+          }
+          &.carrozzeria {
+            background-color: map-get($colorSchema, carrozzeria);
+          }          
+        }
+
+        &.total {
+          margin: 5px 0;
+          font-weight: bold;
+
+          .pull-left {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .chart-inner{
+    width: 180px;
+    margin-top: -20px;
+    margin-right: -15px;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
