@@ -1,3 +1,114 @@
 rent-tab {
-  
+  .details {
+    margin-top: 1.6rem;
+  }
+
+  .details-header {
+    margin: 0;
+    padding: 0;
+    text-align: initial;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 4.4rem;
+    border: 0;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    color: inherit;
+
+    .header-start {
+      min-width: 130px;
+      min-height: 80px;
+      line-height: 1;
+      margin-right: 25px;
+
+      img {
+        width: 130px;
+        height: 80px;
+        border: 1px solid #c3e2cd;
+      }
+    }
+
+    .header-inner {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      overflow: hidden;
+      flex: 1;
+      flex-direction: inherit;
+      align-items: inherit;
+      align-self: stretch;
+      min-height: inherit;
+      border: 0;
+
+      .inner-content {
+        margin: 0;
+        display: block;
+        overflow: hidden;
+        flex: 1;
+        font-size: inherit;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.6rem;
+        color: $icon-red;
+        font-weight: bold;
+      }
+
+      p {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+        color: black;
+      }
+
+      button {
+        margin: 0.4rem 0;
+      }
+    }
+  }
+
+  .details-body {
+    border: 0.55px solid #9e9e9e;
+
+    .content-head {
+      background-color: #ececec;
+      color: $green-bg;
+      font-size: 1.4rem;
+      text-align: center;
+
+      > .col {
+        padding: 8px 0 !important;
+        border-bottom: 0.55px solid #ccc;
+
+        &:first-child {
+          border-left: 0.55px solid #9e9e9e;
+        }
+
+        &:last-child {
+          border-left: 0.55px solid #ccc;
+        }
+      }
+    }
+
+    .content-inner {
+      > .col {
+        color: black;
+        &:last-child {
+          border-left: 0.55px solid #ccc;
+        }
+      }
+
+      .document-item {
+        text-align: center;
+        padding: 15px 0 25px;
+        min-height: 250px;
+      }
+    }
+  }
 }
