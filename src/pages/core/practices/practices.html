@@ -77,7 +77,7 @@
                   [(ngModel)]="selectedTab"></switcher>
                   
         <div [ngSwitch]="selectedTab">
-          <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab>
+          <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab>          
           <payment-tab *ngSwitchCase="1" [pratica]="selectedItem"></payment-tab>
           <photo-tab *ngSwitchCase="2"></photo-tab>
           <documents-tab *ngSwitchCase="3"></documents-tab>
