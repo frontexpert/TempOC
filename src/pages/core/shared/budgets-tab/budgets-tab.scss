@@ -3,6 +3,11 @@ budgets-tab {
     font-weight: normal;
     font-size: 1.8rem;
     color: $text-color;
+
+    i.far {
+      margin-left: 40px;
+      color: black;
+    }
   }
   .budgets-detail {
     margin-top: 25px;
