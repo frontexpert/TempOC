@@ -8,6 +8,7 @@ import { PaymentTabComponet } from './payment-tab/payment-tab';
 import { PhotoTabComponet } from './photo-tab/photo-tab';
 import { RentTabComponet } from './rent-tab/rent-tab';
 import { PdfPreviewPageModule } from '../pdf-preview/pdf-preview.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PdfPreviewPageModule } from '../pdf-preview/pdf-preview.module';
   ],
 	imports: [IonicModule,
     ComponentsModule,
-    PdfPreviewPageModule
+    PdfPreviewPageModule,
+    NgxChartsModule
   ],
 	exports: [
     OutlookTabComponet,

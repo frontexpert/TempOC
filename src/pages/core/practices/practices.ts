@@ -31,14 +31,14 @@ export class PracticesPage {
 
   praticaList: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _psp: PracticesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _practice: PracticesProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PratichePage');
 
     // load list 
-    this._psp.get().then((res: any) => {
+    this._practice.get().then((res: any) => {
       console.log(res);
       this.praticaList = res;
     })

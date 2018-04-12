@@ -48,12 +48,12 @@
                 <span class="blue" *ngIf="item.Lavorazione">
                   <ion-badge *ngIf="item.Lavorazione">{{item.Lavorazione.CodiceTappo != null ? item.Lavorazione.CodiceTappo : '..'}}</ion-badge>
                   <div [ngSwitch]="item.Lavorazione.StatoID">
-                    <b *ngSwitchCase="1" style="color: blue;">1</b>
+                    <!-- <b *ngSwitchCase="1" style="color: blue;">1</b> -->
                     <i *ngSwitchCase="2" class="far fa-clock" style="color: orange;"></i>
                     <b *ngSwitchCase="3" style="color: red;">A</b>
                     <i *ngSwitchCase="4" class="fas fa-wrench"></i>
                     <b *ngSwitchCase="5" style="color: green;">U</b>
-                    <ion-icon *ngSwitchCase="6" name="md-checkmark" style="color: black;"></ion-icon>
+                    <ion-icon *ngSwitchCase="6" name="md-checkmark" style="color: white;"></ion-icon>
                     <i *ngSwitchDefault>&nbsp;</i>
                   </div>                  
                 </span>
@@ -78,7 +78,7 @@
                   
         <div [ngSwitch]="selectedTab">
           <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab>
-          <payment-tab *ngSwitchCase="1"></payment-tab>
+          <payment-tab *ngSwitchCase="1" [pratica]="selectedItem"></payment-tab>
           <photo-tab *ngSwitchCase="2"></photo-tab>
           <documents-tab *ngSwitchCase="3"></documents-tab>
           <budgets-tab *ngSwitchCase="4"></budgets-tab>

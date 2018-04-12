@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -7,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -23,6 +25,7 @@ import { Api } from '../providers/api/api';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
       mode: "ios"
     }),
@@ -41,6 +44,7 @@ import { Api } from '../providers/api/api';
     SplashScreen,
     Camera,
     ImagePicker,
+    InAppBrowser,
     Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,

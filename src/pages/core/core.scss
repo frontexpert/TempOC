@@ -165,4 +165,12 @@ page-core {
       }
     }
   }
+
+  .button-ios-secondary {
+    height: 30px;
+    border-radius: 0;      
+    font-size: 1.4rem;
+    font-weight: 700;
+    min-width: 170px;    
+  }
 }

@@ -1,3 +1,71 @@
 <div class="padding-content">
-  Here is rent tab content  
+  <div class="inner-content" padding>
+
+    <div class="buttons">
+      <button ion-button color="secondary">+ &nbsp;&nbsp;&nbsp;NUOVO</button>    
+    </div>
+
+    <div class="details">
+      <div class="details-header">
+        <div class="header-start">
+          <img src="assets/imgs/car.png">
+        </div>
+        <div class="header-inner">
+          <div class="input-wrapper">
+            <div class="inner-content">
+              <h2>NOLEGGIO</h2>
+              <p>FIAT PANDA - BJ334T</p>
+              <button ion-button color="secondary">VISUALIZZA</button>        
+            </div>
+          </div>
+
+          <div class="header-end">
+            <div class="chart-inner">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [results]="single"
+                [scheme]="colorScheme"
+                [legend]="false"
+                [tooltipDisabled]="true"
+                [explodeSlices]="explodeSlices"
+                [labels]="false"
+                [doughnut]="doughnut"
+                (select)="onSelect($event)">
+              </ngx-charts-pie-chart>  
+            </div>
+          </div>
+        </div>        
+      </div>
+
+      <div class="details-body">
+        <ion-grid no-padding>
+          <ion-row class="content-head">
+            <ion-col col-6>CONSEGNA</ion-col>
+            <ion-col col-6>RIENTRO</ion-col>
+          </ion-row>
+          <ion-row class="content-inner">
+            <ion-col col-6>
+              <div padding class="clearfix">
+                <div class="pull-left">26/03/2018</div>
+                <div class="pull-right">08:30</div>        
+              </div>
+              <div class="document-item">
+                <img src="./assets/imgs/doc-01.jpg" alt="">
+              </div>              
+            </ion-col>
+            <ion-col col-6>
+              <div padding class="clearfix">
+                <div class="pull-left">29/03/2018</div>
+                <div class="pull-right">08:30</div>        
+              </div>
+              <div class="document-item">                
+              </div>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      
+    </div>
+  </div>
 </div>
