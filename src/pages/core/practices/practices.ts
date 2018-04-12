@@ -27,7 +27,7 @@ export class PracticesPage {
 
   checkedTabs: Array<number> = [];
 
-  selectedTab: number = 4;
+  selectedTab: number = 0;
 
   praticaList: any;
 

@@ -71,7 +71,7 @@
         <span *ngIf="selectedItem">{{selectedItem.P1_Targa}} - {{selectedItem.P1_Nome}} {{selectedItem.P1_Cognome}}</span>
       </div>
 
-      <div class="content-wrapper"> 
+      <div class="content-wrapper" *ngIf="selectedItem"> 
 
         <switcher class="green no-padding" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
                   [(ngModel)]="selectedTab"></switcher>
