@@ -17,3 +17,10 @@ export const COLORS = {
   PURPLE: 7,
   WHITE: 8
 }
+
+export const APERTE_TAB_VALUES = [
+  {text: 'veicolo', value: 0}, 
+  {text: 'cliente', value: 1},
+  {text: 'sinistro', value: 2},
+  {text: 'controparte', value: 3},
+]

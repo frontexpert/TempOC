@@ -1,0 +1,33 @@
+<ion-content padding>
+    <div class="columns-container">
+  
+      <div class="full-column with-header">
+        <div class="column-header">
+          Nuova pratica RCA CARD
+        </div>
+  
+        <div class="content-wrapper">
+          <div class="padding-content">
+
+            <switcher class="green no-padding" [withCheckMark]="true" [checkedTabs]="checkedTabs" [values]="tabValues"
+              [(ngModel)]="selectedTab"></switcher>
+
+            <div [ngSwitch]="selectedTab" class="component-wrapper">
+              <veicolo-tab *ngSwitchCase="0" 
+                    (onNextTab)="handleSelectTab(1)"></veicolo-tab>
+              <cliente-tab *ngSwitchCase="1" 
+                    (onBackTab)="handleSelectTab(0)" 
+                    (onNextTab)="handleSelectTab(2)"></cliente-tab>
+              <sinistro-tab *ngSwitchCase="2" 
+                    (onBackTab)="handleSelectTab(1)" 
+                    (onNextTab)="handleSelectTab(3)"></sinistro-tab>
+              <controparte-tab *ngSwitchCase="3" 
+                    (onBackTab)="handleSelectTab(2)" 
+                    (onNextTab)="handleSelectTab(3)"></controparte-tab>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </ion-content>

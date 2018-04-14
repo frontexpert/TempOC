@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { InsertApertePage } from './insert/insert-aperte';
 
 /**
  * Generated class for the PratichePage page.
@@ -17,6 +18,10 @@ export class ApertePage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  ionViewDidLoad() {
+    this.navCtrl.push(InsertApertePage);
   }
 
 }

@@ -39,6 +39,7 @@
   position: relative;
   .content-wrapper{
     margin-top: 49px;
+    height: calc(100% - 49px);
   }
 }
 
@@ -98,4 +99,67 @@
 
 .no-scroll .scroll-content{
   overflow: hidden;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.custom-input {
+  .text-input, 
+  .select {
+    border: 1px solid #b0b0b0;
+    height: 36px;
+    padding: 5px 8px 5px 8px;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    font-size: 12px;
+    color: $text-color;
+  }
+
+  textarea.text-input {
+    height: 72px;
+    padding: 8px;
+  }
+  .item-ios {
+    padding-left: 0;
+    border: none !important;
+    &.item-block .item-inner {
+      padding: 0;
+      border: none;
+    }
+
+    &.item-toggle {
+      margin-bottom: 15px;
+    }
+  }
+  .label-ios {
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    .row {
+      margin-bottom: 0;
+    }
+  }
+  .item-block{
+    min-height: 0;
+    margin-bottom: 18px;
+  }
+  .input-item-label {
+    //font-family: Monaco;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d2d2d;    
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.required {
+  color: red;
 }

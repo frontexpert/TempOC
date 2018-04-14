@@ -73,7 +73,7 @@
 
       <div class="content-wrapper" *ngIf="selectedItem"> 
 
-        <switcher class="green no-padding" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
+        <switcher class="green" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
                   [(ngModel)]="selectedTab"></switcher>
                   
         <div [ngSwitch]="selectedTab">
