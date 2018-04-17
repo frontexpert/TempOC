@@ -21,6 +21,10 @@ export class ApertePage {
   }
 
   ionViewDidLoad() {
+    // this.navCtrl.push(InsertApertePage);
+  }
+
+  nextPage() {
     this.navCtrl.push(InsertApertePage);
   }
 
