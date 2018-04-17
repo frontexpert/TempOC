@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { InsertApertePage } from './insert/insert-aperte';
+import { TargaPage } from './targa/targa';
 
 /**
  * Generated class for the PratichePage page.
@@ -25,7 +25,7 @@ export class ApertePage {
   }
 
   nextPage() {
-    this.navCtrl.push(InsertApertePage);
+    this.navCtrl.push(TargaPage);
   }
 
 }

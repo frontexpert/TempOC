@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="secondary">
+    <ion-buttons left>
+      <button ion-button clear navPop icon-left>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        INDIETRO
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button clear>        
+        ANNULLA
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Inserisci Targa
+    </ion-title>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+  <div class="centered-content-wrapper">    
+    <form #form="ngForm" class="targa-form" (ngSubmit)="nextPage(form)">
+      <h2>INSERISCI TARGA</h2>
+
+      <ion-list>
+
+        <ion-item>          
+          <ion-input type="text" [(ngModel)]="license_plate" required name="licensePlate" placeholder="Targa veicolo"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <div class="buttons">        
+        <button ion-button color="secondary" type="submit">AVANTI</button>
+      </div>      
+
+    </form>
+  </div>
+</ion-content>
