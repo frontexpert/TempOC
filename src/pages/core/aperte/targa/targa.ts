@@ -16,13 +16,14 @@ import { NgForm } from '@angular/forms';
 })
 export class TargaPage {
 
+  license_plate: string = "";
 
   constructor(public navCtrl: NavController) {
   }
 
   nextPage(form: NgForm) {
     console.log(form);
-    
+
     this.navCtrl.push(InsertApertePage);
   }
 
