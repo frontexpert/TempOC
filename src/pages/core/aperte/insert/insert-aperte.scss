@@ -1,0 +1,46 @@
+page-insert-aperte {
+  .grid.no-padding {
+    padding: 50px 0;
+  }
+  .padding-content {
+    padding: 40px 45px;
+    height: 100%;
+  }  
+  .col {
+    padding: 0 10px;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  .component-wrapper {
+    height: calc(100% - 32px);
+  }
+  .submit-row {
+    @include clearfix();
+
+    .button {
+      height: 30px;
+      min-width: 156px;
+      border-radius: 0;
+      font-size: 1.4rem;
+      font-weight: 700;      
+    }
+  }
+}
+
+/* Child tab components styles */
+veicolo-tab,
+cliente-tab,
+sinistro-tab,
+controparte-tab {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  .grid.no-padding {
+    flex: 1;
+  }
+}

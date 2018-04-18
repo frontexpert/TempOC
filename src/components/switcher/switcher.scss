@@ -24,10 +24,9 @@ switcher {
     text-transform: uppercase;
   }
   &.green {
+    
     .segment {
       padding: 10px;
-    }
-    .segment {
       &-button {
         background: #e2fae9;
         border-color: $green-bg;
@@ -42,6 +41,12 @@ switcher {
         background: #FFFFFF !important;
         color: $green-bg !important;   
         border-color: $green-bg;
+      }
+    }
+
+    &.no-padding {
+      .segment {
+        padding: 0;
       }
     }
   }
