@@ -144,6 +144,21 @@
     &.item-toggle {
       margin-bottom: 15px;
     }
+
+    &.addion-icon {
+      [item-end] {
+        margin: 6px;
+      }
+
+      .text-input {
+        border: 0 none;
+        height: 34px;
+      }
+
+      .item-inner {
+        border: 1px solid #b0b0b0;
+      }
+    }
   }
   .label-ios {
     margin-right: 0;
