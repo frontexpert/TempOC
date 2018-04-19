@@ -4,7 +4,7 @@
   </div>
   <div class="sidebar-list">
     <sidebar-item *ngFor="let item of sidebarItems"
-                  [class.active]="globals.activeSideMenuItem === item.icon"
+                  [class.active]="globals.activeSideMenuItem === item.title"
                   (onSelectItem)="onSelectItem($event)"
                   [icon]="item.icon" [name]="item.title"></sidebar-item>
   </div>

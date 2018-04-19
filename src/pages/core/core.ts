@@ -2,10 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 
-import { PracticesPage } from './practices/practices';
-import { TemparioPage } from './tempario/tempario';
-import { RentalPage } from './rental/rental';
+import { ChiusePage } from './chiuse/chiuse';
+import { CarRentalPage } from './car-rental/car-rental';
 import { ApertePage } from './aperte/aperte';
+import { PreventiviPage } from './preventivi/preventivi';
 
 /**
  * Generated class for the CorePage page.
@@ -25,9 +25,9 @@ export class CorePage {
 
   pages = {
     'aperte': ApertePage,
-    'pratiche': PracticesPage,
-    'tempario': TemparioPage,
-    'noleggio': RentalPage,
+    'chiuse': ChiusePage,
+    'preventivi': PreventiviPage,
+    'noleggio': CarRentalPage,
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser) {

@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-rental',
-  templateUrl: 'rental.html',
+  selector: 'page-car-rental',
+  templateUrl: 'car-rental.html',
 })
-export class RentalPage {
+export class CarRentalPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RentalPage');
+    console.log('ionViewDidLoad CarRentalPage');
   }
 
 }

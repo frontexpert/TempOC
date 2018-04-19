@@ -1,23 +1,25 @@
 sidebar-item {
   display: block;
-  padding: 10px 0;
+  padding: 9px 0;
+  border-bottom: 0.55px solid #d7d7d7;
+
   &.active {
     background-color: rgba(255, 255, 255, 0.2);
   }
   .sidebar-item {
     text-align: center;
     color: #fff;
-    position: relative;
+    position: relative;    
   }
   .sidebar-icon {
     display: inline-block;
-    width: 50px;
-    height: 45px;
+    width: 47px;
+    height: 42px;
   }
   .sidebar-item-text {
     display: block;
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
   }
   .badge{

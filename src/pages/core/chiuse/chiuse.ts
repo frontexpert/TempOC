@@ -12,10 +12,10 @@ import { PracticesProvider } from '../../../providers/practices/practices';
 
 @IonicPage()
 @Component({
-  selector: 'page-practices',
-  templateUrl: 'practices.html',
+  selector: 'page-chiuse',
+  templateUrl: 'chiuse.html',
 })
-export class PracticesPage {
+export class ChiusePage {
 
   searchTerm: string = '';
 

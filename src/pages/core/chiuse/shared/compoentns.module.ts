@@ -7,7 +7,7 @@ import { DocumentsTabComponent } from './documents-tab/documents-tab';
 import { PaymentTabComponet } from './payment-tab/payment-tab';
 import { PhotoTabComponet } from './photo-tab/photo-tab';
 import { RentTabComponet } from './rent-tab/rent-tab';
-import { PdfPreviewPageModule } from '../../pdf-preview/pdf-preview.module';
+import { PdfPreviewPageModule } from '../../shared/pdf-preview/pdf-preview.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
@@ -34,4 +34,4 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     RentTabComponet
   ]
 })
-export class PraticaComponentsModule {}
+export class ChiuseComponentsModule {}

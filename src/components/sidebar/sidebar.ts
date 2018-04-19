@@ -18,8 +18,9 @@ export class SidebarComponent {
 
   sidebarItems = [
     {icon: 'aperte', title: 'aperte'},
-    {icon: 'pratiche', title: 'pratiche'},
-    {icon: 'tempario', title: 'tempario'},
+    {icon: 'in-lavorazione', title: 'in lavorazione'},
+    {icon: 'chiuse', title: 'chiuse'},
+    {icon: 'preventivi', title: 'preventivi'},
     {icon: 'noleggio', title: 'noleggio'},
     {icon: 'noleggio', title: 'car'}
   ];

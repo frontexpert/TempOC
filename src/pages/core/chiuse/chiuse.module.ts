@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { PracticesPage } from './practices';
+import { ChiusePage } from './chiuse';
 import { ComponentsModule } from '../../../components/components.module';
-import { PraticaComponentsModule } from './shared/pratica-compoentns.module';
 import { PipesModule } from '../../../pipes/pipes.module';
+import { ChiuseComponentsModule } from './shared/compoentns.module';
 
 @NgModule({
   declarations: [
-    PracticesPage,
+    ChiusePage,
   ],
   imports: [
-    IonicPageModule.forChild(PracticesPage),
+    IonicPageModule.forChild(ChiusePage),
     ComponentsModule,
-    PraticaComponentsModule,
+    ChiuseComponentsModule,
     PipesModule
   ],
 })
-export class PracticesPageModule {}
+export class ChiusePageModule {}
