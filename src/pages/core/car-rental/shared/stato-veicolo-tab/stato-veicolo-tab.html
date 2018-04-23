@@ -1,0 +1,51 @@
+<div class="no-padding">
+  <div class="add-button">
+    <button ion-button color="secondary">AGGIUNGI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</button>    
+  </div>
+  <div class="upload-photo">
+    <ion-textarea></ion-textarea>
+    <div class="pull-left">
+      <button ion-button icon-only>
+        <ion-icon name="camera"></ion-icon>
+      </button>  
+    </div>
+    <div class="pull-right">
+      <button ion-button color="secondary">SALVA</button>  
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <ion-list class="status-list">
+    <ion-item>
+      <h2>10/07/2016</h2>
+      <p>Specchietto anteriore sinistro lato passeggero presenta una leggera crepatura leggermente visibile.</p>
+      <ul class="photos">
+        <li>
+          <img src="assets/imgs/car-5.jpg">  
+        </li>
+        <li>
+          <img src="assets/imgs/car-4.jpg">  
+        </li>        
+      </ul>
+    </ion-item>
+
+    <ion-item>
+      <h2>25/04/2018</h2>
+      <p>Volante rovinato causa usura.</p>
+      <ul class="photos">
+        <li>
+          <img src="assets/imgs/car-6.jpg">  
+        </li>
+      </ul>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div class="submit-row">
+  <div class="pull-left">
+    <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
+  </div>
+  <div class="pull-right">
+    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+  </div>
+</div>

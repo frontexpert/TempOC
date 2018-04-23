@@ -1,0 +1,94 @@
+stato-veicolo-tab {
+	.no-padding {
+		padding: 40px 0;
+	}
+
+	.add-button {
+		text-align: center;
+		margin-bottom: 18px;
+
+		.button-ios-secondary {
+			height: 36px;
+		}
+	}
+
+	.upload-photo {
+		background-color: #ebebeb;
+		padding: 15px 15px 11px;
+		border: 1px solid #b0b0b0;
+
+		textarea.text-input {
+			background-color: white;
+			margin: 0;
+			border: 1px solid #b0b0b0;
+			padding: 8px;
+			width: 100%;
+			margin-bottom: 4px;
+			min-height: 60px;
+		}
+
+		.button[icon-only] {
+			background-color: #666;
+			border-radius: 0;
+			height: 30px;
+
+			ion-icon {
+				padding: 0 0.8rem;
+			}
+		}
+
+		.pull-right .button {
+			min-width: 120px;
+		}
+	}
+
+	.status-list {
+		margin-top: 2.5rem;
+
+		.item {
+			color: black;
+			padding: 15px;
+			border: 1px solid #b0b0b0;
+			margin-bottom: 0.5rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.item-inner {
+				border: 0 none;
+			}
+
+			.label {
+				margin: 0;
+			}
+
+			h2 {
+				font-size: 1.2rem;
+				font-weight: 700;
+				line-height: 1.5;
+			}
+
+			p {
+				color: black;				
+			}
+
+			ul.photos {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0 0;
+				max-height: 60px;
+
+				li {
+					display: inline-block;
+					margin-right: 8px;
+					
+					img {
+						max-height: 60px;
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
