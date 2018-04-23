@@ -129,6 +129,13 @@
     color: $text-color;
   }
 
+  &.long-label {
+    .text-input,
+    .select {
+      width: 50%;
+    }
+  }
+
   textarea.text-input {
     height: 72px;
     padding: 8px;

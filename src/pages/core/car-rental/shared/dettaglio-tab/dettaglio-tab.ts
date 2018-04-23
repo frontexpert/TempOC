@@ -8,6 +8,8 @@ export class DettaglioTabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
   @Output() onBackTab: EventEmitter<any> = new EventEmitter();
 
+  rate: number = 4;
+
   constructor() {
     
   }

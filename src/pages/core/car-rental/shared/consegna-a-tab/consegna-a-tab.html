@@ -101,16 +101,23 @@
       </ion-item>
     </ion-col>    
     <ion-col col-3 class="custom-input">
-      <date-input label="rilasciato in data" required="true"></date-input>
+      <date-input label="rilasciato in data"></date-input>
     </ion-col>
   </ion-row>
 </ion-grid>
 
 <div class="submit-row">
-  <div class="pull-left">
-    <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
-  </div>
-  <div class="pull-right">
-    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
-  </div>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-4>
+        <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
+      </ion-col>
+      <ion-col col-4 class="text-center">
+        <button ion-button color="lightgray">COPIA DA UTILIZZATORE</button>
+      </ion-col>
+      <ion-col col-4 class="text-right">
+        <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>

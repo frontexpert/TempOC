@@ -26,7 +26,14 @@ page-car-rental-edit {
       min-width: 156px;
       border-radius: 0;
       font-size: 1.4rem;
-      font-weight: 700;      
+      font-weight: 700;     
+      border-width: 2px; 
+
+      &[color="lightgray"] {
+      	background-color: #d7d7d7;
+      	color: #292929;
+      	border: 2px solid #959595;
+      }
     }
   }
 }
