@@ -16,11 +16,19 @@ export const COLORS = {
   ORANGE: 6,
   PURPLE: 7,
   WHITE: 8
-}
+};
 
 export const APERTE_TAB_VALUES = [
   {text: 'veicolo', value: 0}, 
   {text: 'cliente', value: 1},
   {text: 'sinistro', value: 2},
   {text: 'controparte', value: 3},
-]
+];
+
+export const NOLEGGIO_TAB_VALUES = [
+  {text: 'UTILIZZATORE', value: 0}, 
+  {text: 'UTILIZZATORE 2', value: 1},
+  {text: 'CONSEGNA A', value: 2},
+  {text: 'STATO VEICOLO', value: 3},
+  {text: 'DETTAGLIO', value: 4},
+];

@@ -4,7 +4,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   selector: 'veicolo-tab',
   templateUrl: 'veicolo-tab.html'
 })
-export class VeicoloTabComponet {
+export class VeicoloTabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
 
   constructor() {

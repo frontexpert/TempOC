@@ -4,7 +4,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   selector: 'controparte-tab',
   templateUrl: 'controparte-tab.html'
 })
-export class ControparteTabComponet {
+export class ControparteTabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
   @Output() onBackTab: EventEmitter<any> = new EventEmitter();
 

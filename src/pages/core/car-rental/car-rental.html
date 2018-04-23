@@ -1,5 +1,11 @@
 <ion-header>
   <ion-navbar hideBackButton="true" color="secondary">
+  	<ion-buttons right>
+      <button ion-button clear>        
+        ANNULLA
+      </button>
+    </ion-buttons>
+
     <ion-title>
       Noleggio
     </ion-title>    
@@ -7,5 +13,97 @@
 </ion-header>
 
 <ion-content padding>
+	<div class="padding-content">
+		<ion-grid class="no-padding">
+			<ion-row>
+				<ion-col col-4>
+					<div class="car-item" tappable (click)="editCarRental()">
+						<div class="item-label">							
+						</div>
+						<div class="item-content">
+							<img src="assets/imgs/car-1.jpg">
+							<h2>TOYOTA YARIS</h2>
+							<p>Immatricolazione: 06/07/2016</p>
+							<p>Scadenza revisione: 08/07/2016</p>
+							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+					</div>
+				</ion-col>
 
+				<ion-col col-4>
+					<div class="car-item">
+						<div class="item-label gray">
+							IN PRENOTAZIONE DA 152 GIORNI
+						</div>
+						<div class="item-content">
+							<img src="assets/imgs/car-2.jpg">
+							<h2>CITROEN C1</h2>
+							<p>Immatricolazione: 06/07/2016</p>
+							<p>Scadenza revisione: 08/07/2016</p>
+							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+					</div>
+				</ion-col>
+
+				<ion-col col-4>
+					<div class="car-item in-progress">
+						<div class="item-label red">
+							NOLEGGIO IN CORSO
+						</div>
+						<div class="item-content">
+							<img src="assets/imgs/car-3.jpg">
+							<h2>KIA SOUL</h2>
+							<p>Immatricolazione: 06/07/2016</p>
+							<p>Scadenza revisione: 08/07/2016</p>
+							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+					</div>
+				</ion-col>
+
+				<ion-col col-4>
+					<div class="car-item">
+						<div class="item-label">							
+						</div>
+						<div class="item-content">
+							<img src="assets/imgs/car-1.jpg">
+							<h2>TOYOTA YARIS</h2>
+							<p>Immatricolazione: 06/07/2016</p>
+							<p>Scadenza revisione: 08/07/2016</p>
+							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+					</div>
+				</ion-col>
+
+				<ion-col col-4>
+					<div class="car-item">
+						<div class="item-label">
+						</div>
+						<div class="item-content">
+							<img src="assets/imgs/car-2.jpg">
+							<h2>CITROEN C1</h2>
+							<p>Immatricolazione: 06/07/2016</p>
+							<p>Scadenza revisione: 08/07/2016</p>
+							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+					</div>
+				</ion-col>
+
+				<ion-col col-4>
+					<div class="car-item">
+						<div class="item-label">
+						</div>
+						<div class="item-content">
+							<img src="assets/imgs/car-3.jpg">
+							<h2>KIA SOUL</h2>
+							<p>Immatricolazione: 06/07/2016</p>
+							<p>Scadenza revisione: 08/07/2016</p>
+							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+					</div>
+				</ion-col>
+
+
+			</ion-row>
+		</ion-grid>
+	</div>
 </ion-content>

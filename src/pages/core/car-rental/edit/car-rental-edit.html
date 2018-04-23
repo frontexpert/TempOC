@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="secondary">
+    <ion-buttons left>
+      <button ion-button clear navPop icon-left>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        INDIETRO
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button clear>        
+        ANNULLA
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Citroen C1 - XX123XX
+    </ion-title>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+  <div class="padding-content">
+
+    <switcher class="green no-padding" [withCheckMark]="true" [checkedTabs]="checkedTabs" [values]="tabValues"
+      [(ngModel)]="selectedTab"></switcher>
+
+    <div [ngSwitch]="selectedTab" class="component-wrapper">
+      <utilizzatore-tab *ngSwitchCase="0" 
+            (onNextTab)="handleSelectTab(1)"></utilizzatore-tab>
+      <utilizzatore-2-tab *ngSwitchCase="1" 
+            (onBackTab)="handleSelectTab(0)" 
+            (onNextTab)="handleSelectTab(2)"></utilizzatore-2-tab>
+      <consegna-a-tab *ngSwitchCase="2" 
+            (onBackTab)="handleSelectTab(1)" 
+            (onNextTab)="handleSelectTab(3)"></consegna-a-tab>
+      <stato-veicolo-tab *ngSwitchCase="3" 
+            (onBackTab)="handleSelectTab(2)" 
+            (onNextTab)="handleSelectTab(4)"></stato-veicolo-tab>
+			<dettaglio-tab *ngSwitchCase="4" 
+            (onBackTab)="handleSelectTab(3)" 
+            (onNextTab)="handleSelectTab(4)"></dettaglio-tab>
+    </div>
+  </div>
+</ion-content>

@@ -1,10 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'sinistro-tab',
-  templateUrl: 'sinistro-tab.html'
+  selector: 'consegna-a-tab',
+  templateUrl: 'consegna-a-tab.html'
 })
-export class SinistroTabComponent {
+export class ConsegnaATabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
   @Output() onBackTab: EventEmitter<any> = new EventEmitter();
 

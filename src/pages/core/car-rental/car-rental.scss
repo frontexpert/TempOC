@@ -1,3 +1,51 @@
 page-car-rental {
+	.padding-content {
+		padding: 30px 35px;
+	}
 
+	.car-item {
+		border: 5px solid $green-bg;
+		padding: 5px;
+
+		.item-label {
+			min-height: 30px;
+			font-size: 1.4rem;
+			color: white;			
+			text-align: center;
+			line-height: 3rem;
+
+			&.gray {
+				background-color: #999999;
+			}
+
+			&.red {
+				background-color: #cc0000;
+			}
+		}
+
+		.item-content {
+			padding: 10px 20px;
+		}
+
+		h2 {
+			margin-top: 0;
+			margin-bottom: 3px;
+			font-size: 1.4rem;
+		}
+
+		p {
+			margin: 0;
+			font-size: 1.4rem;
+		}
+
+		&.in-progress {
+			border-color: #cc0000;
+		}
+	}
+
+	.no-padding {
+		.col {
+			padding: 10px !important;
+		}
+	}
 }

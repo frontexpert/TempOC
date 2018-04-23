@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CarRentalEditPage } from './edit/car-rental-edit';
+
 
 /**
  * Generated class for the RentalPage page.
@@ -20,6 +22,10 @@ export class CarRentalPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarRentalPage');
+  }
+
+  editCarRental() {
+  	this.navCtrl.push(CarRentalEditPage);
   }
 
 }
