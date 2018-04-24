@@ -17,7 +17,7 @@
 		<ion-grid class="no-padding">
 			<ion-row>
 				<ion-col col-4>
-					<div class="car-item" tappable (click)="editCarRental()">
+					<div class="car-item" tappable (click)="expandItem(items[0])">
 						<div class="item-label">							
 						</div>
 						<div class="item-content">
@@ -27,26 +27,36 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
+						<div class="expand-buttons" *ngIf="items[0].expanded">
+							<button ion-button color="secondary" (click)="editCarRental()">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light" (click)="clearItem()">ANNULLA</button>
+						</div>
 					</div>
 				</ion-col>
 
 				<ion-col col-4>
-					<div class="car-item">
+					<div class="car-item" tappable (click)="expandItem(items[1])">
 						<div class="item-label gray">
 							IN PRENOTAZIONE DA 152 GIORNI
 						</div>
 						<div class="item-content">
 							<img src="assets/imgs/car-2.jpg">
-							<h2>CITROEN C1</h2>
+							<h2><span class="label blue">CONDIVISA</span>CITROEN C1</h2>
 							<p>Immatricolazione: 06/07/2016</p>
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+						<div class="expand-buttons" *ngIf="items[1].expanded">
+							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
 				</ion-col>
 
 				<ion-col col-4>
-					<div class="car-item in-progress">
+					<div class="car-item in-progress" tappable (click)="expandItem(items[2])">
 						<div class="item-label red">
 							NOLEGGIO IN CORSO
 						</div>
@@ -57,11 +67,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
+						<div class="expand-buttons" *ngIf="items[2].expanded">
+							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light">ANNULLA</button>
+						</div>
 					</div>
 				</ion-col>
 
 				<ion-col col-4>
-					<div class="car-item">
+					<div class="car-item" tappable (click)="expandItem(items[3])">
 						<div class="item-label">							
 						</div>
 						<div class="item-content">
@@ -71,11 +86,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
+						<div class="expand-buttons" *ngIf="items[3].expanded">
+							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light">ANNULLA</button>
+						</div>
 					</div>
 				</ion-col>
 
 				<ion-col col-4>
-					<div class="car-item">
+					<div class="car-item" tappable (click)="expandItem(items[4])">
 						<div class="item-label">
 						</div>
 						<div class="item-content">
@@ -85,11 +105,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
+						<div class="expand-buttons" *ngIf="items[4].expanded">
+							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light">ANNULLA</button>
+						</div>
 					</div>
 				</ion-col>
 
 				<ion-col col-4>
-					<div class="car-item">
+					<div class="car-item" tappable (click)="expandItem(items[5])">
 						<div class="item-label">
 						</div>
 						<div class="item-content">
@@ -98,6 +123,11 @@
 							<p>Immatricolazione: 06/07/2016</p>
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
+						</div>
+						<div class="expand-buttons" *ngIf="items[5].expanded">
+							<button ion-button color="secondary" (click)="editCarRental()">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
 				</ion-col>
