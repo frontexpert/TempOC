@@ -68,17 +68,17 @@
     <!-- BEGIN RIGHT COLUMN WITH HEADER -->
     <div class="right-column with-header">
       <div class="column-header">
-        <span *ngIf="selectedItem">{{selectedItem.P1_Targa}} - {{selectedItem.P1_Nome}} {{selectedItem.P1_Cognome}}</span>
+        <span *ngIf="activeItem">{{activeItem.P1_Targa}} - {{activeItem.P1_Nome}} {{activeItem.P1_Cognome}}</span>
       </div>
 
-      <div class="content-wrapper" *ngIf="selectedItem"> 
+      <div class="content-wrapper" *ngIf="activeItem"> 
 
         <switcher class="green" [values]="tabValues" [checkedTabs]="checkedTabs" withCheckMark="true"
                   [(ngModel)]="selectedTab"></switcher>
                   
         <div [ngSwitch]="selectedTab">
-          <outlook-tab *ngSwitchCase="0" [pratica]="selectedItem"></outlook-tab>          
-          <payment-tab *ngSwitchCase="1" [pratica]="selectedItem"></payment-tab>
+          <outlook-tab *ngSwitchCase="0" [pratica]="activeItem"></outlook-tab>          
+          <payment-tab *ngSwitchCase="1" [id]="activeItemID"></payment-tab>
           <photo-tab *ngSwitchCase="2"></photo-tab>
           <documents-tab *ngSwitchCase="3"></documents-tab>
           <budgets-tab *ngSwitchCase="4"></budgets-tab>

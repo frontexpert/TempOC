@@ -21,7 +21,7 @@ export class Globals {
   /**
    * Show loading spinner
    */
-  presentLoadingSpinner(): void {
+  showLoading(): void {
     if (this._loadingSpinner == null) {
       this._loadingSpinner = this.loadingCtrl.create({
         spinner: 'bubbles',
@@ -34,7 +34,7 @@ export class Globals {
   /**
    * Hide loading spinner
    */
-  dismissLoadingSpiner(): void {
+  hideLoading(): void {
     if (this._loadingSpinner) {
       this._loadingSpinner.dismiss();
       this._loadingSpinner = null;

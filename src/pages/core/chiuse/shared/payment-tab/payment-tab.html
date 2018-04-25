@@ -1,11 +1,11 @@
 <div class="padding-content">
-  <div class="inner-content" padding>
+  <div class="inner-content" padding *ngIf="praticaPayment">
     <div class="payment-details">
       <ion-grid>
         <ion-row>
           <ion-col col-9>
-            <p><b>Stato:</b> <span class="stato">{{pratica.Stato | lowercase}}</span></p>
-            <p><b>Tipo Pagamento:</b> </p>
+            <p><b>Stato:</b> <span class="stato">{{praticaPayment.Stato | lowercase}}</span></p>
+            <p><b>Tipo Pagamento:</b> {{praticaPayment.TipoPagamento}}</p>
             <p><b>Scadenza:</b> </p>
             <p><b>Data pagamento:</b> </p>
           </ion-col>

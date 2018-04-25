@@ -23,7 +23,7 @@ export class ChiusePage {
 
   activeItemID: number;         // active item ID
 
-  selectedItem: any; // selected a pratica item
+  activeItem: any; // selected a pratica item
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -33,25 +33,28 @@ export class ChiusePage {
 
   //praticaList: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _practice: PracticesProvider, public globals: Globals) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private _practice: PracticesProvider, 
+              public globals: Globals) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PratichePage');
     if (this.globals.praticaList == null) {
       // show loading spinner
-      this.globals.presentLoadingSpinner();
+      this.globals.showLoading();
       // load list 
       this._practice.get().then((res: any) => {
         console.log(res);
         this.globals.praticaList = res;
         // hide loading spinner
-        this.globals.dismissLoadingSpiner();
+        this.globals.hideLoading();
       })
       .catch(err => {
         console.log(err);
         // hide loading spinner
-        this.globals.dismissLoadingSpiner();
+        this.globals.hideLoading();
       });
     }
   }
@@ -60,24 +63,34 @@ export class ChiusePage {
    * On select a pratice item
    * @param item selected item
    */
-  selectPraticeItem(item: any): void {
-    this.selectedItem = item;
-    this.activeItemID = item.ID;    
+  selectPraticeItem(item: any): void {   
+    if (this.activeItemID != item.ID) {
+      this.activeItemID = item.ID;    
 
-    if (this.selectedItem.ImmaginiCount > 0) {
-      this.checkedTabs.push(2); // photo marked
-    }
+      this._practice.getDetails(item.ID)
+        .then(res => {
+          this.activeItem = res;
+        })
+        .catch(err => {
+          console.log('ERROR :', err);
+        });
 
-    if (this.selectedItem.DocumentiCount > 0) {
-      this.checkedTabs.push(3); // documenti marked
-    }
+      // set mark for sub-tabs
+      if (item.ImmaginiCount > 0) {
+        this.checkedTabs.push(2); // photo marked
+      }
 
-    if (this.selectedItem.PreventiviCount > 0) {
-      this.checkedTabs.push(4); // preventivi marked
-    }
+      if (item.DocumentiCount > 0) {
+        this.checkedTabs.push(3); // documenti marked
+      }
 
-    if (this.selectedItem.NoleggiCount > 0) {
-      this.checkedTabs.push(5); // Noleggi marked
+      if (item.PreventiviCount > 0) {
+        this.checkedTabs.push(4); // preventivi marked
+      }
+
+      if (item.NoleggiCount > 0) {
+        this.checkedTabs.push(5); // Noleggi marked
+      }        
     }
   }
 
