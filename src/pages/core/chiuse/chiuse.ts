@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import * as Constants from '../../../shared/constants';
 import { PracticesProvider } from '../../../providers/practices/practices';
+import { Globals } from '../../../shared/globals';
+
 /**
  * Generated class for the PratichePage page.
  *
@@ -29,20 +31,29 @@ export class ChiusePage {
 
   selectedTab: number = 0;
 
-  praticaList: any;
+  //praticaList: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _practice: PracticesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _practice: PracticesProvider, public globals: Globals) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PratichePage');
-
-    // load list 
-    this._practice.get().then((res: any) => {
-      console.log(res);
-      this.praticaList = res;
-    })
-    .catch(err => console.log(err));
+    if (this.globals.praticaList == null) {
+      // show loading spinner
+      this.globals.presentLoadingSpinner();
+      // load list 
+      this._practice.get().then((res: any) => {
+        console.log(res);
+        this.globals.praticaList = res;
+        // hide loading spinner
+        this.globals.dismissLoadingSpiner();
+      })
+      .catch(err => {
+        console.log(err);
+        // hide loading spinner
+        this.globals.dismissLoadingSpiner();
+      });
+    }
   }
 
   /**
