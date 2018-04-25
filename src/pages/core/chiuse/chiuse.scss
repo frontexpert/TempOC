@@ -118,6 +118,12 @@ page-chiuse {
       background-color: #ececec;
     }
   }
+  .content-wrapper {
+    ion-scroll {
+      height: 93.5vh;
+      //height: 100%;
+    }
+  }
 
   @media only screen and (max-width: 1024px) and (orientation: portrait) {
     .content-wrapper {
