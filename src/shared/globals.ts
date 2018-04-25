@@ -6,7 +6,7 @@ import { Platform, LoadingController, AlertController } from 'ionic-angular';
 export class Globals {
 
   activeSideMenuItem: string = 'aperte';
-  praticaList: any = null;
+  praticaList = [];
 
   /**
    * Loading spinner instance

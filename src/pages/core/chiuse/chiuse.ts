@@ -36,19 +36,20 @@ export class ChiusePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private _practice: PracticesProvider, public globals: Globals) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PratichePage');
-    if (this.globals.praticaList == null) {
+  ngOnInit() {
+    console.log('ngOnInit');
+    if (this.globals.praticaList.length == 0) {
       // show loading spinner
       this.globals.presentLoadingSpinner();
       // load list 
       this._practice.get().then((res: any) => {
-        console.log(res);
+        console.log("Success in this._practice.get()");
         this.globals.praticaList = res;
         // hide loading spinner
         this.globals.dismissLoadingSpiner();
       })
       .catch(err => {
+        console.log("Success in this._practice.get()");
         console.log(err);
         // hide loading spinner
         this.globals.dismissLoadingSpiner();
