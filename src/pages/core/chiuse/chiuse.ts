@@ -68,6 +68,9 @@ export class ChiusePage {
     if (this.activeItemID != item.ID) {
       this.activeItemID = item.ID;    
 
+      // change selected tab to first one
+      this.selectedTab = 0;
+
       this._practice.getDetails(item.ID)
         .then(res => {
           this.activeItem = res;

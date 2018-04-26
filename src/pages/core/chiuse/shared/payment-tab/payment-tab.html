@@ -6,8 +6,8 @@
           <ion-col col-9>
             <p><b>Stato:</b> <span class="stato">{{praticaPayment.Stato | lowercase}}</span></p>
             <p><b>Tipo Pagamento:</b> {{praticaPayment.TipoPagamento}}</p>
-            <p><b>Scadenza:</b> </p>
-            <p><b>Data pagamento:</b> </p>
+            <p><b>Scadenza:</b> {{praticaPayment.ScadenzaPagamento | date: 'dd/MM/yyyy'}}</p>
+            <p><b>Data pagamento:</b> {{praticaPayment.DataPagamento | date: 'dd/MM/yyyy'}}</p>
           </ion-col>
           <ion-col col-3>
             <div class="chart-inner">
@@ -38,40 +38,55 @@
             <h4>Differenza</h4>
           </ion-col>
           <ion-col col-3 class="text-right">
-            <p>€ 2.308,00 +</p>
-            <p>€ 0,00 +</p>
-            <p>€ 0,00 -</p>
-            <p>€ 0,00 -</p>
+            <p>€ {{praticaPayment.ImportoFatturaCarrozzeria | number: '1.2-2'}} +</p>
+            <p>€ {{praticaPayment.ImportoFatturaNolo | number: '1.2-2'}} +</p>
+            <p>€ {{praticaPayment.ImportoFatturaCaricoCliente | number: '1.2-2'}} -</p>
+            <p>€ {{praticaPayment.ImportoOfferta | number: '1.2-2'}} -</p>
             <hr>
-            <p style="color: green; font-weight: 700">€ 238,00</p>
+            <p style="color: green; font-weight: 700">€ {{praticaPayment.Differenza | number: '1.2-2'}}</p>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
 
-    <div class="pratica-left">      
+    <div class="pratica-left" *ngIf="praticaPayment.DatiPratica">      
       <ion-grid>
         <ion-row>
           <ion-col col-12>
-            <h2>Pratica sinistro del 23/02/2018</h2>
+            <h2><span *ngIf="praticaPayment.DatiPratica.Tipo.Assicurativa == true; else elsePraticasinistro">Pratica assicurativa</span> del {{praticaPayment.DatiPratica.DataInserimento | date: 'dd/MM/yyyy'}}</h2>
+            <ng-template #elsePraticasinistro>{{praticaPayment.DatiPratica.Tipo.Sigla}}</ng-template>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-8>
-            <p><b>Garante:</b> Stefano Mannaccio</p>
-            <p><b>RCA FUORI INDENNIZZO DIRECTTO - NO CARD</b></p>
+            <p>
+              <b>Garante:</b> 
+              <span *ngIf="praticaPayment.DatiPratica.GaranteID != null; else elseGarante">{{praticaPayment.DatiPratica.Garante.Nome}}</span>
+              <ng-template #elseGarante>
+                <span *ngIf="praticaPayment.GaranteAutogestione == true">In autogestione</span>
+                <span *ngIf="praticaPayment.GaranteAutogestione == false">Nessun  garante assegnato</span>
+              </ng-template>
+            </p>
+            <p><b>{{praticaPayment.DatiPratica.Tipo.Tipo}}</b></p>
             <p><b>Data invio PEC:</b></p>
-            <p><b>Controparte:</b> Mirco Rossi</p>
-            <p><b>Perito:</b> Giovanni Fiore</p>
-            <p><b>Perito:</b></p>
+            <p><b>Controparte:</b> {{praticaPayment.DatiPratica.Controparte}}</p>
+            <p><b>Perito:</b> <span *ngIf="praticaPayment.DatiPratica.PeritoID != null; else elsePerito">{{praticaPayment.DatiPratica.Perito.Nome}}</span></p>
+            <p><b>Perito:</b> <span *ngIf="praticaPayment.DatiPratica.PeritoSecondarioID != null; else elsePerito">{{praticaPayment.DatiPratica.PeritoSecondario.Nome}}</span><ng-template #elsePerito>-</ng-template></p>
+            <ng-template #elsePerito>-</ng-template>
           </ion-col>
           <ion-col col-4 class="text-right">
-            <p>051262008  3396938361</p>
-            <p>Pagamento in 60 giorni</p>
-            <p>12/04/2018</p>
+            <p>
+              <span *ngIf="praticaPayment.DatiPratica.GaranteID != null">{{praticaPayment.DatiPratica.Garante.Telefono}}  {{praticaPayment.DatiPratica.Garante.Cellulare}}</span>
+            </p>
+            <p>Pagamento in {{praticaPayment.DatiPratica.TipoScadenzaPagamento}} giorni</p>
+            <p>{{praticaPayment.DatiPratica.DataInvioPec | date: 'dd/MM/yyyy'}}</p>
             <p></p>
-            <p>051262008  3396938361</p>
-            <p></p>
+            <p>
+              <span *ngIf="praticaPayment.DatiPratica.PeritoID != null">{{praticaPayment.DatiPratica.Perito.Telefono}}  {{praticaPayment.DatiPratica.Perito.Telefono}}</span>
+            </p>
+            <p>
+              <span *ngIf="praticaPayment.DatiPratica.PeritoSecondarioID != null">{{praticaPayment.DatiPratica.PeritoSecondario.Telefono}}  {{praticaPayment.DatiPratica.PeritoSecondario.Telefono}}</span>
+            </p>
           </ion-col>
         </ion-row>
       </ion-grid>
