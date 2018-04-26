@@ -1,17 +1,12 @@
 import { Component, Input } from '@angular/core';
 
-import { PracticesProvider } from '../../../../../providers/practices/practices';
-import { Globals } from '../../../../../shared/globals';
-
 
 @Component({
   selector: 'payment-tab',
   templateUrl: 'payment-tab.html'
 })
 export class PaymentTabComponet {
-  @Input() id: number;
-
-  praticaPayment: any;
+  @Input() paymentDetails: any;
 
   // pie
   colorScheme = {
@@ -37,22 +32,7 @@ export class PaymentTabComponet {
     }
   ];
 
-  constructor(private _practice: PracticesProvider, public globals: Globals) {
-  }
-
-  ngOnInit(): void {    
-    this.getPaymentDetails();
-  }
-
-  private getPaymentDetails() {
-    // loading pratica details
-    this._practice.getPaymentDetails(this.id)
-      .then(res => {
-        this.praticaPayment = res;
-      })
-      .catch(err => {
-        console.log('ERROR: ', err);
-      });    
+  constructor() {
   }
 
   onSelect(event) {

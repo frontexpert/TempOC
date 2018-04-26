@@ -23,7 +23,8 @@ export class ChiusePage {
 
   activeItemID: number;         // active item ID
 
-  activeItem: any; // selected a pratica item
+  praticeDetails: any; // selected a pratica item
+  paymentDetails: any; // payment deteails for slected pratica item
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -71,12 +72,18 @@ export class ChiusePage {
       // change selected tab to first one
       this.selectedTab = 0;
 
-      this._practice.getDetails(item.ID)
-        .then(res => {
-          this.activeItem = res;
+      // get pratica details and payment details
+      this.globals.showLoading();
+
+      Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID)])
+        .then((values: any[]) => {
+          this.praticeDetails = values[0]; // set pratice details
+          this.paymentDetails = values[1];
+          this.globals.hideLoading();
         })
         .catch(err => {
-          console.log('ERROR :', err);
+          console.log('Get details ERROR:', err);
+          this.globals.hideLoading();
         });
 
       // set mark for sub-tabs

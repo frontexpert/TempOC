@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../api/api';
-import { Globals } from '../../shared/globals';
 
 /*
   Generated class for the PracticesProvider provider.
@@ -11,11 +10,7 @@ import { Globals } from '../../shared/globals';
 @Injectable()
 export class PracticesProvider {
 
-  private _praticaDetails: any;
-
-  private _praticaPaymentDetails: any;
-
-  constructor(public api: Api, private globals: Globals) {
+  constructor(public api: Api) {
     console.log('Hello PracticesProvider Provider');
   }
 
@@ -47,25 +42,15 @@ export class PracticesProvider {
     };
 
     let promise = new Promise((resolve, reject) => {
-      if (this._praticaDetails && this._praticaDetails.ID == id) {
-        resolve(this._praticaDetails);
-      }
-      else {
-        this.globals.showLoading();
-
-        this.api.get('Pratica/Details/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
-          this.globals.hideLoading();
-          if (res.success) {
-            this._praticaDetails = res.data;
-            resolve(res.data);
-          }
-          else
-            resolve(res);
-        }, (err) => {
-          this.globals.hideLoading();
-          reject(err);
-        });        
-      }
+      this.api.get('Pratica/Details/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });        
     });
 
     return promise;
@@ -81,25 +66,15 @@ export class PracticesProvider {
     };
 
     let promise = new Promise((resolve, reject) => {
-      if (this._praticaPaymentDetails && this._praticaPaymentDetails.ID == id) {
-        resolve(this._praticaPaymentDetails);
-      } 
-      else {
-        this.globals.showLoading();
-
-        this.api.get('PraticaPagamento/Details/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
-          this.globals.hideLoading();
-          if (res.success) {
-            this._praticaPaymentDetails = res.data;
-            resolve(res.data);
-          }
-          else
-            resolve(res);
-        }, (err) => {
-          this.globals.hideLoading();
-          reject(err);
-        });
-      }
+      this.api.get('PraticaPagamento/Details/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
     });
 
     return promise;
