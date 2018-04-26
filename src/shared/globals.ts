@@ -21,14 +21,20 @@ export class Globals {
   /**
    * Show loading spinner
    */
-  showLoading(): void {
-    if (this._loadingSpinner == null) {
-      this._loadingSpinner = this.loadingCtrl.create({
-        spinner: 'bubbles',
-        content: ``
-      });
-      this._loadingSpinner.present();
-    }
+  showLoading() {
+    let promise = new Promise((resolve, reject) => {
+      if (this._loadingSpinner == null) {
+        this._loadingSpinner = this.loadingCtrl.create({
+          spinner: 'bubbles',
+          content: ``
+        });
+        this._loadingSpinner.present().then(() => {
+          resolve();
+        });
+      }
+    });
+
+    return promise;
   }
 
   /**

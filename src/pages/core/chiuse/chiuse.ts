@@ -73,35 +73,36 @@ export class ChiusePage {
       this.selectedTab = 0;
 
       // get pratica details and payment details
-      this.globals.showLoading();
+      this.globals.showLoading().then(() => {
 
-      Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID)])
-        .then((values: any[]) => {
-          this.praticeDetails = values[0]; // set pratice details
-          this.paymentDetails = values[1];
-          this.globals.hideLoading();
-        })
-        .catch(err => {
-          console.log('Get details ERROR:', err);
-          this.globals.hideLoading();
-        });
-
-      // set mark for sub-tabs
-      if (item.ImmaginiCount > 0) {
-        this.checkedTabs.push(2); // photo marked
-      }
-
-      if (item.DocumentiCount > 0) {
-        this.checkedTabs.push(3); // documenti marked
-      }
-
-      if (item.PreventiviCount > 0) {
-        this.checkedTabs.push(4); // preventivi marked
-      }
-
-      if (item.NoleggiCount > 0) {
-        this.checkedTabs.push(5); // Noleggi marked
-      }        
+        Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID)])
+          .then((values: any[]) => {
+            this.praticeDetails = values[0]; // set pratice details
+            this.paymentDetails = values[1];
+            this.globals.hideLoading();
+          })
+          .catch(err => {
+            console.log('Get details ERROR:', err);
+            this.globals.hideLoading();
+          });
+  
+        // set mark for sub-tabs
+        if (item.ImmaginiCount > 0) {
+          this.checkedTabs.push(2); // photo marked
+        }
+  
+        if (item.DocumentiCount > 0) {
+          this.checkedTabs.push(3); // documenti marked
+        }
+  
+        if (item.PreventiviCount > 0) {
+          this.checkedTabs.push(4); // preventivi marked
+        }
+  
+        if (item.NoleggiCount > 0) {
+          this.checkedTabs.push(5); // Noleggi marked
+        }
+      });
     }
   }
 
