@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import * as Constants from '../../../shared/constants';
@@ -16,6 +16,7 @@ import { Globals } from '../../../shared/globals';
 @Component({
   selector: 'page-chiuse',
   templateUrl: 'chiuse.html',
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChiusePage {
 
@@ -32,12 +33,16 @@ export class ChiusePage {
 
   selectedTab: number = 0;
 
+  minListIndex: number = 0;
+  maxListIndex: number = 50;
+  page: number = 0;
+
   //praticaList: any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               private _practice: PracticesProvider, 
-              public globals: Globals) {
+              public globals: Globals, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -46,7 +51,7 @@ export class ChiusePage {
       // show loading spinner
       this.globals.showLoading();
       // load list 
-      this._practice.get().then((res: any) => {
+      this._practice.get(this.page).then((res: any) => {
         console.log("Success in this._practice.get()");
         this.globals.praticaList = res;
         // hide loading spinner
@@ -61,6 +66,10 @@ export class ChiusePage {
     }
   }
 
+  // ngAfterViewInit() {
+  //   this.cdr.detach();
+  // }
+
   /**
    * On select a pratice item
    * @param item selected item
@@ -70,7 +79,7 @@ export class ChiusePage {
       this.activeItemID = item.ID;    
 
       // change selected tab to first one
-      this.selectedTab = 0;
+      //this.selectedTab = 0;
 
       // get pratica details and payment details
       this.globals.showLoading().then(() => {
@@ -79,6 +88,8 @@ export class ChiusePage {
           .then((values: any[]) => {
             this.praticeDetails = values[0]; // set pratice details
             this.paymentDetails = values[1];
+            console.log('this.paymentDetails:');
+            console.log(this.paymentDetails);
             this.globals.hideLoading();
           })
           .catch(err => {
@@ -104,6 +115,26 @@ export class ChiusePage {
         }
       });
     }
+  }
+
+  doInfinite(mode): Promise<any> {
+    console.log('Begin async operation: ' + mode);
+
+    return new Promise((resolve) => {
+      this.page ++;
+      this._practice.get(this.page).then((res: any) => {
+        this.globals.praticaList = this.globals.praticaList.concat(res);
+        //this.globals.praticaList = res;
+        console.log('this.globals.praticaList');
+        console.log(this.globals.praticaList);
+        resolve();
+      })
+      .catch(err => {
+        this.page --;
+        resolve();
+        console.log(err);
+      });
+    });
   }
 
 }

@@ -27,21 +27,26 @@ export class Globals {
    */
   showLoading() {
     let promise = new Promise((resolve, reject) => {
-      if (this._loadingSpinner == null) {
-        this._loadingSpinner = this.loadingCtrl.create({
-          spinner: 'bubbles',
-          content: ``
-        });
-        this._loadingSpinner.present().then(() => {
-          this.is_loading = true;
-          resolve();
-        });
+      if (this.is_loading == true) {
+        resolve();
       }
       else {
-        this._loadingSpinner.present().then(() => {
-          this.is_loading = true;
-          resolve();
-        });
+        if (this._loadingSpinner == null) {
+          this._loadingSpinner = this.loadingCtrl.create({
+            spinner: 'bubbles',
+            content: ``
+          });
+          this._loadingSpinner.present().then(() => {
+            this.is_loading = true;
+            resolve();
+          });
+        }
+        else {
+          this._loadingSpinner.present().then(() => {
+            this.is_loading = true;
+            resolve();
+          });
+        }
       }
     });
 
