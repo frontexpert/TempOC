@@ -92,7 +92,7 @@
       </ion-grid>
     </div>
   </div>
-  <div class="inner-content" padding *ngIf="paymentDetails">
+  <div class="inner-content" padding *ngIf="paymentDetails && !paymentDetails.DatiPratica.Tipo.Assicurativa">
     <div class="payment-details provisional">
       <ion-grid>
         <ion-row>
@@ -100,7 +100,7 @@
             <p><b>Stato:</b> <span class="stato">{{paymentDetails.Stato | lowercase}}</span></p>            
             <ion-item>
               <ion-label fixed>Tipo Pagamento:</ion-label>
-              <ion-input></ion-input>
+              <ion-input ([ngModel])="paymentDetails.TipoPagamento"></ion-input>
             </ion-item>
             <date-input label="Scadenza:" class="item item-block"></date-input>
             <date-input label="Data pagamento:" class="item item-block"></date-input>
