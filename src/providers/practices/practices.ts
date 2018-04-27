@@ -80,4 +80,29 @@ export class PracticesProvider {
     return promise;
   }
 
+  /**
+   * Get pratica image list
+   * @param praticaID pratica id
+   * @return {Promise}
+   */
+  getPraticeImageList(praticaID: number) {
+    let promise = new Promise((resolve, reject) => {
+      let params = {
+        PraticaID: praticaID
+      };
+
+      this.api.get('PraticaImmagine/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
 }
