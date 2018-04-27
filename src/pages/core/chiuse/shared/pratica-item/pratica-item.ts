@@ -1,8 +1,8 @@
-import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit, Input } from '@angular/core';
 
 @Component({
   selector: 'pratica-item',
-  inputs: ['item'],
+  //inputs: ['item'],
   template: `
     <h2>{{item.P1_Targa}} - <span *ngIf="item.P1_Nome && item.P1_Cognome; else elseNome">{{item.P1_Nome}} {{item.P1_Cognome}}</span><ng-template #elseNome>{{item.P1_NomeCompleto}}</ng-template></h2>
     <p><span *ngIf="item.P1_Veicolo; else elseVeicolo">{{item.P1_Veicolo}}</span><ng-template #elseVeicolo>{{item.P1_Marca}} {{item.P1_Modello}}</ng-template></p>
@@ -19,12 +19,16 @@ import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
           <b *ngSwitchCase="5" style="color: green;">U</b>
           <ion-icon *ngSwitchCase="6" name="md-checkmark" style="color: white;"></ion-icon>
           <i *ngSwitchDefault>&nbsp;</i>
-        </div>                  
+        </div>
       </span>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PraticaItem implements AfterViewInit {
+
+  @Input() item: any;
+
   constructor(private ref: ChangeDetectorRef) {   
   }
 

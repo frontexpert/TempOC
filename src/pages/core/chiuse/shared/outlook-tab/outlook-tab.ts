@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'outlook-tab',
-  templateUrl: 'outlook-tab.html'
+  templateUrl: 'outlook-tab.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OutlookTabComponet {
   @Input() pratica: any;
@@ -10,7 +11,7 @@ export class OutlookTabComponet {
   items: any = [];
   itemExpandHeight: number = 100;
 
-  constructor() {
+  constructor(private ref: ChangeDetectorRef) {
     this.items = [
       {expanded: false},
       {expanded: false},
@@ -18,6 +19,13 @@ export class OutlookTabComponet {
       {expanded: false},
       {expanded: false}
     ];
+  }
+
+  // Wait until the view inits before disconnecting
+  ngAfterViewInit() {
+    // Since we know the list is not going to change
+    // let's request that this component not undergo change detection at all
+    this.ref.detach();
   }
 
   expandItem(item){

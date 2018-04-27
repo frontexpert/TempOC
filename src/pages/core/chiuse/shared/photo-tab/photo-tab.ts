@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -7,7 +7,8 @@ import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'photo-tab',
-  templateUrl: 'photo-tab.html'
+  templateUrl: 'photo-tab.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PhotoTabComponet {
   @Input() photos: any[] = [];
@@ -15,7 +16,7 @@ export class PhotoTabComponet {
   // photos = [];
   storage_images = [];
 
-  constructor(private imagePicker: ImagePicker, private camera: Camera, private sanitizer: DomSanitizer, private alert: AlertController, public storage: Storage) {
+  constructor(private imagePicker: ImagePicker, private camera: Camera, private sanitizer: DomSanitizer, private alert: AlertController, public storage: Storage, private ref: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -37,6 +38,13 @@ export class PhotoTabComponet {
     }).catch(err => {
       console.log(err);
     });
+  }
+
+  // Wait until the view inits before disconnecting
+  ngAfterViewInit() {
+    // Since we know the list is not going to change
+    // let's request that this component not undergo change detection at all
+    this.ref.detach();
   }
 
   takeNewPhoto() {

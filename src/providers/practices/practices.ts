@@ -21,7 +21,7 @@ export class PracticesProvider {
     let promise = new Promise((resolve, reject) => {
       let params = {
         Page: page,
-        Pagesize: 30
+        Pagesize: 40
       }
       this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {
       //this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo').subscribe((res: any) => {

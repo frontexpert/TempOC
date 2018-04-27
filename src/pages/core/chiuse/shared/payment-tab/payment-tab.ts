@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 
 
 @Component({
   selector: 'payment-tab',
-  templateUrl: 'payment-tab.html'
+  templateUrl: 'payment-tab.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaymentTabComponet {
   @Input() paymentDetails: any;
@@ -32,7 +33,14 @@ export class PaymentTabComponet {
     }
   ];
 
-  constructor() {
+  constructor(private ref: ChangeDetectorRef) {
+  }
+
+  // Wait until the view inits before disconnecting
+  ngAfterViewInit() {
+    // Since we know the list is not going to change
+    // let's request that this component not undergo change detection at all
+    this.ref.detach();
   }
 
   onSelect(event) {
