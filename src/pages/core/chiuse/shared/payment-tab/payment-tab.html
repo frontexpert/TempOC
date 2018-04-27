@@ -1,5 +1,5 @@
 <div class="padding-content">
-  <div class="inner-content" padding *ngIf="paymentDetails">
+  <div class="inner-content" padding *ngIf="paymentDetails.DatiPratica && paymentDetails.DatiPratica.Tipo.Assicurativa">
     <div class="payment-details">
       <ion-grid>
         <ion-row>
@@ -49,7 +49,7 @@
       </ion-grid>
     </div>
 
-    <div class="pratica-left" *ngIf="paymentDetails.DatiPratica">      
+    <div class="pratica-left">      
       <ion-grid>
         <ion-row>
           <ion-col col-12>
@@ -87,6 +87,59 @@
             <p>
               <span *ngIf="paymentDetails.DatiPratica.PeritoSecondarioID != null">{{paymentDetails.DatiPratica.PeritoSecondario.Telefono}}  {{paymentDetails.DatiPratica.PeritoSecondario.Telefono}}</span>
             </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="inner-content" padding *ngIf="paymentDetails">
+    <div class="payment-details provisional">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-7>
+            <p><b>Stato:</b> <span class="stato">{{paymentDetails.Stato | lowercase}}</span></p>            
+            <ion-item>
+              <ion-label fixed>Tipo Pagamento:</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <date-input label="Scadenza:" class="item item-block"></date-input>
+            <date-input label="Data pagamento:" class="item item-block"></date-input>
+          </ion-col>
+          <ion-col col-3 offset-2>
+            <div class="chart-inner">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [results]="single"
+                [scheme]="colorScheme"
+                [legend]="false"
+                [tooltipDisabled]="true"
+                [explodeSlices]="explodeSlices"
+                [labels]="false"
+                [doughnut]="doughnut"
+                (select)="onSelect($event)">
+              </ngx-charts-pie-chart>  
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>      
+    </div>
+    <div class="payment-invoice provisional">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-9>
+            <p>Fattura Carrozzeria</p>
+            <p>A Carico del Cliente</p>
+            <p>Offerta / Pagamento</p>
+            <h4>Differenza</h4>
+          </ion-col>
+          <ion-col col-3 class="text-right">
+            <p>
+              <ion-input></ion-input>
+            </p>
+            <p><ion-input></ion-input></p>
+            <p><ion-input></ion-input></p>
+            <hr>
+            <p style="color: green; font-weight: 700"><span class="total-price">{{paymentDetails.Differenza | number: '1.2-2'}}</span> €</p>
           </ion-col>
         </ion-row>
       </ion-grid>

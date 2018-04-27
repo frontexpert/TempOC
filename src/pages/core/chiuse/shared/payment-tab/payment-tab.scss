@@ -27,6 +27,65 @@ payment-tab {
       right: 0;
       top: 0;
     }
+
+    .item-block {
+      min-height: 3.6rem;
+    }
+
+    .item-inner {
+      border: 0 none !important;
+      padding-right: 0 !important;
+    }
+
+    ion-label[fixed] {
+      font-size: 1.5rem;
+      font-weight: bold;
+      width: 120px;
+      flex: 0 0 120px;
+      margin: 5px 8px 5px 0;
+    }
+
+    .text-input {
+      margin: 0;
+      border: 1px solid #b0b0b0;
+      height: 3rem;;
+      padding: 5px 8px 5px 8px;
+      font-size: 1.5rem;
+      color: $text-color;
+      width: calc(100% - 40px);
+      margin-left: 40px;
+    }
+
+    date-input {
+      min-height: 3.6rem;
+
+      .input-item-label {
+        font-size: 1.5rem;
+        font-weight: bold;
+        width: 120px;
+        flex: 0 0 120px;
+        margin: 5px 8px 5px 0;
+      }
+
+      .date-wrapper {
+        flex: 1;
+
+        .date-icon {
+          height: 30px;
+        }
+      }
+
+      .datetime {
+        height: 30px;
+        margin-bottom: 0;
+      }
+    }
+
+    &.provisional {
+      .chart-inner{
+        margin-top: 0px;
+      }
+    }
   }
 
   .payment-invoice {
@@ -46,6 +105,54 @@ payment-tab {
       margin-bottom: 0;
       line-height: 1.5;
     }
+
+    &.provisional {
+      p {
+        line-height: 3rem;
+      }
+
+      hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      h4 {
+        margin-top: 2rem;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+        line-height: 1.5;
+      }
+
+      .total-price {
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+
+    .text-input {
+      text-align: right;
+      margin: 0;
+      border: 1px solid #b0b0b0;
+      height: 3rem;;
+      padding: 5px 8px 5px 8px;
+      font-size: 1.5rem;
+      color: $text-color;
+      width: calc(100% - 20px);
+      margin-left: 0;
+    }
+    .input {
+      text-align: left;
+
+      &:after {
+        content: '€';
+        text-align: right;
+        width: 20px;
+        display: inline-block;
+      }
+    }
+
   }
 
   .pratica-left {
