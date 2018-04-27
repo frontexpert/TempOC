@@ -105,4 +105,31 @@ export class PracticesProvider {
     return promise;
   }
 
+  /**
+   * Remove a pratic image
+   * @param ID Image Id
+   * @param praticaID Id of pratica
+   * @return {Promise}
+   */
+  removePraticeImage(ID: number, praticaID: number) {
+    let promise = new Promise((resolve, reject) => {
+      let params = {
+        ID: ID,
+        PraticaID: praticaID
+      };
+
+      this.api.get('PraticaImmagine/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
 }
