@@ -13,9 +13,13 @@ export class Globals {
    * @type {any}
    */
   private _loadingSpinner: any = null;
+  private is_loading: boolean = false;
 
   constructor(public loadingCtrl: LoadingController) {
-
+    this._loadingSpinner = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: ``
+    });
   }
 
   /**
@@ -23,14 +27,26 @@ export class Globals {
    */
   showLoading() {
     let promise = new Promise((resolve, reject) => {
-      if (this._loadingSpinner == null) {
-        this._loadingSpinner = this.loadingCtrl.create({
-          spinner: 'bubbles',
-          content: ``
-        });
-        this._loadingSpinner.present().then(() => {
-          resolve();
-        });
+      if (this.is_loading == true) {
+        resolve();
+      }
+      else {
+        if (this._loadingSpinner == null) {
+          this._loadingSpinner = this.loadingCtrl.create({
+            spinner: 'bubbles',
+            content: ``
+          });
+          this._loadingSpinner.present().then(() => {
+            this.is_loading = true;
+            resolve();
+          });
+        }
+        else {
+          this._loadingSpinner.present().then(() => {
+            this.is_loading = true;
+            resolve();
+          });
+        }
       }
     });
 
@@ -41,9 +57,13 @@ export class Globals {
    * Hide loading spinner
    */
   hideLoading(): void {
-    if (this._loadingSpinner) {
+    if (this.is_loading) {
       this._loadingSpinner.dismiss();
-      this._loadingSpinner = null;
+      this.is_loading = false;
+      this._loadingSpinner = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: ``
+      });
     }
   }
 
