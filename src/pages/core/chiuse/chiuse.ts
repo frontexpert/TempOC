@@ -24,7 +24,8 @@ export class ChiusePage {
   activeItemID: number;         // active item ID
 
   praticeDetails: any; // selected a pratica item
-  paymentDetails: any; // payment deteails for slected pratica item
+  paymentDetails: any; // payment deteails for selected pratica item
+  photoDetails: any;    // photo data for selected pratica item
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -75,10 +76,11 @@ export class ChiusePage {
       // get pratica details and payment details
       this.globals.showLoading().then(() => {
 
-        Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID)])
+        Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID), this._practice.getPraticeImageList(item.ID)])
           .then((values: any[]) => {
             this.praticeDetails = values[0]; // set pratice details
             this.paymentDetails = values[1];
+            this.photoDetails = values[2];
             this.globals.hideLoading();
           })
           .catch(err => {

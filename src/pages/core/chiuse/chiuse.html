@@ -79,7 +79,7 @@
         <div [ngSwitch]="selectedTab">
           <outlook-tab *ngSwitchCase="0" [pratica]="praticeDetails"></outlook-tab>          
           <payment-tab *ngSwitchCase="1" [paymentDetails]="paymentDetails"></payment-tab>
-          <photo-tab *ngSwitchCase="2"></photo-tab>
+          <photo-tab *ngSwitchCase="2" [photos]="photoDetails"></photo-tab>
           <documents-tab *ngSwitchCase="3"></documents-tab>
           <budgets-tab *ngSwitchCase="4"></budgets-tab>
           <rent-tab *ngSwitchCase="5"></rent-tab>

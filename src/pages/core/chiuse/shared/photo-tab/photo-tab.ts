@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -10,7 +10,9 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'photo-tab.html'
 })
 export class PhotoTabComponet {
-  photos = [];
+  @Input() photos: any[] = [];
+
+  // photos = [];
   storage_images = [];
 
   constructor(private imagePicker: ImagePicker, private camera: Camera, private sanitizer: DomSanitizer, private alert: AlertController, public storage: Storage) {
@@ -23,8 +25,8 @@ export class PhotoTabComponet {
         for (let i = 0; i < this.storage_images.length; i++) {
           let  picker_image_url = this.sanitizer.bypassSecurityTrustUrl(this.storage_images[i]);
           let photo = {
-            url: picker_image_url,
-            checked: false
+            Url: picker_image_url,
+            Checked: false
           };
           this.photos.push(photo);
         }
@@ -52,8 +54,8 @@ export class PhotoTabComponet {
       this.storage.set('potoData', this.storage_images);
       let  camera_image_url = this.sanitizer.bypassSecurityTrustUrl(image_url);
       let photo = {
-        url: camera_image_url,
-        checked: false
+        Url: camera_image_url,
+        Checked: false
       };
       this.photos.push(photo);
     }).catch(err => console.log(err));
@@ -73,8 +75,8 @@ export class PhotoTabComponet {
         this.storage_images.push(image_url);
         let  picker_image_url = this.sanitizer.bypassSecurityTrustUrl(image_url);
         let photo = {
-          url: picker_image_url,
-          checked: false
+          Url: picker_image_url,
+          Checked: false
         };
         this.photos.push(photo);
       }
