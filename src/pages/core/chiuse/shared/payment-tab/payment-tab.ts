@@ -6,7 +6,7 @@ import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterView
   templateUrl: 'payment-tab.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaymentTabComponet {
+export class PaymentTabComponet implements AfterViewInit {
   @Input() paymentDetails: any;
 
   // pie

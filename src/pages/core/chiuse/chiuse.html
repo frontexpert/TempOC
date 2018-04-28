@@ -38,11 +38,30 @@
       <div class="content-wrapper">
         <ion-content scrollY="true">
         <!-- <ion-scroll scrollY="true"> -->
-          <ion-list *ngIf="globals.praticaList.length > 0">
+          <!-- <ion-list *ngIf="globals.praticaList.length > 0">
             <ion-item *ngFor="let item of globals.praticaList | filterPratica: searchTerm; let i=index" class="pratiche-item" [class.active]="activeItemID === item.ID" [ngClass]="item.Colore.Colore" (click)="selectPraticeItem(item)">
-              <pratica-item [item]="item"></pratica-item> 
+              <h2>{{item.P1_Targa}} - <span *ngIf="item.P1_Nome && item.P1_Cognome; else elseNome">{{item.P1_Nome}} {{item.P1_Cognome}}</span><ng-template #elseNome>{{item.P1_NomeCompleto}}</ng-template></h2>
+              <p><span *ngIf="item.P1_Veicolo; else elseVeicolo">{{item.P1_Veicolo}}</span><ng-template #elseVeicolo>{{item.P1_Marca}} {{item.P1_Modello}}</ng-template></p>
+              <div item-end>
+                <span [ngClass]="(item.AutoSostitutiva == true) ? 'car-red' : 'car-green'" *ngIf="item.AutoSostitutiva != null">
+                  <i class="fas fa-car"></i>
+                </span>
+                <span class="blue" *ngIf="item.Lavorazione">
+                  <ion-badge *ngIf="item.Lavorazione">{{item.Lavorazione.CodiceTappo != null ? item.Lavorazione.CodiceTappo : '..'}}</ion-badge>
+                  <div [ngSwitch]="item.Lavorazione.StatoID">
+                    //<b *ngSwitchCase="1" style="color: blue;">1</b>
+                    <i *ngSwitchCase="2" class="far fa-clock" style="color: orange;"></i>
+                    <b *ngSwitchCase="3" style="color: red;">A</b>
+                    <i *ngSwitchCase="4" class="fas fa-wrench"></i>
+                    <b *ngSwitchCase="5" style="color: green;">U</b>
+                    <ion-icon *ngSwitchCase="6" name="md-checkmark" style="color: white;"></ion-icon>
+                    <i *ngSwitchDefault>&nbsp;</i>
+                  </div>                  
+                </span>
+              </div>
             </ion-item>
-          </ion-list>
+          </ion-list> -->
+          <pratica-list [items]="globals.praticaList" (onClickItem)="selectPraticeItem($event)"></pratica-list>
           <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite('bottom'))">
             <ion-infinite-scroll-content
               loadingSpinner="bubbles"

@@ -5,7 +5,7 @@ import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterView
   templateUrl: 'outlook-tab.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OutlookTabComponet {
+export class OutlookTabComponet implements AfterViewInit {
   @Input() pratica: any;
 
   items: any = [];

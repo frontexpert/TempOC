@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'photo-tab.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PhotoTabComponet {
+export class PhotoTabComponet implements AfterViewInit {
   @Input() photos: any[] = [];
 
   // photos = [];

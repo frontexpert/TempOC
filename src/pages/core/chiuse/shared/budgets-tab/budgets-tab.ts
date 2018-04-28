@@ -5,7 +5,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit, I
   templateUrl: 'budgets-tab.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BudgetsTabComponent {
+export class BudgetsTabComponent implements AfterViewInit {
   // pie
   colorScheme = {
     domain: ['#ff8ba4', '#86c7f3', '#ffe29a', '#AAAAAA']

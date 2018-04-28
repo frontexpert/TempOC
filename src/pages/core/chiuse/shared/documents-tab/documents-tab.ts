@@ -7,7 +7,7 @@ import { PdfPreviewPage } from '../../../shared/pdf-preview/pdf-preview';
   templateUrl: 'documents-tab.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocumentsTabComponent {
+export class DocumentsTabComponent implements AfterViewInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private ref: ChangeDetectorRef) {
