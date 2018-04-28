@@ -6,7 +6,8 @@ page-chiuse {
   .pratiche-item {
     // color: $grey;
     // padding: 20px 0 7px 0;        
-    min-height: 6rem;
+    //min-height: 6rem;
+    height: 70px;
 
     &.item-block .item-inner {
       padding-left: 10px!important;
