@@ -9,6 +9,7 @@ import { PhotoTabComponet } from './photo-tab/photo-tab';
 import { RentTabComponet } from './rent-tab/rent-tab';
 import { PdfPreviewPageModule } from '../../shared/pdf-preview/pdf-preview.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 	imports: [IonicModule,
     ComponentsModule,
     PdfPreviewPageModule,
-    NgxChartsModule
+    NgxChartsModule,
+    LazyLoadImageModule
   ],
 	exports: [
     OutlookTabComponet,

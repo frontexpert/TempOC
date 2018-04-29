@@ -21,13 +21,29 @@ photo-tab {
     	display: block;
     	width: 100%;
     	height: 160px;
-    	max-height: 160px;    	
+    	max-height: 160px;   
+      border: 2px solid $green-bg; 	
     }
     &:first-child {
     	padding-left: 2px;
     }
     &:last-child {
     	padding-right: 2px;
+    }
+
+    &.photo-item {
+      position: relative;
+
+      ion-checkbox {
+        position: absolute;
+        right: 2px;
+        bottom: 2px;        
+
+        .checkbox-checked {
+          background-color: #55f;
+          border-color: #55f;
+        }
+      }      
     }
   }
 }

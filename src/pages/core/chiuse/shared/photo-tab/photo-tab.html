@@ -21,45 +21,10 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor=" let photo of photos; let i = index" (click)="toggle(i)">
-        <img [src]="photo.Url" alt="" [style.border]="photo.Checked==true ? 'solid 4px #55f': ''">
-      </ion-col>
-      <!-- <ion-col>
-        <img src="./assets/imgs/pic-01.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-02.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-03.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-04.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-05.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-06.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-07.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-08.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-09.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-10.jpg" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/pic-11.jpg" alt="">
-      </ion-col>solid 4px #55f
-      <ion-col>
-        <img src="./assets/imgs/pic-12.jpg" alt="">
-      </ion-col> -->
+      <ion-col class="photo-item" *ngFor=" let photo of photos; let i = index" (click)="toggle(i)">
+        <ion-checkbox [(ngModel)]="photo.Checked" *ngIf="photo.Checked"></ion-checkbox>
+        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="photo.Url" [style.border]="photo.Checked==true ? 'solid 2px #55f': ''">
+      </ion-col>      
     </ion-row>
   </ion-grid>
 </div>

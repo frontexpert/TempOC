@@ -115,6 +115,6 @@ export class PhotoTabComponet {
   }
 
   toggle(index) {
-    this.photos[index].checked = !this.photos[index].checked;
+    this.photos[index].Checked = !this.photos[index].Checked;
   }
 }
