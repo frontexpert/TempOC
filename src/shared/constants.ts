@@ -1,3 +1,5 @@
+export const API_URL: string = 'http://tablet.oxygencar.it';
+
 export const PRATICHE_TAB_VALUES = [
   {text: 'outlook', value: 0}, 
   {text: 'pagamento', value: 1},

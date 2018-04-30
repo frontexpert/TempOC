@@ -1,12 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import * as Constants from '../shared/constants';
+
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
 export class Api {
-  url: string = 'http://tablet.oxygencar.it';
+  url: string = Constants.API_URL;
 
   constructor(public http: HttpClient) {
   }

@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import { Api } from './api';
 import { NetState } from './network';
 import 'rxjs/add/operator/map';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
 import * as Constants from '../shared/constants';
 
@@ -18,7 +19,7 @@ export class PhotosProvider {
   photoes: Array<any>;
   private selectedPhotoSubject = new Subject<Array<any>>();
 
-  constructor(public api: Api, public storage: Storage, private connection: NetState) {
+  constructor(public api: Api, public storage: Storage, private connection: NetState, private transfer: FileTransfer) {
     console.log('Hello PhotosProvider Provider');
   }  
 
@@ -95,6 +96,39 @@ export class PhotosProvider {
     });
 
     return promise;
+  }
+
+  /**
+   * Added a pratica photo
+   * @param praticaID id of pratica
+   * @param photoData image data
+   * @return {Promise} FileResult promise
+   */
+  addPhoto(praticaID: number, photoData: any) {    
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    // MATTEO - così recuperiamo il nome dato dal sistema operativo:
+    let sPhotoNames = photoData.split('/');
+    let sPhotoName = sPhotoNames[sPhotoNames.length - 1];
+
+    let options: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: sPhotoName,
+      headers: {},
+      params: {
+        PraticaID: praticaID
+      }
+    };
+
+    console.log(photoData, 'photoData');
+
+    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagineAdd/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
+      .then((data) => {
+        return JSON.parse(data.response);
+      }, (err) => {
+        console.log('File Upload Error:', err);
+        return err;
+      });
   }
 
 }
