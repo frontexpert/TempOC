@@ -4,19 +4,24 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+
+/* Import Ionic-Native modules */
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Network } from '@ionic-native/network';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { CorePageModule } from '../pages/core/core.module';
 import { ComponentsModule } from '../components/components.module';
 import { Globals } from '../shared/globals';
-import { PracticesProvider } from '../providers/practices/practices';
-import { Api } from '../providers/api/api';
+import { PracticesProvider } from '../providers/practices';
+import { PhotosProvider } from '../providers/photos';
+import { Api } from '../providers/api';
+import { NetState } from '../providers/network';
 
 @NgModule({
   declarations: [
@@ -45,10 +50,13 @@ import { Api } from '../providers/api/api';
     Camera,
     ImagePicker,
     InAppBrowser,
+    Network,
     Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,
-    PracticesProvider
+    PracticesProvider,
+    PhotosProvider,
+    NetState
   ]
 })
 export class AppModule {}

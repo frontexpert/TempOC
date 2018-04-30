@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Api } from '../api/api';
+import { Api } from './api';
 
 /*
   Generated class for the PracticesProvider provider.
@@ -16,15 +16,18 @@ export class PracticesProvider {
 
   /**
    * Get pratica list
+   * @param pageNumber index of page
+   * @param pageSize size of page
+   * @return {Promise}
    */
-  get(page) {
+  get(pageNumber: number, pageSize = 30) {
     let promise = new Promise((resolve, reject) => {
       let params = {
-        Page: page,
-        Pagesize: 30
-      }
-      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {
-      //this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo').subscribe((res: any) => {
+        Page: pageNumber,
+        Pagesize: pageSize
+      };
+
+      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {      
           if (res.success) {
           console.log(res.data);
           resolve(res.data);
@@ -42,6 +45,7 @@ export class PracticesProvider {
   /**
    * Get a pratica details by id
    * @param id pratica id
+   * @return {Promise}
    */
   getDetails(id: number) {
     let params = {
@@ -66,6 +70,7 @@ export class PracticesProvider {
   /**
    * Get a pratica details by id
    * @param id pratica id
+   * @return {Promise}
    */
   getPaymentDetails(id: number) {
     let params = {

@@ -32,3 +32,5 @@ export const NOLEGGIO_TAB_VALUES = [
   {text: 'STATO VEICOLO', value: 3},
   {text: 'DETTAGLIO', value: 4},
 ];
+
+export const PHOTOS_KEY: string = 'photoes';

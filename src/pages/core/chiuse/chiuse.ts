@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import * as Constants from '../../../shared/constants';
-import { PracticesProvider } from '../../../providers/practices/practices';
+import { PracticesProvider } from '../../../providers/practices';
+import { PhotosProvider } from '../../../providers/photos';
 import { Globals } from '../../../shared/globals';
 
 /**
@@ -43,7 +44,8 @@ export class ChiusePage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               private _practice: PracticesProvider, 
-              public globals: Globals, private cdr: ChangeDetectorRef) {
+              private _photos: PhotosProvider,
+              public globals: Globals) {
   }
 
   ngOnInit() {
@@ -67,10 +69,6 @@ export class ChiusePage {
     }
   }
 
-  // ngAfterViewInit() {
-  //   this.cdr.detach();
-  // }
-
   /**
    * On select a pratice item
    * @param item selected item
@@ -85,17 +83,17 @@ export class ChiusePage {
       // get pratica details and payment details
       this.globals.showLoading().then(() => {
 
-        Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID), this._practice.getPraticeImageList(item.ID)])
-          .then((values: any[]) => {
+        Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID), this._photos.getPhotos(item.ID)])
+          .then((values: any[]) => {            
             this.praticeDetails = values[0]; // set pratice details
+            console.log(this.praticeDetails, 'praticeDetails');
+            
             this.paymentDetails = values[1];
+            console.log(this.paymentDetails, 'paymentDetails');
+
             this.photoDetails = values[2];
-            console.log('this.praticeDetails:');
-            console.log(this.praticeDetails);
-            console.log('this.paymentDetails:');
-            console.log(this.paymentDetails);
-            console.log('this.photoDetails:');
-            console.log(this.photoDetails);
+            console.log(this.photoDetails, 'photoDetails');
+            
             this.globals.hideLoading();
           })
           .catch(err => {

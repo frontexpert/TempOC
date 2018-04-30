@@ -4,6 +4,10 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
+import { PhotosProvider } from '../../../../../providers/photos';
+import { Globals } from '../../../../../shared/globals';
+
+import * as Constants from '../../../../../shared/constants';
 
 @Component({
   selector: 'photo-tab',
@@ -11,32 +15,38 @@ import { Storage } from '@ionic/storage';
 })
 export class PhotoTabComponet {
   @Input() photos: any[] = [];
+  @Input() practicaID: number;
 
-  // photos = [];
   storage_images = [];
 
-  constructor(private imagePicker: ImagePicker, private camera: Camera, private sanitizer: DomSanitizer, private alert: AlertController, public storage: Storage) {
+  constructor(private imagePicker: ImagePicker, 
+              private camera: Camera, 
+              private sanitizer: DomSanitizer, 
+              private alert: AlertController, 
+              private photosProvider: PhotosProvider,
+              public globals: Globals,
+              public storage: Storage) {
   }
 
-  ngOnInit() {
-    this.storage.get('potoData').then(data => {
-      if (data != null) {
-        this.storage_images = data;
-        for (let i = 0; i < this.storage_images.length; i++) {
-          let  picker_image_url = this.sanitizer.bypassSecurityTrustUrl(this.storage_images[i]);
-          let photo = {
-            Url: picker_image_url,
-            Checked: false
-          };
-          this.photos.push(photo);
-        }
-      }
-      else {
-          this.storage_images = [];
-      }
-    }).catch(err => {
-      console.log(err);
-    });
+  ngOnInit() {    
+    // this.storage.get(Constants.PHOTOS_KEY).then(data => {
+    //   if (data != null) {
+    //     this.storage_images = data;
+    //     for (let i = 0; i < this.storage_images.length; i++) {
+    //       let  picker_image_url = this.sanitizer.bypassSecurityTrustUrl(this.storage_images[i]);
+    //       let photo = {
+    //         Url: picker_image_url,
+    //         Checked: false
+    //       };
+    //       this.photos.push(photo);
+    //     }
+    //   }
+    //   else {
+    //       this.storage_images = [];
+    //   }
+    // }).catch(err => {
+    //   console.log(err);
+    // });
   }
 
   takeNewPhoto() {
@@ -51,7 +61,7 @@ export class PhotoTabComponet {
     this.camera.getPicture(cameraOptions).then(imageData => {
       let image_url = "data:image/jpeg;base64, " + imageData;
       this.storage_images.push(image_url);
-      this.storage.set('potoData', this.storage_images);
+      this.storage.set(Constants.PHOTOS_KEY, this.storage_images);
       let  camera_image_url = this.sanitizer.bypassSecurityTrustUrl(image_url);
       let photo = {
         Url: camera_image_url,
@@ -80,7 +90,7 @@ export class PhotoTabComponet {
         };
         this.photos.push(photo);
       }
-      this.storage.set('potoData', this.storage_images);
+      this.storage.set(Constants.PHOTOS_KEY, this.storage_images);
     }).catch(err => {
       console.log(err);
     });
@@ -106,7 +116,7 @@ export class PhotoTabComponet {
                 this.storage_images.splice(i, 1);
               }
             }
-            this.storage.set('potoData', this.storage_images);
+            this.storage.set(Constants.PHOTOS_KEY, this.storage_images);
           }
         }
       ]
