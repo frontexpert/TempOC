@@ -36,11 +36,9 @@
       </div>
 
       <div class="content-wrapper">
-        <ion-content scrollY="true" *ngIf="globals.praticaList.length > 0">
-        <!-- <ion-scroll scrollY="true"> -->
-          <ion-list *ngFor="let item of globals.praticaList | filterPratica: searchTerm; let i=index">
-            <div *ngIf="i < minListIndex || i >= maxListIndex" class="pratiche-item"></div>
-            <ion-item *ngIf="i >= maxListIndex && i < maxListIndex" class="pratiche-item" [class.active]="activeItemID === item.ID" [ngClass]="item.Colore.Colore" (click)="selectPraticeItem(item)">
+        <ion-content>
+          <ion-list [virtualScroll]="globals.praticaList | filterPratica: searchTerm" [approxItemHeight]="'160px'">
+            <ion-item *virtualItem="let item" class="pratiche-item" [class.active]="activeItemID === item.ID" [ngClass]="item.Colore.Colore" (click)="selectPraticeItem(item)">
               <h2>{{item.P1_Targa}} - <span *ngIf="item.P1_Nome && item.P1_Cognome; else elseNome">{{item.P1_Nome}} {{item.P1_Cognome}}</span><ng-template #elseNome>{{item.P1_NomeCompleto}}</ng-template></h2>
               <p><span *ngIf="item.P1_Veicolo; else elseVeicolo">{{item.P1_Veicolo}}</span><ng-template #elseVeicolo>{{item.P1_Marca}} {{item.P1_Modello}}</ng-template></p>
               <div item-end>
