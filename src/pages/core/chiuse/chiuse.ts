@@ -56,7 +56,7 @@ export class ChiusePage {
       // load list 
       this._practice.get(this.page).then((res: any) => {
         console.log("Success in this._practice.get()");
-        this.globals.praticaList = res;
+        if (this.globals.praticaList.length == 0) this.globals.praticaList = res;
         // hide loading spinner
         this.globals.hideLoading();
       })

@@ -20,14 +20,34 @@ export class PracticesProvider {
    * @param pageSize size of page
    * @return {Promise}
    */
-  get(pageNumber: number, pageSize = 30) {
+  get(pageNumber: number, pageSize = 60) {
     let promise = new Promise((resolve, reject) => {
       let params = {
         Page: pageNumber,
         Pagesize: pageSize
       };
+      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {
+          if (res.success) {
+          console.log(res.data);
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
 
-      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {      
+    return promise;
+  }
+
+  /**
+   * Get all pratica list
+   * @return {Promise}
+   */
+  getAllPratices() {
+    let promise = new Promise((resolve, reject) => {
+      this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo').subscribe((res: any) => {
           if (res.success) {
           console.log(res.data);
           resolve(res.data);
