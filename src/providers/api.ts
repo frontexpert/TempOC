@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
 import * as Constants from '../shared/constants';
 
@@ -45,5 +46,38 @@ export class Api {
 
   patch(endpoint: string, body: any, reqOpts?: any) {
     return this.http.put(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  /**
+   * Send a POST request to add a pratica photo
+   * @param praticaID id of pratica
+   * @param photoData image data
+   * @return {Promise} FileResult promise
+   */
+  postPhoto(praticaID: number, photoData: any) {    
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    // MATTEO - così recuperiamo il nome dato dal sistema operativo:
+    let sPhotoNames = photoData.split('/');
+    let sPhotoName = sPhotoNames[sPhotoNames.length - 1];
+
+    let options: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: sPhotoName,
+      headers: {},
+      params: {
+        PraticaID: praticaID
+      }
+    };
+
+    console.log(photoData, 'photoData');
+
+    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagineAdd/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
+      .then((data) => {
+        return JSON.parse(data.response);
+      }, (err) => {
+        console.log('File Upload Error:', err);
+        return err;
+      });
   }
 }

@@ -4,7 +4,6 @@ import { Subject } from 'rxjs/Subject';
 import { Api } from './api';
 import { NetState } from './network';
 import 'rxjs/add/operator/map';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
 import * as Constants from '../shared/constants';
 
@@ -77,26 +76,28 @@ export class PhotosProvider {
    * @param praticaID Id of pratica
    * @return {Promise}
    */
-  deletePhotos(ID: number, praticaID: number) {
+  deletePhotos(photoes: Array<any>, praticaID: number) {
     let promise = new Promise((resolve, reject) => {
-      let params = {
-        ID: ID,
-        PraticaID: praticaID
-      };
+      photoes.forEach(photoItem => {
+        let params = {
+          ID: photoItem.ID,
+          PraticaID: praticaID
+        };
 
-      this.api.get('PraticaImmagine/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
-        if (res.success) {
-          resolve(res.data);
-        }
-        else
-          resolve(res);
-      }, (err) => {
-        reject(err);
+        this.api.post('PraticaImmagine/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/', {}, params).subscribe((res: any) => {
+          if (res.success) {
+            resolve(res.data);
+          }
+          else
+            resolve(res);
+        }, (err) => {
+          reject(err);
+        });
       });
     });
 
     return promise;
-  }
+  }  
 
   /**
    * Added a pratica photo
@@ -104,31 +105,60 @@ export class PhotosProvider {
    * @param photoData image data
    * @return {Promise} FileResult promise
    */
-  addPhoto(praticaID: number, photoData: any) {    
-    const fileTransfer: FileTransferObject = this.transfer.create();
+  addPhoto(praticaID: number, photoData: any) {        
+    // if (this.connection.isOnline()) {
+      return this.api.postPhoto(praticaID, photoData).then(res => {
+        // set uploaded photos to local storage
+        this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
+          if (photoesData == null || photoesData == undefined)
+            photoesData = {};
+          if (photoesData[praticaID] == undefined)
+            photoesData[praticaID] = [];
+          console.log(res, 'addphoto');
+          res.data.forEach(photo => {
+            photoesData[praticaID].push({
+              ID: photo.ID,
+              Url: photo.Url,
+              Checked: false
+            });
+          });
 
-    // MATTEO - così recuperiamo il nome dato dal sistema operativo:
-    let sPhotoNames = photoData.split('/');
-    let sPhotoName = sPhotoNames[sPhotoNames.length - 1];
-
-    let options: FileUploadOptions = {
-      fileKey: 'file',
-      fileName: sPhotoName,
-      headers: {},
-      params: {
-        PraticaID: praticaID
-      }
-    };
-
-    console.log(photoData, 'photoData');
-
-    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagineAdd/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
-      .then((data) => {
-        return JSON.parse(data.response);
-      }, (err) => {
-        console.log('File Upload Error:', err);
-        return err;
+          this.storage.set(Constants.PHOTOS_KEY, photoesData);
+        })
+        return res;
       });
+    // } else {
+      // let op = new Operation();
+      // op.name = Operation.FOTO;
+      // op.type = Operation.INSERT;
+      // op.body = {
+      //   id: praticaID,
+      //   photo: photoData
+      // };
+      // this.sync.addOperation(op);
+
+      // if (praticaID == undefined) praticaID = item.SorgenteCodice;
+      // this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
+      //   if (photoesData == null || photoesData == undefined)
+      //     photoesData = {};
+      //   if (photoesData[praticaID] == undefined)
+      //     photoesData[praticaID] = [];
+      //   photoesData[praticaID].push({
+      //     Url: photoData,
+      //     local: true,
+      //     Checked: false
+      //   });
+
+      //   this.storage.set(Constants.PHOTOS_KEY, photoesData);
+      // })
+      // return Promise.resolve({
+      //   data: [{
+      //     Url: photoData,
+      //     local: true,
+      //     Checked: false
+      //   }]
+      // })
+    // }
   }
 
 }

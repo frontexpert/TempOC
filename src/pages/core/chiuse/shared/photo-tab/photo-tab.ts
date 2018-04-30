@@ -28,71 +28,68 @@ export class PhotoTabComponet {
               public storage: Storage) {
   }
 
-  ngOnInit() {    
-    // this.storage.get(Constants.PHOTOS_KEY).then(data => {
-    //   if (data != null) {
-    //     this.storage_images = data;
-    //     for (let i = 0; i < this.storage_images.length; i++) {
-    //       let  picker_image_url = this.sanitizer.bypassSecurityTrustUrl(this.storage_images[i]);
-    //       let photo = {
-    //         Url: picker_image_url,
-    //         Checked: false
-    //       };
-    //       this.photos.push(photo);
-    //     }
-    //   }
-    //   else {
-    //       this.storage_images = [];
-    //   }
-    // }).catch(err => {
-    //   console.log(err);
-    // });
+  ngOnInit() {
   }
 
+  /**
+   * Take a new photo using camera
+   */
   takeNewPhoto() {
     let cameraOptions = {
-      destinationType: this.camera.DestinationType.DATA_URL,      
-      quality: 80,
+      destinationType: this.camera.DestinationType.FILE_URI,      
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
+      quality: 60,
+      targetWidth:720,
       correctOrientation: true
     }
   
     this.camera.getPicture(cameraOptions).then(imageData => {
-      let image_url = "data:image/jpeg;base64, " + imageData;
-      this.storage_images.push(image_url);
-      this.storage.set(Constants.PHOTOS_KEY, this.storage_images);
-      let  camera_image_url = this.sanitizer.bypassSecurityTrustUrl(image_url);
-      let photo = {
-        Url: camera_image_url,
-        Checked: false
-      };
-      this.photos.push(photo);
-    }).catch(err => console.log(err));
+      this.globals.showLoading().then(() => {
+        this.photosProvider.addPhoto(this.practicaID, imageData).then(res => {
+          console.log(res);
+          let newPhoto = res.data[0];
+          newPhoto.Url.replace(/\\/g, '/');
+          console.log(newPhoto, 'addPhoto');
+
+          this.photos.unshift(newPhoto);
+          console.log(this.photos);
+
+          this.globals.hideLoading();
+        })
+        .catch(err => {
+          console.log('ERROR: ', err);
+          this.globals.hideLoading();
+        });
+      });
+    }).catch(err => console.log('CAMERA ERROR:', err));
   }
 
-  selectNewPhoto() {
+  /**
+   * Select a photo from gallery of device
+   */
+  fromGallery() {
     let options = {
-      maximumImagesCount: 15,
-      width: 1000,
-      height: 1000,
-      quality: 80,
-      outputType: 1
-    }
-    this.imagePicker.getPictures(options).then(imagesData => {
-      for (let i = 0; i < imagesData.length; i++) {
-        let image_url = "data:image/jpeg;base64, " + imagesData[i];
-        this.storage_images.push(image_url);
-        let  picker_image_url = this.sanitizer.bypassSecurityTrustUrl(image_url);
-        let photo = {
-          Url: picker_image_url,
-          Checked: false
-        };
-        this.photos.push(photo);
-      }
-      this.storage.set(Constants.PHOTOS_KEY, this.storage_images);
+      maximumImagesCount: 1
+    };
+    this.imagePicker.getPictures(options).then(results => {
+      for (let i = 0; i < results.length; i++) {
+        console.log('Image URI1: ', results[i]);
+        this.globals.showLoading().then(() => {
+          this.photosProvider.addPhoto(this.practicaID, results[i]).then(res => {
+            console.log(res);
+            let newPhoto = res.data[0];
+            newPhoto.Url.replace(/\\/g, '/');
+            this.photos.unshift(newPhoto);
+            this.globals.hideLoading();
+          }).catch(err => {
+            console.log('Select photo error: ', err);
+            this.globals.hideLoading();
+          });
+        });        
+      }      
     }).catch(err => {
-      console.log(err);
+      console.log('imagePicker error: ', err);
     });
   }
 
