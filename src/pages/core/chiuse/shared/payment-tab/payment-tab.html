@@ -92,7 +92,7 @@
       </ion-grid>
     </div>
   </div>
-  <div class="inner-content" padding *ngIf="paymentDetails && !paymentDetails.DatiPratica.Tipo.Assicurativa">
+  <div class="inner-content" padding *ngIf="paymentDetails.DatiPratica && !paymentDetails.DatiPratica.Tipo.Assicurativa">
     <div class="payment-details provisional">
       <ion-grid>
         <ion-row>
