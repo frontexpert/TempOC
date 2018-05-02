@@ -24,7 +24,7 @@
       <ion-col *ngFor="let document of documents; let i = index" (click)="showDocumentDetails(document)">
         <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.Thumb" alt="">
         <h4>{{document.Nome}}</h4>
-        <div class="doc-date">11/03/2018</div>
+        <div class="doc-date">{{document.DataInserimento | date: 'dd/MM/yyyy'}}</div>
       </ion-col>      
     </ion-row>
   </ion-grid>

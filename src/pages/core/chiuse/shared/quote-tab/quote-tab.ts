@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'budgets-tab',
-  templateUrl: 'budgets-tab.html'
+  selector: 'quote-tab',
+  templateUrl: 'quote-tab.html'
 })
-export class BudgetsTabComponent {
+export class QuoteTabComponent {
   // pie
   colorScheme = {
     domain: ['#ff8ba4', '#86c7f3', '#ffe29a', '#AAAAAA']

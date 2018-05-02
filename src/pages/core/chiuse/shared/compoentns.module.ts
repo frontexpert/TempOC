@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from "ionic-angular";
 import { ComponentsModule } from "../../../../components/components.module";
 import { OutlookTabComponet } from './outlook-tab/outlook-tab';
-import { BudgetsTabComponent } from './budgets-tab/budgets-tab';
+import { QuoteTabComponent } from './quote-tab/quote-tab';
 import { DocumentsTabComponent } from './documents-tab/documents-tab';
 import { PaymentTabComponet } from './payment-tab/payment-tab';
 import { PhotoTabComponet } from './photo-tab/photo-tab';
@@ -29,7 +29,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
   ],
 	exports: [
     OutlookTabComponet,
-    BudgetsTabComponent,
+    QuoteTabComponent,
     DocumentsTabComponent,
     PaymentTabComponet,
     PhotoTabComponet,
