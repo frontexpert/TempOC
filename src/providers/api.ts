@@ -11,7 +11,7 @@ import * as Constants from '../shared/constants';
 export class Api {
   url: string = Constants.API_URL;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private transfer: FileTransfer) {
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
