@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Storage } from '@ionic/storage';
 import { PhotosProvider } from '../../../../../providers/photos';
 import { Globals } from '../../../../../shared/globals';
@@ -21,7 +20,6 @@ export class PhotoTabComponet {
 
   constructor(private imagePicker: ImagePicker, 
               private camera: Camera, 
-              private sanitizer: DomSanitizer, 
               private alert: AlertController, 
               private photosProvider: PhotosProvider,
               public globals: Globals,

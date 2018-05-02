@@ -12,6 +12,7 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
+import { FileTransfer } from '@ionic-native/file-transfer'
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -51,6 +52,7 @@ import { NetState } from '../providers/network';
     ImagePicker,
     InAppBrowser,
     Network,
+    FileTransfer,
     Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,

@@ -18,7 +18,7 @@ export class PhotosProvider {
   photoes: Array<any>;
   private selectedPhotoSubject = new Subject<Array<any>>();
 
-  constructor(public api: Api, public storage: Storage, private connection: NetState, private transfer: FileTransfer) {
+  constructor(public api: Api, public storage: Storage, private connection: NetState) {
     console.log('Hello PhotosProvider Provider');
   }  
 
@@ -66,7 +66,7 @@ export class PhotosProvider {
         let result;
         result = photoesData[praticaID] ? photoesData[praticaID] : [];
         return result;
-      })
+      });
     }
   }
 
