@@ -29,7 +29,7 @@ export class ChiusePage {
   praticeDetails: any;   // selected a pratica item
   paymentDetails: any;   // payment deteails for selected pratica item
   photoDetails: any;     // photo data for selected pratica item
-  docuemtDetails: any    // document data for selected one
+  documentDetails: any    // document data for selected one
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -103,8 +103,8 @@ export class ChiusePage {
             this.photoDetails = values[2];
             console.log(this.photoDetails, 'photoDetails');
 
-            this.docuemtDetails = values[3];
-            console.log(this.docuemtDetails, 'documentDetails');
+            this.documentDetails = values[3];
+            console.log(this.documentDetails, 'documentDetails');
             
             this.globals.hideLoading();
           })
