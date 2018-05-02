@@ -15,7 +15,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 @NgModule({
 	declarations: [
     OutlookTabComponet,
-    BudgetsTabComponent,
+    QuoteTabComponent,
     DocumentsTabComponent,
     PaymentTabComponet,
     PhotoTabComponet,

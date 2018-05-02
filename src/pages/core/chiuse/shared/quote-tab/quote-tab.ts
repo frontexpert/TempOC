@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'quote-tab',
   templateUrl: 'quote-tab.html'
 })
 export class QuoteTabComponent {
+  @Input() quotes: any[] = [];
+
   // pie
   colorScheme = {
     domain: ['#ff8ba4', '#86c7f3', '#ffe29a', '#AAAAAA']

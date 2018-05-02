@@ -112,4 +112,28 @@ export class PracticesProvider {
     return promise;
   }  
 
+  /**
+   * Get practice quote list
+   * @param id id of practice
+   */
+  getQuoteList(id: number) {
+    let params = {
+      PraticaID: id
+    };
+
+    let promise = new Promise((resolve, reject) => {
+      this.api.get('PraticaPreventivo/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
 }

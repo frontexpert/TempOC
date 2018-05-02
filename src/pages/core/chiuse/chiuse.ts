@@ -30,6 +30,7 @@ export class ChiusePage {
   paymentDetails: any;   // payment deteails for selected pratica item
   photoDetails: any;     // photo data for selected pratica item
   documentDetails: any    // document data for selected one
+  quoteList: any[];
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -90,7 +91,8 @@ export class ChiusePage {
           this._practice.getDetails(item.ID), 
           this._practice.getPaymentDetails(item.ID), 
           this._photos.getPhotos(item.ID),
-          this._documents.getDocuments(item.ID)
+          this._documents.getDocuments(item.ID),
+          this._practice.getQuoteList(item.ID)
         ];
 
         Promise.all(promises).then((values: any[]) => {            
@@ -105,6 +107,9 @@ export class ChiusePage {
 
             this.documentDetails = values[3];
             console.log(this.documentDetails, 'documentDetails');
+
+            this.quoteList = values[4];
+            console.log(this.quoteList, 'quoteList');
             
             this.globals.hideLoading();
           })
