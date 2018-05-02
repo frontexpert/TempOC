@@ -21,46 +21,11 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col (click)="showDocumentDetails()">
-        <img src="./assets/imgs/doc-01.jpg" alt="">
-        <h4>Privacy</h4>
+      <ion-col *ngFor="let document of documents; let i = index" (click)="showDocumentDetails(document)">
+        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.Thumb" alt="">
+        <h4>{{document.Nome}}</h4>
         <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-02.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-03.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-04.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-01.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-02.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-03.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
-      <ion-col>
-        <img src="./assets/imgs/doc-04.jpg" alt="">
-        <h4>Privacy</h4>
-        <div class="doc-date">11/03/2018</div>
-      </ion-col>
+      </ion-col>      
     </ion-row>
   </ion-grid>
 </div>
