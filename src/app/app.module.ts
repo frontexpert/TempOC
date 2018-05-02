@@ -21,6 +21,7 @@ import { ComponentsModule } from '../components/components.module';
 import { Globals } from '../shared/globals';
 import { PracticesProvider } from '../providers/practices';
 import { PhotosProvider } from '../providers/photos';
+import { DocumentsProvider } from '../providers/documents';
 import { Api } from '../providers/api';
 import { NetState } from '../providers/network';
 
@@ -58,6 +59,7 @@ import { NetState } from '../providers/network';
     Api,
     PracticesProvider,
     PhotosProvider,
+    DocumentsProvider,
     NetState
   ]
 })

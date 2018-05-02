@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as Constants from '../../../shared/constants';
 import { PracticesProvider } from '../../../providers/practices';
 import { PhotosProvider } from '../../../providers/photos';
+import { DocumentsProvider } from '../../../providers/documents';
 import { Globals } from '../../../shared/globals';
 
 /**
@@ -25,9 +26,10 @@ export class ChiusePage {
 
   activeItemID: number;         // active item ID
 
-  praticeDetails: any; // selected a pratica item
-  paymentDetails: any; // payment deteails for selected pratica item
-  photoDetails: any;    // photo data for selected pratica item
+  praticeDetails: any;   // selected a pratica item
+  paymentDetails: any;   // payment deteails for selected pratica item
+  photoDetails: any;     // photo data for selected pratica item
+  docuemtDetails: any    // document data for selected one
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -45,6 +47,7 @@ export class ChiusePage {
               public navParams: NavParams, 
               private _practice: PracticesProvider, 
               private _photos: PhotosProvider,
+              private _documents: DocumentsProvider,
               public globals: Globals) {
   }
 
@@ -83,8 +86,14 @@ export class ChiusePage {
       // get pratica details and payment details
       this.globals.showLoading().then(() => {
 
-        Promise.all([this._practice.getDetails(item.ID), this._practice.getPaymentDetails(item.ID), this._photos.getPhotos(item.ID)])
-          .then((values: any[]) => {            
+        let promises = [
+          this._practice.getDetails(item.ID), 
+          this._practice.getPaymentDetails(item.ID), 
+          this._photos.getPhotos(item.ID),
+          this._documents.getDocuments(item.ID)
+        ];
+
+        Promise.all(promises).then((values: any[]) => {            
             this.praticeDetails = values[0]; // set pratice details
             console.log(this.praticeDetails, 'praticeDetails');
             
@@ -93,6 +102,9 @@ export class ChiusePage {
 
             this.photoDetails = values[2];
             console.log(this.photoDetails, 'photoDetails');
+
+            this.docuemtDetails = values[3];
+            console.log(this.docuemtDetails, 'documentDetails');
             
             this.globals.hideLoading();
           })

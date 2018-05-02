@@ -36,3 +36,5 @@ export const NOLEGGIO_TAB_VALUES = [
 ];
 
 export const PHOTOS_KEY: string = 'photoes';
+
+export const DOCUEMTNS_KEY: string = 'documents';
