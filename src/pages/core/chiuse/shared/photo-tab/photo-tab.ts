@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage';
 import { PhotosProvider } from '../../../../../providers/photos';
 import { Globals } from '../../../../../shared/globals';
 
-import * as Constants from '../../../../../shared/constants';
 
 @Component({
   selector: 'photo-tab',
@@ -105,13 +104,24 @@ export class PhotoTabComponet {
         {
           text: 'OK',
           handler: () => {
+            let removeItems = [];
             for (let i = this.photos.length - 1; i >= 0; i--) {
-              if (this.photos[i].checked == true) {
+              if (this.photos[i].Checked == true) {
+                removeItems.push(this.photos[i]);
                 this.photos.splice(i, 1);
-                this.storage_images.splice(i, 1);
               }
+            }            
+            if (removeItems.length > 0) {
+              this.globals.showLoading().then(() => {
+                this.photosProvider.deletePhotos(removeItems, this.practicaID).then(res => {
+                  this.globals.hideLoading();
+                })
+                .catch(err => {
+                  console.log('Remove photo error: ', err);
+                  this.globals.hideLoading();
+                });
+              });
             }
-            this.storage.set(Constants.PHOTOS_KEY, this.storage_images);
           }
         }
       ]
