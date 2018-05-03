@@ -6,6 +6,8 @@ import { PracticesProvider } from '../../../providers/practices';
 import { PhotosProvider } from '../../../providers/photos';
 import { DocumentsProvider } from '../../../providers/documents';
 import { Globals } from '../../../shared/globals';
+import { CarRentalProvider } from '../../../providers/car-rental';
+
 
 /**
  * Generated class for the PratichePage page.
@@ -31,6 +33,7 @@ export class ChiusePage {
   photoDetails: any;     // photo data for selected pratica item
   documentDetails: any    // document data for selected one
   quoteList: any[];
+  noleggioList: any[];
 
   tabValues = Constants.PRATICHE_TAB_VALUES;
 
@@ -49,6 +52,7 @@ export class ChiusePage {
               private _practice: PracticesProvider, 
               private _photos: PhotosProvider,
               private _documents: DocumentsProvider,
+              private _carRental: CarRentalProvider,
               public globals: Globals) {
   }
 
@@ -92,7 +96,8 @@ export class ChiusePage {
           this._practice.getPaymentDetails(item.ID), 
           this._photos.getPhotos(item.ID),
           this._documents.getDocuments(item.ID),
-          this._practice.getQuoteList(item.ID)
+          this._practice.getQuoteList(item.ID),
+          this._carRental.getNoleggioList(item.ID)
         ];
 
         Promise.all(promises).then((values: any[]) => {            
@@ -110,6 +115,9 @@ export class ChiusePage {
 
             this.quoteList = values[4];
             console.log(this.quoteList, 'quoteList');
+
+            this.noleggioList = values[5];
+            console.log(this.noleggioList, 'noleggioList');
             
             this.globals.hideLoading();
           })

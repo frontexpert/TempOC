@@ -24,6 +24,8 @@ import { PhotosProvider } from '../providers/photos';
 import { DocumentsProvider } from '../providers/documents';
 import { Api } from '../providers/api';
 import { NetState } from '../providers/network';
+import { CarRentalProvider } from '../providers/car-rental';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { NetState } from '../providers/network';
     PracticesProvider,
     PhotosProvider,
     DocumentsProvider,
-    NetState
+    NetState,
+    CarRentalProvider
   ]
 })
 export class AppModule {}

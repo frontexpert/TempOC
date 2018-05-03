@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'rent-tab',
   templateUrl: 'rent-tab.html'
 })
 export class RentTabComponet {
+  @Input() rentals: any[] = [];
+
   // pie
   colorScheme = {
     domain: ['#ff8ba4', '#86c7f3', '#ffe29a', '#AAAAAA']

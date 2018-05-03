@@ -5,7 +5,7 @@
       <button ion-button color="secondary">+ &nbsp;&nbsp;&nbsp;NUOVO</button>    
     </div>
 
-    <div class="details">
+    <div class="details" *ngFor="let rent of rentals">
       <div class="details-header">
         <div class="header-start">
           <img src="assets/imgs/car.png">
@@ -13,8 +13,8 @@
         <div class="header-inner">
           <div class="input-wrapper">
             <div class="inner-content">
-              <h2>NOLEGGIO</h2>
-              <p>FIAT PANDA - BJ334T</p>
+              <h2>{{rent.TipoNoleggio == 0 ? 'NOLEGGIO  A PAGAMENTO' : 'NOLEGGIO  GRATUITO'}}</h2>
+              <p>{{rent.Vettura}} - {{rent.Targa}}</p>
               <button ion-button color="secondary">VISUALIZZA</button>        
             </div>
           </div>
@@ -45,22 +45,23 @@
           </ion-row>
           <ion-row class="content-inner">
             <ion-col col-6>
-              <div padding class="clearfix">
-                <div class="pull-left">26/03/2018</div>
-                <div class="pull-right">08:30</div>        
+              <div padding class="text-center">
+                {{rent.DataConsegna | date: 'dd/MM/yyyy HH:mm'}}                
               </div>
               <div class="document-item">
-                <img src="./assets/imgs/doc-01.jpg" alt="">
+                <img *ngIf="rent.DataConsegna" src="http://oxygen.ilcarrozziere.it/RentNoleggio/PrintLetteraNoleggioFatturazioneCompleta?ID={{rent.ID}}" alt="">
               </div>              
             </ion-col>
             <ion-col col-6>
-              <div padding class="clearfix">
-                <div class="pull-left">29/03/2018</div>
-                <div class="pull-right">08:30</div>        
+              <div padding class="text-center">              
+                <span *ngIf="rent.DataRestituzione">{{rent.DataRestituzione | date: 'dd/MM/yyyy HH:mm'}}</span>
+                <span *ngIf="rent.DataRestituzione == null && rent.DataRestituzioneStimata">{{rent.DataRestituzioneStimata | date: 'dd/MM/yyyy HH:mm'}}</span>
+                <span *ngIf="rent.DataRestituzione == null && rent.DataRestituzioneStimata == null">Data rientro non indicata</span>
               </div>
-              <div class="document-item">                
+              <div class="document-item">    
+                <img *ngIf="rent.DataRestituzione" src="http://oxygen.ilcarrozziere.it/RentNoleggio/PrintLetteraNoleggioFatturazioneRientro?ID={{rent.ID}}">
               </div>
-              </ion-col>
+            </ion-col>            
           </ion-row>
         </ion-grid>
       </div>
