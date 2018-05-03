@@ -129,18 +129,38 @@ export class ChiusePage {
         // set mark for sub-tabs
         if (item.ImmaginiCount > 0) {
           this.checkedTabs.push(2); // photo marked
+        } else {
+          let index = this.checkedTabs.indexOf(2);
+          if (index > -1) {
+            this.checkedTabs.splice(index, 1);
+          }
         }
   
         if (item.DocumentiCount > 0) {
           this.checkedTabs.push(3); // documenti marked
+        } else {
+          let index = this.checkedTabs.indexOf(3);
+          if (index > -1) {
+            this.checkedTabs.splice(index, 1);
+          }
         }
   
         if (item.PreventiviCount > 0) {
           this.checkedTabs.push(4); // preventivi marked
+        } else {
+          let index = this.checkedTabs.indexOf(4);
+          if (index > -1) {
+            this.checkedTabs.splice(index, 1);
+          }
         }
   
         if (item.NoleggiCount > 0) {
           this.checkedTabs.push(5); // Noleggi marked
+        } else {
+          let index = this.checkedTabs.indexOf(5);
+          if (index > -1) {
+            this.checkedTabs.splice(index, 1);
+          }
         }
       });
     }
