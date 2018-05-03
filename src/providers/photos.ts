@@ -76,27 +76,29 @@ export class PhotosProvider {
   deletePhotos(photoes: Array<any>, praticaID: number) {
     let promise = new Promise((resolve, reject) => {
       photoes.forEach(photoItem => {
-        // this.api.post(`PraticaImmagine/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/?ID=${photoItem.ID}&PraticaID=${praticaID}`, {}).subscribe((res: any) => {
-        //   if (res.success) {            
-            this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
-              if (photoesData == null || photoesData == undefined)
-                photoesData = {};
-              else {
-                let index = photoesData[praticaID].indexOf(photoItem.ID, 0);
-                if (index > -1) {
-                  photoesData[praticaID].splice(index, 1);
-                }
-              }
-              this.storage.set(Constants.PHOTOS_KEY, photoesData);
-              resolve(photoesData);
-            });
-          //   resolve(res.data);
-          // }
-          // else
-          //   resolve(res);
-        // }, (err) => {
-        //   reject(err);
-        // });
+        this.api.get(`PraticaImmagine/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/?ID=${photoItem.ID}&PraticaID=${praticaID}`, {}).subscribe((res: any) => {
+          console.log("remove Photo");
+          console.log(res);
+          if (res.success) {            
+            // this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
+            //   if (photoesData == null || photoesData == undefined)
+            //     photoesData = {};
+            //   else {
+            //     let index = photoesData[praticaID].indexOf(photoItem.ID, 0);
+            //     if (index > -1) {
+            //       photoesData[praticaID].splice(index, 1);
+            //     }
+            //   }
+            //   this.storage.set(Constants.PHOTOS_KEY, photoesData);
+            //   resolve(photoesData);
+            // });
+            resolve(res.data);
+          }
+          else
+            resolve(res);
+        }, (err) => {
+          reject(err);
+        });
       });
     });
 

@@ -72,7 +72,7 @@ export class Api {
 
     console.log(photoData, 'photoData');
 
-    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagineAdd/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
+    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagine/Add/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
       .then((data) => {
         return JSON.parse(data.response);
       }, (err) => {

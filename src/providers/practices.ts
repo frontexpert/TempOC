@@ -20,7 +20,7 @@ export class PracticesProvider {
    * @param pageSize size of page
    * @return {Promise}
    */
-  get(pageNumber: number, pageSize = 60) {
+  get(pageNumber: number, pageSize = 50) {
     let promise = new Promise((resolve, reject) => {
       let params = {
         Page: pageNumber,
