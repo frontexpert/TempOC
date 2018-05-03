@@ -3,83 +3,85 @@
     <div class="buttons">
       <button ion-button color="secondary">+ &nbsp;&nbsp;&nbsp;NUOVO</button>    
     </div>
-    <h3 class="text-fiat">Fiat Punto 1.4 GPL 5P. ACTIVE  <i class="far fa-edit"></i></h3>
-    <div class="budgets-detail">
-      <div class="header">
-        <div class="pull-left">
-          <p class="green">Preventivo del 21/01/2018</p>
-          <p>Totale: 5.235,12</p>    
-        </div>
-        <button ion-button color="secondary" class="pull-right">VISUALIZZA</button>
-      </div>
-      <div class="budgets-body">
-        <ion-grid no-padding>
-          <ion-row>
-            <ion-col col-8>
-              <div class="legends">
-                <div class="legend-row">
-                  <div class="pull-left"><span class="color-mark ricambi"></span> Ricambi</div>
-                  <div class="pull-right">€ 3.951,33</div>
-                </div>
-                <div class="legend-row">
-                  <div class="pull-left"><span class="color-mark voci_compl"></span> Voci Compl.</div>
-                  <div class="pull-right">€ 0,00</div>
-                </div>
-                <div class="legend-row">
-                  <div class="pull-left"><span class="color-mark smaltimento"></span> Smaltimento</div>
-                  <div class="pull-right">€ 0,00</div>
-                </div>                
-                <div class="legend-row">
-                  <div class="pull-left"><span class="color-mark mat_consumo"></span> Mat. Consumo</div>
-                  <div class="pull-right">€ 0,00</div>                  
-                </div>                
-                <div class="legend-row">
-                  <div class="pull-left"><span class="color-mark meccanica"></span> Meccanica</div>
-                  <div class="pull-right">€ 0,00</div>
-                    
-                </div>                
-                <div class="legend-row">
-                  <div class="pull-left"><span class="color-mark carrozzeria"></span> Carrozzeria</div>
-                  <div class="pull-right">€ 0,00</div>                    
-                </div>                	    
-              </div>
-            </ion-col>
-            <ion-col col-4>
-              <div class="chart-inner">
-                <ngx-charts-pie-chart
-                  [view]="view"
-                  [results]="single"
-                  [scheme]="colorScheme"
-                  [legend]="false"
-                  [tooltipDisabled]="true"
-                  [explodeSlices]="explodeSlices"
-                  [labels]="false"
-                  [doughnut]="doughnut"
-                  (select)="onSelect($event)">
-                </ngx-charts-pie-chart>  
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-      <div class="budgets-result">
-        <ion-grid no-padding>
-          <ion-row>
-            <ion-col col-8>
-              <div class="legends">
-                <div class="legend-row total">
-                  <div class="pull-left">Totale</div>
-                  <div class="pull-right">€ 3.951,33</div>
-                </div>
-              </div>              
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-      <div class="budgets-footer">
-        Ultima modifica: 26/02/2018 11:18
-      </div>
+    <h3 class="text-fiat" *ngIf="quotes.length > 0">{{quotes[0] ? quotes[0].Veicolo : ''}}  <i class="far fa-edit"></i></h3>
 
-    </div>
+    <ion-scroll scrollY="true">
+      <div class="budgets-detail" *ngFor="let quote of quotes">
+        <div class="header">
+          <div class="pull-left">
+            <p class="green">{{quote.Nome}}</p>
+            <p>Totale: {{quote.Totale | number: '1.2-2'}}</p>    
+          </div>
+          <button ion-button color="secondary" class="pull-right">VISUALIZZA</button>
+        </div>
+        <div class="budgets-body">
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col col-8>
+                <div class="legends">
+                  <div class="legend-row">
+                    <div class="pull-left"><span class="color-mark ricambi"></span> Ricambi</div>
+                    <div class="pull-right">€ {{quote.TotaleRicambi | number: '1.2-2'}}</div>
+                  </div>
+                  <div class="legend-row">
+                    <div class="pull-left"><span class="color-mark voci_compl"></span> Voci Compl.</div>
+                    <div class="pull-right">€ {{quote.TotaleVociComplementari | number: '1.2-2'}}</div>
+                  </div>
+                  <div class="legend-row">
+                    <div class="pull-left"><span class="color-mark smaltimento"></span> Smaltimento</div>
+                    <div class="pull-right">€ {{quote.TotaleSmaltimento | number: '1.2-2'}}</div>
+                  </div>                
+                  <div class="legend-row">
+                    <div class="pull-left"><span class="color-mark mat_consumo"></span> Mat. Consumo</div>
+                    <div class="pull-right">€ {{quote.TotaleMaterialeConsumo | number: '1.2-2'}}</div>                  
+                  </div>                
+                  <div class="legend-row">
+                    <div class="pull-left"><span class="color-mark meccanica"></span> Meccanica</div>
+                    <div class="pull-right">€ {{quote.TotaleMeccanica | number: '1.2-2'}}</div>
+                      
+                  </div>                
+                  <div class="legend-row">
+                    <div class="pull-left"><span class="color-mark carrozzeria"></span> Carrozzeria</div>
+                    <div class="pull-right">€ {{quote.TotaleCarrozzeria | number: '1.2-2'}}</div>                    
+                  </div>                	    
+                </div>
+              </ion-col>
+              <ion-col col-4>
+                <div class="chart-inner">
+                  <ngx-charts-pie-chart
+                    [view]="view"
+                    [results]="single"
+                    [scheme]="colorScheme"
+                    [legend]="false"
+                    [tooltipDisabled]="true"
+                    [explodeSlices]="explodeSlices"
+                    [labels]="false"
+                    [doughnut]="doughnut"
+                    (select)="onSelect($event)">
+                  </ngx-charts-pie-chart>  
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="budgets-result">
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col col-8>
+                <div class="legends">
+                  <div class="legend-row total">
+                    <div class="pull-left">Totale</div>
+                    <div class="pull-right">€ {{quote.Totale | number: '1.2-2'}}</div>
+                  </div>
+                </div>              
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="budgets-footer">
+          Ultima modifica: {{quote.UltimaModifica | date: 'dd/MM/yyyy HH:mm'}}
+        </div>
+      </div>
+    </ion-scroll>
   </div>  
 </div>

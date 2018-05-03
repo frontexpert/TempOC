@@ -3,6 +3,7 @@ quote-tab {
     font-weight: normal;
     font-size: 1.8rem;
     color: $text-color;
+    margin-bottom: 25px;
 
     i.far {
       margin-left: 40px;
@@ -10,7 +11,7 @@ quote-tab {
     }
   }
   .budgets-detail {
-    margin-top: 25px;
+    margin-bottom: 25px;
     border: 0.55px solid #9e9e9e;
     border-top-width: 1px;
     border-bottom-width: 1px;
@@ -114,5 +115,9 @@ quote-tab {
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  .scroll-content {
+    height: 68vh;
   }
 }
