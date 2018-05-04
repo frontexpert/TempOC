@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { Globals } from '../../../../shared/globals';
 import * as Constants from '../../../../shared/constants';
 
 /**
@@ -21,9 +22,28 @@ export class InsertApertePage {
   selectedTab: number = 0;
   checkedTabs = [];
 
-  constructor(public navCtrl: NavController) {
+  isFirstCase: boolean;    // TipoID value for Pratica Insert: 100
+
+  isSecondCase: boolean;   // RIMBORSO ASSICURATIVO DANNI DIVERSI
+
+  isAllTabsAvailable: boolean;
+
+  constructor(public navCtrl: NavController, public globals: Globals) {
     // check the first tab when created this modal
     this.checkedTabs.push(this.selectedTab);
+
+    switch (this.globals.praticaTipoID) {
+      case Constants.CREATION_CASE.RIPARAZIONE_MANUTENZIONE_CHECKUP:
+        this.isFirstCase = true;
+        break;
+      case Constants.CREATION_CASE.RIMBORSO_ASSICURATIVO_RCA:
+        this.isAllTabsAvailable = true;
+        break;
+      default:
+        this.isSecondCase = true;
+        break;
+    }
+
   }
 
   handleSelectTab(val): void {

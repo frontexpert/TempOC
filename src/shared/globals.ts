@@ -8,6 +8,8 @@ export class Globals {
   activeSideMenuItem: string = 'aperte';
   praticaList = [];
 
+  praticaTipoID: number;
+
   /**
    * Loading spinner instance
    * @type {any}

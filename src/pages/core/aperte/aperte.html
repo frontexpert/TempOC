@@ -19,7 +19,7 @@
     <ion-grid>
       <ion-row>
         <ion-col col-4>
-          <div class="section-item orange-bg" (click)="nextPage()" tappable>
+          <div class="section-item orange-bg" (click)="nextPage(CONSTANTS.CREATION_CASE.RIPARAZIONE_MANUTENZIONE_CHECKUP)" tappable>
             <div class="section-img">
               <i class="icon-maintenance"></i>
             </div>
@@ -29,7 +29,7 @@
           </div>
         </ion-col>
         <ion-col col-4>
-          <div class="section-item green-bg">
+          <div class="section-item green-bg" (click)="nextPage(CONSTANTS.CREATION_CASE.RIMBORSO_ASSICURATIVO_RCA)" tappable>
             <div class="section-img">
               <i class="icon-rca-card-insurance"></i>
             </div>
@@ -40,7 +40,7 @@
           </div>
         </ion-col>
         <ion-col col-4>
-          <div class="section-item green-bg">
+          <div class="section-item green-bg" (click)="nextPage(CONSTANTS.CREATION_CASE.RIMBORSO_ASSICURATIVO_RCA)" tappable>
             <div class="section-img">
               <i class="icon-rca-card-insurance"></i>
             </div>
@@ -55,43 +55,43 @@
             <h2>RIMBORSO ASSICURATIVO DANNI DIVERSI</h2>
             <h4>POLIZZE ACCESSORIE</h4>
             <ul>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_KASCO)" tappable>
                 <div class="icon-block">
                   <i class="icon-kasco"></i>
                 </div>                      
                 <p>KASCO</p>
               </li>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_ATTI_VANDALICI)" tappable>
                 <div class="icon-block">
                   <i class="icon-vandalism"></i>
                 </div>
                 <p>ATTI VANDALICI</p>
               </li>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_EVENTI_NATURALI_GRANDINE)" tappable>
                 <div class="icon-block">
                   <i class="icon-natural-events-hail"></i>
                 </div>
                 <p>EVENTI NATURALI<br> GRANDINE</p>
               </li>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_FURTO_PARZIALE)" tappable>
                 <div class="icon-block">
                   <i class="icon-partial-search"></i>
                 </div>
                 <p>FURTO PARZIALE</p>
               </li>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_CRISTALLI)" tappable>
                 <div class="icon-block">
                   <i class="icon-crystals"></i>
                 </div>
                 <p>CRISTALLI</p>
               </li>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_RESPONSABILITA_DIRETTA)" tappable>
                 <div class="icon-block">
                   <i class="icon-responsibility"></i>
                 </div>
                 <p>RESPONSABILITÀ<br> DIRETTA</p>
               </li>
-              <li>
+              <li (click)="nextPage(CONSTANTS.CREATION_CASE.RADD_ALTRI_DANNI)" tappable>
                 <div class="icon-block">
                   <i class="icon-other-damages"></i>
                 </div>

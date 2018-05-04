@@ -38,3 +38,20 @@ export const NOLEGGIO_TAB_VALUES = [
 export const PHOTOS_KEY: string = 'photoes';
 
 export const DOCUEMTNS_KEY: string = 'documents';
+
+
+/**
+ * Each  creation  case,  if  tabbed:
+ * has  a  TipoID  value  to  be  passed  to  the  insert  views
+ */
+export const CREATION_CASE = {
+  RIPARAZIONE_MANUTENZIONE_CHECKUP: 100,
+  RIMBORSO_ASSICURATIVO_RCA: 1,
+  RADD_KASCO: 3, // RIMBORSO  ASSICURATIVO  DANNI  DIVERSI has subcases with different TipoID
+  RADD_ATTI_VANDALICI: 4,
+  RADD_EVENTI_NATURALI_GRANDINE: 5,
+  RADD_FURTO_PARZIALE: 6,
+  RADD_CRISTALLI: 7,
+  RADD_RESPONSABILITA_DIRETTA: 8,
+  RADD_ALTRI_DANNI: 9
+};

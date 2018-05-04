@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { TargaPage } from './targa/targa';
+import { Globals } from '../../../shared/globals';
 
-/**
- * Generated class for the PratichePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as Constants from '../../../shared/constants';
+
 
 @IonicPage()
 @Component({
@@ -16,15 +13,18 @@ import { TargaPage } from './targa/targa';
 })
 export class ApertePage {
 
-  constructor(public navCtrl: NavController) {
+  CONSTANTS = Constants;
 
+  constructor(public navCtrl: NavController, public globalse: Globals) {    
   }
 
   ionViewDidLoad() {
-    // this.navCtrl.push(InsertApertePage);
   }
 
-  nextPage() {
+  nextPage(tipoID: number) {    
+    console.log('tipoID', tipoID);
+    // set tipo id to global service
+    this.globalse.praticaTipoID = tipoID;
     this.navCtrl.push(TargaPage);
   }
 
