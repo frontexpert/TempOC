@@ -1,126 +1,128 @@
-<ion-grid class="no-padding">
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">cognome <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">nome <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">ragione sociale</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">partita iva</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+<form #clienteForm="ngForm">
+  <ion-grid class="no-padding">
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">cognome <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Cognome" name="Cognome" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">nome <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Nome" name="Nome" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">ragione sociale</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_RagioneSociale" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">partita iva</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_PartitaIva" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">sesso</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <date-input label="data di nascita"></date-input>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">nazione di nascita</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">comune di nascita</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">sesso</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Sesso" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <date-input label="data di nascita" [(ngModel)]="pratica.P1_DataNascita" [ngModelOptions]="{standalone: true}"></date-input>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">nazione di nascita</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_LuogoNascitaNazione" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">comune di nascita</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_LuogoNascita" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">codice fiscale</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">indirizzo</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">cap</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">codice fiscale</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_CodiceFiscale" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">indirizzo</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_ResidenzaIndirizzo" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">cap</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_ResidenzaCap" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">nazione</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">comune</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">e-mail</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">telefono</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">cellulare</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-12 class="custom-input">
-      <div class="input-item-label">NOTE</div>
-      <ion-item>
-        <ion-textarea></ion-textarea>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">nazione</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_ResidenzaNazione" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">comune</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_ResidenzaComune" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">e-mail</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Email" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">telefono</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Telefono" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">cellulare</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Cellulare" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 class="custom-input">
+        <div class="input-item-label">NOTE</div>
+        <ion-item>
+          <ion-textarea [(ngModel)]="pratica.P1_Note" [ngModelOptions]="{standalone: true}"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
 
 <div class="submit-row">
   <div class="pull-left">
     <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
   </div>
   <div class="pull-right">
-    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+    <button ion-button color="secondary" [disabled]="!clienteForm.form.valid" (click)="onNextTab.emit()">AVANTI</button>
   </div>
 </div>

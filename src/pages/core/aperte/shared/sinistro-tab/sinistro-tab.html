@@ -1,85 +1,87 @@
-<ion-grid class="no-padding">
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <date-input label="DATA" required="true"></date-input>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <date-input label="ORA" required="true"></date-input>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">PRESUNTA ENTITÀ DI COSTO </div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+<form #sinistroFrom="ngForm">
+  <ion-grid class="no-padding">
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <date-input label="DATA" required="true" [(ngModel)]="pratica.SinistroData" name="Data"></date-input>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <date-input label="ORA" required="true" [(ngModel)]="pratica.SinistroOra" name="Ora"></date-input>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">PRESUNTA ENTITÀ DI COSTO </div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.SinistroTipoCostoID" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">CIRCOSTANZE VEICOLO CLIENTE</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">CIRCOSTANZE VEICOLO CONTROPARTE</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>    
-  </ion-row>
+    <ion-row>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">CIRCOSTANZE VEICOLO CLIENTE</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.SinistroP1CircostanzaID" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">CIRCOSTANZE VEICOLO CONTROPARTE</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.SinistroP2CircostanzaID" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>    
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">PRESUNTA RESPONSABILITà</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">RIF. N° SINISTRO ASSICURATIVO</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">SCATOLA NERA SUL VEICOLO DEL DANNEGGIATO</div>
-      <ion-item>
-        <ion-toggle item-start color="secondary"></ion-toggle>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">PRESUNTA RESPONSABILITà</div>
+        <ion-item>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">RIF. N° SINISTRO ASSICURATIVO</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.SinistroCodice" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">SCATOLA NERA SUL VEICOLO DEL DANNEGGIATO</div>
+        <ion-item>
+          <ion-toggle item-start color="secondary" [(ngModel)]="pratica.ScatolaNera" [ngModelOptions]="{standalone: true}"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">INDIRIZZO <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">comune <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>    
-  </ion-row>
+    <ion-row>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">INDIRIZZO <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.SinistroIndirizzo" name="Indirizzo" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">comune <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.SinistroComune" name="Comune" required></ion-input>
+        </ion-item>
+      </ion-col>    
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-12 class="custom-input">
-      <div class="input-item-label">DESCRIZIONE EVENTO</div>
-      <ion-item>
-        <ion-textarea></ion-textarea>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+    <ion-row>
+      <ion-col col-12 class="custom-input">
+        <div class="input-item-label">DESCRIZIONE EVENTO</div>
+        <ion-item>
+          <ion-textarea [(ngModel)]="pratica.Note" [ngModelOptions]="{standalone: true}"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
 
 <div class="submit-row">
   <div class="pull-left">
     <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
   </div>
   <div class="pull-right">
-    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+    <button ion-button color="secondary" [disabled]="!sinistroFrom.form.valid" (click)="onNextTab.emit()">AVANTI</button>
   </div>
 </div>

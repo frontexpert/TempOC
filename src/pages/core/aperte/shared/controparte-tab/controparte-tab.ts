@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'controparte-tab',
@@ -7,6 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class ControparteTabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
   @Output() onBackTab: EventEmitter<any> = new EventEmitter();
+  @Input() pratica: any;
 
   constructor() {
     

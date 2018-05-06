@@ -23,7 +23,7 @@ export class ApertePage {
 
   nextPage(tipoID: number) {    
     console.log('tipoID', tipoID);
-    // set tipo id to global service
+    // set tipoID to global service
     this.globalse.praticaTipoID = tipoID;
     this.navCtrl.push(TargaPage);
   }

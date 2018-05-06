@@ -136,4 +136,24 @@ export class PracticesProvider {
     return promise;
   }
 
+  /**
+   * Sent a POST request to Pratica Insert
+   * @param body
+   */
+  insert(body: any) {    
+    let promise = new Promise((resolve, reject) => {
+      this.api.post('Pratica/Insert/matteo.polacchini@sitesolutions.it/matteomatteo/', body).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
 }

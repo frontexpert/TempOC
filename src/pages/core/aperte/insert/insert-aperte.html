@@ -27,16 +27,16 @@
 
     <div [ngSwitch]="selectedTab" class="component-wrapper">
       <veicolo-tab *ngSwitchCase="0" 
-            (onNextTab)="handleSelectTab(1)"></veicolo-tab>
+            (onNextTab)="handleSelectTab(1)" [pratica]="pratica"></veicolo-tab>
       <cliente-tab *ngSwitchCase="1" 
             (onBackTab)="handleSelectTab(0)" 
-            (onNextTab)="handleSelectTab(2)"></cliente-tab>
+            (onNextTab)="handleSelectTab(2)" [pratica]="pratica"></cliente-tab>
       <sinistro-tab *ngSwitchCase="2" 
             (onBackTab)="handleSelectTab(1)" 
-            (onNextTab)="handleSelectTab(3)"></sinistro-tab>
+            (onNextTab)="handleSelectTab(3)" [pratica]="pratica"></sinistro-tab>
       <controparte-tab *ngSwitchCase="3" 
             (onBackTab)="handleSelectTab(2)" 
-            (onNextTab)="handleSelectTab(3)"></controparte-tab>
+            (onNextTab)="handleSelectTab(3)" [pratica]="pratica"></controparte-tab>
     </div>
   </div>
 </ion-content>

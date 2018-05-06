@@ -1,97 +1,99 @@
-<ion-grid class="no-padding">
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">TARGA <span class="required">*</span></div>
-      <ion-item class="addion-icon">        
-        <ion-input></ion-input>     
-        <span item-end><i class="fas fa-search"></i></span>   
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">NUMERO TELAIO</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">TIPOLOGIA VEICOLO</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">KM PERCORSI</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+<form #veicoloForm="ngForm">
+  <ion-grid class="no-padding">
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">TARGA <span class="required">*</span></div>
+        <ion-item class="addion-icon">        
+          <ion-input [(ngModel)]="pratica.P1_Targa" required name="Targa"></ion-input>     
+          <span item-end><i class="fas fa-search"></i></span>   
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">NUMERO TELAIO</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_VeicoloNumeroTelaio" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">TIPOLOGIA VEICOLO</div>
+        <ion-item>
+          <ion-input type="number" [(ngModel)]="pratica.P1_VeicoloTipoID" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">KM PERCORSI</div>
+        <ion-item>
+          <ion-input type="number" [(ngModel)]="pratica.P1_VeicoloKm" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <date-input label="DATA IMMATRICOLAZIONE" required="true"></date-input>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">CODICE COLORE</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6></ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <date-input label="DATA IMMATRICOLAZIONE" [(ngModel)]="pratica.P1_DataImmatricolazione" name="DataImmatricolazione" required="true"></date-input>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">CODICE COLORE</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.ColoreID" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6></ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">ASSICURAZIONE <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <date-input label="SCADENZA POLIZZA"></date-input>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">NUMERO POLIZZA</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3></ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">ASSICURAZIONE <span class="required">*</span></div>
+        <ion-item>
+          <ion-input name="Assicurazione" required [(ngModel)]="pratica.P1_Assicurazione"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <date-input label="SCADENZA POLIZZA" [(ngModel)]="pratica.P1_ScadenzaPolizza" [ngModelOptions]="{standalone: true}"></date-input>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">NUMERO POLIZZA</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_NumeroPolizza" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3></ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">MARCA VEICOLO <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">MODELLO VEICOLO <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">CILINDRATA (CC.)</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">aLIMENTAZIONE</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">MARCA VEICOLO <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Marca" name="MarcaVeicolo" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">MODELLO VEICOLO <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_Modello" name="ModelloVeicolo" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">CILINDRATA (CC.)</div>
+        <ion-item>
+          <ion-input type="number" [(ngModel)]="pratica.P1_VeicoloCilindrata" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">ALIMENTAZIONE</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_VeicoloAlimentazione" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
 
 <div class="submit-row">
   <!-- <div class="pull-left">
     <button ion-button outline color="secondary">INDIETRO</button>
   </div> -->
   <div class="pull-right">
-    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+    <button ion-button color="secondary" [disabled]="!veicoloForm.form.valid" (click)="onNextTab.emit()">AVANTI</button>
   </div>
 </div>

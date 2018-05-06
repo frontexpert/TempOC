@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'veicolo-tab',
@@ -6,6 +6,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class VeicoloTabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
+  @Input() pratica: any;
 
   constructor() {
     

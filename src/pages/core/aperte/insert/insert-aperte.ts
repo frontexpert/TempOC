@@ -28,6 +28,8 @@ export class InsertApertePage {
 
   isAllTabsAvailable: boolean;
 
+  public pratica: any = {};  // pratica body data
+
   constructor(public navCtrl: NavController, public globals: Globals) {
     // check the first tab when created this modal
     this.checkedTabs.push(this.selectedTab);
