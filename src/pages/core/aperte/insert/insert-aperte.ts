@@ -36,12 +36,15 @@ export class InsertApertePage {
 
     switch (this.globals.praticaTipoID) {
       case Constants.CREATION_CASE.RIPARAZIONE_MANUTENZIONE_CHECKUP:
+      this.tabValues = Constants.APERTE_FIRST_VALUES;
         this.isFirstCase = true;
         break;
       case Constants.CREATION_CASE.RIMBORSO_ASSICURATIVO_RCA:
+        this.tabValues = Constants.APERTE_TAB_VALUES
         this.isAllTabsAvailable = true;
         break;
       default:
+        this.tabValues = Constants.APERTE_SECOND_VALUES;
         this.isSecondCase = true;
         break;
     }
