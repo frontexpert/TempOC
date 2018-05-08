@@ -33,4 +33,14 @@ export class CarRentalEditPage {
     }
   }
 
+  /**
+   * On clicked back button event to select previous tab
+   */
+  public handleBackSelect(): void {    
+    if (this.selectedTab > 0) {
+      this.selectedTab = this.selectedTab - 1;
+    }    
+    console.log("Active tab", this.selectedTab);    
+  }
+
 }

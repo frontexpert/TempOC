@@ -29,16 +29,16 @@
       <utilizzatore-tab *ngSwitchCase="0" 
             (onNextTab)="handleSelectTab(1)"></utilizzatore-tab>
       <utilizzatore-2-tab *ngSwitchCase="1" 
-            (onBackTab)="handleSelectTab(0)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(2)"></utilizzatore-2-tab>
       <consegna-a-tab *ngSwitchCase="2" 
-            (onBackTab)="handleSelectTab(1)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(3)"></consegna-a-tab>
       <stato-veicolo-tab *ngSwitchCase="3" 
-            (onBackTab)="handleSelectTab(2)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(4)"></stato-veicolo-tab>
 			<dettaglio-tab *ngSwitchCase="4" 
-            (onBackTab)="handleSelectTab(3)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(4)"></dettaglio-tab>
     </div>
   </div>

@@ -137,7 +137,7 @@ export class PracticesProvider {
   }
 
   /**
-   * Sent a POST request to Pratica Insert
+   * Send a POST request to Pratica Insert
    * @param body
    */
   insert(body: any) {    

@@ -29,13 +29,13 @@
       <veicolo-tab *ngSwitchCase="0" 
             (onNextTab)="handleSelectTab(1)" [pratica]="pratica"></veicolo-tab>
       <cliente-tab *ngSwitchCase="1" 
-            (onBackTab)="handleSelectTab(0)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(2)" [pratica]="pratica"></cliente-tab>
       <sinistro-tab *ngSwitchCase="2" 
-            (onBackTab)="handleSelectTab(1)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(3)" [pratica]="pratica"></sinistro-tab>
       <controparte-tab *ngSwitchCase="3" 
-            (onBackTab)="handleSelectTab(2)" 
+            (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(3)" [pratica]="pratica"></controparte-tab>
     </div>
   </div>

@@ -36,7 +36,7 @@ export class InsertApertePage {
 
     switch (this.globals.praticaTipoID) {
       case Constants.CREATION_CASE.RIPARAZIONE_MANUTENZIONE_CHECKUP:
-      this.tabValues = Constants.APERTE_FIRST_VALUES;
+        this.tabValues = Constants.APERTE_FIRST_VALUES;
         this.isFirstCase = true;
         break;
       case Constants.CREATION_CASE.RIMBORSO_ASSICURATIVO_RCA:
@@ -58,6 +58,16 @@ export class InsertApertePage {
     if(this.checkedTabs.indexOf(value) === -1){
       this.checkedTabs.push(value);
     }
+  }
+
+  /**
+   * On clicked back button event to select previous tab
+   */
+  public handleBackSelect(): void {    
+    if (this.selectedTab > 0) {
+      this.selectedTab = this.selectedTab - 1;
+    }    
+    console.log("Active tab", this.selectedTab);    
   }
 
 }
