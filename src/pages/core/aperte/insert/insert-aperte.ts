@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { GeneralProvider } from '../../../../providers/general';
 import { Globals } from '../../../../shared/globals';
 import * as Constants from '../../../../shared/constants';
 
@@ -30,7 +31,9 @@ export class InsertApertePage {
 
   public pratica: any = {};  // pratica body data
 
-  constructor(public navCtrl: NavController, public globals: Globals) {
+  public options: any = {};  // Pratica Options
+
+  constructor(public navCtrl: NavController, public globals: Globals, private generalProvider: GeneralProvider) {
     // check the first tab when created this modal
     this.checkedTabs.push(this.selectedTab);
 
@@ -48,6 +51,8 @@ export class InsertApertePage {
         this.isSecondCase = true;
         break;
     }
+
+    this.initOptions();
 
   }
 
@@ -68,6 +73,17 @@ export class InsertApertePage {
       this.selectedTab = this.selectedTab - 1;
     }    
     console.log("Active tab", this.selectedTab);    
+  }
+
+  /**
+   * GetOptions via API call
+   */
+  private initOptions(): void {
+    this.generalProvider.getOptions(this.globals.praticaTipoID)
+      .then((res: any) => {
+        this.options = res;
+      })
+      .catch(err => console.log('ERROR: ', err));
   }
 
 }
