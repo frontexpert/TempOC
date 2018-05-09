@@ -6,6 +6,7 @@ import { SwitcherComponent } from './switcher/switcher';
 import { ExpandableComponent } from './expandable/expandable';
 import { DateInputComponent } from './date-input/date-input';
 import { FuelRating } from './fuel-rating/fuel-rating';
+import { SelectInputComponent } from './select-input/select-input';
 
 @NgModule({
 	declarations: [SidebarComponent,
@@ -13,13 +14,15 @@ import { FuelRating } from './fuel-rating/fuel-rating';
     SwitcherComponent,
     ExpandableComponent,
     DateInputComponent,
-    FuelRating],
+    FuelRating,
+    SelectInputComponent],
 	imports: [IonicModule],
 	exports: [SidebarComponent,
     SidebarItemComponent,
     SwitcherComponent,
     ExpandableComponent,
     DateInputComponent,
-    FuelRating]
+    FuelRating,
+    SelectInputComponent]
 })
 export class ComponentsModule {}

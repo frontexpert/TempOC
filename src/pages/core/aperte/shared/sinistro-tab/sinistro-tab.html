@@ -8,25 +8,16 @@
         <date-input label="ORA" required="true" [(ngModel)]="pratica.SinistroOra" name="Ora"></date-input>
       </ion-col>
       <ion-col col-6 class="custom-input">
-        <div class="input-item-label">PRESUNTA ENTITÀ DI COSTO </div>
-        <ion-item>
-          <ion-input [(ngModel)]="pratica.SinistroTipoCostoID" [ngModelOptions]="{standalone: true}"></ion-input>
-        </ion-item>
+        <select-input label="PRESUNTA ENTITÀ DI COSTO" interface="popover" [(ngModel)]="pratica.SinistroTipoCostoID" [ngModelOptions]="{standalone: true}" [options]="entitaCostiList"></select-input>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col col-6 class="custom-input">
-        <div class="input-item-label">CIRCOSTANZE VEICOLO CLIENTE</div>
-        <ion-item>
-          <ion-input [(ngModel)]="pratica.SinistroP1CircostanzaID" [ngModelOptions]="{standalone: true}"></ion-input>
-        </ion-item>
+        <select-input label="CIRCOSTANZE VEICOLO CLIENTE" [(ngModel)]="pratica.SinistroP1CircostanzaID" [ngModelOptions]="{standalone: true}" [options]="circostanzeList"></select-input>
       </ion-col>
       <ion-col col-6 class="custom-input">
-        <div class="input-item-label">CIRCOSTANZE VEICOLO CONTROPARTE</div>
-        <ion-item>
-          <ion-input [(ngModel)]="pratica.SinistroP2CircostanzaID" [ngModelOptions]="{standalone: true}"></ion-input>
-        </ion-item>
+        <select-input label="CIRCOSTANZE VEICOLO CONTROPARTE" [(ngModel)]="pratica.SinistroP2CircostanzaID" [ngModelOptions]="{standalone: true}" [options]="circostanzeList"></select-input>
       </ion-col>    
     </ion-row>
 

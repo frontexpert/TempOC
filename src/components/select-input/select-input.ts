@@ -23,7 +23,7 @@ import {ElementBase} from '../form';
   template: `
     <div class="input-item-label" *ngIf="label">{{label}}</div>
     <ion-item>
-      <ion-select interface="popover" 
+      <ion-select [interface]="interface"
                   (ionChange)="selectValue(value)" 
                   [(ngModel)]="value" 
                   [ngClass]="{invalid: (invalid | async)}"
@@ -42,6 +42,7 @@ import {ElementBase} from '../form';
 export class SelectInputComponent extends ElementBase<string> {
 
   @Input() public label: string;  
+  @Input() public interface?: string;
   @Input() public options = [];
   @Input() public placeholder: string;
   @Input() public disabled: boolean = false;
@@ -49,7 +50,6 @@ export class SelectInputComponent extends ElementBase<string> {
   @Output() change: EventEmitter<any> = new EventEmitter();
 
   @ViewChild(NgModel) model: NgModel;
-
 
   constructor(
     @Optional() @Inject(NG_VALIDATORS) validators: Array<any>,

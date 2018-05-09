@@ -5,6 +5,7 @@ import { ClienteTabComponent } from './cliente-tab/cliente-tab';
 import { VeicoloTabComponent } from './veicolo-tab/veicolo-tab';
 import { SinistroTabComponent } from './sinistro-tab/sinistro-tab';
 import { ControparteTabComponent } from './controparte-tab/controparte-tab';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 	declarations: [
@@ -15,6 +16,7 @@ import { ControparteTabComponent } from './controparte-tab/controparte-tab';
   ],
 	imports: [IonicModule,
     ComponentsModule,
+    NgbModule
   ],
 	exports: [
     VeicoloTabComponent,

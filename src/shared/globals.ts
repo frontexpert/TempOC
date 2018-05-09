@@ -69,5 +69,45 @@ export class Globals {
     }
   }
 
+  /**
+   * Parse array of response to Select list array
+   * @param  {Array<any>} array from response
+   * @return {Array<any>} select list array
+   */
+  public parseArrayToSelectList(arr: Array<any>): Array<any> {
+    let returnArray: Array<any> = [];
+    if (arr == undefined) {
+      return returnArray;
+    }
+    
+    arr.forEach(v => {
+      returnArray.push({
+        value: v.ID,
+        text: v.Nome
+      });
+    });
+    return returnArray;
+  }
+
+  /**
+   * Parse array of response to Select list array
+   * @param  {Array<any>} array from response
+   * @return {Array<any>} select list array
+   */
+  public parseCircostanzeToSelectList(arr: Array<any>): Array<any> {
+    let returnArray: Array<any> = [];
+    if (arr == undefined) {
+      return returnArray;
+    }
+
+    arr.forEach(v => {
+      returnArray.push({
+        value: v.ID,
+        text: v.Circostanza
+      });
+    });
+    return returnArray;
+  }
+
 
 }
