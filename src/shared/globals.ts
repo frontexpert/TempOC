@@ -109,5 +109,47 @@ export class Globals {
     return returnArray;
   }
 
+  /**
+   * Parse array of response to Autocomplete list for country
+   * @param  {Array<any>} array from response
+   * @return {Array<any>} select list array
+   */
+  public parseCountryToAutocompleteList(arr: Array<any>): Array<any> {
+    let returnArray: Array<any> = [];
+
+    if (arr == undefined) {
+      return returnArray;
+    }
+
+    arr.forEach(v => {
+      returnArray.push({
+        name: v.Nome
+      });
+    });
+
+    return returnArray;
+  }
+
+  /**
+   * Parse array of response to Autocomplete list for city
+   * @param  {Array<any>} array from response
+   * @return {Array<any>} select list array
+   */
+  public parseCityToAutocompleteList(arr: Array<any>): Array<any> {
+    let returnArray: Array<any> = [];
+
+    if (arr == undefined) {
+      return returnArray;
+    }
+
+    arr.forEach(v => {
+      returnArray.push({
+        name: v.NomeCompleto
+      });
+    });
+
+    return returnArray;
+  }
+
 
 }

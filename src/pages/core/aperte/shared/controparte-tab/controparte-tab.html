@@ -27,10 +27,7 @@
 
     <ion-row>
       <ion-col col-3 class="custom-input">
-        <div class="input-item-label">TIPOLOGIA VEICOLO</div>
-        <ion-item>
-          <ion-input [(ngModel)]="pratica.P2_VeicoloTipoID" [ngModelOptions]="{standalone: true}"></ion-input>
-        </ion-item>
+        <select-input label="TIPOLOGIA VEICOLO" interface="popover" [(ngModel)]="pratica.P2_VeicoloTipoID" [ngModelOptions]="{standalone: true}" [options]="tipologiaVeicoloList"></select-input>
       </ion-col>
       <ion-col col-3 class="custom-input">
         <div class="input-item-label">MARCA VEICOLO <span class="required">*</span></div>

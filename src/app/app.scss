@@ -223,6 +223,16 @@
 // ng-bootstrap typeahead styles
 .ngb-typeahead-input {
   position: relative;
+  margin-bottom: 18px;
+  .typeahead-icon {
+    background: url(../assets/imgs/input-caret.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    right: 10px;
+    top: 30%;
+  }
 }
 .dropdown-menu {
   position: absolute;

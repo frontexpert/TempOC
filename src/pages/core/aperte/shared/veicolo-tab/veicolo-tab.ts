@@ -7,8 +7,11 @@ import { Globals } from '../../../../../shared/globals';
   templateUrl: 'veicolo-tab.html'
 })
 export class VeicoloTabComponent {
+	
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
+
   @Input() pratica: any;
+
   @Input('options')
   get options(): any {
   	return this.innerOptionsValue;
