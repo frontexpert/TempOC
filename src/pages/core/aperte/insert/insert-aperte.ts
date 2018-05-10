@@ -5,6 +5,8 @@ import { GeneralProvider } from '../../../../providers/general';
 import { Globals } from '../../../../shared/globals';
 import * as Constants from '../../../../shared/constants';
 
+import { Options } from '../../../../models/general';
+
 /**
  * Generated class for the PratichePage page.
  *
@@ -31,7 +33,7 @@ export class InsertApertePage {
 
   public pratica: any = {};  // pratica body data
 
-  public options: any = {};  // Pratica Options
+  public options: Options = new Options();  // Pratica Options
 
   constructor(public navCtrl: NavController, public globals: Globals, private generalProvider: GeneralProvider) {
     // check the first tab when created this modal
@@ -63,6 +65,8 @@ export class InsertApertePage {
     if(this.checkedTabs.indexOf(value) === -1){
       this.checkedTabs.push(value);
     }
+
+    console.log("Pratica values is:", this.pratica);
   }
 
   /**
@@ -80,8 +84,8 @@ export class InsertApertePage {
    */
   private initOptions(): void {
     this.generalProvider.getOptions(this.globals.praticaTipoID)
-      .then((res: any) => {
-        this.options = res;
+      .then((opt: Options) => {
+        this.options = opt;
       })
       .catch(err => console.log('ERROR: ', err));
   }

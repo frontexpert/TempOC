@@ -4,6 +4,7 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 import { GeneralProvider } from '../../../../../providers/general';
 import { Globals } from '../../../../../shared/globals';
+import { CompleteList } from '../../../../../models/general';
 
 
 @Component({
@@ -15,12 +16,12 @@ export class ClienteTabComponent {
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
 
   @Output() onBackTab: EventEmitter<any> = new EventEmitter();
-  
+
   @Input() pratica: any;
 
   // Properties
-  countries: any[] = [];
-  cities: any[] = [];
+  countries: CompleteList[] = [];
+  cities: CompleteList[] = [];
 
   constructor(private general: GeneralProvider, private globals: Globals) {
     this.initDropdownList();

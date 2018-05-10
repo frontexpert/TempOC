@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Platform, LoadingController, AlertController } from 'ionic-angular';
+import { Country, Comune, Common, CompleteList, Circostanze } from '../models/general';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable()
@@ -17,7 +19,7 @@ export class Globals {
   private _loadingSpinner: any = null;
   private is_loading: boolean = false;
 
-  constructor(public loadingCtrl: LoadingController) {
+  constructor(public loadingCtrl: LoadingController, private toastr: ToastrService) {
     this._loadingSpinner = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: ``
@@ -72,10 +74,10 @@ export class Globals {
   /**
    * Parse array of response to Select list array
    * @param  {Array<any>} array from response
-   * @return {Array<any>} select list array
+   * @return {Array<CompleteList>} select list array
    */
-  public parseArrayToSelectList(arr: Array<any>): Array<any> {
-    let returnArray: Array<any> = [];
+  public parseArrayToSelectList(arr: Array<Common>): Array<CompleteList> {
+    let returnArray: Array<CompleteList> = [];
     if (arr == undefined) {
       return returnArray;
     }
@@ -94,8 +96,8 @@ export class Globals {
    * @param  {Array<any>} array from response
    * @return {Array<any>} select list array
    */
-  public parseCircostanzeToSelectList(arr: Array<any>): Array<any> {
-    let returnArray: Array<any> = [];
+  public parseCircostanzeToSelectList(arr: Array<Circostanze>): Array<CompleteList> {
+    let returnArray: Array<CompleteList> = [];
     if (arr == undefined) {
       return returnArray;
     }
@@ -114,8 +116,8 @@ export class Globals {
    * @param  {Array<any>} array from response
    * @return {Array<any>} select list array
    */
-  public parseCountryToAutocompleteList(arr: Array<any>): Array<any> {
-    let returnArray: Array<any> = [];
+  public parseCountryToAutocompleteList(arr: Array<Country>): Array<CompleteList> {
+    let returnArray: Array<CompleteList> = [];
 
     if (arr == undefined) {
       return returnArray;
@@ -135,8 +137,8 @@ export class Globals {
    * @param  {Array<any>} array from response
    * @return {Array<any>} select list array
    */
-  public parseCityToAutocompleteList(arr: Array<any>): Array<any> {
-    let returnArray: Array<any> = [];
+  public parseCityToAutocompleteList(arr: Array<Comune>): Array<CompleteList> {
+    let returnArray: Array<CompleteList> = [];
 
     if (arr == undefined) {
       return returnArray;
@@ -149,6 +151,23 @@ export class Globals {
     });
 
     return returnArray;
+  }
+
+  /**
+   * Show toast windows in the bottom of window
+   * duration is default 3000
+   * @param {string} msg message text
+   */
+  public showToastSuccess(msg: string) {
+    this.toastr.success(msg);
+  }
+
+  public showToastInfo(msg: string) {
+    this.toastr.info(msg);
+  }
+
+  public showToastError(msg: string) {
+    this.toastr.error(msg);
   }
 
 
