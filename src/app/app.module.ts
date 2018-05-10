@@ -13,7 +13,10 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
 import { FileTransfer } from '@ionic-native/file-transfer'
+
+/** Import thrid party components */
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -43,6 +46,7 @@ import { GeneralProvider } from '../providers/general';
     HttpClientModule,
     IonicStorageModule.forRoot(),
     NgbModule.forRoot(),
+    ToastrModule.forRoot(),
     CorePageModule,
     ComponentsModule
   ],
