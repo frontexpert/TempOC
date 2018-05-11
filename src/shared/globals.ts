@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Platform, LoadingController, AlertController } from 'ionic-angular';
-import { Country, Comune, Common, CompleteList, Circostanze } from '../models/general';
+import { Country, Comune, Common, CompleteListItem, Circostanze } from '../models/general';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -74,10 +74,10 @@ export class Globals {
   /**
    * Parse array of response to Select list array
    * @param  {Array<any>} array from response
-   * @return {Array<CompleteList>} select list array
+   * @return {Array<CompleteListItem>} select list array
    */
-  public parseArrayToSelectList(arr: Array<Common>): Array<CompleteList> {
-    let returnArray: Array<CompleteList> = [];
+  public parseArrayToSelectList(arr: Array<Common>): Array<CompleteListItem> {
+    let returnArray: Array<CompleteListItem> = [];
     if (arr == undefined) {
       return returnArray;
     }
@@ -93,11 +93,11 @@ export class Globals {
 
   /**
    * Parse array of response to Select list array
-   * @param  {Array<any>} array from response
-   * @return {Array<any>} select list array
+   * @param  {Array<Circostanze>} array from response
+   * @return {Array<CompleteListItem>} select list array
    */
-  public parseCircostanzeToSelectList(arr: Array<Circostanze>): Array<CompleteList> {
-    let returnArray: Array<CompleteList> = [];
+  public parseCircostanzeToSelectList(arr: Array<Circostanze>): Array<CompleteListItem> {
+    let returnArray: Array<CompleteListItem> = [];
     if (arr == undefined) {
       return returnArray;
     }
@@ -113,11 +113,11 @@ export class Globals {
 
   /**
    * Parse array of response to Autocomplete list for country
-   * @param  {Array<any>} array from response
-   * @return {Array<any>} select list array
+   * @param  {Array<Country>} array from response
+   * @return {Array<CompleteListItem>} select list array
    */
-  public parseCountryToAutocompleteList(arr: Array<Country>): Array<CompleteList> {
-    let returnArray: Array<CompleteList> = [];
+  public parseCountryToAutocompleteList(arr: Array<Country>): Array<CompleteListItem> {
+    let returnArray: Array<CompleteListItem> = [];
 
     if (arr == undefined) {
       return returnArray;
@@ -134,11 +134,11 @@ export class Globals {
 
   /**
    * Parse array of response to Autocomplete list for city
-   * @param  {Array<any>} array from response
-   * @return {Array<any>} select list array
+   * @param  {Array<Comune>} array from response
+   * @return {Array<CompleteListItem>} select list array
    */
-  public parseCityToAutocompleteList(arr: Array<Comune>): Array<CompleteList> {
-    let returnArray: Array<CompleteList> = [];
+  public parseCityToAutocompleteList(arr: Array<Comune>): Array<CompleteListItem> {
+    let returnArray: Array<CompleteListItem> = [];
 
     if (arr == undefined) {
       return returnArray;

@@ -56,8 +56,6 @@
         <div class="input-item-label">Comune <span class="required">*</span></div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" required
-                  [(ngModel)]="pratica.SinistroComune"
-                  [ngModelOptions]="{standalone: true}" 
                   [ngbTypeahead]="searchCities" 
                   [resultTemplate]="rt" 
                   [inputFormatter]="typeahead_formatter" 

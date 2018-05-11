@@ -4,7 +4,7 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 import { GeneralProvider } from '../../../../../providers/general';
 import { Globals } from '../../../../../shared/globals';
-import { CompleteList } from '../../../../../models/general';
+import { CompleteListItem } from '../../../../../models/general';
 
 
 @Component({
@@ -20,8 +20,8 @@ export class ClienteTabComponent {
   @Input() pratica: any;
 
   // Properties
-  countries: CompleteList[] = [];
-  cities: CompleteList[] = [];
+  countries: CompleteListItem[] = [];
+  cities: CompleteListItem[] = [];
 
   constructor(private general: GeneralProvider, private globals: Globals) {
     this.initDropdownList();
@@ -56,7 +56,16 @@ export class ClienteTabComponent {
    * On select country item
    * @param item 
    */
+  onSelectCountyOfBirth(item: CompleteListItem) {
+  	this.pratica.P1_LuogoNascitaNazione = item.name;
+  }
+
+  /**
+   * On select country item
+   * @param item 
+   */
   onSelectCounty(item) {
+  	this.pratica.P1_ResidenzaNazione = item.name;
   }
 
   /**
@@ -75,5 +84,6 @@ export class ClienteTabComponent {
    * @param item 
    */
   onSelectCity(item) {
+  	this.pratica.P1_ResidenzaComune = item.name;
   }
 }

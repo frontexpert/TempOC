@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Globals } from '../../../../../shared/globals';
-import { Options, CompleteList } from '../../../../../models/general';
+import { Options, CompleteListItem } from '../../../../../models/general';
 
 @Component({
   selector: 'controparte-tab',
@@ -26,7 +26,7 @@ export class ControparteTabComponent {
   }
   private innerOptionsValue: Options;
 
-  tipologiaVeicoloList: Array<CompleteList> = [];
+  tipologiaVeicoloList: Array<CompleteListItem> = [];
 
   constructor(public globals: Globals) {
     

@@ -5,7 +5,7 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import { GeneralProvider } from '../../../../../providers/general';
 import { Globals } from '../../../../../shared/globals';
 
-import { Options, CompleteList, Comune } from '../../../../../models/general';
+import { Options, CompleteListItem, Comune } from '../../../../../models/general';
 
 @Component({
   selector: 'sinistro-tab',
@@ -32,10 +32,10 @@ export class SinistroTabComponent {
   }
   private innerOptionsValue: Options;
 
-  entitaCostiList: Array<CompleteList> = [];
-  circostanzeList: Array<CompleteList> = [];
+  entitaCostiList: Array<CompleteListItem> = [];
+  circostanzeList: Array<CompleteListItem> = [];
 
-  cities: Array<CompleteList> = [];
+  cities: Array<CompleteListItem> = [];
 
   constructor(public globals: Globals, private general: GeneralProvider) {
     this.initDropdownList();
@@ -68,5 +68,6 @@ export class SinistroTabComponent {
    * @param item 
    */
   onSelectCity(item) {
+  	this.pratica.SinistroComune = item.name;
   }
 }

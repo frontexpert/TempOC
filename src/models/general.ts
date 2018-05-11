@@ -32,7 +32,7 @@ export class Options {
 	TipologieVeicolo: Common[];
 };
 
-export class CompleteList {
+export class CompleteListItem {
 	name?: string;
 	value?: number;
 	text?: string;

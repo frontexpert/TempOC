@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { GeneralProvider } from '../../../../providers/general';
+import { PracticesProvider } from '../../../../providers/practices';
 import { Globals } from '../../../../shared/globals';
 import * as Constants from '../../../../shared/constants';
 
@@ -35,7 +36,7 @@ export class InsertApertePage {
 
   public options: Options = new Options();  // Pratica Options
 
-  constructor(public navCtrl: NavController, public globals: Globals, private generalProvider: GeneralProvider) {
+  constructor(public navCtrl: NavController, public globals: Globals, private practicaProvider: PracticesProvider, private generalProvider: GeneralProvider) {
     // check the first tab when created this modal
     this.checkedTabs.push(this.selectedTab);
 
@@ -58,21 +59,39 @@ export class InsertApertePage {
 
   }
 
-  handleSelectTab(val): void {
-    const value = val.value || val;
-    this.selectedTab = value;
-    console.log(this.selectedTab)
-    if(this.checkedTabs.indexOf(value) === -1){
-      this.checkedTabs.push(value);
+  handleNextSelection(): void {    
+    if(this.checkedTabs.indexOf(this.selectedTab) === -1){
+      this.checkedTabs.push(this.selectedTab);
     }
 
+    if (this.selectedTab < this.tabValues.length - 1) {
+      this.selectedTab++;
+    }    
+    else {
+      // save to insert pratica
+      this.pratica.TipoID = this.globals.praticaTipoID; // set TipoID
+      
+      this.globals.showLoading().then(() => {
+        this.practicaProvider.post(this.pratica).then(res => {
+          this.globals.hideLoading();
+          console.log("Insert Pratica response: ", res);
+          this.globals.showToastSuccess('Success saved Pratica.');
+        })
+        .catch(err => {
+          this.globals.hideLoading();
+          console.log("Insert Pratica errors: ", err);
+          this.globals.showToastError('Something went wrong.');
+        });
+      });      
+    }
+    console.log(this.selectedTab);
     console.log("Pratica values is:", this.pratica);
   }
 
   /**
    * On clicked back button event to select previous tab
    */
-  public handleBackSelect(): void {    
+  public handleBackSelection(): void {    
     if (this.selectedTab > 0) {
       this.selectedTab = this.selectedTab - 1;
     }    

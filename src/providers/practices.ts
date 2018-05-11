@@ -140,7 +140,7 @@ export class PracticesProvider {
    * Send a POST request to Pratica Insert
    * @param body
    */
-  insert(body: any) {    
+  post(body: any) {    
     let promise = new Promise((resolve, reject) => {
       this.api.post('Pratica/Insert/matteo.polacchini@sitesolutions.it/matteomatteo/', body).subscribe((res: any) => {
         if (res.success) {

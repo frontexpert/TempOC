@@ -170,3 +170,8 @@ $font-family-base: "Open Sans", sans-serif !default;
     clear: both;
   }
 }
+
+
+// Third party plugin styles
+// ------------------------------------------------------
+@import "./toastr";

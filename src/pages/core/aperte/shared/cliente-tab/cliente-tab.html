@@ -41,13 +41,11 @@
         <div class="input-item-label">nazione di nascita</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
-                [(ngModel)]="pratica.P1_LuogoNascitaNazione"
-                [ngModelOptions]="{standalone: true}" 
                 [ngbTypeahead]="searchCounty" 
                 [resultTemplate]="rt" 
                 [inputFormatter]="typeahead_formatter" 
                 [disabled]="countries.length == 0"
-                (selectItem)="onSelectCounty($event.item)">
+                (selectItem)="onSelectCountyOfBirth($event.item)">
           <div class="typeahead-icon"></div>
         </div>
       </ion-col>
@@ -88,8 +86,6 @@
         <div class="input-item-label">nazione</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
-                [(ngModel)]="pratica.P1_ResidenzaNazione"
-                [ngModelOptions]="{standalone: true}" 
                 [ngbTypeahead]="searchCounty" 
                 [resultTemplate]="rt" 
                 [inputFormatter]="typeahead_formatter" 
@@ -102,8 +98,6 @@
         <div class="input-item-label">comune</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
-                  [(ngModel)]="pratica.P1_ResidenzaComune"
-                  [ngModelOptions]="{standalone: true}" 
                   [ngbTypeahead]="searchCities" 
                   [resultTemplate]="rt" 
                   [inputFormatter]="typeahead_formatter" 
