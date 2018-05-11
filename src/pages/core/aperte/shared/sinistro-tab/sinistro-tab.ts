@@ -63,6 +63,8 @@ export class SinistroTabComponent {
         : this.cities.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1))
     );
 
+  typeahead_formatter = (x: {name: string}) => x.name;
+
   /**
    * On select city item
    * @param item 
