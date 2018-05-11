@@ -4,8 +4,8 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 import { GeneralProvider } from '../../../../../providers/general';
 import { Globals } from '../../../../../shared/globals';
-
 import { Options, CompleteListItem, Comune } from '../../../../../models/general';
+import * as CONSTANTS from '../../../../../shared/constants';
 
 @Component({
   selector: 'sinistro-tab',
@@ -36,6 +36,8 @@ export class SinistroTabComponent {
   circostanzeList: Array<CompleteListItem> = [];
 
   cities: Array<CompleteListItem> = [];
+
+  responsibility: string = ""; 	// Display Presunta	Responsabilità
 
   constructor(public globals: Globals, private general: GeneralProvider) {
     this.initDropdownList();
@@ -71,5 +73,13 @@ export class SinistroTabComponent {
    */
   onSelectCity(item) {
   	this.pratica.SinistroComune = item.name;
+  }
+
+  /**
+   * On change "CIRCOSTANZE VEICOLO CLIENTE" and "CIRCOSTANZE VEICOLO CONTROPARTE" selection
+   */
+  onChangeResponsibility() {
+  	if (this.pratica.SinistroP1CircostanzaID && this.pratica.SinistroP2CircostanzaID)
+  		this.responsibility = CONSTANTS.PRESENT_RESPONSIBILITY[CONSTANTS.BAREME[this.pratica.SinistroP1CircostanzaID - 1][this.pratica.SinistroP2CircostanzaID - 1]];
   }
 }
