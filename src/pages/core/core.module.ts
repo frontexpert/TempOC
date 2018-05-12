@@ -8,6 +8,7 @@ import { CarRentalPageModule } from './car-rental/car-rental.module';
 import { PdfPreviewPageModule } from './shared/pdf-preview/pdf-preview.module';
 import { SignatureModalPageModule } from './shared/signature-modal/signature-modal.module';
 import { PreventiviPageModule } from './preventivi/preventivi.module';
+import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PreventiviPageModule } from './preventivi/preventivi.module';
     ChiusePageModule,
     PreventiviPageModule,
     CarRentalPageModule,
+    InLavorazionePageModule,
     PdfPreviewPageModule,
     SignatureModalPageModule
   ],

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import * as Constants from '../../../shared/constants';
+import * as CONSTANTS from '../../../shared/constants';
 import { PracticesProvider } from '../../../providers/practices';
 import { PhotosProvider } from '../../../providers/photos';
 import { DocumentsProvider } from '../../../providers/documents';
@@ -19,8 +19,7 @@ import { CarRentalProvider } from '../../../providers/car-rental';
 @IonicPage()
 @Component({
   selector: 'page-chiuse',
-  templateUrl: 'chiuse.html',
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: 'chiuse.html'
 })
 export class ChiusePage {
 
@@ -35,7 +34,7 @@ export class ChiusePage {
   quoteList: any[];
   noleggioList: any[];
 
-  tabValues = Constants.PRATICHE_TAB_VALUES;
+  tabValues = CONSTANTS.PRATICHE_TAB_VALUES;
 
   checkedTabs: Array<number> = [];
 
@@ -49,7 +48,7 @@ export class ChiusePage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              private _practice: PracticesProvider, 
+              private _practices: PracticesProvider, 
               private _photos: PhotosProvider,
               private _documents: DocumentsProvider,
               private _carRental: CarRentalProvider,
@@ -62,8 +61,8 @@ export class ChiusePage {
       // show loading spinner
       this.globals.showLoading();
       // load list 
-      this._practice.get(this.page).then((res: any) => {
-        console.log("Success in this._practice.get()");
+      this._practices.get(this.page).then((res: any) => {
+        console.log("Success in this.practices.get()");
         if (this.globals.praticaList.length == 0) this.globals.praticaList = res;
         // hide loading spinner
         this.globals.hideLoading();
@@ -92,11 +91,11 @@ export class ChiusePage {
       this.globals.showLoading().then(() => {
 
         let promises = [
-          this._practice.getDetails(item.ID), 
-          this._practice.getPaymentDetails(item.ID), 
+          this._practices.getDetails(item.ID), 
+          this._practices.getPaymentDetails(item.ID), 
           this._photos.getPhotos(item.ID),
           this._documents.getDocuments(item.ID),
-          this._practice.getQuoteList(item.ID),
+          this._practices.getQuoteList(item.ID),
           this._carRental.getNoleggioList(item.ID)
         ];
 
@@ -171,11 +170,12 @@ export class ChiusePage {
 
     return new Promise((resolve) => {
       this.page ++;
-      this._practice.get(this.page).then((res: any) => {
-        this.globals.praticaList = this.globals.praticaList.concat(res);
+      this._practices.get(this.page).then((res: any) => {
+        console.log('Chiuse list: ', this._practices.chiuse_list);
+        // this.globals.praticaList = this.globals.praticaList.concat(res);
         //this.globals.praticaList = res;
-        console.log('this.globals.praticaList');
-        console.log(this.globals.praticaList);
+        // console.log('this.globals.praticaList');
+        // console.log(this.globals.praticaList);
         resolve();
       })
       .catch(err => {
