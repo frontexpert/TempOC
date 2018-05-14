@@ -10,6 +10,12 @@ import { Api } from './api';
 @Injectable()
 export class PracticesProvider {
 
+  public aperte_list: Array<any> = [];
+
+  public lavorazione_list: Array<any> = [];
+
+  public chiuse_list: Array<any> = [];
+
   constructor(public api: Api) {
     console.log('Hello PracticesProvider Provider');
   }
@@ -20,7 +26,7 @@ export class PracticesProvider {
    * @param pageSize size of page
    * @return {Promise}
    */
-  get(pageNumber: number, pageSize = 50) {
+  get(pageNumber: number, pageSize: number = 50) {
     let promise = new Promise((resolve, reject) => {
       let params = {
         Page: pageNumber,
@@ -29,6 +35,7 @@ export class PracticesProvider {
       this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {
           if (res.success) {
           console.log(res.data);
+          this.filterPraticaList(res.data);
           resolve(res.data);
         }
         else
@@ -48,8 +55,9 @@ export class PracticesProvider {
   getAllPratices() {
     let promise = new Promise((resolve, reject) => {
       this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo').subscribe((res: any) => {
-          if (res.success) {
+        if (res.success) {
           console.log(res.data);
+          this.filterPraticaList(res.data);
           resolve(res.data);
         }
         else
@@ -154,6 +162,28 @@ export class PracticesProvider {
     });
 
     return promise;
+  }
+
+  /**
+   * classify the full pratica list response data into three classes(by state)
+   * @param {Array<any>} pratica_list [description]
+   */
+  private filterPraticaList(pratica_list: Array<any>) {
+    if (pratica_list.length > 0) {
+      pratica_list.forEach(v => {
+        switch (v.StatoMacroID) {
+           case 1:
+             this.aperte_list.push(v);
+             break;
+           case 2:
+             this.lavorazione_list.push(v);
+             break;
+           case 3:
+             this.chiuse_list.push(v);
+             break;
+         };
+      });
+    }
   }
 
 }

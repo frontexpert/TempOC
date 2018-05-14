@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Platform, LoadingController, AlertController } from 'ionic-angular';
+import { Platform, LoadingController } from 'ionic-angular';
 import { Country, Comune, Common, CompleteListItem, Circostanze } from '../models/general';
 import { ToastrService } from 'ngx-toastr';
 
@@ -8,7 +8,8 @@ import { ToastrService } from 'ngx-toastr';
 export class Globals {
 
   activeSideMenuItem: string = 'aperte';
-  praticaList = [];
+
+  praticaList: Array<any> = [];
 
   praticaTipoID: number;
 
@@ -19,11 +20,15 @@ export class Globals {
   private _loadingSpinner: any = null;
   private is_loading: boolean = false;
 
-  constructor(public loadingCtrl: LoadingController, private toastr: ToastrService) {
+  constructor(public platform: Platform, public loadingCtrl: LoadingController, private toastr: ToastrService) {
     this._loadingSpinner = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: ``
     });
+  }
+
+  isPhonegap(): boolean {
+    return this.platform.is("cordova");
   }
 
   /**

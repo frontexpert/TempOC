@@ -6,13 +6,10 @@ import { ChiusePage } from './chiuse/chiuse';
 import { CarRentalPage } from './car-rental/car-rental';
 import { ApertePage } from './aperte/aperte';
 import { PreventiviPage } from './preventivi/preventivi';
+import { InLavorazionePage } from './in-lavorazione/in-lavorazione';
 
-/**
- * Generated class for the CorePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Globals } from '../../shared/globals';
+
 
 @IonicPage()
 @Component({
@@ -25,17 +22,19 @@ export class CorePage {
 
   pages = {
     'aperte': ApertePage,
+    'in lavorazione': InLavorazionePage,
     'chiuse': ChiusePage,
     'preventivi': PreventiviPage,
     'noleggio': CarRentalPage,
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, private globals: Globals) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CorePage');
   }
+
   onSidebarNavigate(item) {
     if (item == "car") {
       // let options: InAppBrowserOptions = {
@@ -47,7 +46,7 @@ export class CorePage {
       this.openInAppBrowser();
     }
     else {
-      this.nav.push(this.pages[item]);
+      this.nav.setRoot(this.pages[item]);
     }
   }
 
@@ -62,44 +61,46 @@ export class CorePage {
     
     const win = this.iab.create('http://www.sitesolutions.it', '_blank', options);
  
-    win.on('loaderror').subscribe(event => {
-      console.log('load error');
-      alert('load error');
-      console.log (event);
-    }); 
-    win.on('loadstop').subscribe(event => {
-        //injecting the CSS
-        win.insertCSS({
-          code: ".youtube_done_button { position: fixed; bottom: 0; width: 100%; background: rgba(0, 0, 0, 0.8); color: #2196F3; padding: 10px; font-size: 20px;}"   
-        });
-  
- 
-        //setting close to false when the InAppBrowser is opened
-        win.executeScript({
-          code: "localStorage.setItem('close', 'false');"
-        });
-
-        //creating and attaching a button with click listener to the opened page
-        win.executeScript({
-          code: "(function() { var body = document.querySelector('body'); var button = document.createElement('div'); button.innerHTML = 'Done'; button.classList.add('youtube_done_button'); button.onclick = function() { localStorage.setItem('close', 'true');  }; body.appendChild(button); })();"                
-        });
- 
-        closeLoop = setInterval(function() {
-          win.executeScript({
-
-            code: "localStorage.getItem('close');"
-
-          }).then( function(values) {
-              close = values[0];
-              console.log("close=" + close);
-              if (close == "true") {
-                  clearInterval(closeLoop);
-                  win.close();
-              }
+    if (this.globals.isPhonegap()) {
+      win.on('loaderror').subscribe(event => {
+        console.log('load error');
+        alert('load error');
+        console.log (event);
+      }); 
+      win.on('loadstop').subscribe(event => {
+          //injecting the CSS
+          win.insertCSS({
+            code: ".youtube_done_button { position: fixed; bottom: 0; width: 100%; background: rgba(0, 0, 0, 0.8); color: #2196F3; padding: 10px; font-size: 20px;}"   
           });
-        }, 1000);
-    });
-    win.show();
+    
+   
+          //setting close to false when the InAppBrowser is opened
+          win.executeScript({
+            code: "localStorage.setItem('close', 'false');"
+          });
+
+          //creating and attaching a button with click listener to the opened page
+          win.executeScript({
+            code: "(function() { var body = document.querySelector('body'); var button = document.createElement('div'); button.innerHTML = 'Done'; button.classList.add('youtube_done_button'); button.onclick = function() { localStorage.setItem('close', 'true');  }; body.appendChild(button); })();"                
+          });
+   
+          closeLoop = setInterval(function() {
+            win.executeScript({
+
+              code: "localStorage.getItem('close');"
+
+            }).then( function(values) {
+                close = values[0];
+                console.log("close=" + close);
+                if (close == "true") {
+                    clearInterval(closeLoop);
+                    win.close();
+                }
+            });
+          }, 1000);
+      });
+      win.show();
+    }
   }
   
   /**

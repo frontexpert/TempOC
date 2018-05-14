@@ -31,14 +31,13 @@ export class LoginPage {
     // load list 
     this._practice.getAllPratices().then((res: any) => {
       console.log("Success in getting all practices list");
-      this.globals.praticaList = res;
-      // hide loading spinner
+      this.globals.praticaList = res;      
     })
     .catch(err => {
       console.log("failed in getting all practices list");
       console.log(err);
-      // hide loading spinner
     });
+    
     this.navCtrl.setRoot(CorePage);
   }
 
