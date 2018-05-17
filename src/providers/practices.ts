@@ -170,20 +170,44 @@ export class PracticesProvider {
    */
   private filterPraticaList(pratica_list: Array<any>) {
     if (pratica_list.length > 0) {
-      pratica_list.forEach(v => {
-        switch (v.StatoMacroID) {
-           case 1:
-             this.aperte_list.push(v);
-             break;
-           case 2:
-             this.lavorazione_list.push(v);
-             break;
-           case 3:
-             this.chiuse_list.push(v);
-             break;
-         };
+      this.aperte_list = pratica_list.filter(item => {
+        return item.StatoMacroID == 1;
+      });      
+      console.log('aperte_list', this.aperte_list)
+      this.lavorazione_list = pratica_list.filter(item => {
+        return item.StatoMacroID == 2;
       });
+      console.log('lavorazione_list', this.lavorazione_list)
+      this.chiuse_list = pratica_list.filter(item => {
+        return item.StatoMacroID == 3;
+      });
+      console.log('chiuse_list', this.chiuse_list)      
     }
+  }
+
+  /**
+   * Send a GET request to get pratica details for edit
+   * @param  {number}       id pratica id
+   * @return {Promise<any>}    HTTP response
+   */
+  getEditDetails(id: number): Promise<any> {
+    let params = {
+      ID: id
+    };
+
+    let promise = new Promise((resolve, reject) => {
+      this.api.get('Pratica/Edit/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
   }
 
 }

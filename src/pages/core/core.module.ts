@@ -9,6 +9,7 @@ import { PdfPreviewPageModule } from './shared/pdf-preview/pdf-preview.module';
 import { SignatureModalPageModule } from './shared/signature-modal/signature-modal.module';
 import { PreventiviPageModule } from './preventivi/preventivi.module';
 import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module';
+import { PraticaFormComponentsModule } from './shared/pratica-form/pratica-form-components.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module'
     CarRentalPageModule,
     InLavorazionePageModule,
     PdfPreviewPageModule,
-    SignatureModalPageModule
+    SignatureModalPageModule,
+    PraticaFormComponentsModule
   ],
 })
 export class CorePageModule {}

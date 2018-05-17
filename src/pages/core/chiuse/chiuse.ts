@@ -7,6 +7,7 @@ import { PhotosProvider } from '../../../providers/photos';
 import { DocumentsProvider } from '../../../providers/documents';
 import { Globals } from '../../../shared/globals';
 import { CarRentalProvider } from '../../../providers/car-rental';
+import { PracticeEditPage } from './edit/practice-edit';
 
 
 /**
@@ -48,7 +49,7 @@ export class ChiusePage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              private _practices: PracticesProvider, 
+              public _practices: PracticesProvider, 
               private _photos: PhotosProvider,
               private _documents: DocumentsProvider,
               private _carRental: CarRentalProvider,
@@ -183,6 +184,18 @@ export class ChiusePage {
         resolve();
         console.log(err);
       });
+    });
+  }
+
+  /**
+   * Go to pratica edit page
+   * @param {number} id  pratica id
+   * @param {number} tipoID  tipo id
+   */
+  public editPractice(id: number, tipoID: number): void {
+    this.navCtrl.push(PracticeEditPage, {
+      ID: id,
+      TipoID: tipoID
     });
   }
 

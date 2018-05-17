@@ -1,0 +1,65 @@
+page-practice-edit {
+	.grid.no-padding {
+    padding: 50px 0;
+  }
+  .padding-content {
+    padding: 40px 45px;
+    height: 100%;
+  }  
+  .col {
+    padding: 0 10px;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  .component-wrapper {
+    height: calc(100% - 32px);
+  }
+  .submit-row {
+    @include clearfix();
+
+    .button {
+      height: 30px;
+      min-width: 156px;
+      border-radius: 0;
+      font-size: 1.4rem;
+      font-weight: 700;  
+      border-width: 2px;     
+    }
+  }
+
+  /* Validation field style */
+  // Validation styles
+  // .ng-valid[required] input, .ng-valid.required input {
+  //   border-color: #42A948; /* green */
+  // }
+  .ng-touched, .ng-dirty {
+    &.ng-invalid:not(form) input,
+    &.ng-invalid:not(form) ion-select,
+    &.ng-invalid:not(form),
+    &.ng-invalid:not(form).item-ios.addion-icon .item-inner {
+      border-color: #a94442; /* red */
+    }
+  }
+  // .custom-input .item-ios.addion-icon .item-inner
+  .ng-invalid[required] input, 
+  .ng-invalid[required] ion-datetime,
+  .ng-invalid[required] ion-select,  
+  .ng-invalid[required].select,
+  .ng-invalid[required].text-input,
+  .ng-invalid.required {
+    border-left: 2px solid #a94442; /* red */
+  }
+
+  .ng-valid[required] input,
+  .ng-valid[required] ion-datetime,
+  .ng-valid[required] ion-select,
+  .ng-valid[required].select,
+  .ng-valid[required].text-input,
+  .ng-valid.required {
+    border-left: 2px solid #42A948; /* green */
+  }
+}

@@ -25,4 +25,4 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ControparteTabComponent
   ]
 })
-export class AperteComponentsModule {}
+export class PraticaFormComponentsModule {}

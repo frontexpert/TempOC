@@ -3,7 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { ApertePage } from './aperte';
 import { InsertApertePage } from './insert/insert-aperte';
 import { ComponentsModule } from '../../../components/components.module';
-import { AperteComponentsModule } from './shared/aperte-components.module';
+import { PraticaFormComponentsModule } from '../shared/pratica-form/pratica-form-components.module';
 import { PipesModule } from '../../../pipes/pipes.module';
 import { TargaPage } from './targa/targa';
 
@@ -20,7 +20,7 @@ import { TargaPage } from './targa/targa';
   imports: [
     IonicPageModule.forChild(ApertePage),    
     ComponentsModule,
-    AperteComponentsModule,
+    PraticaFormComponentsModule,
     PipesModule
   ],
 })
