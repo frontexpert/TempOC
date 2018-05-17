@@ -48,7 +48,7 @@ export class ChiusePage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              private _practices: PracticesProvider, 
+              public _practices: PracticesProvider, 
               private _photos: PhotosProvider,
               private _documents: DocumentsProvider,
               private _carRental: CarRentalProvider,
