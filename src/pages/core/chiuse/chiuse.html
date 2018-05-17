@@ -40,7 +40,7 @@
           <ion-list [virtualScroll]="_practices.chiuse_list | filterPratica: searchTerm" [approxItemHeight]="'160px'">
             <ion-item *virtualItem="let item" class="pratiche-item" [class.active]="activeItemID === item.ID" [ngClass]="item.Colore.Colore" (click)="selectPraticeItem(item)">
               <h2>{{item.P1_Targa}} - <span *ngIf="item.P1_Nome && item.P1_Cognome; else elseNome">{{item.P1_Nome}} {{item.P1_Cognome}}</span><ng-template #elseNome>{{item.P1_NomeCompleto}}</ng-template></h2>
-              <p><span *ngIf="item.P1_Veicolo; else elseVeicolo">{{item.P1_Veicolo}}</span><ng-template #elseVeicolo>{{item.P1_Marca}} {{item.P1_Modello}}</ng-template></p>
+              <p><span *ngIf="item.P1_Veicolo != ''; else elseVeicolo">{{item.P1_Veicolo}}</span><ng-template #elseVeicolo>{{item.P1_Marca}} {{item.P1_Modello}}</ng-template></p>
               <div item-end>
                 <span [ngClass]="(item.AutoSostitutiva == true) ? 'car-red' : 'car-green'" *ngIf="item.AutoSostitutiva != null">
                   <i class="fas fa-car"></i>
@@ -76,6 +76,9 @@
     <div class="right-column with-header">
       <div class="column-header">
         <span *ngIf="praticeDetails">{{praticeDetails.P1_Targa}} - {{praticeDetails.P1_Nome}} {{praticeDetails.P1_Cognome}}</span>
+        <button class="edit-button" *ngIf="praticeDetails" ion-button icon-only clear>
+          <i class="far fa-edit"></i>
+        </button>
       </div>
 
       <div class="content-wrapper" *ngIf="praticeDetails"> 
