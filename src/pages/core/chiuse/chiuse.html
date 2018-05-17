@@ -76,7 +76,8 @@
     <div class="right-column with-header">
       <div class="column-header">
         <span *ngIf="praticeDetails">{{praticeDetails.P1_Targa}} - {{praticeDetails.P1_Nome}} {{praticeDetails.P1_Cognome}}</span>
-        <button class="edit-button" *ngIf="praticeDetails" ion-button icon-only clear>
+        <button class="edit-button" *ngIf="praticeDetails" ion-button icon-only clear 
+                (click)="editPractice(praticeDetails.ID, praticeDetails.Tipo.ID)">
           <i class="far fa-edit"></i>
         </button>
       </div>

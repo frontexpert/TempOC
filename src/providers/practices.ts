@@ -185,4 +185,29 @@ export class PracticesProvider {
     }
   }
 
+  /**
+   * Send a GET request to get pratica details for edit
+   * @param  {number}       id pratica id
+   * @return {Promise<any>}    HTTP response
+   */
+  getEditDetails(id: number): Promise<any> {
+    let params = {
+      ID: id
+    };
+
+    let promise = new Promise((resolve, reject) => {
+      this.api.get('Pratica/Edit/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
 }

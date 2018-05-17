@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="secondary">
+    <ion-buttons left>
+      <button ion-button clear navPop icon-left>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        INDIETRO
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button clear>        
+        ANNULLA
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Nuova pratica RCA CARD
+    </ion-title>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+  <div class="padding-content">
+
+    <switcher class="green no-padding" [withCheckMark]="true" [checkedTabs]="checkedTabs" [values]="tabValues"
+      [(ngModel)]="selectedTab"></switcher>
+
+    <div [ngSwitch]="selectedTab" class="component-wrapper">
+      <veicolo-tab *ngSwitchCase="0" 
+            (onNextTab)="handleNextSelection()" [pratica]="pratica" [options]="options"></veicolo-tab>
+      <cliente-tab *ngSwitchCase="1" 
+            (onBackTab)="handleBackSelection()" 
+            (onNextTab)="handleNextSelection()" [pratica]="pratica"></cliente-tab>
+      <sinistro-tab *ngSwitchCase="2" 
+            (onBackTab)="handleBackSelection()" 
+            (onNextTab)="handleNextSelection()" [pratica]="pratica" [options]="options"></sinistro-tab>
+      <controparte-tab *ngSwitchCase="3" 
+            (onBackTab)="handleBackSelection()" 
+            (onNextTab)="handleNextSelection()" [pratica]="pratica" [options]="options"></controparte-tab>
+    </div>
+  </div>
+</ion-content>
