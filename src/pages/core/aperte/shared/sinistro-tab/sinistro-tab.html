@@ -82,6 +82,6 @@
     <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
   </div>
   <div class="pull-right">
-    <button ion-button color="secondary" [disabled]="!sinistroFrom.form.valid" (click)="onNextTab.emit()">AVANTI</button>
+    <button ion-button color="secondary" [disabled]="!sinistroFrom.form.valid" (click)="onNextTab.emit()">{{globals.praticaTipoID > 1 ? 'SALVA' : 'AVANTI'}}</button>
   </div>
 </div>
