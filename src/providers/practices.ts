@@ -35,7 +35,7 @@ export class PracticesProvider {
       this.api.get('Pratica/List/matteo.polacchini@sitesolutions.it/matteomatteo', params).subscribe((res: any) => {
           if (res.success) {
           console.log(res.data);
-          this.filterPraticaList(res.data);
+          if (this.chiuse_list.length == 0) this.filterPraticaList(res.data);
           resolve(res.data);
         }
         else
