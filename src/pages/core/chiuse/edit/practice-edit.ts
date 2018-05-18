@@ -90,18 +90,18 @@ export class PracticeEditPage {
       // save to insert pratica
       // this.pratica.TipoID = this.globals.praticaTipoID; // set TipoID
       
-      // this.globals.showLoading().then(() => {
-      //   this.practicaProvider.post(this.pratica).then(res => {
-      //     this.globals.hideLoading();
-      //     console.log("Insert Pratica response: ", res);
-      //     this.globals.showToastSuccess('Success saved Pratica.');
-      //   })
-      //   .catch(err => {
-      //     this.globals.hideLoading();
-      //     console.log("Insert Pratica errors: ", err);
-      //     this.globals.showToastError('Something went wrong.');
-      //   });
-      // });      
+      this.globals.showLoading().then(() => {
+        this.practicaProvider.update(this.pratica).then(res => {
+          this.globals.hideLoading();
+          console.log("Update Pratica response: ", res);
+          this.globals.showToastSuccess('Success updated Pratica.');
+        })
+        .catch(err => {
+          this.globals.hideLoading();
+          console.log("Update Pratica errors: ", err);
+          this.globals.showToastError('Something went wrong.');
+        });
+      });      
     }
     console.log(this.selectedTab);
     console.log("Pratica values is:", this.pratica);

@@ -210,4 +210,25 @@ export class PracticesProvider {
     return promise;
   }
 
+  /**
+   * Sent a POST request to update pratica
+   * @param  {any}          body Fields  in  request
+   * @return {Promise<any>}      [description]
+   */
+  update(body: any): Promise<any> {
+    let promise = new Promise((resolve, reject) => {
+      this.api.post('Pratica/Update/matteo.polacchini@sitesolutions.it/matteomatteo/', body).subscribe((res: any) => {
+        if (res.success) {
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
 }
