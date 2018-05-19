@@ -13,6 +13,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
 import { FileTransfer } from '@ionic-native/file-transfer'
+import { File } from '@ionic-native/file';
 
 /** Import thrid party components */
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -63,6 +64,7 @@ import { GeneralProvider } from '../providers/general';
     InAppBrowser,
     Network,
     FileTransfer,
+    File,
     Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,
