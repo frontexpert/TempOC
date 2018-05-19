@@ -9,6 +9,7 @@ import { SignatureModalPage } from '../signature-modal/signature-modal';
   templateUrl: 'pdf-preview.html',
 })
 export class PdfPreviewPage {
+  //pdfSrc: string = './assets/binarydata.pdf';
   pdfSrc: string = './assets/pdf-test.pdf';
   title: string = 'Privacy';
 
