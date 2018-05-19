@@ -58,7 +58,7 @@ export class ChiusePage {
 
   ngOnInit() {
     console.log('ngOnInit');
-    if (this.globals.praticaList.length == 0) {
+    if (this._practices.chiuse_list.length == 0) {
       // show loading spinner
       this.globals.showLoading();
       // load list 

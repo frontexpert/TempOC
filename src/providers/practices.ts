@@ -174,14 +174,16 @@ export class PracticesProvider {
         return item.StatoMacroID == 1;
       });      
       console.log('aperte_list', this.aperte_list)
+
       this.lavorazione_list = pratica_list.filter(item => {
         return item.StatoMacroID == 2;
       });
       console.log('lavorazione_list', this.lavorazione_list)
+
       this.chiuse_list = pratica_list.filter(item => {
         return item.StatoMacroID == 3;
       });
-      console.log('chiuse_list', this.chiuse_list)      
+      console.log('chiuse_list', this.chiuse_list)
     }
   }
 
