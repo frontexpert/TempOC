@@ -33,12 +33,12 @@ export class DocumentsProvider {
 
       this.api.get('PraticaDocumento/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
           if (res.success) {
-            this.storage.get(Constants.DOCUEMTNS_KEY).then(docuementsData => {
-              if (docuementsData == null || docuementsData == undefined)
-                docuementsData = {};
+            this.storage.get(Constants.DOCUEMTNS_KEY).then(docsData => {
+              if (docsData == null || docsData == undefined)
+                docsData = {};
               else 
-                docuementsData[praticaID] = res.data;              
-              this.storage.set(Constants.DOCUEMTNS_KEY, docuementsData);
+                docsData[praticaID] = res.data;              
+              this.storage.set(Constants.DOCUEMTNS_KEY, docsData);
             })
             resolve(res.data);
           }

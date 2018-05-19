@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PdfPreviewPage } from '../../../shared/pdf-preview/pdf-preview';
+import { DocumentItem } from '../../../../../models/document';
 
 @Component({
   selector: 'documents-tab',
   templateUrl: 'documents-tab.html'
 })
 export class DocumentsTabComponent {
-	@Input() documents: any[] = [];
+	@Input() documents: DocumentItem[] = [];
 	@Input() practicaID: number;
 
   constructor(public navCtrl: NavController,
@@ -15,7 +16,7 @@ export class DocumentsTabComponent {
     
   }
 
-  showDocumentDetails(documentItem: any): void {
-    this.navCtrl.push(PdfPreviewPage, documentItem);
+  showDocumentDetails(documentItem: DocumentItem): void {
+    this.navCtrl.push(PdfPreviewPage, {document: documentItem});
   }
 }

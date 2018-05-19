@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { SignatureModalPage } from '../signature-modal/signature-modal';
 // import { DatePipe } from '@angular/common';
+import { DocumentItem } from '../../../../models/document';
 
 @IonicPage()
 @Component({
@@ -9,15 +10,19 @@ import { SignatureModalPage } from '../signature-modal/signature-modal';
   templateUrl: 'pdf-preview.html',
 })
 export class PdfPreviewPage {
-  //pdfSrc: string = './assets/binarydata.pdf';
+  
   pdfSrc: string = './assets/pdf-test.pdf';
   title: string = 'Privacy';
+  docData: DocumentItem;
 
   constructor(public navCtrl: NavController, params: NavParams, public modalCtrl: ModalController) {
     // set the title if params are exist
-    if (params.get('name')) {
-      // this.title = params.get('name') + ' ' + this.datePipe.transform(params.get('created'), 'dd. MMM yyyy');
-      this.pdfSrc = './assets/pdf-test.pdf'
+    if (params.get('document')) {
+      this.docData = params.get('document');
+      // set pdf url      
+      this.pdfSrc = this.docData.Url;
+      // set title
+      this.title = this.docData.Nome;
     }
   }
 
