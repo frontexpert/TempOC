@@ -88,6 +88,6 @@
     <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
   </div>
   <div class="pull-right">
-    <button ion-button color="secondary" [disabled]="!controparteForm.form.valid">SALVA</button>
+    <button ion-button color="secondary" (click)="onNextTab.emit()" [disabled]="!controparteForm.form.valid">SALVA</button>
   </div>
 </div>

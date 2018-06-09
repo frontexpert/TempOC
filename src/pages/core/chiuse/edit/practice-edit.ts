@@ -79,6 +79,8 @@ export class PracticeEditPage {
   }
 
   handleNextSelection(): void {    
+    console.log("this.selectedTab");
+    console.log(this.selectedTab);
     if(this.checkedTabs.indexOf(this.selectedTab) === -1){
       this.checkedTabs.push(this.selectedTab);
     }
