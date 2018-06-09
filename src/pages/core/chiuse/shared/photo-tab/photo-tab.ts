@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, ModalController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Storage } from '@ionic/storage';
 import { PhotosProvider } from '../../../../../providers/photos';
 import { Globals } from '../../../../../shared/globals';
+import { FullscreenPhotoViewPage } from '../../../shared/fullscreen-photo-view/fullscreen-photo-view';
 
 
 @Component({
@@ -17,9 +18,12 @@ export class PhotoTabComponet {
 
   storage_images = [];
 
+  private _isLongPressed: boolean = false;
+
   constructor(private imagePicker: ImagePicker, 
               private camera: Camera, 
-              private alert: AlertController, 
+              private alert: AlertController,
+              private modalCtrl: ModalController, 
               private photosProvider: PhotosProvider,
               public globals: Globals,
               public storage: Storage) {
@@ -130,6 +134,28 @@ export class PhotoTabComponet {
   }
 
   toggle(index) {
-    this.photos[index].Checked = !this.photos[index].Checked;
+    if (this._isLongPressed == false) {
+      this.photos[index].Checked = !this.photos[index].Checked;
+      this._isLongPressed = true;  
+    }    
+  }
+
+  /**
+   * Long press event released
+   */
+  released() {
+    this._isLongPressed = false;
+  }
+
+  /**
+   * Display full screen Photo when the user click the photo Thumb
+   * @param {number} index index of selected photo
+   */
+  displayFullscreenImage(index: number) {
+    let photo = this.photos[index];
+    console.log('Photo info: ', photo);
+
+    let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { imgSrc: photo.Url });
+    fullscreenViewModal.present();
   }
 }

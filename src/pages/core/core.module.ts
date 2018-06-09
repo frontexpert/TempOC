@@ -10,6 +10,8 @@ import { SignatureModalPageModule } from './shared/signature-modal/signature-mod
 import { PreventiviPageModule } from './preventivi/preventivi.module';
 import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module';
 import { PraticaFormComponentsModule } from './shared/pratica-form/pratica-form-components.module';
+import { FullscreenPhotoViewPageModule } from './shared/fullscreen-photo-view/fullscreen-photo-view.module';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { PraticaFormComponentsModule } from './shared/pratica-form/pratica-form-
     InLavorazionePageModule,
     PdfPreviewPageModule,
     SignatureModalPageModule,
-    PraticaFormComponentsModule
+    PraticaFormComponentsModule,
+    FullscreenPhotoViewPageModule
   ],
 })
 export class CorePageModule {}

@@ -15,9 +15,10 @@ import { Network } from '@ionic-native/network';
 import { FileTransfer } from '@ionic-native/file-transfer'
 import { File } from '@ionic-native/file';
 
-/** Import thrid party components */
+/** Import third party components */
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+/** End Import third party components */
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
