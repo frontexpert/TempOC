@@ -13,7 +13,11 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 })
 export class PdfPreviewPage {
   
-  pdfSrc: string = './assets/pdf-test.pdf';
+  pdfSrc: any = { 
+    url: './assets/pdf-test.pdf'//,
+    //length: 65536 * 65536 * 65536 
+  }
+
   title: string = 'Privacy';
   docData: DocumentItem;
 
@@ -21,12 +25,12 @@ export class PdfPreviewPage {
     // set the title if params are exist
     if (params.get('document')) {
       this.docData = params.get('document');
-
+      //this.pdfSrc.url = this.docData.Url;
       if (this.globals.isPhonegap()) {
         this.downloadFile(this.docData.Url, this.docData.Filename);
       } else {
         // set pdf url for browser     
-        this.pdfSrc = this.docData.Url;        
+        this.pdfSrc.url = this.docData.Url;        
       }
       // set title
       this.title = this.docData.Nome;
@@ -49,24 +53,46 @@ export class PdfPreviewPage {
     this.globals.showLoading().then(() => {
       this.file.checkFile(this.file.dataDirectory, fileName)
         .then((isExist: boolean) => {
+          console.log("isExistFile:" + isExist)
+
           if (isExist) {
-            this.pdfSrc = this.file.dataDirectory + fileName;
-            this.globals.hideLoading();
+            setTimeout(() => {
+              this.pdfSrc.url = this.file.dataDirectory + fileName;
+              console.log("Pdf file already exist in local file system.")
+              this.globals.hideLoading();
+            }, 2000);
           }
           else {
             // download file
             const fileTransfer: FileTransferObject = this.transfer.create();
 
+            console.log("pdf file downloading start!")
             fileTransfer.download(url, this.file.dataDirectory + fileName).then((entry) => {
               console.log('download complete: ' + entry.toURL());
-              this.pdfSrc = entry.toURL();
+              this.pdfSrc.url = entry.toURL();
               this.globals.hideLoading();
-            }, (error) => {
+            }).catch((error) => {
               // handle error
               console.log('download error: ' + error);
               this.globals.hideLoading();
             });
           }
+
+        }).catch(err => {
+          
+          console.log(err);
+          const fileTransfer: FileTransferObject = this.transfer.create();
+          console.log("pdf file downloading start! in catch()")
+          fileTransfer.download(url, this.file.dataDirectory + fileName).then((entry) => {
+            console.log('download complete: ' + entry.toURL());
+            this.pdfSrc.url = entry.toURL();
+            this.globals.hideLoading();
+          }).catch((error) => {
+            // handle error
+            console.log('download error: ' + error);
+            this.globals.hideLoading();
+          });
+
         });
     });  
   }

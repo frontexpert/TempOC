@@ -74,6 +74,10 @@ export class Api {
 
     return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagine/Add/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
       .then((data) => {
+        console.log("data");
+        console.log(data);
+        console.log("JSON.parse(data.response)");
+        console.log(JSON.parse(data.response));
         return JSON.parse(data.response);
       }, (err) => {
         console.log('File Upload Error:', err);
