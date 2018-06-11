@@ -30,6 +30,8 @@ export class PhotoTabComponet {
   }
 
   ngOnInit() {
+    console.log("this.photos");
+    console.log(this.photos);
   }
 
   /**

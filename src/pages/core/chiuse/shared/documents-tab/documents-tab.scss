@@ -5,6 +5,19 @@ documents-tab {
   .grid {
     padding: 0;
   }
+  ion-grid.document-categories {
+    position: fixed;
+    z-index: 10;
+    width: 170px;
+    border: #cbcbcb 1px solid;
+    border-bottom: 0px;
+    margin-top: -8px;
+    ion-row {
+      padding: 10px 8px;
+      background-color: #f0f0f0;
+      border-bottom: #cbcbcb 1px solid;
+    }
+  }
 	ion-row {
     height: 100%;
     flex-wrap: wrap;
@@ -26,6 +39,20 @@ documents-tab {
     }
     &:last-child {
     	padding-right: 2px;
+    }
+
+    &.document-item {
+      position: relative;
+      ion-checkbox {
+        position: absolute;
+        right: 2px;
+        bottom: 2px;        
+
+        .checkbox-checked {
+          background-color: #55f;
+          border-color: #55f;
+        }
+      }      
     }
 
     h4 {

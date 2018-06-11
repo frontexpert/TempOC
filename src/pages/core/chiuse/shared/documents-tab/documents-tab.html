@@ -1,28 +1,39 @@
 <div class="padding-content">
   <div class="buttons-header">
     <div class="pull-left">
-      <button ion-button outline small color="light" icon-left>
+      <button ion-button outline small color="light" icon-left (click)="openTemplates()">
         <ion-icon name="add"></ion-icon> 
         Nuovo
       </button>
-      <button ion-button outline small color="light" icon-left>
+      <button ion-button outline small color="light" icon-left (click)="takeNewDocument()">
+        <ion-icon name="camera"></ion-icon> 
+        Foto
+      </button>
+      <button ion-button outline small color="light" icon-left (click)="fromGallery()">
         <i class="fas fa-paperclip"></i>
         Rullino
       </button>
     </div>
     <div class="pull-right">
-      <button ion-button outline small color="light" icon-left>
+      <button ion-button outline small color="light" icon-left (click)="deleteDocuments()">
         <ion-icon name="close"></ion-icon>
         Elimina
       </button>
     </div>
     <div class="clearfix"></div>
   </div>
-
-  <ion-grid>
+  <ion-grid class="document-categories" *ngIf="is_opened_templates">
+    <ion-row (click)="addDocumentByTemplate(1)">Cessione credito</ion-row>
+    <ion-row (click)="addDocumentByTemplate(2)">Dichiarazione testimone</ion-row>
+    <ion-row (click)="addDocumentByTemplate(3)">Richiesta vettura</ion-row>
+    <ion-row (click)="addDocumentByTemplate(4)">Nolo auto</ion-row>
+    <ion-row (click)="addDocumentByTemplate(5)">Privacy</ion-row>
+  </ion-grid>
+    <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let document of documents; let i = index" (click)="showDocumentDetails(document)">
-        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt="">
+      <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="showDocumentDetails(document)" ion-long-press [interval]="1000" (onPressing)="toggle(i)" (onPressEnd)="released()">
+        <ion-checkbox [(ngModel)]="document.Checked" *ngIf="document.Checked"></ion-checkbox>
+        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
         <h4>{{document.Nome}}</h4>
         <div class="doc-date">{{document.DataInserimento | date: 'dd/MM/yyyy'}}</div>
       </ion-col>      
