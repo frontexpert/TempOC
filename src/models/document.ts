@@ -11,4 +11,5 @@ export class DocumentItem {
 	DataInserimento: Date; // File	Insert	Date
 	Url: string; // Absolute	file	url
 	Thumb: string; // Absolute	thumb	url
+	IsImage?: boolean;
 };

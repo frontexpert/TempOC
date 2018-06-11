@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { PdfPreviewPage } from '../../../shared/pdf-preview/pdf-preview';
+import { FullscreenPhotoViewPage } from '../../../shared/fullscreen-photo-view/fullscreen-photo-view';
 import { DocumentItem } from '../../../../../models/document';
 import { Globals } from '../../../../../shared/globals';
 import { DocumentsProvider } from '../../../../../providers/documents';
@@ -36,6 +37,7 @@ export class DocumentsTabComponent {
               private imagePicker: ImagePicker, 
               private camera: Camera, 
               private alert: AlertController,
+              private modalCtrl: ModalController, 
               public globals: Globals,
               private documentsProvider: DocumentsProvider,
               public navParams: NavParams) {
@@ -63,7 +65,15 @@ export class DocumentsTabComponent {
   }
 
   showDocumentDetails(documentItem: DocumentItem): void {
-    this.navCtrl.push(PdfPreviewPage, {document: documentItem});
+    console.log('DocumentItem is:', documentItem);
+
+    // if document item is image, display fullscreen image viewer.
+    if (documentItem.IsImage) {
+      let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { imgSrc: documentItem.Url });
+      fullscreenViewModal.present();
+    } else {
+      this.navCtrl.push(PdfPreviewPage, {document: documentItem});
+    }    
   }
 
   deleteDocuments() {
