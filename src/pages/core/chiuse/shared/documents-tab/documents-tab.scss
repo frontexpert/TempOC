@@ -1,21 +1,41 @@
 documents-tab {
   .padding-content {
     padding-top: 0;
+    position: relative;
   }
   .grid {
     padding: 0;
   }
   ion-grid.document-categories {
-    position: fixed;
+    position: absolute;
     z-index: 10;
     width: 170px;
     border: #cbcbcb 1px solid;
     border-bottom: 0px;
-    margin-top: -8px;
+    margin-top: -5px;
+    left: 12px;
+
     ion-row {
       padding: 10px 8px;
       background-color: #f0f0f0;
       border-bottom: #cbcbcb 1px solid;
+    }
+
+    &:before {
+      position: absolute;
+      top: -8px;
+      left: 6px;
+      width: 14px;
+      height: 14px;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      border-top: #cbcbcb 1px solid;
+      border-right: #cbcbcb 1px solid;
+      border-bottom: #f0f0f0 1px solid;
+      border-left: #f0f0f0 1px solid;
+      content: '';
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
     }
   }
 	ion-row {

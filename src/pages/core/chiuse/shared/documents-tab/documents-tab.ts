@@ -44,9 +44,14 @@ export class DocumentsTabComponent {
     
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     console.log("this.photos");
     console.log(this.documents);
+  }
+
+  ngOnDestroy(): void {
+    // hide open template menu
+    this.is_opened_templates = false;
   }
 
   toggle(index) {
