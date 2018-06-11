@@ -9,17 +9,17 @@ import * as Constants from '../../../../shared/constants';
 import { Options } from '../../../../models/general';
 
 /**
- * Generated class for the PratichePage page.
+ * Generated class for the InsertPracticePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @Component({
-  selector: 'page-insert-aperte',
-  templateUrl: 'insert-aperte.html',
+  selector: 'page-insert-practice',
+  templateUrl: 'insert-practice.html',
 })
-export class InsertApertePage {
+export class InsertPracticePage {
 
   tabValues = Constants.APERTE_TAB_VALUES;
 

@@ -276,3 +276,18 @@
     background-color: $green-bg;
   }
 }
+
+/* Child practice tab components styles */
+veicolo-tab,
+cliente-tab,
+sinistro-tab,
+controparte-tab {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  form,
+  .grid.no-padding {
+    flex: 1;
+  }
+}

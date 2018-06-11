@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { InsertApertePage } from '../insert/insert-aperte';
+// import { InsertApertePage } from '../insert/insert-aperte';
 import { NgForm } from '@angular/forms';
 
 /**
@@ -24,7 +24,7 @@ export class TargaPage {
   nextPage(form: NgForm) {
     console.log(form);
 
-    this.navCtrl.push(InsertApertePage);
+    // this.navCtrl.push(InsertApertePage);
   }
 
 }
