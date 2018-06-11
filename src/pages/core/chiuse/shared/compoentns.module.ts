@@ -3,7 +3,7 @@ import { IonicModule } from "ionic-angular";
 import { ComponentsModule } from "../../../../components/components.module";
 import { OutlookTabComponet } from './outlook-tab/outlook-tab';
 import { QuoteTabComponent } from './quote-tab/quote-tab';
-import { DocumentsTabComponent } from './documents-tab/documents-tab';
+import { DocumentsTabComponent, DocumentNewPopoverPage } from './documents-tab/documents-tab';
 import { PaymentTabComponet } from './payment-tab/payment-tab';
 import { PhotoTabComponet } from './photo-tab/photo-tab';
 import { RentTabComponet } from './rent-tab/rent-tab';
@@ -20,7 +20,8 @@ import { LongPressModule } from 'ionic-long-press';
     DocumentsTabComponent,
     PaymentTabComponet,
     PhotoTabComponet,
-    RentTabComponet
+    RentTabComponet,
+    DocumentNewPopoverPage
   ],
 	imports: [IonicModule,
     ComponentsModule,
@@ -29,6 +30,7 @@ import { LongPressModule } from 'ionic-long-press';
     LazyLoadImageModule,
     LongPressModule
   ],
+  entryComponents: [DocumentNewPopoverPage],
 	exports: [
     OutlookTabComponet,
     QuoteTabComponent,
