@@ -11,6 +11,7 @@ import { PreventiviPageModule } from './preventivi/preventivi.module';
 import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module';
 import { PraticaFormComponentsModule } from './shared/pratica-form/pratica-form-components.module';
 import { FullscreenPhotoViewPageModule } from './shared/fullscreen-photo-view/fullscreen-photo-view.module';
+import { NewPracticePageModule } from './practice/new-practice/new-practice.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FullscreenPhotoViewPageModule } from './shared/fullscreen-photo-view/fu
     PdfPreviewPageModule,
     SignatureModalPageModule,
     PraticaFormComponentsModule,
-    FullscreenPhotoViewPageModule
+    FullscreenPhotoViewPageModule,
+    NewPracticePageModule
   ],
 })
 export class CorePageModule {}

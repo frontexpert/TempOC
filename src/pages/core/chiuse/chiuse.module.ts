@@ -4,7 +4,7 @@ import { ChiusePage } from './chiuse';
 import { PracticeEditPage } from './edit/practice-edit';
 import { ComponentsModule } from '../../../components/components.module';
 import { PipesModule } from '../../../pipes/pipes.module';
-import { ChiuseComponentsModule } from './shared/compoentns.module';
+import { PraticaEditFormComponentsModule } from '../shared/pratica-edit-form/pratica-edit-form-compoentns.module';
 import { PraticaFormComponentsModule } from '../shared/pratica-form/pratica-form-components.module';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { PraticaFormComponentsModule } from '../shared/pratica-form/pratica-form
   imports: [
     IonicPageModule.forChild(ChiusePage),
     ComponentsModule,
-    ChiuseComponentsModule,
+    PraticaEditFormComponentsModule,
     PipesModule,
     PraticaFormComponentsModule
   ],

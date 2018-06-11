@@ -38,4 +38,4 @@ import { LongPressModule } from 'ionic-long-press';
     RentTabComponet
   ]
 })
-export class ChiuseComponentsModule {}
+export class PraticaEditFormComponentsModule {}
