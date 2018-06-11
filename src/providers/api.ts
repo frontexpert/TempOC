@@ -84,4 +84,35 @@ export class Api {
         return err;
       });
   }
+
+  postDocument(praticaID: number, documenetData: any) {    
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    // MATTEO - così recuperiamo il nome dato dal sistema operativo:
+    let sPhotoNames = documenetData.split('/');
+    let sPhotoName = sPhotoNames[sPhotoNames.length - 1];
+
+    let options: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: sPhotoName,
+      headers: {},
+      params: {
+        PraticaID: praticaID
+      }
+    };
+
+    console.log(documenetData, 'photoData');
+
+    return fileTransfer.upload(documenetData, Constants.API_URL + '/PraticaDocumento/Add/matteo.polacchini@sitesolutions.it/matteomatteo', options)
+      .then((data) => {
+        console.log("data");
+        console.log(data);
+        console.log("JSON.parse(data.response)");
+        console.log(JSON.parse(data.response));
+        return JSON.parse(data.response);
+      }, (err) => {
+        console.log('File Upload Error:', err);
+        return err;
+      });
+  }
 }
