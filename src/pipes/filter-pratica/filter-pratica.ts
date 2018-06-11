@@ -15,7 +15,14 @@ export class FilterPraticaPipe implements PipeTransform {
   transform(items: any[], value: string) {
     if (!items) return [];
     return items.filter(it => {
-    	return (it.ID.toString().indexOf(value) > -1 || it.Stato.toLowerCase().indexOf(value) > -1);
+      let P1_NomeCompleto = it.P1_Nome + " " + it.P1_Cognome;
+    	return (it.P1_Targa.indexOf(value) > -1 ||
+              P1_NomeCompleto.indexOf(value) > -1 ||
+              it.P1_Cognome.indexOf(value) > -1 ||
+              (it.P1_Marca != null && it.P1_Marca.indexOf(value) > -1) ||
+              (it.P1_Modello != null && it.P1_Modello.indexOf(value) > -1) ||
+              (it.P1_VeicoloMarcaID != null && it.P1_VeicoloMarca.indexOf(value) > -1) ||
+              (it.P1_VeicoloModelloID != null && it.P1_VeicoloModello.indexOf(value) > -1));
     });
   }
 }
