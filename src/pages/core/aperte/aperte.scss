@@ -1,94 +1,155 @@
 page-aperte {
-  .padding-content {
-    padding: 80px 45px;
-  }
-  h2.text-center {    
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 3.2rem;
+  .list {
+    margin-bottom: 0;
   }
 
-  .row {
-    margin-bottom: 10px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+  .pratiche-item {
+    // color: $grey;
+    // padding: 20px 0 7px 0;        
+    //min-height: 6rem;
+    height: 70px;
 
-  .col {
-    padding: 0 6px;
-  }
-
-  .section-item {
-    padding: 20px 5px 15px;
-    text-align: center;
-    min-height: 160px;
-
-    h2 {
-      margin-top: 1rem;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+    &.item-block .item-inner {
+      padding-left: 10px!important;
+      padding-right: 0;
+      border-right: 16px solid $light-green;
     }
 
-    h4 {
-      font-size: 1.2rem;
+    &.green {
+      .item-inner {
+        border-right: 16px solid $light-green;
+      }
     }
 
+    &.orange {
+      .item-inner {
+        border-right: 16px solid $light-orange;
+      }
+    }
+
+    &.purple {
+      .item-inner {
+        border-right: 16px solid $light-purple;
+      }
+    }
+
+    &.yellow {
+      .item-inner {
+        border-right: 16px solid $light-yello;
+      }
+    }
+
+    &.lightblue {
+      .item-inner {
+        border-right: 16px solid $light-blue;
+      }
+    }
+
+    &.red {
+      .item-inner {
+        border-right: 16px solid $icon-red;
+      }
+    }
+
+    .label {
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
     p {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0;
-      letter-spacing: -0.2px
+      color: $text-color;
+    }
+    .button {
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      background: $green-bg;
+      border-radius: 0;
+      margin: 0 15px 10px;
     }
 
-    .section-img {      
-      min-height: 52px;
-    }
+    [item-end] {
+      margin: 0 8px;
+      text-align: right;
+      
+      span {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        border: 1px solid #d3d3d3;
+        border-radius: 50%;
+        position: relative;
+        text-align: center;
+        line-height: 38px;
+        font-size: 2rem;
 
-    &.orange-bg,
-    &.green-bg {
-      min-height: 160px;
-    }
+        &.car-red {
+          color: $icon-red;
+        }
 
-    &.lightblue-bg {
-      h2 {
-        margin-bottom: 3px;
-      }
+        &.car-green {
+          color: $icon-green;
+        }
 
-      h4 {
-        margin-top: 0;
-      }
-
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-
-        > li {                    
-          flex: 1;
-          text-align: center;
-          font-size: 1.2rem;
-          font-weight: bold;
-          min-height: 101px;
-          min-width: 100px;
-
-          .icon-block {
-            min-height: 75px;
-            display: flex;
-          }
-
-          i {            
-            margin: auto; 
-            margin-bottom: 10px; 
-            vertical-align: middle;          
-          }
-
-          p {
-            margin: 0 0 auto;
-          }
+        &.blue {
+          color: $icon-blue;
         }
       }
+
+      span + span {
+        margin-left: 3px;
+      }
+
+      ion-badge {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        line-height: 16px;
+        margin-bottom: 5px;       
+        background-color: #d8cd08;
+        font-size: 1rem;
+        color: #000; 
+      }
+    }
+
+    &.active {
+      background-color: #ececec;
+    }
+  }
+  .content-wrapper {
+    ion-content {
+      height: 93.5vh;
+      //height: 100%;
+      .scroll-content {
+        overflow: scroll;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) and (orientation: portrait) {
+    .content-wrapper {
+        height: 975px;
+    }
+  }
+  
+  @media only screen and (max-width: 1365px) and (orientation: landscape) {
+    .content-wrapper {
+      height: 719px;
+    }
+  }
+  
+  @media only screen and (min-width: 1025px) and (orientation: portrait) {
+    .content-wrapper {
+      height: 1315px;
+    }
+  }
+  
+  @media only screen and (min-width: 1366px) and (orientation: landscape) {
+    .content-wrapper {
+      height: 975px;
     }
   }
 }

@@ -3,21 +3,18 @@ import { IonicPageModule } from 'ionic-angular';
 import { ApertePage } from './aperte';
 import { ComponentsModule } from '../../../components/components.module';
 import { PraticaFormComponentsModule } from '../shared/pratica-form/pratica-form-components.module';
+import { PraticaEditFormComponentsModule } from '../shared/pratica-edit-form/pratica-edit-form-compoentns.module';
 import { PipesModule } from '../../../pipes/pipes.module';
-import { TargaPage } from './targa/targa';
 
 @NgModule({
   declarations: [
     ApertePage,
-    TargaPage
-  ],
-  entryComponents: [
-    TargaPage
   ],
   imports: [
     IonicPageModule.forChild(ApertePage),    
     ComponentsModule,
     PraticaFormComponentsModule,
+    PraticaEditFormComponentsModule,
     PipesModule
   ],
 })

@@ -7,15 +7,9 @@ import { PhotosProvider } from '../../../providers/photos';
 import { DocumentsProvider } from '../../../providers/documents';
 import { Globals } from '../../../shared/globals';
 import { CarRentalProvider } from '../../../providers/car-rental';
-import { PracticeEditPage } from './edit/practice-edit';
+import { PracticeEditPage } from '../practice/practice-edit/practice-edit';
+import { NewPracticePage } from '../practice/new-practice/new-practice';
 
-
-/**
- * Generated class for the PratichePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -197,6 +191,13 @@ export class ChiusePage {
       ID: id,
       TipoID: tipoID
     });
+  }
+
+  /**
+   * Go to new practice page
+   */
+  public createNewPractice(): void {
+    this.navCtrl.push(NewPracticePage);
   }
 
 }

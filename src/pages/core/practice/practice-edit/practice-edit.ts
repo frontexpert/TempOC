@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { GeneralProvider } from '../../../../providers/general';
 import { PracticesProvider } from '../../../../providers/practices';
@@ -8,13 +8,8 @@ import * as Constants from '../../../../shared/constants';
 
 import { Options } from '../../../../models/general';
 
-/**
- * Generated class for the PratichePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
+@IonicPage()
 @Component({
   selector: 'page-practice-edit',
   templateUrl: 'practice-edit.html',

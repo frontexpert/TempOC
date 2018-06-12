@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { InsertPracticePage } from './insert-practice';
+import { PracticeEditPage } from './practice-edit';
 import { ComponentsModule } from '../../../../components/components.module';
 import { PraticaFormComponentsModule } from '../../shared/pratica-form/pratica-form-components.module';
 
 @NgModule({
   declarations: [
-    InsertPracticePage
+    PracticeEditPage
   ],
   imports: [
-    IonicPageModule.forChild(InsertPracticePage),    
+    IonicPageModule.forChild(PracticeEditPage),    
     ComponentsModule,
     PraticaFormComponentsModule
   ],
 })
-export class InsertPracticePageModule {}
+export class PracticeEditPageModule {}

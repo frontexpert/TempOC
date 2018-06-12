@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-// import { TargaPage } from './targa/targa';
+import { InsertPlatePage } from '../insert-plate/insert-plate';
 import { Globals } from '../../../../shared/globals';
 import { GeneralProvider } from '../../../../providers/general';
 
@@ -27,7 +27,7 @@ export class NewPracticePage {
     console.log('tipoID', tipoID);
     // set tipoID to global service
     this.globals.praticaTipoID = tipoID;
-    // this.navCtrl.push(TargaPage);
+    this.navCtrl.push(InsertPlatePage);
   }
 
   /**

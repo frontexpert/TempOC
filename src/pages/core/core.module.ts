@@ -12,6 +12,9 @@ import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module'
 import { PraticaFormComponentsModule } from './shared/pratica-form/pratica-form-components.module';
 import { FullscreenPhotoViewPageModule } from './shared/fullscreen-photo-view/fullscreen-photo-view.module';
 import { NewPracticePageModule } from './practice/new-practice/new-practice.module';
+import { InsertPlatePageModule } from './practice/insert-plate/insert-plate.module';
+import { InsertPracticePageModule } from './practice/insert-practice/insert-practice.module';
+import { PracticeEditPageModule } from './practice/practice-edit/practice-edit.module';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { NewPracticePageModule } from './practice/new-practice/new-practice.modu
     SignatureModalPageModule,
     PraticaFormComponentsModule,
     FullscreenPhotoViewPageModule,
-    NewPracticePageModule
+    NewPracticePageModule,
+    InsertPlatePageModule,
+    InsertPracticePageModule,
+    PracticeEditPageModule
   ],
 })
 export class CorePageModule {}

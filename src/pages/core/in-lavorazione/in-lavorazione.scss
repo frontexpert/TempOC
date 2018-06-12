@@ -1,3 +1,155 @@
 page-in-lavorazione {
-	
+	.list {
+    margin-bottom: 0;
+  }
+
+  .pratiche-item {
+    // color: $grey;
+    // padding: 20px 0 7px 0;        
+    //min-height: 6rem;
+    height: 70px;
+
+    &.item-block .item-inner {
+      padding-left: 10px!important;
+      padding-right: 0;
+      border-right: 16px solid $light-green;
+    }
+
+    &.green {
+      .item-inner {
+        border-right: 16px solid $light-green;
+      }
+    }
+
+    &.orange {
+      .item-inner {
+        border-right: 16px solid $light-orange;
+      }
+    }
+
+    &.purple {
+      .item-inner {
+        border-right: 16px solid $light-purple;
+      }
+    }
+
+    &.yellow {
+      .item-inner {
+        border-right: 16px solid $light-yello;
+      }
+    }
+
+    &.lightblue {
+      .item-inner {
+        border-right: 16px solid $light-blue;
+      }
+    }
+
+    &.red {
+      .item-inner {
+        border-right: 16px solid $icon-red;
+      }
+    }
+
+    .label {
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+    p {
+      color: $text-color;
+    }
+    .button {
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      background: $green-bg;
+      border-radius: 0;
+      margin: 0 15px 10px;
+    }
+
+    [item-end] {
+      margin: 0 8px;
+      text-align: right;
+      
+      span {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        border: 1px solid #d3d3d3;
+        border-radius: 50%;
+        position: relative;
+        text-align: center;
+        line-height: 38px;
+        font-size: 2rem;
+
+        &.car-red {
+          color: $icon-red;
+        }
+
+        &.car-green {
+          color: $icon-green;
+        }
+
+        &.blue {
+          color: $icon-blue;
+        }
+      }
+
+      span + span {
+        margin-left: 3px;
+      }
+
+      ion-badge {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        line-height: 16px;
+        margin-bottom: 5px;       
+        background-color: #d8cd08;
+        font-size: 1rem;
+        color: #000; 
+      }
+    }
+
+    &.active {
+      background-color: #ececec;
+    }
+  }
+  .content-wrapper {
+    ion-content {
+      height: 93.5vh;
+      //height: 100%;
+      .scroll-content {
+        overflow: scroll;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) and (orientation: portrait) {
+    .content-wrapper {
+        height: 975px;
+    }
+  }
+  
+  @media only screen and (max-width: 1365px) and (orientation: landscape) {
+    .content-wrapper {
+      height: 719px;
+    }
+  }
+  
+  @media only screen and (min-width: 1025px) and (orientation: portrait) {
+    .content-wrapper {
+      height: 1315px;
+    }
+  }
+  
+  @media only screen and (min-width: 1366px) and (orientation: landscape) {
+    .content-wrapper {
+      height: 975px;
+    }
+  }
 }
