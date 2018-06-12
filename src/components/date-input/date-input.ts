@@ -22,7 +22,8 @@ import {ElementBase} from '../form';
                     [ngClass]="{'invalid': (invalid | async)}"
                     disabled="{{disabled || readonly}}"
                     min="1918" max="2021-12-31"
-                    dayNames="der Montag, der Dienstag, der Mittwoch, der Donnerstag, der Freitag, der Samstag, der Sonntag" cancelText="Abbrechen" doneText="Übernehmen" monthNames="Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember">
+                    dayNames="Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica" cancelText="Annulla" doneText="Fatto" 
+                    monthNames="Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre">
       </ion-datetime>
     </div>
   `,
