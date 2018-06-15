@@ -157,5 +157,25 @@ export class DocumentsProvider {
         return res;
       });
   }
+
+
+  addDocumentSignature(params) {
+    console.log("params: ", params);
+    let promise = new Promise((resolve, reject) => {
+      this.api.post('Pratica/SendFirmaDocumento/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        console.log("add Document Signature");
+        console.log(res);
+        if (res.success) {            
+          resolve(res.data);
+        }
+        else
+          resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
   
 }

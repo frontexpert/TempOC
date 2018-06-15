@@ -12,4 +12,5 @@ export class DocumentItem {
 	Url: string; // Absolute	file	url
 	Thumb: string; // Absolute	thumb	url
 	IsImage?: boolean;
+	TipoId: number;
 };

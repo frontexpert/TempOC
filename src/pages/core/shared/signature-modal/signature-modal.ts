@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { DocumentsProvider } from '../../../../providers/documents';
+import { Globals } from '../../../../shared/globals';
 
 /**
  * Generated class for the SignatureModalPage page.
@@ -18,7 +20,17 @@ export class SignatureModalPage {
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
   @ViewChild('drawPad') drawPadEl: any;
 
-  constructor(public vc: ViewController, public navParams: NavParams) {
+  digital_signature: any;
+  title: string;
+
+  constructor(public vc: ViewController, 
+              public navParams: NavParams,
+              private documentsProvider: DocumentsProvider, 
+              public globals: Globals) {
+  }
+
+  ngOnInit() {
+    this.title = this.navParams.get('title');
   }
 
   ionViewDidLoad() {
@@ -28,6 +40,7 @@ export class SignatureModalPage {
     window.onresize = this.resizeCanvas.bind(this);
     this.resizeCanvas();
     this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+    console.log(this.digital_signature);
   }
 
   private resizeCanvas(): void {
@@ -42,7 +55,7 @@ export class SignatureModalPage {
 
   drawComplete() {
     // will be notified of szimek/signature_pad's onEnd event
-    console.log('complete drawing');    
+    this.digital_signature = this.signaturePad.toDataURL();
   }
  
   drawStart() {
@@ -55,7 +68,21 @@ export class SignatureModalPage {
   }
 
   done() {
-
+    let params = {
+      ID: this.navParams.get('ID'),
+      Modello: this.navParams.get('Modello'),
+      Posizione: this.navParams.get('Posizione'),
+      Firma: this.digital_signature
+    }
+    this.globals.showLoading().then(() => {
+      this.documentsProvider.addDocumentSignature(params).then((res) => {
+        console.log('response: ', res);
+        this.globals.hideLoading();
+      }).catch(err => {
+        console.log('error: ', err);
+        this.globals.hideLoading();
+      })
+    });
   }
 
   clearSign() {
