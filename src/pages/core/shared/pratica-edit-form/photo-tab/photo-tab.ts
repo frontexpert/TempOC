@@ -17,6 +17,7 @@ export class PhotoTabComponet {
   @Input() practicaID: number;
 
   storage_images = [];
+  is_view_mode: boolean = true;
 
   private _isLongPressed: boolean = false;
 
@@ -135,9 +136,9 @@ export class PhotoTabComponet {
     confirm.present();
   }
 
-  toggle(index) {
+  toggle() {
     if (this._isLongPressed == false) {
-      this.photos[index].Checked = !this.photos[index].Checked;
+      this.is_view_mode = false;
       this._isLongPressed = true;  
     }    
   }
@@ -147,6 +148,15 @@ export class PhotoTabComponet {
    */
   released() {
     this._isLongPressed = false;
+  }
+
+  onClickItem(index: number) {
+    if (this.is_view_mode) {
+      this.displayFullscreenImage(index);
+    }
+    else {
+      this.photos[index].Checked = !this.photos[index].Checked;
+    }
   }
 
   /**
@@ -159,5 +169,9 @@ export class PhotoTabComponet {
 
     let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { photos: this.photos, activeIndex: index });
     fullscreenViewModal.present();
+  }
+
+  convertToViewMode() {
+    this.is_view_mode = true;
   }
 }

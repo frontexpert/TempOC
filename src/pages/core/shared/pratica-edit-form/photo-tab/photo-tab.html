@@ -10,10 +10,13 @@
         Rullino
       </button>
     </div>
-    <div class="pull-right">
+    <div class="pull-right" *ngIf="!is_view_mode">
       <button ion-button outline small color="light" icon-left (click)="deletePhoto()">
         <ion-icon name="close"></ion-icon>
         Elimina
+      </button>
+      <button ion-button outline small color="light" icon-left (click)="convertToViewMode()">
+        Annulla
       </button>
     </div>
     <div class="clearfix"></div>
@@ -22,8 +25,8 @@
   <ion-grid>
     <ion-row>
       <ion-col class="photo-item" *ngFor=" let photo of photos; let i = index" 
-              (click)="displayFullscreenImage(i)"
-              ion-long-press [interval]="1000" (onPressing)="toggle(i)" (onPressEnd)="released()">
+              (click)="onClickItem(i)"
+              ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released()">
         <ion-checkbox [(ngModel)]="photo.Checked" *ngIf="photo.Checked"></ion-checkbox>
         <img defaultImage="assets/imgs/defaultImg.jpg" imageViewer [lazyLoad]="photo.Url" [style.border]="photo.Checked==true ? 'solid 2px #55f': ''">
       </ion-col>      
