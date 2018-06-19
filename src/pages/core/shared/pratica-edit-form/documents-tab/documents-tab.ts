@@ -31,6 +31,7 @@ export class DocumentsTabComponent {
 
 	private innerDocuments: any[] = [];
 
+  is_view_mode: boolean = true;
 
 
   constructor(public navCtrl: NavController,
@@ -54,10 +55,10 @@ export class DocumentsTabComponent {
     this.is_opened_templates = false;
   }
 
-  toggle(index) {
+  toggle() {
     console.log("toggle triggered");
     if (this._isLongPressed == false) {
-      this.documents[index].Checked = !this.documents[index].Checked;
+      this.is_view_mode = false;
       this._isLongPressed = true;  
     }    
   }
@@ -67,6 +68,15 @@ export class DocumentsTabComponent {
    */
   released() {
     this._isLongPressed = false;
+  }
+
+  onClickItem(index: number) {
+    if (this.is_view_mode) {
+      this.showDocumentDetails(this.documents[index]);
+    }
+    else {
+      this.documents[index].Checked = !this.documents[index].Checked;
+    }
   }
 
   showDocumentDetails(documentItem: DocumentItem): void {
@@ -204,5 +214,9 @@ export class DocumentsTabComponent {
     }).catch(err => {
       console.log('imagePicker error: ', err);
     });
+  }
+
+  convertToViewMode() {
+    this.is_view_mode = true;
   }
 }

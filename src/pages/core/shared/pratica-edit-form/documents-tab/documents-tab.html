@@ -14,10 +14,13 @@
         Rullino
       </button>
     </div>
-    <div class="pull-right">
+    <div class="pull-right" *ngIf="!is_view_mode">
       <button ion-button outline small color="light" icon-left (click)="deleteDocuments()">
         <ion-icon name="close"></ion-icon>
         Elimina
+      </button>
+      <button ion-button outline small color="light" icon-left (click)="convertToViewMode()">
+        Annulla
       </button>
     </div>
     <div class="clearfix"></div>
@@ -31,7 +34,7 @@
   </ion-grid>
     <ion-grid>
     <ion-row>
-      <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="showDocumentDetails(document)" ion-long-press [interval]="1000" (onPressing)="toggle(i)" (onPressEnd)="released()">
+      <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="onClickItem(i)" ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released()">
         <ion-checkbox [(ngModel)]="document.Checked" *ngIf="document.Checked"></ion-checkbox>
         <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
         <h4>{{document.Nome}}</h4>
