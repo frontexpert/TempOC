@@ -83,6 +83,14 @@ export class ClienteTabComponent {
    * On select city item
    * @param item 
    */
+  onSelectCityOfBirth(item) {
+    this.pratica.P1_LuogoNascita = item.name;
+  }
+  
+  /**
+   * On select city item
+   * @param item 
+   */
   onSelectCity(item) {
   	this.pratica.P1_ResidenzaComune = item.name;
   }

@@ -51,9 +51,15 @@
       </ion-col>
       <ion-col col-3 class="custom-input">
         <div class="input-item-label">comune di nascita</div>
-        <ion-item>
-          <ion-input [(ngModel)]="pratica.P1_LuogoNascita" [ngModelOptions]="{standalone: true}"></ion-input>
-        </ion-item>
+        <div class="ngb-typeahead-input">
+          <input type="text" class="text-input" 
+                  [ngbTypeahead]="searchCities" 
+                  [resultTemplate]="rt" 
+                  [inputFormatter]="typeahead_formatter" 
+                  [disabled]="cities.length == 0"
+                  (selectItem)="onSelectCityOfBirth($event.item)">   
+          <div class="typeahead-icon"></div>     
+        </div>
       </ion-col>
     </ion-row>
 
