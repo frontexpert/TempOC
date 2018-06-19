@@ -1,5 +1,9 @@
 <div class="modal image-modal transparent" (click)="closeModal()">
-  <div class="transparent">
-     <img [src]="imageSrc" class="fullscreen-image"/>
-  </div>
+  
+	<ion-slides class="transparent" [initialSlide]="activeIndex" spaceBetween="30">
+    <ion-slide *ngFor="let photo of photos">
+      <img [src]="photo.Url"/>
+    </ion-slide>
+  </ion-slides>
+  
 </div>

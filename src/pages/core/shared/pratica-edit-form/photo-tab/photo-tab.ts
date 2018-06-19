@@ -157,7 +157,7 @@ export class PhotoTabComponet {
     let photo = this.photos[index];
     console.log('Photo info: ', photo);
 
-    let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { imgSrc: photo.Url });
+    let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { photos: this.photos, activeIndex: index });
     fullscreenViewModal.present();
   }
 }

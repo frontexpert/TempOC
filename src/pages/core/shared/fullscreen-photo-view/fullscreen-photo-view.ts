@@ -9,12 +9,12 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class FullscreenPhotoViewPage {
 
-  imageSrc: string = "";
+  photos: Array<any> = [];
+  activeIndex: number;
   
   constructor(public navCtrl: NavController, params: NavParams, private viewCtrl: ViewController) {
-    if (params.get('imgSrc')) {
-      this.imageSrc = params.get('imgSrc');
-    }
+    this.photos = params.get('photos');
+    this.activeIndex = params.get('activeIndex');
   }
 
   ionViewDidLoad() {

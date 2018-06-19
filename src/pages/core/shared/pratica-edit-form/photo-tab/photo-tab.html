@@ -22,10 +22,10 @@
   <ion-grid>
     <ion-row>
       <ion-col class="photo-item" *ngFor=" let photo of photos; let i = index" 
-              (click)="displayFullscreenImage(i)" 
+              (click)="displayFullscreenImage(i)"
               ion-long-press [interval]="1000" (onPressing)="toggle(i)" (onPressEnd)="released()">
         <ion-checkbox [(ngModel)]="photo.Checked" *ngIf="photo.Checked"></ion-checkbox>
-        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="photo.Url" [style.border]="photo.Checked==true ? 'solid 2px #55f': ''">
+        <img defaultImage="assets/imgs/defaultImg.jpg" imageViewer [lazyLoad]="photo.Url" [style.border]="photo.Checked==true ? 'solid 2px #55f': ''">
       </ion-col>      
     </ion-row>
   </ion-grid>
