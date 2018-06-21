@@ -28,7 +28,6 @@ export class Api {
         reqOpts.params = reqOpts.params.append(k, params[k]);
       }
     }
-
     return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
 

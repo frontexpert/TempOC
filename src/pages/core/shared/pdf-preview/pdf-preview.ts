@@ -27,13 +27,13 @@ export class PdfPreviewPage {
     if (params.get('document')) {
       this.docData = params.get('document');
       if (this.docData.TipoId == 1 || this.docData.TipoId == 5) this.isTwoSignatures = true;
-      //this.pdfSrc.url = this.docData.Url;
-      if (this.globals.isPhonegap()) {
-        this.downloadFile(this.docData.Url, this.docData.Filename);
-      } else {
-        // set pdf url for browser     
-        this.pdfSrc.url = this.docData.Url;        
-      }
+      this.pdfSrc.url = this.docData.Url;
+      // if (this.globals.isPhonegap()) {
+      //   this.downloadFile(this.docData.Url, this.docData.Filename);
+      // } else {
+      //   // set pdf url for browser     
+      //   this.pdfSrc.url = this.docData.Url;        
+      // }
       // set title
       this.title = this.docData.Nome;
     }

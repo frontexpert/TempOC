@@ -198,13 +198,17 @@ export class PracticesProvider {
     };
 
     let promise = new Promise((resolve, reject) => {
+      console.log("pratica id: ", id);
+      console.log("url: ", 'http://tablet.oxygencar.it/Pratica/Edit/matteo.polacchini@sitesolutions.it/matteomatteo/');
       this.api.get('Pratica/Edit/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+        console.log("success res: ", res);
         if (res.success) {
           resolve(res.data);
         }
         else
-          resolve(res);
+          reject(res);
       }, (err) => {
+        console.log("failed error: ", err);
         reject(err);
       });
     });
