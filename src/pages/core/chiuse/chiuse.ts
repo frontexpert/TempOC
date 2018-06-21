@@ -160,27 +160,6 @@ export class ChiusePage {
     }
   }
 
-  doInfinite(mode): Promise<any> {
-    console.log('Begin async operation: ' + mode);
-
-    return new Promise((resolve) => {
-      this.page ++;
-      this._practices.get(this.page).then((res: any) => {
-        console.log('Chiuse list: ', this._practices.chiuse_list);
-        // this.globals.praticaList = this.globals.praticaList.concat(res);
-        //this.globals.praticaList = res;
-        // console.log('this.globals.praticaList');
-        // console.log(this.globals.praticaList);
-        resolve();
-      })
-      .catch(err => {
-        this.page --;
-        resolve();
-        console.log(err);
-      });
-    });
-  }
-
   /**
    * Go to pratica edit page
    * @param {number} id  pratica id
