@@ -14,7 +14,7 @@ export class FullscreenPhotoViewPage {
   
   constructor(public navCtrl: NavController, params: NavParams, private viewCtrl: ViewController) {
     this.photos = params.get('photos');
-    this.activeIndex = params.get('activeIndex');
+    this.activeIndex = params.get('activeIndex') || 0;
   }
 
   ionViewDidLoad() {

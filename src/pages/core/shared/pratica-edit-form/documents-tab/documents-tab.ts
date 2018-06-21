@@ -84,7 +84,7 @@ export class DocumentsTabComponent {
 
     // if document item is image, display fullscreen image viewer.
     if (documentItem.IsImage) {
-      let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { imgSrc: documentItem.Url });
+      let fullscreenViewModal = this.modalCtrl.create(FullscreenPhotoViewPage, { photos: [documentItem] });
       fullscreenViewModal.present();
     } else {
       this.navCtrl.push(PdfPreviewPage, {document: documentItem});
