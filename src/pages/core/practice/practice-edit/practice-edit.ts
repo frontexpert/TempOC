@@ -58,18 +58,19 @@ export class PracticeEditPage {
   ngOnInit() {
     console.log('ngOnInit');
     // show loading spinner
-    this.globals.showLoading();
-    // get pratica edit details
-    this.practicaProvider.getEditDetails(this.pID).then((res: any) => {
-      console.log("Success in get pratica edit");
-      this.pratica = res;
-      // hide loading spinner
-      this.globals.hideLoading();
-    })
-    .catch(err => {        
-      console.log("GET PRATICA EDIT ERROR: ",err);
-      // hide loading spinner
-      this.globals.hideLoading();
+    this.globals.showLoading().then(() => {
+      // get pratica edit details
+      this.practicaProvider.getEditDetails(this.pID).then((res: any) => {
+        console.log("Success in get pratica edit");
+        this.pratica = res;
+        // hide loading spinner
+        this.globals.hideLoading();
+      })
+      .catch(err => {        
+        console.log("GET PRATICA EDIT ERROR: ",err);
+        // hide loading spinner
+        this.globals.hideLoading();
+      });
     });
   }
 
