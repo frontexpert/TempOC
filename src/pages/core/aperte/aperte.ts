@@ -53,19 +53,20 @@ export class ApertePage {
     console.log('ngOnInit');
     if (this._practices.aperte_list.length == 0) {
       // show loading spinner
-      this.globals.showLoading();
-      // load list 
-      this._practices.get(this.page).then((res: any) => {
-        console.log("Success in this.practices.get()");
-        if (this.globals.praticaList.length == 0) this.globals.praticaList = res;
-        // hide loading spinner
-        this.globals.hideLoading();
-      })
-      .catch(err => {
-        console.log("Success in this._practice.get()");
-        console.log(err);
-        // hide loading spinner
-        this.globals.hideLoading();
+      this.globals.showLoading().then(() => {
+        // load list 
+        this._practices.get(this.page).then((res: any) => {
+          console.log("Success in this.practices.get()");
+          if (this.globals.praticaList.length == 0) this.globals.praticaList = res;
+          // hide loading spinner
+          this.globals.hideLoading();
+        })
+        .catch(err => {
+          console.log("Success in this._practice.get()");
+          console.log(err);
+          // hide loading spinner
+          this.globals.hideLoading();
+        });
       });
     }
   }

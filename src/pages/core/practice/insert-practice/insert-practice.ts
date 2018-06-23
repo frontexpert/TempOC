@@ -70,6 +70,17 @@ export class InsertPracticePage {
           this.globals.hideLoading();
           console.log("Insert Pratica response: ", res);
           this.globals.showToastSuccess('Success saved Pratica.');
+
+          // load list 
+          this.practicaProvider.getAllPratices().then((res: any) => {
+            console.log("Success in getting all practices list");
+            this.globals.praticaList = res;      
+          })
+          .catch(err => {
+            console.log("failed in getting all practices list");
+            console.log(err);
+          });
+          
         })
         .catch(err => {
           this.globals.hideLoading();
