@@ -22,6 +22,8 @@ export class PdfPreviewPage {
   docData: DocumentItem;
   isTwoSignatures: boolean = false;
 
+  refresh: boolean = false;
+
   constructor(public navCtrl: NavController, params: NavParams, public modalCtrl: ModalController, private file: File, public transfer: FileTransfer, private globals: Globals) {
     // set the title if params are exist
     if (params.get('document')) {
@@ -49,7 +51,17 @@ export class PdfPreviewPage {
       Modello: this.docData.TipoId,
       Posizione: 1
     }
-    this.modalCtrl.create(SignatureModalPage, params).present();
+    let modal = this.modalCtrl.create(SignatureModalPage, params);
+    modal.present();
+    modal.onDidDismiss((data) => {
+      if (data.is_changed) {
+        this.refresh = true;
+        setTimeout(() => {
+          this.refresh = false;
+        }, 100);
+      }
+    })
+    
   }
 
   secondSign(): void {
@@ -59,7 +71,16 @@ export class PdfPreviewPage {
       Modello: this.docData.TipoId,
       Posizione: 2
     }
-    this.modalCtrl.create(SignatureModalPage, params).present();
+    let modal = this.modalCtrl.create(SignatureModalPage, params);
+    modal.present();
+    modal.onDidDismiss((data) => {
+      if (data.is_changed) {
+        this.refresh = true;
+        setTimeout(() => {
+          this.refresh = false;
+        }, 100);
+      }
+    })
   }
 
   private downloadFile(url: string, fileName: string) {

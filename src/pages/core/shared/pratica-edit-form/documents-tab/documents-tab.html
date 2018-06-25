@@ -36,7 +36,7 @@
     <ion-row>
       <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="onClickItem(i)" ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released()">
         <ion-checkbox [(ngModel)]="document.Checked" *ngIf="document.Checked"></ion-checkbox>
-        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
+        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.ThumbUrl : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
         <h4>{{document.Nome}}</h4>
         <div class="doc-date">{{document.DataInserimento | date: 'dd/MM/yyyy'}}</div>
       </ion-col>      

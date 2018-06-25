@@ -146,7 +146,10 @@ export class PhotoTabComponet {
   /**
    * Long press event released
    */
-  released() {
+  released(index: number) {
+    if(!this.is_view_mode){
+      this.photos[index].Checked = !this.photos[index].Checked;
+    }
     this._isLongPressed = false;
   }
 
@@ -173,5 +176,8 @@ export class PhotoTabComponet {
 
   convertToViewMode() {
     this.is_view_mode = true;
+    for (let i = this.photos.length - 1; i >= 0; i--) {
+      this.photos[i].Checked = false;
+    } 
   }
 }

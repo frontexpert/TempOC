@@ -218,5 +218,9 @@ export class DocumentsTabComponent {
 
   convertToViewMode() {
     this.is_view_mode = true;
+    for (let i = this.documents.length - 1; i >= 0; i--) {
+      this.documents[i].Checked = false;
+    } 
+
   }
 }

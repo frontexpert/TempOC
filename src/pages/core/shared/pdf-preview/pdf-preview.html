@@ -15,7 +15,8 @@
 
 <ion-content>
   <div class="pdf-container">    
-    <pdf-viewer [src]="pdfSrc" 
+    <pdf-viewer *ngIf="!refresh" 
+              [src]="pdfSrc" 
               [render-text]="true"
               [fit-to-page]="true"
               [original-size]="false"

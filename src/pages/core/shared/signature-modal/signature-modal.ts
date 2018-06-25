@@ -22,6 +22,7 @@ export class SignatureModalPage {
 
   digital_signature: any;
   title: string;
+  is_changed: boolean = false;
 
   constructor(public vc: ViewController, 
               public navParams: NavParams,
@@ -64,7 +65,7 @@ export class SignatureModalPage {
   }
 
   dismiss() {
-    this.vc.dismiss();
+    this.vc.dismiss({is_changed: this.is_changed});
   }
 
   done() {
@@ -77,8 +78,10 @@ export class SignatureModalPage {
     this.globals.showLoading().then(() => {
       this.documentsProvider.addDocumentSignature(params).then((res) => {
         console.log('response: ', res);
+        this.is_changed = true;
         this.globals.hideLoading();
       }).catch(err => {
+        this.is_changed = false
         console.log('error: ', err);
         this.globals.hideLoading();
       })
