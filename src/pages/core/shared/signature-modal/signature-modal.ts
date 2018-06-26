@@ -80,6 +80,7 @@ export class SignatureModalPage {
         console.log('response: ', res);
         this.is_changed = true;
         this.globals.hideLoading();
+        this.vc.dismiss({is_changed: this.is_changed});
       }).catch(err => {
         this.is_changed = false
         console.log('error: ', err);

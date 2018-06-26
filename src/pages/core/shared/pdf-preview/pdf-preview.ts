@@ -46,12 +46,12 @@ export class PdfPreviewPage {
 
   firstSign(): void {
     let params = {
-      title: "Fima 1",
+      title: "Firma 1",
       ID: this.docData.ID,
       Modello: this.docData.TipoId,
       Posizione: 1
     }
-    let modal = this.modalCtrl.create(SignatureModalPage, params);
+    let modal = this.modalCtrl.create(SignatureModalPage, params, {cssClass: "signature-modal"});
     modal.present();
     modal.onDidDismiss((data) => {
       if (data.is_changed) {
@@ -66,12 +66,12 @@ export class PdfPreviewPage {
 
   secondSign(): void {
     let params = {
-      title: "Fima 2",
+      title: "Firma 2",
       ID: this.docData.ID,
       Modello: this.docData.TipoId,
       Posizione: 2
     }
-    let modal = this.modalCtrl.create(SignatureModalPage, params);
+    let modal = this.modalCtrl.create(SignatureModalPage, params, {cssClass: "signature-modal"});
     modal.present();
     modal.onDidDismiss((data) => {
       if (data.is_changed) {

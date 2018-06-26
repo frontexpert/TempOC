@@ -41,6 +41,7 @@
         <div class="input-item-label">nazione di nascita</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
+                [value]="pratica.P1_ResidenzaNazione" 
                 [ngbTypeahead]="searchCounty" 
                 [resultTemplate]="rt" 
                 [inputFormatter]="typeahead_formatter" 
@@ -92,6 +93,7 @@
         <div class="input-item-label">nazione</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
+                [value]="pratica.P1_ResidenzaNazione" 
                 [ngbTypeahead]="searchCounty" 
                 [resultTemplate]="rt" 
                 [inputFormatter]="typeahead_formatter" 

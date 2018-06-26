@@ -66,7 +66,10 @@ export class DocumentsTabComponent {
   /**
    * Long press event released
    */
-  released() {
+  released(index: number) {
+    if(!this.is_view_mode){
+      this.documents[index].Checked = !this.documents[index].Checked;
+    }
     this._isLongPressed = false;
   }
 
@@ -116,6 +119,7 @@ export class DocumentsTabComponent {
               this.globals.showLoading().then(() => {
                 this.documentsProvider.deleteDocuments(removeItems, this.practicaID).then(res => {
                   this.globals.hideLoading();
+                  this.convertToViewMode();
                 })
                 .catch(err => {
                   console.log('Remove document error: ', err);
@@ -141,6 +145,7 @@ export class DocumentsTabComponent {
         this.documentsProvider.getDocuments(this.practicaID).then(res => {
           this.documents = res;
           this.globals.hideLoading();
+          this.convertToViewMode();
         }).catch(err => {
           console.log(err);
           this.globals.hideLoading();
@@ -179,6 +184,7 @@ export class DocumentsTabComponent {
           console.log(this.documents);
 
           this.globals.hideLoading();
+          this.convertToViewMode();
         })
         .catch(err => {
           console.log('ERROR: ', err);

@@ -60,6 +60,7 @@ export class PhotoTabComponet {
           console.log(this.photos);
 
           this.globals.hideLoading();
+          this.convertToViewMode();
         })
         .catch(err => {
           console.log('ERROR: ', err);
@@ -86,6 +87,7 @@ export class PhotoTabComponet {
             newPhoto.Url.replace(/\\/g, '/');
             this.photos.unshift(newPhoto);
             this.globals.hideLoading();
+            this.convertToViewMode();
           }).catch(err => {
             console.log('Select photo error: ', err);
             this.globals.hideLoading();
@@ -122,6 +124,7 @@ export class PhotoTabComponet {
               this.globals.showLoading().then(() => {
                 this.photosProvider.deletePhotos(removeItems, this.practicaID).then(res => {
                   this.globals.hideLoading();
+                  this.convertToViewMode();
                 })
                 .catch(err => {
                   console.log('Remove photo error: ', err);

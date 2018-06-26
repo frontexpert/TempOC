@@ -1,6 +1,6 @@
 <div class="padding-content">
   <div class="buttons-header">
-    <div class="pull-left">
+    <div class="pull-left"  *ngIf="is_view_mode">
       <button ion-button outline small color="light" icon-left (click)="openTemplates()">
         <ion-icon name="add"></ion-icon> 
         Nuovo
@@ -34,9 +34,9 @@
   </ion-grid>
     <ion-grid>
     <ion-row>
-      <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="onClickItem(i)" ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released()">
+      <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="onClickItem(i)" ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released(i)">
         <ion-checkbox [(ngModel)]="document.Checked" *ngIf="document.Checked"></ion-checkbox>
-        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.ThumbUrl : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
+        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
         <h4>{{document.Nome}}</h4>
         <div class="doc-date">{{document.DataInserimento | date: 'dd/MM/yyyy'}}</div>
       </ion-col>      

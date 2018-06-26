@@ -24,3 +24,12 @@ page-pdf-preview {
     }
   }
 }
+
+@media only screen and (orientation: landscape)  {
+  .signature-modal {
+   .modal-wrapper { 
+     margin-top: 100px;    
+     height: 60% !important;
+   } 
+ }
+}
