@@ -48,11 +48,11 @@ export const STAR_RANKINGS_VALUE: any = {
       height: 34px;
     }
     ul.rating li i.icon-fuel {
-      background: url(../assets/imgs/fuel-green.png) no-repeat;
+      background: url(./assets/imgs/fuel-green.png) no-repeat;
       background-size: contain;      
     }
     ul.rating li i.grey {
-      background: url(../assets/imgs/fuel-grey.png) no-repeat;
+      background: url(./assets/imgs/fuel-grey.png) no-repeat;
       background-size: contain;      
     }
     .persentText {

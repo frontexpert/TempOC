@@ -50,8 +50,8 @@
 .with-header {
   position: relative;
   .content-wrapper{
-    margin-top: 49px;
-    height: calc(100% - 49px);
+    margin-top: 60px;
+    height: calc(100% - 60px);
   }
 }
 
@@ -110,6 +110,7 @@
 
 .no-scroll .scroll-content{
   overflow: hidden;
+  padding-bottom: 0 !important;
 }
 
 .no-padding {

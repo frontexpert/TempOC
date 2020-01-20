@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="secondary">
+    <ion-buttons left>
+      <button ion-button clear navPop icon-left>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        INDIETRO
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button clear (click)="annullaNoleggio()">        
+        ANNULLA
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      {{globals.noleggio.Vettura}}- {{globals.Targa}}
+    </ion-title>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>  
+  <div class="padding-content">
+    
+    <switcher class="green no-padding" [withCheckMark]="true" [checkedTabs]="checkedTabs" [values]="tabValues"
+      [(ngModel)]="selectedTab"></switcher>
+
+    <div [ngSwitch]="selectedTab" class="component-wrapper">
+    
+      <stato-veicolo-tab *ngSwitchCase="0" 
+            (onBackTab)="handleBackSelect()" 
+            (onNextTab)="handleSelectTab(1)"></stato-veicolo-tab>
+			<rientro-tab *ngSwitchCase="1" 
+            (onBackTab)="handleBackSelect()" 
+            (onNextTab)="handleSelectTab(2)"></rientro-tab>
+    </div>
+  </div>
+</ion-content>

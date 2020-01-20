@@ -16,7 +16,8 @@ export class NewPracticePage {
 
   CONSTANTS = Constants;
 
-  constructor(public navCtrl: NavController, private general: GeneralProvider, public globals: Globals) {    
+  constructor(public navCtrl: NavController, private general: GeneralProvider, public globals: Globals) {
+
   }
 
   ionViewDidLoad() {
@@ -24,7 +25,7 @@ export class NewPracticePage {
   }
 
   nextPage(tipoID: number) {    
-    console.log('tipoID', tipoID);
+    console.log('NewPracticePage. tipoID: ', tipoID);
     // set tipoID to global service
     this.globals.praticaTipoID = tipoID;
     this.navCtrl.push(InsertPlatePage);
@@ -36,9 +37,13 @@ export class NewPracticePage {
   private fetchCoutryAndCityInBackground(): void {
     Promise.all([this.general.getCountry(), this.general.getComune()])
       .then((values: any[]) => {
-        // nothing to do
+        if(values.length == 2) {
+          //I've populated the two arrays
+          //this.globals.countryList = values[0];
+          //this.globals.comuniList = values[1];
+        }
       })
-      .catch(err => console.log('ERROR: ', err));
+      .catch(err => console.log('NewPracticePage. getCountry -> ERROR: ', err));
   }
 
 }

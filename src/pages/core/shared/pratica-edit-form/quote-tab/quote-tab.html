@@ -1,18 +1,23 @@
 <div class="padding-content">
   <div class="inner-content" padding>
     <div class="buttons">
-      <button ion-button color="secondary">+ &nbsp;&nbsp;&nbsp;NUOVO</button>    
+      <button ion-button color="secondary" (click)="newPreventivo()">+ &nbsp;&nbsp;&nbsp;NUOVO</button>    
     </div>
-    <h3 class="text-fiat" *ngIf="quotes.length > 0">{{quotes[0] ? quotes[0].Veicolo : ''}}  <i class="far fa-edit"></i></h3>
-
+    <h3 class="text-fiat"><span *ngIf="marca != undefined && marca != '' && marca != '--'">{{marca != undefined && marca != '' ? marca : ''}} {{modello != undefined && modello != '' ? modello : ''}} {{versione != undefined && versione != '' ? ' - ' + versione : ''}}</span>
+      <span *ngIf="marca == undefined || marca == '' || marca == '--'">Imposta marca, modello e versione</span>
+      <button class="edit-button" ion-button icon-only clear 
+                (click)="editQuoteOptions(false)">
+          <i class="far fa-edit"></i>
+      </button>
+    </h3>
     <ion-scroll scrollY="true">
       <div class="budgets-detail" *ngFor="let quote of quotes">
         <div class="header">
           <div class="pull-left">
-            <p class="green">{{quote.Nome}}</p>
+            <p class="green">{{quote.Nome}} {{quote.ID}}</p>
             <p>Totale: {{quote.Totale | number: '1.2-2'}}</p>    
           </div>
-          <button ion-button color="secondary" class="pull-right">VISUALIZZA</button>
+          <button ion-button color="secondary" class="pull-right" (click)="selezionaStampa(quote.ID)">VISUALIZZA</button><button ion-button color="secondary" class="viewbtn pull-right" (click)="editPreventivo(quote.ID)">MODIFICA</button> 
         </div>
         <div class="budgets-body">
           <ion-grid no-padding>
@@ -50,7 +55,7 @@
                 <div class="chart-inner">
                   <ngx-charts-pie-chart
                     [view]="view"
-                    [results]="single"
+                    [results]="quote.Single"
                     [scheme]="colorScheme"
                     [legend]="false"
                     [tooltipDisabled]="true"

@@ -4,7 +4,7 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 import { GeneralProvider } from '../../../../../providers/general';
 import { Globals } from '../../../../../shared/globals';
-import { CompleteListItem } from '../../../../../models/general';
+import { CompleteListItem, TextListItem } from '../../../../../models/general';
 
 
 @Component({
@@ -12,6 +12,8 @@ import { CompleteListItem } from '../../../../../models/general';
   templateUrl: 'cliente-tab.html'
 })
 export class ClienteTabComponent {
+
+  praticaValida: boolean = false;
 
   @Output() onNextTab: EventEmitter<any> = new EventEmitter();
 
@@ -22,9 +24,22 @@ export class ClienteTabComponent {
   // Properties
   countries: CompleteListItem[] = [];
   cities: CompleteListItem[] = [];
+  sessoOptions: TextListItem[] = [];
 
   constructor(private general: GeneralProvider, private globals: Globals) {
     this.initDropdownList();
+  }
+
+  ngOnInit() {
+    //Fa un check dei dati della pratica, nel caso si tratti della finestra con il bottone salva
+    this.sessoOptions.push({
+      value: "M",
+      text: "M"
+    });
+    this.sessoOptions.push({
+      value: "F",
+      text: "F"
+    });
   }
 
   /**
@@ -34,7 +49,7 @@ export class ClienteTabComponent {
   	Promise.all([this.general.getCountry(), this.general.getComune()])
   		.then((values: any[]) => {
   			this.countries = this.globals.parseCountryToAutocompleteList(values[0]);
-  			this.cities = this.globals.parseCityToAutocompleteList(values[1]);
+        this.cities = this.globals.parseCityToAutocompleteList(values[1]);
   		})
   		.catch(err => console.log('ERROR: ', err));
   }
@@ -94,4 +109,5 @@ export class ClienteTabComponent {
   onSelectCity(item) {
   	this.pratica.P1_ResidenzaComune = item.name;
   }
+
 }

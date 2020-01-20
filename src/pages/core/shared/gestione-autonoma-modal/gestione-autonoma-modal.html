@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="assign()">
+        Salva modifiche
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content>
+    <div class="drawpad-container">
+        <ion-grid>
+            <ion-row>
+              <ion-item class="option_item">
+                <ion-label>GESTIONE ASSICURATIVA</ion-label>
+              </ion-item>  
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 class="custom-input">
+                <date-input label="DATA INVIO PEC" [(ngModel)]="dettagliAutonoma.DataInvioPec" required="true" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm"></date-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 class="custom-input">
+                <date-input label="DATA TERMINE LIQUIDAZIONE" [(ngModel)]="dettagliAutonoma.DataTermineLiquidazione" required="true" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm"></date-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 class="custom-input">
+                <date-input label="DATA LIQUIDAZIONE PARZIALE" [(ngModel)]="dettagliAutonoma.DataLiquidazioneParziale" required="true" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm"></date-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12 class="custom-input">
+                <date-input label="DATA LIQUIDAZIONE COMPLETATA" [(ngModel)]="dettagliAutonoma.DataLiquidazioneCompletata" required="true" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm"></date-input>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <button ion-button clear class="btn-clear-sign" (click)="annulla()">Annulla</button>
+</ion-content>

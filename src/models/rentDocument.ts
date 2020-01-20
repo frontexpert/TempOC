@@ -1,6 +1,6 @@
-export class DocumentItem {
+export class RentDocumentItem {
 	ID: number;
-	PraticaID: number;
+	NoleggioID: number;
 	Nome: string;	// File	name	without	extension
 	Estensione: string; // File	extension
 	Filename: string; // Complete	File	name

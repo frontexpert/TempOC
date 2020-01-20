@@ -1,4 +1,7 @@
 page-car-rental {
+	.scroll-content {
+		overflow: scroll;
+	}
 	.padding-content {
 		padding: 30px 35px;
 	}
@@ -26,6 +29,12 @@ page-car-rental {
 
 		.item-content {
 			padding: 10px 20px;
+			.car-item-image {
+				text-align: center;
+				img {
+					max-height: 122px;
+				}
+			}
 		}
 
 		h2 {

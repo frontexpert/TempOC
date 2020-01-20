@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Platform, LoadingController } from 'ionic-angular';
 import { Country, Comune, Common, CompleteListItem, Circostanze } from '../models/general';
+import { Noleggio, Sinistri, Rientro } from '../models/noleggio';
 import { ToastrService } from 'ngx-toastr';
-
 
 @Injectable()
 export class Globals {
@@ -13,6 +13,21 @@ export class Globals {
 
   praticaTipoID: number;
 
+  praticaTipoText: string = '';
+
+  noleggioCarList: Array<any> = [];
+
+  noleggioCarSinisti: Array<Sinistri> = [];
+
+  //Si utilizza solo in caso di nuovo noleggio e poi si svuota
+  noleggioCarNuoviSinistri: Array<Sinistri> = [];
+
+  noleggio: Noleggio;
+
+  rientro: Rientro;
+
+  targaVeicolo: string;
+
   /**
    * Loading spinner instance
    * @type {any}
@@ -22,9 +37,12 @@ export class Globals {
 
   constructor(public platform: Platform, public loadingCtrl: LoadingController, private toastr: ToastrService) {
     this._loadingSpinner = this.loadingCtrl.create({
-      spinner: 'bubbles',
+      spinner: 'crescent',
       content: ``
     });
+
+    this.noleggio = new Noleggio();
+    console.log("Globals. this.noleggio", this.noleggio);
   }
 
   isPhonegap(): boolean {
@@ -42,7 +60,7 @@ export class Globals {
       else {
         if (this._loadingSpinner == null) {
           this._loadingSpinner = this.loadingCtrl.create({
-            spinner: 'bubbles',
+            spinner: 'crescent',
             content: ``
           });
           this._loadingSpinner.present().then(() => {
@@ -70,7 +88,7 @@ export class Globals {
       this._loadingSpinner.dismiss();
       this.is_loading = false;
       this._loadingSpinner = this.loadingCtrl.create({
-        spinner: 'bubbles',
+        spinner: 'crescent',
         content: ``
       });
     }
@@ -174,6 +192,5 @@ export class Globals {
   public showToastError(msg: string) {
     this.toastr.error(msg);
   }
-
 
 }

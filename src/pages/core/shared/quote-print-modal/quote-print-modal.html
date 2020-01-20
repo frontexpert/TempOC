@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content class="no-scroll">
+  <div class="drawpad-container">
+        <p class="pprint" tappable (click)="print(1)">
+            <img src="assets/imgs/stampa-base.png" /><br /><strong>STAMPA BASE</strong>
+        </p>
+        <p class="pprint" tappable (click)="print(2)">
+            <img src="assets/imgs/stampa-dettagliata.png" /><br /><strong>STAMPA DETTAGLIATA</strong>
+        </p>
+        <p class="pprint" tappable (click)="print(3)">
+            <img src="assets/imgs/stampa-elaborata.png" /><br /><strong>ELABORATO TECNICO</strong>
+        </p>
+  </div>
+</ion-content>

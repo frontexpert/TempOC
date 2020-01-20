@@ -11,6 +11,29 @@ import * as Constants from '../shared/constants';
 export class Api {
   url: string = Constants.API_URL;
 
+  private _username: string = '';
+  private _password: string = '';
+
+  get username() {
+    return this._username;
+  }
+
+  set username(v) {
+    if (v !== this.username) {
+      this._username = v;
+    }
+  }
+
+  get password() {
+    return this._password;
+  }
+
+  set password(v) {
+    if (v !== this.password) {
+      this._password = v;
+    }
+  }
+
   constructor(public http: HttpClient, private transfer: FileTransfer) {
   }
 
@@ -47,13 +70,14 @@ export class Api {
     return this.http.put(this.url + '/' + endpoint, body, reqOpts);
   }
 
-  /**
+
+/**
    * Send a POST request to add a pratica photo
    * @param praticaID id of pratica
    * @param photoData image data
    * @return {Promise} FileResult promise
    */
-  postPhoto(praticaID: number, photoData: any) {    
+  postRentPhoto(params: any, photoData: any) {    
     const fileTransfer: FileTransferObject = this.transfer.create();
 
     // MATTEO - così recuperiamo il nome dato dal sistema operativo:
@@ -64,14 +88,47 @@ export class Api {
       fileKey: 'file',
       fileName: sPhotoName,
       headers: {},
-      params: {
-        PraticaID: praticaID
-      }
+      params: params
+    };
+
+    console.log(photoData, 'photoData');
+    let promise = new Promise((resolve, reject) => {
+      fileTransfer.upload(photoData, Constants.API_URL + '/NoleggioSinistroImmagine/Add/' + this.username + '/' + this.password, options)
+      .then((data) => {
+        resolve(JSON.parse(data.response));
+      }, (err) => {
+        console.log('File Upload Error:', err);
+        reject(err);
+      });
+    });
+
+    return promise;
+  }
+
+
+  /**
+   * Send a POST request to add a pratica photo
+   * @param praticaID id of pratica
+   * @param photoData image data
+   * @return {Promise} FileResult promise
+   */
+  postPhoto(params: any, photoData: any) {    
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    // MATTEO - così recuperiamo il nome dato dal sistema operativo:
+    let sPhotoNames = photoData.split('/');
+    let sPhotoName = sPhotoNames[sPhotoNames.length - 1];
+
+    let options: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: sPhotoName,
+      headers: {},
+      params: params
     };
 
     console.log(photoData, 'photoData');
 
-    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagine/Add/matteo.polacchini@sitesolutions.it/matteomatteo/', options)
+    return fileTransfer.upload(photoData, Constants.API_URL + '/PraticaImmagine/Add/' + this.username + '/' + this.password, options)
       .then((data) => {
         console.log("data");
         console.log(data);
@@ -102,7 +159,7 @@ export class Api {
 
     console.log(documenetData, 'photoData');
 
-    return fileTransfer.upload(documenetData, Constants.API_URL + '/PraticaDocumento/Add/matteo.polacchini@sitesolutions.it/matteomatteo', options)
+    return fileTransfer.upload(documenetData, Constants.API_URL + '/PraticaDocumento/Add/' + this.username + '/' + this.password, options)
       .then((data) => {
         console.log("data");
         console.log(data);

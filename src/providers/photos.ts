@@ -31,7 +31,7 @@ export class PhotosProvider {
         PraticaID: praticaID
       };
 
-      this.api.get('PraticaImmagine/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+      this.api.get('PraticaImmagine/List/' + this.api.username + '/' + this.api.password + '/', params).subscribe((res: any) => {
           if (res.success) {
             this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
               if (photoesData == null || photoesData == undefined)
@@ -50,6 +50,7 @@ export class PhotosProvider {
           else
             resolve(res);
         }, (err) => {
+          console.log("PraticaImmagine/List error", err);
           reject(err);
         });
       });
@@ -76,8 +77,8 @@ export class PhotosProvider {
   deletePhotos(photoes: Array<any>, praticaID: number) {
     let promise = new Promise((resolve, reject) => {
       photoes.forEach(photoItem => {
-        this.api.get(`PraticaImmagine/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/?ID=${photoItem.ID}&PraticaID=${praticaID}`, {}).subscribe((res: any) => {
-          console.log("remove Photo");
+        this.api.get('PraticaImmagine/Remove/' + this.api.username + '/' + this.api.password + '/?ID=' + photoItem.ID + '&PraticaID=' + praticaID, {}).subscribe((res: any) => {
+          console.log("PraticaImmagine/Remove");
           console.log(res);
           if (res.success) {            
             // this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
@@ -92,11 +93,12 @@ export class PhotosProvider {
             //   this.storage.set(Constants.PHOTOS_KEY, photoesData);
             //   resolve(photoesData);
             // });
-            resolve(res.data);
+            resolve(res);
           }
           else
             resolve(res);
         }, (err) => {
+          console.log("PraticaImmagine/Remove error", err);
           reject(err);
         });
       });
@@ -113,7 +115,10 @@ export class PhotosProvider {
    */
   addPhoto(praticaID: number, photoData: any) {        
     // if (this.connection.isOnline()) {
-      return this.api.postPhoto(praticaID, photoData).then(res => {
+      let params = {
+        PraticaID: praticaID
+      }
+      return this.api.postPhoto(params, photoData).then(res => {
         // set uploaded photos to local storage
         this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
           if (photoesData == null || photoesData == undefined)

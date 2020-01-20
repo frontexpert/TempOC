@@ -1,5 +1,6 @@
 <div class="padding-content">
   <div class="inner-content" padding *ngIf="paymentDetails.DatiPratica && paymentDetails.DatiPratica.Tipo.Assicurativa">
+    <ion-scroll scrollY="true">
     <div class="payment-details">
       <ion-grid>
         <ion-row>
@@ -15,6 +16,7 @@
                 [view]="view"
                 [results]="single"
                 [scheme]="colorScheme"
+                [customColors]="custCol"
                 [legend]="false"
                 [tooltipDisabled]="true"
                 [explodeSlices]="explodeSlices"
@@ -67,6 +69,12 @@
                 <span *ngIf="paymentDetails.GaranteAutogestione == false">Nessun  garante assegnato</span>
               </ng-template>
             </p>
+            <!--<p *ngIf="paymentDetails.DatiPratica.GaranteID == null && paymentDetails.GaranteAutogestione == false">
+              <button ion-button color="secondary" (click)="assegnaGarante()">Assegna un garante</button> <button ion-button color="secondary" (click)="assegnaGestioneAutonoma()">Gestione pratica autonoma</button>
+            </p>
+            <p *ngIf="paymentDetails.DatiPratica.GaranteID == null && paymentDetails.GaranteAutogestione == true">
+              <button ion-button color="secondary" (click)="gestioneAutonoma()">Gestione assicurativa</button> <button ion-button color="secondary" (click)="assegnaAdUnGarante()">Assegna ad un garante</button>
+            </p>-->
             <p><b>{{paymentDetails.DatiPratica.Tipo.Tipo}}</b></p>
             <p><b>Data invio PEC:</b></p>
             <p><b>Controparte:</b> {{paymentDetails.DatiPratica.Controparte}}</p>
@@ -91,8 +99,25 @@
         </ion-row>
       </ion-grid>
     </div>
+    <div class="fatture" *ngIf="paymentDetails.Fatture != null">
+      <ion-grid>
+          <ion-row *ngFor="let fattura of paymentDetails.Fatture; let i = index">
+              <ion-col col-8>
+                <h2><span>Fattura n.{{fattura.ID}} del {{fattura.Data | date: 'dd/MM/yyyy' }}</span></h2>
+              </ion-col>
+              <ion-col col-4 class="text-right">
+                  <button ion-button icon-only clear 
+                  (click)="openLink(fattura.ID)">
+                    <i class="far fa-edit"></i>
+                </button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+    </div>
+    </ion-scroll>
   </div>
   <div class="inner-content" padding *ngIf="paymentDetails.DatiPratica && !paymentDetails.DatiPratica.Tipo.Assicurativa">
+    <ion-scroll scrollY="true">
     <div class="payment-details provisional">
       <ion-grid>
         <ion-row>
@@ -107,10 +132,12 @@
           </ion-col>
           <ion-col col-3 offset-2>
             <div class="chart-inner">
+              
               <ngx-charts-pie-chart
                 [view]="view"
                 [results]="single"
                 [scheme]="colorScheme"
+                [customColors]="custCol"
                 [legend]="false"
                 [tooltipDisabled]="true"
                 [explodeSlices]="explodeSlices"
@@ -144,5 +171,6 @@
         </ion-row>
       </ion-grid>
     </div>
+    </ion-scroll>
   </div>  
 </div>

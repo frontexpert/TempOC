@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 import * as CONSTANTS from '../../../shared/constants';
 import { PracticesProvider } from '../../../providers/practices';
@@ -9,6 +9,8 @@ import { Globals } from '../../../shared/globals';
 import { CarRentalProvider } from '../../../providers/car-rental';
 import { PracticeEditPage } from '../practice/practice-edit/practice-edit';
 import { NewPracticePage } from '../practice/new-practice/new-practice';
+import { SwitcherComponent } from '../../../components/switcher/switcher';
+import { QuoteTabComponent } from '../shared/pratica-edit-form/quote-tab/quote-tab';
 
 
 @IonicPage()
@@ -17,6 +19,9 @@ import { NewPracticePage } from '../practice/new-practice/new-practice';
   templateUrl: 'chiuse.html'
 })
 export class ChiusePage {
+
+  @ViewChild('switchChiuse') this_switcher: SwitcherComponent;
+  @ViewChild('quoteTab') thisQuoteTab: QuoteTabComponent;
 
   searchTerm: string = '';
 
@@ -39,6 +44,7 @@ export class ChiusePage {
   maxListIndex: number = 50;
   page: number = 0;
 
+
   //praticaList: any;
 
   constructor(public navCtrl: NavController, 
@@ -47,12 +53,14 @@ export class ChiusePage {
               private _photos: PhotosProvider,
               private _documents: DocumentsProvider,
               private _carRental: CarRentalProvider,
+              public events: Events,
               public globals: Globals) {
+
   }
 
   ngOnInit() {
     console.log('ngOnInit');
-    if (this._practices.chiuse_list.length == 0) {
+    if (this._practices.chiuse_list.length == 0 ) {
       // show loading spinner
       this.globals.showLoading().then(() => {
         // load list 
@@ -70,13 +78,51 @@ export class ChiusePage {
         });
       });
     }
+
+  }
+
+  doRefresh(refresher){
+    this._practices.getAllPratices().then(function() {
+      refresher.complete();
+    })
+  }
+  
+  ionViewWillEnter() {
+    console.log('subscribe   ChiusePage');
+    this.events.subscribe('documentDetails-refresh', () => {
+      this.globals.showLoading().then(() => {
+        this._documents.getDocuments(this.activeItemID).then(res => {
+          this.documentDetails = res;
+          console.log(this.documentDetails, 'documentDetails');
+          this.globals.hideLoading();
+        })
+        .catch(err => {
+          console.log('Get details ERROR:', err);
+          this.globals.hideLoading();
+        });
+      })
+      this.events.subscribe('quote-refresh', () => {
+        this.globals.showLoading().then(() => {
+          this._practices.getQuoteList(this.activeItemID).then((res: any) => {
+            this.quoteList = res;
+            this.globals.hideLoading();
+          })
+        })
+      });      
+    });
+  }
+  ionViewWillLeave() {
+    this.events.unsubscribe('documentDetails-refresh');
+    this.events.unsubscribe('quote-refresh');
+    console.log('unsubscribe   ChiusePage');
   }
 
   /**
    * On select a pratice item
    * @param item selected item
    */
-  selectPraticeItem(item: any): void {   
+  selectPraticeItem(item: any): void {  
+    
     if (this.activeItemID != item.ID) {
       this.activeItemID = item.ID;    
 

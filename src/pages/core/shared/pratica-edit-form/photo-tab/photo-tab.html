@@ -21,15 +21,16 @@
     </div>
     <div class="clearfix"></div>
   </div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col class="photo-item" *ngFor=" let photo of photos; let i = index" 
-              (click)="onClickItem(i)"
-              ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released(i)">
-        <ion-checkbox [(ngModel)]="photo.Checked" *ngIf="photo.Checked"></ion-checkbox>
-        <img defaultImage="assets/imgs/defaultImg.jpg" imageViewer [lazyLoad]="photo.Thumb" [style.border]="photo.Checked==true ? 'solid 2px #55f': ''">
-      </ion-col>      
-    </ion-row>
-  </ion-grid>
+  <ion-scroll scrollY="true">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="photo-item" *ngFor=" let photo of photos; let i = index" 
+                (click)="onClickItem(i)"
+                ion-long-press [interval]="1000" (onPressing)="toggle(i)" >
+          <ion-checkbox [(ngModel)]="photo.Checked" *ngIf="photo.Checked"></ion-checkbox>
+          <img defaultImage="assets/imgs/defaultImg.jpg" imageViewer [lazyLoad]="photo.Thumb" [style.border]="photo.Checked==true ? 'solid 2px #55f': ''">
+        </ion-col>      
+      </ion-row>
+    </ion-grid>
+  </ion-scroll>
 </div>

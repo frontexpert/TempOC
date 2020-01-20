@@ -31,7 +31,7 @@ export class DocumentsProvider {
         PraticaID: praticaID
       };
 
-      this.api.get('PraticaDocumento/List/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
+      this.api.get('PraticaDocumento/List/' + this.api.username + '/' + this.api.password + '/', params).subscribe((res: any) => {
           if (res.success) {
             this.storage.get(Constants.DOCUEMTNS_KEY).then(docsData => {
               if (docsData == null || docsData == undefined)
@@ -63,6 +63,43 @@ export class DocumentsProvider {
   }
 
 
+ /**
+   * Get NOLEGGIO document list
+   * @param noleggioID 
+   * @return {Promise}
+   */
+ 
+  checkRentDocuments(noleggioID: number, tipoID: number) {
+
+      let promise = new Promise((resolve, reject) => {
+      let params = {
+        noleggioID: noleggioID,
+        tipoID: tipoID
+      };
+
+      this.api.get('RentNoleggioDocumento/List/' + this.api.username + '/' + this.api.password + '/', params).subscribe((res: any) => {
+          if (res.success) {
+            this.storage.get(Constants.DOCUEMTNS_KEY).then(docsData => {
+              if (docsData == null || docsData == undefined)
+                docsData = {};
+              else 
+                docsData[noleggioID] = res.data;              
+              this.storage.set(Constants.DOCUEMTNS_KEY, docsData);
+            })
+            resolve(res.data);
+          }
+          else
+            resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+      });
+
+      return promise;
+
+  }
+
+
   deleteDocuments(documents: Array<any>, praticaID: number) {
     let promise = new Promise((resolve, reject) => {
       documents.forEach(documentItem => {
@@ -70,9 +107,8 @@ export class DocumentsProvider {
           ID: documentItem.ID,
           PraticaID: praticaID
         }
-        this.api.post('PraticaDocumento/Remove/matteo.polacchini@sitesolutions.it/matteomatteo/', body).subscribe((res: any) => {
-          console.log("remove Document");
-          console.log(res);
+        this.api.post('PraticaDocumento/Remove/' + this.api.username + '/' + this.api.password + '/', body).subscribe((res: any) => {
+          console.log("PraticaDocumento/Remove", res);
           if (res.success) {            
             // this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
             //   if (photoesData == null || photoesData == undefined)
@@ -91,6 +127,7 @@ export class DocumentsProvider {
           else
             resolve(res);
         }, (err) => {
+          console.log("PraticaDocumento/Remove error", err);
           reject(err);
         });
       });
@@ -99,16 +136,20 @@ export class DocumentsProvider {
     return promise;
   }  
 
-  addDocumentTemp(praticaID, modello) {
+  addDocumentTemp(ID, modello, isTemporary :boolean = true, Opt2, Opt3, Opt4, Firme) {
     let promise = new Promise((resolve, reject) => {
       let body = {
-        PraticaID: praticaID,
-        Modello: modello
+        ID: ID,
+        Modello: modello,
+        Temp : isTemporary,
+        Opzioni2: Opt2,
+        Opzioni3: Opt3,
+        Opzioni4: Opt4,
+        Firme: Firme
       }
-      this.api.post('Pratica/SaveModelloDocumento/matteo.polacchini@sitesolutions.it/matteomatteo/', body).subscribe((res: any) => {
-        console.log("add Document by template");
-        console.log(res);
-        if (res.success) {            
+      this.api.post('Firma/SaveModelloDocumento/' + this.api.username + '/' + this.api.password + '/', body).subscribe((res: any) => {
+        console.log('Firma/SaveModelloDocumento', res);
+        if (res.success) {
           // this.storage.get(Constants.PHOTOS_KEY).then(photoesData => {
           //   if (photoesData == null || photoesData == undefined)
           //     photoesData = {};
@@ -126,6 +167,7 @@ export class DocumentsProvider {
         else
           resolve(res);
       }, (err) => {
+        console.log("Firma/SaveModelloDocumento error", err);
         reject(err);
       });
     });
@@ -156,26 +198,6 @@ export class DocumentsProvider {
         })
         return res;
       });
-  }
-
-
-  addDocumentSignature(params) {
-    console.log("params: ", params);
-    let promise = new Promise((resolve, reject) => {
-      this.api.post('Pratica/SendFirmaDocumento/matteo.polacchini@sitesolutions.it/matteomatteo/', params).subscribe((res: any) => {
-        console.log("add Document Signature");
-        console.log(res);
-        if (res.success) {            
-          resolve(res.data);
-        }
-        else
-          resolve(res);
-      }, (err) => {
-        reject(err);
-      });
-    });
-
-    return promise;
   }
   
 }

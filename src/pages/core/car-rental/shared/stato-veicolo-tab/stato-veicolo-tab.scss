@@ -1,6 +1,9 @@
 stato-veicolo-tab {
-	.no-padding {
-		padding: 40px 0;
+	.sinistri-content {
+		max-height: 72vh;
+		overflow-y: scroll;
+		padding: 20px 0;
+		margin: 20px 0;
 	}
 
 	.add-button {
@@ -11,34 +14,16 @@ stato-veicolo-tab {
 			height: 36px;
 		}
 	}
+	.sinistri-content > .pull-right {
+		margin-top: -48px;
 
-	.upload-photo {
-		background-color: #ebebeb;
-		padding: 15px 15px 11px;
-		border: 1px solid #b0b0b0;
-
-		textarea.text-input {
-			background-color: white;
-			margin: 0;
-			border: 1px solid #b0b0b0;
-			padding: 8px;
-			width: 100%;
-			margin-bottom: 4px;
-			min-height: 60px;
-		}
-
-		.button[icon-only] {
-			background-color: #666;
-			border-radius: 0;
-			height: 30px;
-
-			ion-icon {
-				padding: 0 0.8rem;
-			}
-		}
-
-		.pull-right .button {
-			min-width: 120px;
+		.button-outline-ios-light {
+			background-color: #f0f0f0;
+			border-color: #cbcbcb;
+			border-width: 3px;
+			border-radius: 2px;
+			color: #000;
+			text-transform: uppercase;
 		}
 	}
 
@@ -48,8 +33,40 @@ stato-veicolo-tab {
 		.item {
 			color: black;
 			padding: 15px;
-			border: 1px solid #b0b0b0;
+			border: 1px solid #b0b0b0 !important;
 			margin-bottom: 0.5rem;
+
+			.label-ios > div {
+				display: inline-block;
+				width: fit-content;
+				vertical-align: middle;
+			}
+
+			div.item-detail {
+				width: 90%;
+
+				ion-checkbox {
+					position: fixed;
+					top: 94px;  
+				
+					.checkbox-checked {
+						background-color: #55f;
+						border-color: #55f;
+					}
+				}
+				.checkbox-ios {
+					margin: 0;
+					margin-left: 4px;
+				}
+			}
+
+			div.update-button {
+				width: 10%;
+    			text-align: end;
+				.button-ios-secondary {
+					min-width: 70px;
+				}
+			}
 
 			&:last-child {
 				margin-bottom: 0;

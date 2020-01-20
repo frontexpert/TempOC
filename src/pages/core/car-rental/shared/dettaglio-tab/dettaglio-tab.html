@@ -1,40 +1,41 @@
+<form #dettaglioForm="ngForm">
 <ion-grid class="no-padding">
   <ion-row>
     <ion-col col-6 class="custom-input">
-      <date-input label="data e ora inizio noleggio" required="true"></date-input>
+      <date-input label="data e ora inizio noleggio" [(ngModel)]="globals.noleggio.DataConsegna" [ngModelOptions]="{standalone: true}" required="true" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm"></date-input>
     </ion-col>
     <ion-col col-6 class="custom-input">
-      <date-input label="data e ora fine noleggio prevista"></date-input>
+      <date-input label="data e ora fine noleggio prevista" [(ngModel)]="globals.noleggio.DataRestituzioneStimata" [ngModelOptions]="{standalone: true}" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm"></date-input>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col col-3 class="custom-input">
-      <div class="input-item-label">KM USCITA <span class="required">*</span></div>
+      <div class="input-item-label">KM USCITA<span class="required">*</span></div>
       <ion-item>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="globals.noleggio.KmUscita" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3 class="custom-input">
       <div class="input-item-label">TARIFFA GIORNALIERA</div>
       <ion-item>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="globals.noleggio.TariffaGiornata" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-6 class="custom-input long-label">
       <div class="input-item-label">KM GIORNALIERI  (sconsigliato per i noleggi fermo tecnico)</div>
       <ion-item>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="globals.noleggio.KmGiorno" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col col-12 class="custom-input">
-      <fuel-rating [(ngModel)]="rate" 
+      <fuel-rating [(ngModel)]="globals.noleggio.CarburanteUscita" [ngModelOptions]="{standalone: true}"
         label="CARBURANTE"
         max="10" 
-        levelLabelText="Aktuelle Stufe"
+        levelLabelText="Livello carburante"
         nullable="false">
       </fuel-rating> 
     </ion-col>
@@ -44,17 +45,17 @@
     <ion-col col-12 class="custom-input">
       <div class="input-item-label">NOTE</div>
       <ion-item>
-        <ion-textarea></ion-textarea>
+        <ion-textarea [(ngModel)]="globals.noleggio.Note" [ngModelOptions]="{standalone: true}"></ion-textarea>
       </ion-item>
     </ion-col>    
   </ion-row>
 </ion-grid>
-
+</form>
 <div class="submit-row">
   <div class="pull-left">
     <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
   </div>
   <div class="pull-right">
-    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+    <button ion-button color="secondary" (click)="onNextTab.emit()">SALVA</button>
   </div>
 </div>

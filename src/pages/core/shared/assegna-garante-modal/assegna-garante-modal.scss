@@ -1,0 +1,58 @@
+page-assegna-garante-modal {
+
+  body {
+    height: 100px;
+  }
+  .header .toolbar-background {
+    background-color: $green-bg;
+  }
+  .toolbar-title-ios {
+		color: #fff;
+	}
+
+  header {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+  }
+  .btn-clear-sign {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #000;
+    z-index: 9;
+
+    &.button-clear-ios:hover:not(.disable-hover) {
+      color: #000;
+      opacity: 1;
+    }
+  }
+
+  .popover-content{
+    width: 60%;
+  }
+
+  .input-wrapper {
+    margin-left: 20px;
+  }
+
+  .checkbox_item {
+    padding-left: 20px;
+  }
+
+  .option_item {
+    padding-left: 55px;
+  }
+
+  .paragraph_nolo {
+    padding-left: 20px;
+    font-size: 20px;
+  }
+
+  .green {
+    color: $green-bg;
+  }
+
+  
+
+}

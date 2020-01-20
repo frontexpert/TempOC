@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { GeneralProvider } from '../../../../../providers/general';
+import { Globals } from '../../../../../shared/globals';
 
 @Component({
   selector: 'utilizzatore-2-tab',
@@ -12,9 +13,38 @@ export class Utilizzatore2TabComponent {
   // Properties
   countries: any[] = [];
   cities: any[] = [];
+  utilizzatore2 = false;
 
-  constructor(private general: GeneralProvider) {
+  constructor(private general: GeneralProvider,
+              public globals: Globals) {
     this.initDropdownList();
+
+    if(this.globals.noleggio.Anagrafica2Nome != null && this.globals.noleggio.Anagrafica2Nome != '')
+    {
+      this.utilizzatore2 = true;
+    }
+  }
+
+  checkChange() {
+    if(this.utilizzatore2 == false) {
+      //Svuota tutit i campi
+      this.globals.noleggio.Anagrafica2Nome = '';this.globals.noleggio.FatturazioneNome;
+      this.globals.noleggio.Anagrafica2Cognome = '';
+      this.globals.noleggio.Anagrafica2CodiceFiscale = '';
+      this.globals.noleggio.Anagrafica2Telefono = '';
+      this.globals.noleggio.Anagrafica2Email = '';
+      this.globals.noleggio.Anagrafica2Cellulare = '';
+      this.globals.noleggio.Anagrafica2ResidenzaIndirizzo = '';
+      this.globals.noleggio.Anagrafica2ResidenzaCap = '';
+      this.globals.noleggio.Anagrafica2ResidenzaProvincia = '';
+      this.globals.noleggio.Anagrafica2ResidenzaComune = '';
+      this.globals.noleggio.Anagrafica2ResidenzaNazione = '';
+      this.globals.noleggio.Anagrafica2PatenteCategoria = '';
+      this.globals.noleggio.Anagrafica2PatenteNumero = '';
+      this.globals.noleggio.Anagrafica2PatenteScadenzaData = null;
+      this.globals.noleggio.Anagrafica2PatenteRilascioEnte = '';
+      this.globals.noleggio.Anagrafica2PatenteRilascioData = null;
+    }
   }
 
   /**
@@ -26,6 +56,6 @@ export class Utilizzatore2TabComponent {
   			this.countries = values[0];
   			this.cities = values[1];
   		})
-  		.catch(err => console.log('ERROR: ', err));
+  		.catch(err => console.log('Utilizzatore2Tab. getCountry -> ERROR: ', err));
   }
 }

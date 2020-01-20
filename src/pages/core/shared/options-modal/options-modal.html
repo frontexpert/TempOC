@@ -1,0 +1,158 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done(options.tipo)">
+        Fatto
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content class="no-scroll">
+  <div class="drawpad-container">
+      <!-- dichiarazione testimone -->
+      <ion-grid *ngIf="options.tipo == 2" class="no-padding">
+          <header>
+            Il sottoscritto dichiara:
+          </header>
+          <ion-list radio-group [(ngModel)]="campi.danniACose">
+              <ion-list-header>
+                  <span class="green" *ngIf="errore.danniACose != ''">{{errore.danniACose}}</span>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>che nel sinistro vi sono stati solo danni a cose</ion-label>
+                <ion-radio value="sì" checked></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>che nel sinistro non vi sono stati solo danni a cose</ion-label>
+                <ion-radio value="no"></ion-radio>
+              </ion-item>
+          </ion-list>
+          <ion-list radio-group [(ngModel)]="campi.testimoni">
+              <ion-list-header>
+                  <span class="green" *ngIf="errore.testimoni != ''">{{errore.testimoni}}</span>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>che non vi è stata identificazione di eventuali testimoni<br />sul luogo di accadimento dell'incidente.</ion-label>
+                <ion-radio value="sì" checked></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>che vi è stata identificazione di eventuali testimoni<br />sul luogo di accadimento dell'incidente.</ion-label>
+                <ion-radio value="no"></ion-radio>
+              </ion-item>
+          </ion-list>
+          <ion-list radio-group [(ngModel)]="campi.generalitaTestimone">
+              <ion-list-header>
+                  <span class="green" *ngIf="errore.generalitaTestimone != ''">{{errore.generalitaTestimone}}</span>
+              </ion-list-header>
+              <ion-item>
+                  <ion-label>Comunica le generalità del testimone:</ion-label>
+                  <ion-radio value="sì" checked></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Nome e cognome:</ion-label>
+                  <ion-input [(ngModel)]="campi.nomeCognomeTestimone" name="nomeCognomeTestimone"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Non è in grado di comunicare le generalità del testimone.</ion-label>
+                <ion-radio value="no" checked></ion-radio>
+            </ion-item>
+          </ion-list>
+        </ion-grid>
+        <!-- richiesta vettura -->
+        <ion-grid *ngIf="options.tipo == 3" class="no-padding">
+            <header>
+                Il sottoscritto dichiara di avere la necessità di avvalersi di un veicolo sostitutivo<br />durante il periodo necessario alle riparazioni<br />per le seguenti motivazioni:
+            </header>
+            <ion-list>
+                <ion-list-header>
+                    <span class="green" *ngIf="errore.motivazioni != ''">{{errore.motivazioni}}<br /></span>
+                </ion-list-header>
+                <ion-item class="checkbox_item">
+                    <ion-label>Professionali</ion-label>
+                    <ion-checkbox [(ngModel)]="campi.professionali"></ion-checkbox>
+                </ion-item>
+                <ion-item class="checkbox_item">
+                    <ion-label>Lavorative</ion-label>
+                    <ion-checkbox [(ngModel)]="campi.lavorative"></ion-checkbox>
+                </ion-item>
+                <ion-item class="checkbox_item">
+                    <ion-label>Attività quotidiane</ion-label>
+                    <ion-checkbox [(ngModel)]="campi.attivita_quotidiane"></ion-checkbox> 
+                </ion-item>
+                <ion-item class="checkbox_item">
+                    <ion-label>Altro</ion-label>
+                    <ion-checkbox [(ngModel)]="campi.altro"></ion-checkbox>
+                </ion-item>
+                <ion-item class="option_item">
+                    <ion-label>Specifica altro:</ion-label>
+                    <ion-input [(ngModel)]="campi.specifica_altro" name="specifica_altro"></ion-input>
+                </ion-item>
+            </ion-list>
+      </ion-grid>
+      <!-- nolo auto -->
+      <ion-grid *ngIf="options.tipo == 4" class="no-padding">
+          <header>
+              Il sottoscritto dichiara:
+          </header>
+          <ion-list radio-group [(ngModel)]="campi.soggetto_privato">
+              <ion-list-header>
+                  <span class="green" *ngIf="errore.soggetto_privato != ''">{{errore.soggetto_privato}}<br /></span>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>
+                  di non essere titolare di partita IVA, ovvero che il risarcimento di cui sopra<br />
+                  non afferisce beni o servizi relativi all'esercizio di un'impresa,<br />
+                  arte o professione (soggetto privato)
+                </ion-label>
+                <ion-radio value="sì" (ionSelect)="privatoChecked()"></ion-radio>
+              </ion-item>
+          </ion-list>
+          <div class="paragraph_nolo" style="text-align: center">
+              oppure<br /><br />
+            </div>
+          <div class="paragraph_nolo">
+            che il risarcimento di cui sopra afferisce beni o servizi relativi al rifacimento di un'impresa, arte o professione la cui impresa è:<br /><br />
+          </div>
+          <ion-list radio-group [(ngModel)]="campi.risarcimento">
+              <ion-item>
+                <ion-label><strong>INTEGRALMENTE</strong> detraibile in quanto il bene<br />è totalmente inerente all'attività di impresa.</ion-label>
+                <ion-radio value="integralmente_detraibile" (ionSelect)="altroChecked()"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label><strong>INTEGRALMENTE</strong> indetraibile in quanto possiede una pro rata di detrazione IVA determinato<br />
+                  ai sensi dell'art. 19 bis del DPR 663/72 pari a zero, oppure ha esercitato per il periodo di imposta rilevante.<br />
+                  all'opzione di cui all'art. 36 bis del DPR 633/72.</ion-label>
+                <ion-radio value="integralmente_indetraibile" (ionSelect)="altroChecked()"></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label><strong>PARZIALMENTE</strong> indetraibile nella misura del 60% per effetto della parziale inerenza del bene<br />
+                    ai sensi dell'art. 19 bis del DPR 663/72 pari a zero, oppure ha esercitato per il periodo di imposta rilevante.<br />
+                    all'esercizio dell'impresa, arte o professione.</ion-label>
+                  <ion-radio value="parzialmente_indetraibile_60" (ionSelect)="altroChecked()"></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label><strong>PARZIALMENTE</strong> indetraibile* per effetto della pro rata di cui all'art. 19 bis del DPR 600/73<br />
+                    risultante dall'ultima dichiarazione presentata.</ion-label>
+                    <ion-radio value="parzialmente_indetraibile_var" (ionSelect)="altroChecked()"></ion-radio>
+              </ion-item>
+          </ion-list>
+          <ion-list>
+              <ion-item>
+                  <ion-label>* specificare percentuale:</ion-label>
+                  <ion-input [(ngModel)]="campi.percentuale_indetraibile" name="percentuale_indetraibile"></ion-input>
+              </ion-item>
+          </ion-list>
+      </ion-grid>
+    <button ion-button clear class="btn-clear-sign" (click)="clearSign()">Cancella</button>
+  </div>
+</ion-content>

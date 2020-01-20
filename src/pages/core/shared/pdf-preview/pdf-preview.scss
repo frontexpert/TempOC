@@ -32,4 +32,15 @@ page-pdf-preview {
      height: 60% !important;
    } 
  }
+ 
+}
+
+@media only screen and (orientation: landscape)  {
+  .options-modal {
+   .modal-wrapper { 
+     margin-top: 100px;    
+     height: 80% !important;
+   } 
+ }
+ 
 }

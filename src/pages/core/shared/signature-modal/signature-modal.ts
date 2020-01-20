@@ -35,12 +35,13 @@ export class SignatureModalPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignatureModalPage');
+    console.log('SignatureModalPage ionViewDidLoad');
 
     // this.signaturePad is now available
     window.onresize = this.resizeCanvas.bind(this);
     this.resizeCanvas();
     this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+    console.log('SignatureModalPage ionViewDidLoad. digital_signature:');
     console.log(this.digital_signature);
   }
 
@@ -56,37 +57,43 @@ export class SignatureModalPage {
 
   drawComplete() {
     // will be notified of szimek/signature_pad's onEnd event
+    console.log(this.digital_signature);
+
     this.digital_signature = this.signaturePad.toDataURL();
   }
  
   drawStart() {
     // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
+    console.log('SignatureModalPage begin drawing');
   }
 
   dismiss() {
-    this.vc.dismiss({is_changed: this.is_changed});
+    this.vc.dismiss({is_changed: this.is_changed, Firma : this.digital_signature});
   }
 
   done() {
-    let params = {
-      ID: this.navParams.get('ID'),
-      Modello: this.navParams.get('Modello'),
-      Posizione: this.navParams.get('Posizione'),
-      Firma: this.digital_signature
-    }
-    this.globals.showLoading().then(() => {
-      this.documentsProvider.addDocumentSignature(params).then((res) => {
-        console.log('response: ', res);
-        this.is_changed = true;
-        this.globals.hideLoading();
-        this.vc.dismiss({is_changed: this.is_changed});
-      }).catch(err => {
-        this.is_changed = false
-        console.log('error: ', err);
-        this.globals.hideLoading();
-      })
-    });
+    this.is_changed = true;
+
+    this.vc.dismiss({is_changed: this.is_changed, Firma : this.digital_signature});
+    
+    // let params = {
+    //   ID: this.navParams.get('ID'),
+    //   Modello: this.navParams.get('Modello'),
+    //   Posizione: this.navParams.get('Posizione'),
+    //   Firme: [this.digital_signature]
+    // }
+    // this.globals.showLoading().then(() => {
+    //   this.documentsProvider.addDocumentSignature(params).then((res) => {
+    //     console.log('response: ', res);
+    //     this.is_changed = true;
+    //     this.globals.hideLoading();
+    //     this.vc.dismiss({is_changed: this.is_changed});
+    //   }).catch(err => {
+    //     this.is_changed = false
+    //     console.log('error: ', err);
+    //     this.globals.hideLoading();
+    //   })
+    // });
   }
 
   clearSign() {

@@ -1,0 +1,80 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done()">
+        Fatto
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content>
+    <!-- dichiarazione testimone -->
+  <ion-grid>
+          <ion-row>
+                  <ion-col col-12>
+                    <ion-searchbar
+                      [placeholder]="''"
+                      [(ngModel)]="searchTerm" (ionChange)='onChangeTime($event)'>
+                    </ion-searchbar>
+                  </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+                <button *ngIf="marcaTag != ''" ion-button (click)="annulla('marca')">
+                    {{marcaTag}} [X]
+                </button>
+                <button *ngIf="modelloTag != ''" ion-button (click)="annulla('modello')">
+                    {{modelloTag}} [X]
+                </button>
+                <button *ngIf="versioneTag != ''" ion-button (click)="annulla('versione')">
+                    {{versioneTag}} [X]
+                </button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col col-12>
+                {{didascalia}}
+              </ion-col>
+            </ion-row>
+  </ion-grid>
+  <ion-list #listaVeicolo [virtualScroll]="actual_list" [approxItemHeight]="'160px'">
+      <ion-item *virtualItem="let item" class="pratiche-item" [class.active]="activeItemID === item.ID" (click)="selectItem(item)">
+          <h2>{{item.text}}</h2>
+      </ion-item>
+  </ion-list>
+</ion-content>
+
+<!--<ion-content class="no-scroll">    
+  <div class="drawpad-container">
+    <form #quoteOptionsForm="ngForm">
+                <ion-grid class="no-padding">
+                    <ion-row>
+                        <ion-col col-12 class="custom-input">
+                            <select-input label="MARCA VEICOLO" interface="popover" [(ngModel)]="marcaId" [ngModelOptions]="{standalone: true}" [options]="marcaVeicoloList" (change)="changeSelection('marca')"></select-input>   
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                            <ion-col col-12 class="custom-input">
+                                <select-input label="MODELLO VEICOLO" interface="popover" [(ngModel)]="modelloId" [ngModelOptions]="{standalone: true}" [options]="modelloVeicoloList" (change)="changeSelection('modello')"></select-input>   
+                            </ion-col>
+                    </ion-row>
+                    <ion-row>
+                            <ion-col col-12 class="custom-input">
+                                <select-input label="VERSIONE VEICOLO" interface="popover" [(ngModel)]="versioneId" [ngModelOptions]="{standalone: true}" [options]="versioneVeicoloList" (change)="changeSelection('versione')"></select-input>   
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+    </form>
+    <button ion-button clear class="btn-clear-sign" (click)="clearSelection()">Cancella</button>
+  </div>
+</ion-content>-->

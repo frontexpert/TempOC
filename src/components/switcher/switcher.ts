@@ -27,11 +27,11 @@ export class SwitcherComponent implements ControlValueAccessor {
   
   constructor() {}  
 
-  selectValue(value) {    
+  selectValue(value) { 
     if (value !== this.innerValue) {
       this.innerValue = value;
       this.onChangeCallback(value);
-    }    
+    }
   }
 
   //get accessor

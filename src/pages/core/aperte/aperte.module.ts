@@ -8,7 +8,7 @@ import { PipesModule } from '../../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
-    ApertePage,
+    ApertePage
   ],
   imports: [
     IonicPageModule.forChild(ApertePage),    
@@ -16,6 +16,7 @@ import { PipesModule } from '../../../pipes/pipes.module';
     PraticaFormComponentsModule,
     PraticaEditFormComponentsModule,
     PipesModule
+    
   ],
 })
 export class ApertePageModule {}

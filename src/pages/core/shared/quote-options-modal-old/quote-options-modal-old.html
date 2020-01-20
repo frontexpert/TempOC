@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done()">
+        Fatto
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content class="no-scroll">    
+  <div class="drawpad-container">
+    <form #quoteOptionsForm="ngForm">
+                <ion-grid class="no-padding">
+                    <ion-row>
+                        <ion-col col-12 class="custom-input">
+                            <select-input label="MARCA VEICOLO" interface="popover" [(ngModel)]="marcaId" [ngModelOptions]="{standalone: true}" [options]="marcaVeicoloList" (change)="changeSelection('marca')"></select-input>   
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                            <ion-col col-12 class="custom-input">
+                                <select-input label="MODELLO VEICOLO" interface="popover" [(ngModel)]="modelloId" [ngModelOptions]="{standalone: true}" [options]="modelloVeicoloList" (change)="changeSelection('modello')"></select-input>   
+                            </ion-col>
+                    </ion-row>
+                    <ion-row>
+                            <ion-col col-12 class="custom-input">
+                                <select-input label="VERSIONE VEICOLO" interface="popover" [(ngModel)]="versioneId" [ngModelOptions]="{standalone: true}" [options]="versioneVeicoloList" (change)="changeSelection('versione')"></select-input>   
+                            </ion-col>
+                    </ion-row>
+                </ion-grid>
+    </form>
+    <button ion-button clear class="btn-clear-sign" (click)="clearSelection()">Cancella</button>
+  </div>
+</ion-content>

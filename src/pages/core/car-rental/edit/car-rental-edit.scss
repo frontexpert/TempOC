@@ -36,6 +36,11 @@ page-car-rental-edit {
       }
     }
   }
+
+  .scroll-content {
+    padding-bottom: 0 !important;
+  }
+
 }
 
 /* Child tab components styles */
@@ -51,4 +56,6 @@ utilizzatore-2-tab {
   .no-padding {
     flex: 1;
   }
+
+  
 }

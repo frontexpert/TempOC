@@ -2,19 +2,19 @@
   <ion-grid class="no-padding">
     <ion-row>
       <ion-col col-3 class="custom-input">
-        <div class="input-item-label">cognome <span class="required">*</span></div>
+        <div class="input-item-label">cognome (<span class="required">*</span>)</div>
         <ion-item>
-          <ion-input [(ngModel)]="pratica.P1_Cognome" name="Cognome" required></ion-input>
+          <ion-input [(ngModel)]="pratica.P1_Cognome" name="Cognome"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-3 class="custom-input">
-        <div class="input-item-label">nome <span class="required">*</span></div>
+        <div class="input-item-label">nome (<span class="required">*</span>)</div>
         <ion-item>
-          <ion-input [(ngModel)]="pratica.P1_Nome" name="Nome" required></ion-input>
+          <ion-input [(ngModel)]="pratica.P1_Nome" name="Nome"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-3 class="custom-input">
-        <div class="input-item-label">ragione sociale</div>
+        <div class="input-item-label">ragione sociale (<span class="required">*</span>)</div>
         <ion-item>
           <ion-input [(ngModel)]="pratica.P1_RagioneSociale" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
@@ -26,27 +26,28 @@
         </ion-item>
       </ion-col>
     </ion-row>
-
     <ion-row>
       <ion-col col-3 class="custom-input">
-        <div class="input-item-label">sesso</div>
+        <!--<div class="input-item-label">sesso</div>-->
         <ion-item>
-          <ion-input [(ngModel)]="pratica.P1_Sesso" [ngModelOptions]="{standalone: true}"></ion-input>
+          <select-input label="sesso" interface="popover" [(ngModel)]="pratica.P1_Sesso" [ngModelOptions]="{standalone: true}" [options]="sessoOptions"></select-input>   
+          <!--<ion-input [(ngModel)]="pratica.P1_Sesso" [ngModelOptions]="{standalone: true}" maxlength="1"></ion-input>-->
         </ion-item>
       </ion-col>
       <ion-col col-3 class="custom-input">
         <date-input label="data di nascita" [(ngModel)]="pratica.P1_DataNascita" [ngModelOptions]="{standalone: true}"></date-input>
       </ion-col>
       <ion-col col-3 class="custom-input">
-        <div class="input-item-label">nazione di nascita</div>
+        <div class="input-item-label">nazione di nascita <span class="required">*</span></div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
-                [value]="pratica.P1_ResidenzaNazione" 
+                [value]="pratica.P1_LuogoNascitaNazione" 
                 [ngbTypeahead]="searchCounty" 
                 [resultTemplate]="rt" 
                 [inputFormatter]="typeahead_formatter" 
                 [disabled]="countries.length == 0"
-                (selectItem)="onSelectCountyOfBirth($event.item)">
+                (selectItem)="onSelectCountyOfBirth($event.item)"
+                placeholder="<Digita la nazione di nascita>" required>
           <div class="typeahead-icon"></div>
         </div>
       </ion-col>
@@ -54,12 +55,14 @@
         <div class="input-item-label">comune di nascita</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
+                  [value]="pratica.P1_LuogoNascita" 
                   [ngbTypeahead]="searchCities" 
                   [resultTemplate]="rt" 
                   [inputFormatter]="typeahead_formatter" 
                   [disabled]="cities.length == 0"
-                  (selectItem)="onSelectCityOfBirth($event.item)">   
-          <div class="typeahead-icon"></div>     
+                  (selectItem)="onSelectCityOfBirth($event.item)"
+                  placeholder="<Digita il comune di nascita>">   
+          <div class="typeahead-icon"></div>   
         </div>
       </ion-col>
     </ion-row>
@@ -98,7 +101,8 @@
                 [resultTemplate]="rt" 
                 [inputFormatter]="typeahead_formatter" 
                 [disabled]="countries.length == 0"
-                (selectItem)="onSelectCounty($event.item)">
+                (selectItem)="onSelectCounty($event.item)"
+                placeholder="<Digita la nazione>">
           <div class="typeahead-icon"></div>
         </div>        
       </ion-col>
@@ -106,11 +110,13 @@
         <div class="input-item-label">comune</div>
         <div class="ngb-typeahead-input">
           <input type="text" class="text-input" 
+                  [value]="pratica.P1_ResidenzaComune" 
                   [ngbTypeahead]="searchCities" 
                   [resultTemplate]="rt" 
                   [inputFormatter]="typeahead_formatter" 
                   [disabled]="cities.length == 0"
-                  (selectItem)="onSelectCity($event.item)">   
+                  (selectItem)="onSelectCity($event.item)"
+                  placeholder="<Digita il comune>">   
           <div class="typeahead-icon"></div>     
         </div>
       </ion-col>
@@ -144,6 +150,11 @@
         </ion-item>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        (<span class="required">*</span>) Inserire nome e cognome oppure ragione sociale
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </form>
 
@@ -152,6 +163,6 @@
     <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
   </div>
   <div class="pull-right">
-    <button ion-button color="secondary" [disabled]="!clienteForm.form.valid" (click)="onNextTab.emit()">{{globals.praticaTipoID == 100 ? 'SALVA' : 'AVANTI'}}</button>
+    <button ion-button color="secondary" [disabled]="!clienteForm.form.valid" (click)="onNextTab.emit()">{{globals.praticaTipoID == 100 || globals.praticaTipoID == 101 ? 'SALVA' : 'AVANTI'}}</button>
   </div>
 </div>

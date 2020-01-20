@@ -51,7 +51,7 @@ export class SinistroTabComponent {
   		.then((res: Array<Comune>) => {  			
   			this.cities = this.globals.parseCityToAutocompleteList(res);
   		})
-  		.catch(err => console.log('ERROR: ', err));
+  		.catch(err => console.log('SinistroTab. getComune -> ERROR: ', err));
   }
 
   /**

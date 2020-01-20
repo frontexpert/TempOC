@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController, Events } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { PdfPreviewPage } from '../../../shared/pdf-preview/pdf-preview';
 import { FullscreenPhotoViewPage } from '../../../shared/fullscreen-photo-view/fullscreen-photo-view';
-import { DocumentItem } from '../../../../../models/document';
+import { PraDocumentItem } from '../../../../../models/praDocument';
 import { Globals } from '../../../../../shared/globals';
 import { DocumentsProvider } from '../../../../../providers/documents';
 
@@ -40,13 +40,14 @@ export class DocumentsTabComponent {
               private alert: AlertController,
               private modalCtrl: ModalController, 
               public globals: Globals,
+              public events: Events,
               private documentsProvider: DocumentsProvider,
               public navParams: NavParams) {
     
   }
 
   ngOnInit():void {
-    console.log("this.photos");
+    console.log("this.documents");
     console.log(this.documents);
   }
 
@@ -55,9 +56,10 @@ export class DocumentsTabComponent {
     this.is_opened_templates = false;
   }
 
-  toggle() {
+  toggle(index: number) {
     console.log("toggle triggered");
     if (this._isLongPressed == false) {
+      this.documents[index].Checked = !this.documents[index].Checked;
       this.is_view_mode = false;
       this._isLongPressed = true;  
     }    
@@ -66,12 +68,12 @@ export class DocumentsTabComponent {
   /**
    * Long press event released
    */
-  released(index: number) {
-    if(!this.is_view_mode){
-      this.documents[index].Checked = !this.documents[index].Checked;
-    }
-    this._isLongPressed = false;
-  }
+  // released(index: number) {
+  //   if(!this.is_view_mode){
+  //     this.documents[index].Checked = !this.documents[index].Checked;
+  //   }
+  //   this._isLongPressed = false;
+  // }
 
   onClickItem(index: number) {
     if (this.is_view_mode) {
@@ -82,7 +84,7 @@ export class DocumentsTabComponent {
     }
   }
 
-  showDocumentDetails(documentItem: DocumentItem): void {
+  showDocumentDetails(documentItem: PraDocumentItem): void {
     console.log('DocumentItem is:', documentItem);
 
     // if document item is image, display fullscreen image viewer.
@@ -96,8 +98,8 @@ export class DocumentsTabComponent {
 
   deleteDocuments() {
     let confirm = this.alert.create({
-      title: 'Comform?',
-      message: 'Are you sure to delete documents?',
+      title: 'Confermi?',
+      message: 'I documenti verranno cancellati, confermi?',
       buttons: [
         {
           text: "Cancel",
@@ -119,6 +121,7 @@ export class DocumentsTabComponent {
               this.globals.showLoading().then(() => {
                 this.documentsProvider.deleteDocuments(removeItems, this.practicaID).then(res => {
                   this.globals.hideLoading();
+                  this.events.publish("documentDetails-refresh");
                   this.convertToViewMode();
                 })
                 .catch(err => {
@@ -140,16 +143,31 @@ export class DocumentsTabComponent {
 
   addDocumentByTemplate(modello) {
     this.is_opened_templates = false;
+    let firme = [];
     this.globals.showLoading().then(() => {
-      this.documentsProvider.addDocumentTemp(this.practicaID, modello).then(res => {
-        this.documentsProvider.getDocuments(this.practicaID).then(res => {
-          this.documents = res;
-          this.globals.hideLoading();
-          this.convertToViewMode();
-        }).catch(err => {
-          console.log(err);
-          this.globals.hideLoading();
-        })
+      this.documentsProvider.addDocumentTemp(this.practicaID, modello, true, null, null, null, firme).then((res: any) => {
+
+        let tempDocument ={
+          TipoId : modello,
+          Url: res.Url,
+          Thumb: res.ThumbUrl,
+          title: 'documento da modello',
+          PraticaID : this.practicaID
+        }
+
+        this.globals.hideLoading();
+
+        this.navCtrl.push(PdfPreviewPage, {document: tempDocument});
+        
+        // this.documentsProvider.getDocuments(this.practicaID).then(res => {
+        //   this.documents = res;
+        //   this.globals.hideLoading();
+        //   this.events.publish("documentDetails-refresh");
+        //   this.convertToViewMode();
+        // }).catch(err => {
+        //   console.log(err);
+        //   this.globals.hideLoading();
+        // })
       })
       .catch(err => {
         console.log('Remove document error: ', err);
@@ -199,7 +217,7 @@ export class DocumentsTabComponent {
    */
   fromGallery() {
     let options = {
-      maximumImagesCount: 1
+      maximumImagesCount: 20
     };
     this.imagePicker.getPictures(options).then(results => {
       for (let i = 0; i < results.length; i++) {
@@ -211,6 +229,7 @@ export class DocumentsTabComponent {
             newDocument.Url.replace(/\\/g, '/');
             this.documents.unshift(newDocument);
             this.globals.hideLoading();
+            this.convertToViewMode();
           }).catch(err => {
             console.log('Select photo error: ', err);
             this.globals.hideLoading();
@@ -224,6 +243,7 @@ export class DocumentsTabComponent {
 
   convertToViewMode() {
     this.is_view_mode = true;
+    this._isLongPressed = false;
     for (let i = this.documents.length - 1; i >= 0; i--) {
       this.documents[i].Checked = false;
     } 

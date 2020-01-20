@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="assign()">
+        Assegna Garante
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content>
+    <!-- dichiarazione testimone -->
+  <ion-grid>
+          <ion-row>
+            <ion-col col-12>
+                  <ion-label>Garante assegnato:</ion-label>
+                  <p>
+                      <strong>{{garante_selezionato}}</strong>
+                  </p>
+            </ion-col>
+          </ion-row>
+  </ion-grid>
+  <button ion-button clear class="btn-clear-sign" (click)="change()">Cambia</button>
+</ion-content>

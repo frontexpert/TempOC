@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Globals } from '../../../../../shared/globals';
+
 
 @Component({
   selector: 'dettaglio-tab',
@@ -10,7 +12,7 @@ export class DettaglioTabComponent {
 
   rate: number = 4;
 
-  constructor() {
+  constructor(public globals: Globals) {
     
   }
 }

@@ -1,110 +1,112 @@
-<ion-grid class="no-padding">
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">NOME <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">COGNOME <span class="required">*</span></div>
-      <ion-item class="addion-icon">        
-        <ion-input></ion-input>     
-        <span item-end><i class="fas fa-search"></i></span>   
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">codice fiscale/ partita iva</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+<form #consegnaForm="ngForm">
+  <ion-grid class="no-padding">
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">NOME <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaNome" name="nome" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">COGNOME <span class="required">*</span></div>
+        <ion-item class="addion-icon">        
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaCognome" name="cognome" required></ion-input>     
+          <span item-end><i class="fas fa-search"></i></span>   
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">codice fiscale/ partita iva</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaCodiceFiscale" name="codiceFiscale"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">telefono</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">Email</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">cellulare</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">telefono</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaTelefono" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">Email</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaEmail" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">cellulare</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaCellulare" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">indirizzo <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">Cap <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">provincia <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">indirizzo <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaResidenzaIndirizzo" name="indirizzo" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">Cap <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaResidenzaCap" name="cap" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">provincia <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaResidenzaProvincia" name="provincia" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">comune <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">nazione</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">tipo di documento <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">numero documento</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">comune <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaResidenzaComune" name="comune" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">nazione <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaResidenzaNazione" [ngModelOptions]="{standalone: true}" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">tipo di documento <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaPatenteCategoria" name="patenteCategoria" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">numero documento</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaPatenteNumero" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <date-input label="scadenza documento" required="true"></date-input>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">Rilasciato da</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>    
-    <ion-col col-3 class="custom-input">
-      <date-input label="rilasciato in data"></date-input>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <date-input label="scadenza documento" [(ngModel)]="globals.noleggio.AnagraficaPatenteScadenzaData" name="documentoScadenza" required="true"></date-input>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">Rilasciato da</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.AnagraficaPatenteRilascioEnte" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>    
+      <ion-col col-3 class="custom-input">
+        <date-input label="rilasciato in data" [(ngModel)]="globals.noleggio.AnagraficaPatenteRilascioData" [ngModelOptions]="{standalone: true}"></date-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
 
 <div class="submit-row">
   <ion-grid no-padding>
@@ -113,10 +115,10 @@
         <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
       </ion-col>
       <ion-col col-4 class="text-center">
-        <button ion-button color="lightgray">COPIA DA UTILIZZATORE</button>
+        <button ion-button color="lightgray" (click)="copiaDaUtilizzatore()">COPIA DA UTILIZZATORE</button>
       </ion-col>
       <ion-col col-4 class="text-right">
-        <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+        <button ion-button color="secondary" (click)="onNextTab.emit()" [disabled]="!consegnaForm.form.valid">AVANTI</button>
       </ion-col>
     </ion-row>
   </ion-grid>

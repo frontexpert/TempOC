@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Annulla
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done(options.tipo)">
+        Fatto
+      </button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+
+<ion-content>
+ 
+      <!-- dichiarazione testimone -->
+    <ion-grid>
+            <ion-row>
+                    <ion-col col-12>
+                      <ion-searchbar
+                        [placeholder]="''"
+                        [(ngModel)]="searchTerm" (ionChange)='onChangeTime($event)'>
+                      </ion-searchbar>
+                    </ion-col>
+            </ion-row>
+            
+    </ion-grid>
+    <ion-list [virtualScroll]="pratiche_list" [approxItemHeight]="'160px'">
+        <ion-item *virtualItem="let item" class="pratiche-item" [class.active]="activeItemID === item.ID" (click)="selectPraticeItem(item)">
+                <h2>{{item.P1_Targa}} - <span *ngIf="item.P1_Nome && item.P1_Cognome; else elseNome">{{item.P1_Nome}} {{item.P1_Cognome}}</span><ng-template #elseNome>{{item.P1_NomeCompleto}}</ng-template></h2>
+        </ion-item>
+    </ion-list>
+  
+</ion-content>

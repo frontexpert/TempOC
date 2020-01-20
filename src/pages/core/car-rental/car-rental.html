@@ -1,23 +1,67 @@
 <ion-header>
   <ion-navbar hideBackButton="true" color="secondary">
-  	<ion-buttons right>
-      <button ion-button clear>        
-        ANNULLA
-      </button>
-    </ion-buttons>
+
+	<ion-buttons left *ngIf="pID">
+		<button ion-button clear navPop icon-left>
+			<ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+			TORNA ALLA PRATICA
+		</button>
+	</ion-buttons>
 
     <ion-title>
-      Noleggio
+      Noleggio <span *ngIf="pID">da pratica n. {{pID}}</span>
     </ion-title>    
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 	<div class="padding-content">
-		<ion-grid class="no-padding">
-			<ion-row>
-				<ion-col col-4>
-					<div class="car-item" tappable (click)="expandItem(items[0])">
+		<ion-grid class="no-padding" *ngIf="globals.noleggioCarList.length > 0 && items.length > 0">
+			<ion-row>				
+				<ion-col col-4 *ngFor="let car_item of globals.noleggioCarList; let i = index">
+					<div class="car-item" [class.in-progress]="carItemHeaderState(car_item) == 3" tappable (click)="expandItem(items[i])">
+						<div class="item-label" *ngIf="carItemHeaderState(car_item) == 1">
+						</div>
+						<div class="item-label gray" *ngIf="carItemHeaderState(car_item) == 2">
+							{{car_item.Prenotazione}}
+						</div>
+						<div class="item-label red" *ngIf="carItemHeaderState(car_item) == 3">
+							NOLEGGIO IN CORSO
+						</div>
+						<div class="item-content">
+							<div class="car-item-image">
+								<img defaultImage="assets/imgs/defaultCarImg.jpg" [lazyLoad]="car_item.ImageUrl">
+							</div>
+							<h2><span class="label blue" *ngIf="car_item.ProprietarioID == car_item.RentPointID && car_item.Prenotazione == null">CONDIVISA</span>{{car_item.Nome}}</h2>
+							<div>
+								Immatricolazione: 
+								<span [innerHtml]="convertToLocalDate(car_item.DataImmatricolazione)"></span>
+							</div>
+							<div>
+								Scadenza revisione:
+								<span [innerHtml]="convertToLocalDate(car_item.DataRevisione)"></span>
+							</div>
+							<div>
+								KM: 
+								<span [innerHtml]="car_item.Km"></span> 
+								- Targa: 
+								<span [innerHtml]="car_item.Targa"></span>
+							</div>				
+						</div>
+						<div class="expand-buttons" *ngIf="items[i].expanded && carItemHeaderState(car_item) != 3">
+							<button ion-button color="secondary" (click)="newCarRental(car_item, 0)">NOLEGGIO A PAGAMENTO</button>
+							<button ion-button color="secondary" (click)="newCarRental(car_item, 1)">NOLEGGIO GRATUITO</button>
+							<button ion-button color="light" (click)="clearItem()">ANNULLA</button>
+						</div>
+						<div class="expand-buttons" *ngIf="items[i].expanded && carItemHeaderState(car_item) == 3">
+							<button ion-button color="secondary" (click)="editCarRental(car_item.Targa, car_item.NoleggioID)">MODIFICA</button>
+							<button ion-button color="secondary" (click)="endCarRental(car_item.Targa, car_item.NoleggioID)">RIENTRO</button>
+							<button ion-button color="light" (click)="clearItem()">ANNULLA</button>
+						</div>						
+					</div>
+				</ion-col>
+				<!-- <ion-col col-4>
+					<div class="car-item" tappable>
 						<div class="item-label">							
 						</div>
 						<div class="item-content">
@@ -27,16 +71,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
-						<div class="expand-buttons" *ngIf="items[0].expanded">
+						<div class="expand-buttons" *ngIf="false">
 							<button ion-button color="secondary" (click)="editCarRental()">NOLEGGIO A PAGAMENTO</button>
-							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
+							<button ion-button color="secondary" (click)="editCarRental()">NOLEGGIO GRATUITO</button>
 							<button ion-button color="light" (click)="clearItem()">ANNULLA</button>
 						</div>
 					</div>
-				</ion-col>
+				</ion-col> -->
 
-				<ion-col col-4>
-					<div class="car-item" tappable (click)="expandItem(items[1])">
+				<!-- <ion-col col-4>
+					<div class="car-item" tappable>
 						<div class="item-label gray">
 							IN PRENOTAZIONE DA 152 GIORNI
 						</div>
@@ -47,16 +91,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
-						<div class="expand-buttons" *ngIf="items[1].expanded">
+						<div class="expand-buttons" *ngIf="false">
 							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
 							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
 							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
-				</ion-col>
+				</ion-col> -->
 
-				<ion-col col-4>
-					<div class="car-item in-progress" tappable (click)="expandItem(items[2])">
+				<!-- <ion-col col-4>
+					<div class="car-item in-progress" tappable>
 						<div class="item-label red">
 							NOLEGGIO IN CORSO
 						</div>
@@ -67,16 +111,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
-						<div class="expand-buttons" *ngIf="items[2].expanded">
+						<div class="expand-buttons" *ngIf="false">
 							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
 							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
 							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
-				</ion-col>
+				</ion-col> -->
 
-				<ion-col col-4>
-					<div class="car-item" tappable (click)="expandItem(items[3])">
+				<!-- <ion-col col-4>
+					<div class="car-item" tappable>
 						<div class="item-label">							
 						</div>
 						<div class="item-content">
@@ -86,16 +130,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
-						<div class="expand-buttons" *ngIf="items[3].expanded">
+						<div class="expand-buttons" *ngIf="false">
 							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
 							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
 							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
-				</ion-col>
+				</ion-col> -->
 
-				<ion-col col-4>
-					<div class="car-item" tappable (click)="expandItem(items[4])">
+				<!-- <ion-col col-4>
+					<div class="car-item" tappable>
 						<div class="item-label">
 						</div>
 						<div class="item-content">
@@ -105,16 +149,16 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
-						<div class="expand-buttons" *ngIf="items[4].expanded">
+						<div class="expand-buttons" *ngIf="false">
 							<button ion-button color="secondary">NOLEGGIO A PAGAMENTO</button>
 							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
 							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
-				</ion-col>
+				</ion-col> -->
 
-				<ion-col col-4>
-					<div class="car-item" tappable (click)="expandItem(items[5])">
+				<!-- <ion-col col-4>
+					<div class="car-item" tappable>
 						<div class="item-label">
 						</div>
 						<div class="item-content">
@@ -124,13 +168,13 @@
 							<p>Scadenza revisione: 08/07/2016</p>
 							<p>KM: 2200 - Targa: XX123XX</p>							
 						</div>
-						<div class="expand-buttons" *ngIf="items[5].expanded">
+						<div class="expand-buttons" *ngIf="false">
 							<button ion-button color="secondary" (click)="editCarRental()">NOLEGGIO A PAGAMENTO</button>
 							<button ion-button color="secondary">NOLEGGIO GRATUITO</button>
 							<button ion-button color="light">ANNULLA</button>
 						</div>
 					</div>
-				</ion-col>
+				</ion-col> -->
 
 
 			</ion-row>

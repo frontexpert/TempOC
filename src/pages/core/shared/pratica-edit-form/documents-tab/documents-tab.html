@@ -1,4 +1,5 @@
 <div class="padding-content">
+  
   <div class="buttons-header">
     <div class="pull-left"  *ngIf="is_view_mode">
       <button ion-button outline small color="light" icon-left (click)="openTemplates()">
@@ -25,21 +26,31 @@
     </div>
     <div class="clearfix"></div>
   </div>
+
+
+  
   <ion-grid class="document-categories" *ngIf="is_opened_templates">
     <ion-row (click)="addDocumentByTemplate(1)">Cessione credito</ion-row>
     <ion-row (click)="addDocumentByTemplate(2)">Dichiarazione testimone</ion-row>
     <ion-row (click)="addDocumentByTemplate(3)">Richiesta vettura</ion-row>
-    <ion-row (click)="addDocumentByTemplate(4)">Nolo auto</ion-row>
+    <ion-row (click)="addDocumentByTemplate(4)">Dichiarazione Iva</ion-row>
     <ion-row (click)="addDocumentByTemplate(5)">Privacy</ion-row>
   </ion-grid>
-    <ion-grid>
-    <ion-row>
-      <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="onClickItem(i)" ion-long-press [interval]="1000" (onPressing)="toggle()" (onPressEnd)="released(i)">
-        <ion-checkbox [(ngModel)]="document.Checked" *ngIf="document.Checked"></ion-checkbox>
-        <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
-        <h4>{{document.Nome}}</h4>
-        <div class="doc-date">{{document.DataInserimento | date: 'dd/MM/yyyy'}}</div>
-      </ion-col>      
-    </ion-row>
-  </ion-grid>
+  <ion-scroll scrollY="true">
+      <ion-grid>
+          
+              <ion-row>
+            
+                  <ion-col class="document-item" *ngFor="let document of documents; let i = index" (click)="onClickItem(i)" ion-long-press [interval]="500" (onPressing)="toggle(i)" >
+                      <ion-checkbox [(ngModel)]="document.Checked" *ngIf="document.Checked"></ion-checkbox>
+                      <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.HasThumbnail ? document.Thumb : ''" alt=""  [style.border]="document.Checked==true ? 'solid 2px #55f': ''">
+                      <h4>{{document.Nome}}</h4>
+                      <div class="doc-date">{{document.DataInserimento | date: 'dd/MM/yyyy'}}</div>
+                    </ion-col>  
+              
+            </ion-row>
+         
+        </ion-grid>
+  </ion-scroll>
+    
 </div>

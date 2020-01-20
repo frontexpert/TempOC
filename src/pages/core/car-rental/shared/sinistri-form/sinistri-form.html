@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title  color="secondary">
+            Sinistri Form
+        </ion-title>
+        <ion-buttons end>
+            <button icon-only ion-button class="close" (click)="closeModal()">        
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="sinistri-form-container">  
+        <div class="upload-photo">
+            <ion-textarea [(ngModel)]="sinistro_desc"></ion-textarea>
+            <div>
+                 <ul class="photos" *ngIf="siministriImages != null">
+                    <li *ngFor="let image of siministriImages" >
+                        <img [src]="image">  
+                    </li>
+                 </ul>                
+            </div>
+            <div class="pull-left">
+                <button ion-button icon-only (click)="takeNewPhoto()">
+                    <ion-icon name="camera"></ion-icon>
+                </button>  
+                <button ion-button icon-only (click)="fromGallery()">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <!-- <span *ngFor="let photo of siministriImages"  tappable>
+                        <img [src]="photo" style="display:block" style="
+                        height: 30px;
+                        width: 30px;" />
+                </span> -->
+            </div>
+            <div class="pull-right">
+                <button ion-button color="secondary" (click)="addUpdateSinistri()">SALVA</button>  
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</ion-content>

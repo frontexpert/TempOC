@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import * as CONSTANTS from '../../../../../shared/constants';
 
 @Component({
   selector: 'outlook-tab',
@@ -8,7 +9,10 @@ export class OutlookTabComponet {
   @Input() pratica: any;
 
   items: any = [];
-  itemExpandHeight: number = 100;
+  //itemExpandHeight: number = 500;
+  itemExpandHeight: any = "auto";
+
+  responsibility: string = ""; 	// Display Presunta	Responsabilità
 
   constructor() {
     this.items = [
@@ -18,11 +22,16 @@ export class OutlookTabComponet {
       {expanded: false},
       {expanded: false}
     ];
+
   }
 
-  expandItem(item){
- 
-    this.items.map((listItem) => {
+  expandItem(item, checkAssicurativa){
+      if(checkAssicurativa && !this.pratica.Tipo.Assicurativa)
+      {
+        return false;
+      }
+
+      this.items.map((listItem) => {
 
         if(item == listItem){
             listItem.expanded = !listItem.expanded;
@@ -32,7 +41,37 @@ export class OutlookTabComponet {
 
         return listItem;
 
-    });
+      });
+    
 
   }
+
+  calcolaResponsability(SinistroP1CircostanzaID, SinistroP2CircostanzaID){
+    
+    let valueReponsability: string = "";
+
+    if(SinistroP1CircostanzaID != null && SinistroP1CircostanzaID != null)
+    {
+      valueReponsability =  CONSTANTS.PRESENT_RESPONSIBILITY[CONSTANTS.BAREME[SinistroP1CircostanzaID - 1][SinistroP2CircostanzaID - 1]];
+    }
+
+    return valueReponsability;
+    
+  }
+
+  ngOnInit() {
+    console.log('OutlookTabComponet. ngOnInit');
+
+
+    for(var item in this.items)
+    {
+      this.items.map((item) => {
+        item.expanded = false;
+      });
+    }
+
+    this.responsibility = this.calcolaResponsability(this.pratica.SinistroP1CircostanzaID, this.pratica.SinistroP2CircostanzaID);
+
+  }
+
 }

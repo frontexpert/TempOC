@@ -20,9 +20,8 @@ export class SidebarComponent {
     {icon: 'aperte', title: 'aperte'},
     {icon: 'in-lavorazione', title: 'in lavorazione'},
     {icon: 'chiuse', title: 'chiuse'},
-    {icon: 'preventivi', title: 'preventivi'},
     {icon: 'noleggio', title: 'noleggio'},
-    {icon: 'noleggio', title: 'car'}
+    // {icon: 'noleggio', title: 'car'}
   ];
 
   constructor(public globals: Globals) {

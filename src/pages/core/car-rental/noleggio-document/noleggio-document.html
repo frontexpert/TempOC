@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar hideBackButton="true" color="secondary">
+      <ion-buttons left>
+        <button ion-button clear navPop icon-left>
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          INDIETRO
+        </button>
+      </ion-buttons>
+  
+      <ion-title>
+        {{globals.noleggio.Vettura}}- {{globals.Targa}}
+      </ion-title>    
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>  
+    <div class="padding-content">  
+      <div class="left-column">
+        <p>LUOGO COMPILAZIONE: 
+          <span *ngIf="globals.noleggio.Utilizzatore.ResidenzaComune == null">{{globals.noleggio.Utilizzatore.ResidenzaNazione}}</span>
+          <span *ngIf="globals.noleggio.Utilizzatore.ResidenzaComune != null">{{globals.noleggio.Utilizzatore.ResidenzaComune}} ({{globals.noleggio.Utilizzatore.ResidenzaProvincia}})</span>
+        </p>
+        <p>IMPEGNO VEICOLO DAL 
+          <span>{{convertToLocalDate(globals.noleggio.DataConsegna)}}</span> AL 
+          <span *ngIf="globals.noleggio.DataRestituzione == null">{{convertToLocalDate(globals.noleggio.DataRestituzioneStimata)}}</span>
+          <span *ngIf="globals.noleggio.DataRestituzione != null">{{convertToLocalDate(globals.noleggio.DataRestituzione)}}</span>
+        </p>
+        <br>
+        <p>UTILIZZATORE: <span>{{globals.noleggio.AnagraficaNome}} {{globals.noleggio.AnagraficaCognome}}</span></p>
+        <p>SECONDO UTILIZZATORE: 
+          <span *ngIf="globals.noleggio.Anagrafica2Nome == null || globals.noleggio.Anagrafica2Nome == ''">-</span>
+          <span *ngIf="globals.noleggio.Anagrafica2Nome != null || globals.noleggio.Anagrafica2Nome != ''">{{globals.noleggio.Anagrafica2Nome}} {{globals.noleggio.Anagrafica2Cognome}}</span>
+        </p>
+        <p *ngIf="globals.noleggio.Sinistri == null">DANNI SEGNALATI:
+          <span>Nothing</span>
+        </p>
+        <div *ngIf="globals.noleggio.Sinistri != null">
+          <div class="danni-label">
+              DANNI SEGNALATI: 
+          </div>
+          <div class="danni-span">
+              <span>{{getDanniSegnallati()}} </span>
+          </div>
+        </div>
+
+        <div class="pull-left">
+            <p *ngIf="praticaID != null" tappable (click)="goPractice(relPratica.ID)"><span *ngIf="relPratica.SinistroData != null && relPratica.SinistroOra != null">{{relPratica.SinistroData | date: 'dd/MM/yyyy'}} {{relPratica.SinistroOra | date: 'HH:mm'}} - </span><span *ngIf="relPratica.P1_NomeCompleto != null && relPratica.P1_NomeCompleto != ''">{{relPratica.P1_NomeCompleto}}</span><span *ngIf="relPratica.P1_NomeCompleto != null && relPratica.P1_NomeCompleto != null && relPratica.P1_Targa != null && relPratica.P1_Targa != ''"> - </span><span *ngIf="relPratica.P1_Targa != null && relPratica.P1_Targa != ''">{{relPratica.P1_Targa}}</span> <span *ngIf="relPratica.P1_Veicolo != null && relPratica.P1_Veicolo != ''">, {{relPratica.P1_Veicolo}}</span></p>
+           
+            <button ion-button color="secondary" (click)="associaPratica()"><span *ngIf="praticaID == null">ASSOCIA PRATICA</span><span *ngIf="praticaID != null">CAMBIA</span></button><br />
+            <button ion-button color="secondary" (click)="annullaAssociazione()">ANNULLA</button><br />
+            <button *ngIf="praticaID == null || (relPratica != null && relPratica.TipoID != 101)" ion-button color="secondary"(click)="creaPraticaNoleggio()">CREA PRATICA NOLEGGIO</button>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="document-thumb" (click)="showDocumentDetails()">
+            <img class="sign-img" defaultImage="assets/imgs/sign.png" [lazyLoad]="''" alt="">
+            <img defaultImage="assets/imgs/defaultImg.jpg" [lazyLoad]="document.Thumb" [offset]="1000">
+        </div>
+        <div class="pull-right">
+            <button ion-button color="secondary" (click)="backNoleggi()">FINE</button>
+        </div>
+      </div>
+    </div>
+  </ion-content>

@@ -33,6 +33,7 @@ export class PhotoTabComponet {
   ngOnInit() {
     console.log("this.photos");
     console.log(this.photos);
+    //alert(this.practicaID);
   }
 
   /**
@@ -101,13 +102,13 @@ export class PhotoTabComponet {
 
   deletePhoto() {
     let confirm = this.alert.create({
-      title: 'Comform?',
-      message: 'Are you sure to delete photos?',
+      title: 'Comfermi?',
+      message: 'Sei sicuro di voler eliminare le foto selezionate?',
       buttons: [
         {
-          text: "Cancel",
+          text: "Cancella",
           handler: () => {
-            console.log('Cancelled..');
+            console.log('Foto eliminate..');
           }
         },
         {
@@ -119,15 +120,22 @@ export class PhotoTabComponet {
                 removeItems.push(this.photos[i]);
                 this.photos.splice(i, 1);
               }
-            }            
+            }    
+            console.log('FOTO DA ELIMINARE=' + removeItems.length);    
             if (removeItems.length > 0) {
               this.globals.showLoading().then(() => {
-                this.photosProvider.deletePhotos(removeItems, this.practicaID).then(res => {
-                  this.globals.hideLoading();
-                  this.convertToViewMode();
+                this.photosProvider.deletePhotos(removeItems, this.practicaID).then((res: any) => {
+                  if(res.success == false)
+                  {
+                    this.globals.showToastError('Errore eliminazione foto:' + res.message);
+                    this.globals.hideLoading();
+                  } else {
+                    this.globals.hideLoading();
+                    this.convertToViewMode();
+                  }
                 })
                 .catch(err => {
-                  console.log('Remove photo error: ', err);
+                  console.log('Errore eliminazione foto: ', err);
                   this.globals.hideLoading();
                 });
               });
@@ -139,8 +147,9 @@ export class PhotoTabComponet {
     confirm.present();
   }
 
-  toggle() {
+  toggle(index : number) {
     if (this._isLongPressed == false) {
+      this.photos[index].Checked = !this.photos[index].Checked;
       this.is_view_mode = false;
       this._isLongPressed = true;  
     }    
@@ -149,12 +158,12 @@ export class PhotoTabComponet {
   /**
    * Long press event released
    */
-  released(index: number) {
-    if(!this.is_view_mode){
-      this.photos[index].Checked = !this.photos[index].Checked;
-    }
-    this._isLongPressed = false;
-  }
+  // released(index: number) {
+  //   if(!this.is_view_mode){
+  //     this.photos[index].Checked = !this.photos[index].Checked;
+  //   }
+  //   this._isLongPressed = false;
+  // }
 
   onClickItem(index: number) {
     if (this.is_view_mode) {
@@ -179,6 +188,7 @@ export class PhotoTabComponet {
 
   convertToViewMode() {
     this.is_view_mode = true;
+    this._isLongPressed = false;
     for (let i = this.photos.length - 1; i >= 0; i--) {
       this.photos[i].Checked = false;
     } 

@@ -2,9 +2,13 @@ sidebar {
   .sidebar{
     padding: 10px 0 6px;
     // border-right: 1.5px ridge #fff;
+    flex: auto;
+    flex-flow: column;
+    justify-content: flex-start;
+    display: flex;
   }
   .logo-wrapper {
-    margin-bottom: 48px;
+    margin-bottom: 8px; //48px ipad
     padding: 0 30px 10px;
   }
   .avatar{
@@ -14,11 +18,12 @@ sidebar {
   }
   .sidebar-footer{
     color: #fff;
-    position: absolute;
+    margin-top: auto;
+    /*position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 1rem 0;
+    padding: 1rem 0;*/
 
     .buttons-block{
       display: flex;

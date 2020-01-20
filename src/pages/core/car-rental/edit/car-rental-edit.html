@@ -8,18 +8,18 @@
     </ion-buttons>
 
     <ion-buttons right>
-      <button ion-button clear>        
+      <button ion-button clear (click)="annullaNoleggio()">        
         ANNULLA
       </button>
     </ion-buttons>
 
     <ion-title>
-      Citroen C1 - XX123XX
+     {{globals.noleggio.Vettura}} - {{globals.targaVeicolo}}
     </ion-title>    
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>  
+<ion-content padding overflow-scroll="false">  
   <div class="padding-content">
 
     <switcher class="green no-padding" [withCheckMark]="true" [checkedTabs]="checkedTabs" [values]="tabValues"
@@ -28,18 +28,18 @@
     <div [ngSwitch]="selectedTab" class="component-wrapper">
       <utilizzatore-tab *ngSwitchCase="0" 
             (onNextTab)="handleSelectTab(1)"></utilizzatore-tab>
-      <utilizzatore-2-tab *ngSwitchCase="1" 
+      <consegna-a-tab *ngSwitchCase="1" 
             (onBackTab)="handleBackSelect()" 
-            (onNextTab)="handleSelectTab(2)"></utilizzatore-2-tab>
-      <consegna-a-tab *ngSwitchCase="2" 
+            (onNextTab)="handleSelectTab(2)"></consegna-a-tab>
+      <utilizzatore-2-tab *ngSwitchCase="2" 
             (onBackTab)="handleBackSelect()" 
-            (onNextTab)="handleSelectTab(3)"></consegna-a-tab>
+            (onNextTab)="handleSelectTab(3)"></utilizzatore-2-tab>
       <stato-veicolo-tab *ngSwitchCase="3" 
             (onBackTab)="handleBackSelect()" 
             (onNextTab)="handleSelectTab(4)"></stato-veicolo-tab>
 			<dettaglio-tab *ngSwitchCase="4" 
             (onBackTab)="handleBackSelect()" 
-            (onNextTab)="handleSelectTab(4)"></dettaglio-tab>
+            (onNextTab)="handleSelectTab(5)"></dettaglio-tab>
     </div>
   </div>
 </ion-content>

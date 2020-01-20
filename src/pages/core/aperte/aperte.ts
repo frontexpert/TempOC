@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { PracticesProvider } from '../../../providers/practices';
 import { PhotosProvider } from '../../../providers/photos';
 import { DocumentsProvider } from '../../../providers/documents';
@@ -9,6 +9,8 @@ import { PracticeEditPage } from '../practice/practice-edit/practice-edit';
 import { NewPracticePage } from '../practice/new-practice/new-practice';
 
 import * as CONSTANTS from '../../../shared/constants';
+import { QuoteTabComponent } from '../shared/pratica-edit-form/quote-tab/quote-tab';
+import { SwitcherComponent } from '../../../components/switcher/switcher';
 
 
 @IonicPage()
@@ -17,6 +19,11 @@ import * as CONSTANTS from '../../../shared/constants';
   templateUrl: 'aperte.html',
 })
 export class ApertePage {
+
+
+  //@ViewChild(SwitcherComponent) switcher: SwitcherComponent;
+  @ViewChild('switchAperte') this_switcher: SwitcherComponent;
+  @ViewChild('quoteTab') thisQuoteTab: QuoteTabComponent;
 
   searchTerm: string = '';
 
@@ -41,16 +48,21 @@ export class ApertePage {
 
   //praticaList: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams, 
               public _practices: PracticesProvider, 
               private _photos: PhotosProvider,
               private _documents: DocumentsProvider,
               private _carRental: CarRentalProvider,
+              public events: Events,
               public globals: Globals) {
+              
   }
 
   ngOnInit() {
     console.log('ngOnInit');
+    
+
     if (this._practices.aperte_list.length == 0) {
       // show loading spinner
       this.globals.showLoading().then(() => {
@@ -69,18 +81,68 @@ export class ApertePage {
         });
       });
     }
+
   }
 
+  doRefresh(refresher){
+    this._practices.getAllPratices().then(function() {
+      refresher.complete();
+    })
+  }
+
+  ionViewWillEnter() {
+    console.log('subscribe   ApertePage');
+
+    
+
+    this.events.subscribe('documentDetails-refresh', () => {
+      this.globals.showLoading().then(() => {
+        this._documents.getDocuments(this.activeItemID).then(res => {
+          this.documentDetails = res;
+          this.globals.hideLoading();
+        })
+        .catch(err => {
+          console.log('Get details ERROR:', err);
+          this.globals.hideLoading();
+        });
+      })
+    });
+
+    this.events.subscribe('quote-refresh', () => {
+      this.globals.showLoading().then(() => {
+        this._practices.getQuoteList(this.activeItemID).then((res: any) => {
+          this.quoteList = res;
+          this.globals.hideLoading();
+        })
+      })
+    });
+
+
+      console.log('subscribe   InLavorazionePage');
+      this.events.subscribe('pratica-refresh', (item) => {
+        //alert(item);
+        this.refreshPraticeItem(item);
+      });
+    
+
+  }
+  ionViewWillLeave() {
+    this.events.unsubscribe('documentDetails-refresh');
+    this.events.unsubscribe('pratica-refresh');
+    this.events.unsubscribe('quote-refresh');
+    console.log('unsubscribe   ApertePage');
+  }
   /**
    * On select a pratice item
    * @param item selected item
    */
-  selectPraticeItem(item: any): void {   
+  selectPraticeItem(item: any): void {
+
     if (this.activeItemID != item.ID) {
       this.activeItemID = item.ID;    
 
-      // change selected tab to first one
-      //this.selectedTab = 0;
+      
+     
 
       // get pratica details and payment details
       this.globals.showLoading().then(() => {
@@ -112,8 +174,31 @@ export class ApertePage {
 
             this.noleggioList = values[5];
             console.log(this.noleggioList, 'noleggioList');
+
             
+            
+
+            console.log('TAB VALUES');
+            console.log(this.tabValues);
+
+            //this.tabValues = CONSTANTS.PRATICHE_TAB_VALUES;
+            //this.tabValues.splice(0, 1);
+            //this.tabValues.splice(1, 1);
+    
+            if(this.paymentDetails.DatiPratica == null)
+            {
+              this.tabValues = CONSTANTS.PRATICHE_TAB_VALUES_1;
+              //this.tabValues.unshift({text: 'outlook', value: 0});
+            } else {
+              this.tabValues = CONSTANTS.PRATICHE_TAB_VALUES;
+              //this.tabValues.unshift({text: 'pagamento', value: 1});
+              //this.tabValues.unshift({text: 'outlook', value: 0});
+            }
+
             this.globals.hideLoading();
+              // change selected tab to first one
+     this.selectedTab = 0;
+
           })
           .catch(err => {
             console.log('Get details ERROR:', err);
@@ -147,7 +232,7 @@ export class ApertePage {
             this.checkedTabs.splice(index, 1);
           }
         }
-  
+
         if (item.NoleggiCount > 0) {
           this.checkedTabs.push(5); // Noleggi marked
         } else {
@@ -157,7 +242,21 @@ export class ApertePage {
           }
         }
       });
+
+     
+
     }
+
+    
+    
+  }
+
+  refreshPraticeItem(item: any): void {
+    console.log('refresh');
+    //this.navCtrl.setRoot(this.navCtrl.getActive().component).then(function() {
+      
+    //});
+
   }
 
   /**

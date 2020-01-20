@@ -1,116 +1,126 @@
-<ion-grid class="no-padding">
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">NOME <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">COGNOME <span class="required">*</span></div>
-      <ion-item class="addion-icon">        
-        <ion-input></ion-input>     
-        <span item-end><i class="fas fa-search"></i></span>   
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">codice fiscale/ partita iva</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+<form #utilizzatoreForm="ngForm">
+  <ion-grid class="no-padding">
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">NOME <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneNome" name="nome" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">COGNOME <span class="required">*</span></div>
+        <!-- <div class="ngb-typeahead-input">
+          <input type="text" class="text-input" 
+                  [(ngModel)]="globals.noleggio.FatturazioneCognome" 
+                  [ngbTypeahead]="searchCognome" 
+                  [resultTemplate]="rt" 
+                  [inputFormatter]="typeahead_formatter" 
+                  [disabled]="cities.length == 0">   
+          <div class="typeahead-icon"></div>     
+        </div> -->
+        <ion-item class="addion-icon">        
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneCognome" name="cognome" required></ion-input>     
+          <span item-end (click)="searchAnagrafica()"><i class="fas fa-search"></i></span>   
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">codice fiscale/ partita iva</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazionePartitaIva" name="partitaIva"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">telefono</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">Email</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">cellulare</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">telefono</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneTelefono" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">Email</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneEmail" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">cellulare</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneCellulare" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">indirizzo <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">Cap <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">provincia <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">indirizzo <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneIndirizzo" name="indirizzo" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">Cap <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneCap" name="cap" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">provincia <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneProvincia" name="provincia" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">comune <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">nazione</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">tipo di documento <span class="required">*</span></div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col col-3 class="custom-input">
-      <div class="input-item-label">numero documento</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">comune <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneComune" name="comune" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">nazione <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneNazione" [ngModelOptions]="{standalone: true}" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">tipo di documento <span class="required">*</span></div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneDocumento" name="documento" required></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">numero documento</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneDocumentoNumero" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col col-3 class="custom-input">
-      <date-input label="scadenza documento" required="true"></date-input>
-    </ion-col>
-    <ion-col col-6 class="custom-input">
-      <div class="input-item-label">Rilasciato da</div>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-col>    
-    <ion-col col-3 class="custom-input">
-      <date-input label="rilasciato in data"></date-input>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
+    <ion-row>
+      <ion-col col-3 class="custom-input">
+        <date-input label="scadenza documento" [(ngModel)]="globals.noleggio.FatturazioneDocumentoScadenza" name="documentoScadenza" required="true"></date-input>
+      </ion-col>
+      <ion-col col-6 class="custom-input">
+        <div class="input-item-label">Rilasciato da</div>
+        <ion-item>
+          <ion-input [(ngModel)]="globals.noleggio.FatturazioneDocumentoRilascioEnte" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>    
+      <ion-col col-3 class="custom-input">
+        <date-input label="rilasciato in data" [(ngModel)]="globals.noleggio.FatturazioneDocumentoRilascioData" [ngModelOptions]="{standalone: true}"></date-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
 <div class="submit-row">
   <!-- <div class="pull-left">
     <button ion-button outline color="secondary">INDIETRO</button>
   </div> -->
   <div class="pull-right">
-    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+    <button ion-button color="secondary" (click)="onNextTab.emit()" [disabled]="!utilizzatoreForm.form.valid">AVANTI</button>
   </div>
 </div>

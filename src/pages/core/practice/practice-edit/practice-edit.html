@@ -7,15 +7,9 @@
       </button>
     </ion-buttons>
 
-    <ion-buttons right>
-      <button ion-button clear>        
-        ANNULLA
-      </button>
-    </ion-buttons>
-
-    <ion-title>
-      Nuova pratica RCA CARD
-    </ion-title>    
+    <ion-title *ngIf="pID != null">
+      Modifica pratica {{siglaPratica}} n° {{pID}}
+    </ion-title>        
   </ion-navbar>
 </ion-header>
 

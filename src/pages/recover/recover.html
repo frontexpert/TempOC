@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="secondary">
+    <ion-buttons left>
+      <button ion-button clear navPop icon-left>
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        INDIETRO
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Recupera Password
+    </ion-title>    
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="text-align: center;" padding class="bg">
+    <div>
+        <span style="color: white; font-weight: bold;">{{msg}}</span><br />
+    </div>
+    <div class="centered-content-wrapper">
+        <div class="wrap-content">
+            <div class="description">
+                <h5>Se ricordi il tuo nome utente,<br />inseriscilo qui sotto per ricevere direttamente le credenziali.</h5>
+            </div>
+            <ion-list>
+                <ion-item>
+                  <ion-label stacked>Nome utente</ion-label>
+                  <ion-input type="text" [(ngModel)]="recover.username" name="username"></ion-input>
+                </ion-item>
+              </ion-list>
+              <div class="buttons">
+                  <button ion-button (click)="recoverPassword()">RECUPERA PASSWORD</button>
+              </div>
+              <div class="description" style="padding-top: 40px;">
+                  <h5>Altrimenti inserisci qui sotto la ragione sociale della tua carrozzeria e il tuo indirizzo e-mail per ricevere nuovamente le credenziali d'accesso all'app Oxygen Car.</h5>
+              </div>
+              <ion-list>
+                  <ion-item *ngIf="errore != null && errore != ''">
+                        <span style="color: white; font-weight: bold;">{{errore}}</span>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label stacked>Ragione Sociale Carrozzeria</ion-label>
+                    <ion-input type="text" [(ngModel)]="recover.ragione_sociale" name="ragione_sociale"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label stacked>Indirizzo E-mail</ion-label>
+                    <ion-input type="email" [(ngModel)]="recover.email" name="email"></ion-input>
+                  </ion-item>
+                </ion-list>
+                <div class="buttons">
+                    <button ion-button (click)="richiediCredenziali()">RICHIEDI CREDENZIALI</button>
+                  </div>
+        </div>  
+    </div>
+  </ion-content>
+  

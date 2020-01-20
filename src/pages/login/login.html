@@ -4,9 +4,10 @@
       <div class="logo-wrapper">
         <img src="assets/imgs/app-logo.png" />
       </div>
-
       <ion-list>
-
+        <ion-item *ngIf="errore != null && errore != ''">
+              <span style="color: white; font-weight: bold;">{{errore}}</span>
+        </ion-item>
         <ion-item>
           <ion-label stacked>Nome utente</ion-label>
           <ion-input type="email" [(ngModel)]="login.username" required name="username"></ion-input>
@@ -16,14 +17,13 @@
           <ion-label stacked>Password</ion-label>
           <ion-input type="password" [(ngModel)]="login.password" required name="password"></ion-input>
         </ion-item>
-
       </ion-list>
 
       <div class="buttons">
-        <a ion-button (click)="goToRegistrationPage()">ACCEDI</a>
-        <button ion-button outline type="submit">ASSISTENZA</button>
+        <button ion-button type="submit">ACCEDI</button>
+        <a ion-button outline (click)="goToAssistenza()">ASSISTENZA</a>
       </div>
-      <p><a href="#" class="link">Password dimenticata?</a></p>
+      <p><a (click)="goToRecuperaPassword()" class="link">Password dimenticata?</a></p>
 
     </form>
   </div>

@@ -29,21 +29,27 @@ import { PracticesProvider } from '../providers/practices';
 import { PhotosProvider } from '../providers/photos';
 import { DocumentsProvider } from '../providers/documents';
 import { Api } from '../providers/api';
+import { InAppBrowserProvider } from '../providers/in-app-browser';
 import { NetState } from '../providers/network';
 import { CarRentalProvider } from '../providers/car-rental';
 import { GeneralProvider } from '../providers/general';
+import { LoginProvider } from '../providers/login';
+import { RecoverPage } from '../pages/recover/recover';
 
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
+    RecoverPage
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp, {
-      mode: "ios"
+      mode: "ios",
+      scrollAssist: false, 
+      autoFocusAssist: false
     }),
     HttpClientModule,
     IonicStorageModule.forRoot(),
@@ -55,7 +61,8 @@ import { GeneralProvider } from '../providers/general';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    RecoverPage
   ],
   providers: [
     StatusBar,
@@ -69,11 +76,13 @@ import { GeneralProvider } from '../providers/general';
     Globals,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,
+    InAppBrowserProvider,
     PracticesProvider,
     PhotosProvider,
     DocumentsProvider,
     NetState,
     CarRentalProvider,
+    LoginProvider,
     GeneralProvider
   ]
 })

@@ -1,0 +1,72 @@
+<ion-grid class="no-padding">
+  <ion-row>
+    <ion-col col-6 class="custom-input">
+      <date-input label="data e ora fine noleggio" [(ngModel)]="globals.rientro.DataRestituzione" required="true" format="DD MMMM YYYY HH:mm" pickerFormat="DD MMMM YYYY HH mm" disabled></date-input>
+    </ion-col>
+    <ion-col col-6 class="custom-input">
+        <div class="input-item-label">Data e ora fine noleggio prevista </div>
+      {{globals.noleggio.DataRestituzioneStimata}}
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-3 class="custom-input">
+      <div class="input-item-label">KM RIENTRO <span class="required">*</span></div>
+      <ion-item>
+        <ion-input type="number" (ionChange)="checkEmpty($event)" [(ngModel)]="globals.rientro.KmEntrata"></ion-input>
+        
+      </ion-item>
+    </ion-col>
+    <ion-col col-3 class="custom-input">
+      <div class="input-item-label">KM PERCORSI</div>
+      <ion-item>
+          {{globals.rientro.KmEntrata - globals.noleggio.KmUscita >= 0 ? globals.rientro.KmEntrata - globals.noleggio.KmUscita : 0}}
+      </ion-item>
+    </ion-col>    
+    <ion-col col-3 class="custom-input">
+      <div class="input-item-label">TARIFFA GIORNALIERA</div>
+      <ion-item>
+        <ion-input [(ngModel)]="globals.rientro.TariffaGiornata" (ionChange)="checkEmpty($event)"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-3 class="custom-input long-label">
+      <div class="input-item-label">KM GIORNALIERI  </div>
+      <ion-item>
+        <ion-input type="number" (ionChange)="checkEmpty($event)" [(ngModel)]="globals.rientro.KmGiorno"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-6 class="custom-input">
+      <fuel-rating [(ngModel)]="globals.rientro.CarburanteEntrata" 
+        label="CARBURANTE"
+        max="10" 
+        levelLabelText="Livello carburante"
+        nullable="false">
+      </fuel-rating> 
+    </ion-col>
+    <ion-col col-6 class="custom-input">
+      <div class="input-item-label">DIFFERENZA  </div>
+       {{(globals.rientro.CarburanteEntrata - globals.noleggio.CarburanteUscita) * 10}} %
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-12 class="custom-input">
+      <div class="input-item-label">NOTE</div>
+      <ion-item>
+        <ion-textarea [(ngModel)]="globals.rientro.Note"></ion-textarea>
+      </ion-item>
+    </ion-col>    
+  </ion-row>
+</ion-grid>
+
+<div class="submit-row">
+  <div class="pull-left">
+    <button ion-button outline color="secondary" (click)="onBackTab.emit()">INDIETRO</button>
+  </div>
+  <div class="pull-right">
+    <button ion-button color="secondary" (click)="onNextTab.emit()">AVANTI</button>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { ChiusePageModule } from './chiuse/chiuse.module';
 import { CarRentalPageModule } from './car-rental/car-rental.module';
 import { PdfPreviewPageModule } from './shared/pdf-preview/pdf-preview.module';
 import { SignatureModalPageModule } from './shared/signature-modal/signature-modal.module';
+import { OptionsModalPageModule } from './shared/options-modal/options-modal.module';
 import { PreventiviPageModule } from './preventivi/preventivi.module';
 import { InLavorazionePageModule } from './in-lavorazione/in-lavorazione.module';
 import { PraticaFormComponentsModule } from './shared/pratica-form/pratica-form-components.module';
@@ -19,7 +20,7 @@ import { PracticeEditPageModule } from './practice/practice-edit/practice-edit.m
 
 @NgModule({
   declarations: [
-    CorePage,
+    CorePage
   ],
   imports: [
     IonicPageModule.forChild(CorePage),
@@ -31,6 +32,7 @@ import { PracticeEditPageModule } from './practice/practice-edit/practice-edit.m
     InLavorazionePageModule,
     PdfPreviewPageModule,
     SignatureModalPageModule,
+    OptionsModalPageModule,
     PraticaFormComponentsModule,
     FullscreenPhotoViewPageModule,
     NewPracticePageModule,

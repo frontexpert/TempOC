@@ -8,8 +8,15 @@
     </ion-buttons>
 
     <ion-title>
-      {{title}}
-    </ion-title>    
+      {{docData.Nome}}
+    </ion-title>  
+    
+    <ion-buttons right *ngIf="!isPreventivo">
+      <button ion-button clear icon-left  (click)="save()" *ngIf="signatureComplete">
+        <!-- <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> -->
+        CONFERMA
+      </button>
+    </ion-buttons>    
   </ion-navbar>
 </ion-header>
 
@@ -21,11 +28,16 @@
               [fit-to-page]="true"
               [original-size]="false"
               style="display: block;"
+              (on-progress)="onProgress($event)"
+              (page-rendered)="pageRendered($event)"
     ></pdf-viewer>
   </div>
 </ion-content>
 
-<ion-footer class="text-center">
-  <button  *ngIf="this.docData.TipoId > 0" ion-button small color="light" (click)="firstSign()">Firma 1</button>
-  <button  *ngIf="isTwoSignatures" ion-button small color="light" (click)="secondSign()">Firma 2</button>
+<ion-footer *ngIf="!isPreventivo" class="text-center">
+  <button  *ngIf="docData.TipoId > 0 && docData.TipoId != 100 && docData.TipoId != 101 && docData.TipoId !== 1 && docData.TipoId != 5 && !saved" ion-button small color="light" (click)="compilaOpzioni()">Opzioni {{opzioni2 != null || opzioni3 != null || opzioni4 != null ? 'OK': ''}}</button>
+  <button  *ngIf="docData.TipoId > 0 && !saved" ion-button small color="light" (click)="firstSign()">Firma 1 {{signatures[0]? 'OK': ''}}</button>
+  <button  *ngIf="isTwoSignatures && !saved" ion-button small color="light" (click)="secondSign()">Firma 2  {{signatures[1]? 'OK': ''}}</button>
+  <button  *ngIf="isThreeSignatures && !saved" ion-button small color="light" (click)="thirdSign()">Firma 3  {{signatures[2]? 'OK': ''}}</button>
+  <button *ngIf="saved && docData.PraticaID == null && rentTab == false" ion-button small color="light" (click)="rigenera()">RIGENERA</button>
 </ion-footer>

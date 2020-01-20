@@ -1,8 +1,19 @@
-export const API_URL: string = 'http://tablet.oxygencar.it';
+export const API_URL: string = 'http://tablet2.oxygencar.it';
+//export const API_URL: string = 'http://localhost:13379';
+//export const OXYGEN_URL: string = 'http://oxygen2.ilcarrozziere.it/';
+export const OXYGEN_URL: string = 'http://app.oxygencar.it/';
 
 export const PRATICHE_TAB_VALUES = [
   {text: 'outlook', value: 0}, 
   {text: 'pagamento', value: 1},
+  {text: 'foto', value: 2},
+  {text: 'documenti', value: 3},
+  {text: 'preventivi', value: 4},
+  {text: 'noleggi', value: 5}
+];
+
+export const PRATICHE_TAB_VALUES_1 = [
+  {text: 'outlook', value: 0},
   {text: 'foto', value: 2},
   {text: 'documenti', value: 3},
   {text: 'preventivi', value: 4},
@@ -39,13 +50,24 @@ export const APERTE_TAB_VALUES = [
   {text: 'controparte', value: 3},
 ];
 
+export const PRATICA_NOLEGGIO_VALUES = [
+  {text: 'veicolo', value: 0}, 
+  {text: 'cliente', value: 1}
+];
+
 export const NOLEGGIO_TAB_VALUES = [
   {text: 'UTILIZZATORE', value: 0}, 
-  {text: 'UTILIZZATORE 2', value: 1},
-  {text: 'CONSEGNA A', value: 2},
+  {text: 'CONSEGNA A', value: 1},
+  {text: 'SECONDO UTILIZZATORE', value: 2},
   {text: 'STATO VEICOLO', value: 3},
   {text: 'DETTAGLIO', value: 4},
 ];
+
+export const END_NOLEGGIO_TAB_VALUES = [
+  {text: 'STATO VEICOLO', value: 0},
+  {text: 'DETTAGLIO', value: 1},
+];
+
 
 export const PHOTOS_KEY: string = 'photoes';
 
@@ -65,7 +87,8 @@ export const CREATION_CASE = {
   RADD_FURTO_PARZIALE: 6,
   RADD_CRISTALLI: 7,
   RADD_RESPONSABILITA_DIRETTA: 8,
-  RADD_ALTRI_DANNI: 9
+  RADD_ALTRI_DANNI: 9,
+  NOLEGGIO: 101
 };
 
 export const BAREME: number[][] =  [

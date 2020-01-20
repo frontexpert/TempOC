@@ -5,7 +5,7 @@
         <div class="input-item-label">TARGA <span class="required">*</span></div>
         <ion-item class="addion-icon">        
           <ion-input [(ngModel)]="pratica.P1_Targa" required name="Targa"></ion-input>     
-          <span item-end><i class="fas fa-search"></i></span>   
+          <span item-end (click)="checkDatiVeicolo()"><i class="fas fa-search"></i></span>   
         </ion-item>
       </ion-col>
       <ion-col col-3 class="custom-input">
@@ -35,7 +35,13 @@
           <ion-input [(ngModel)]="pratica.ColoreID" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col col-6></ion-col>
+      <ion-col col-3 class="custom-input">
+        <div class="input-item-label">NUMERO MOTORE</div>
+        <ion-item>
+          <ion-input [(ngModel)]="pratica.P1_VeicoloNumeroMotore" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3></ion-col>
     </ion-row>
 
     <ion-row>

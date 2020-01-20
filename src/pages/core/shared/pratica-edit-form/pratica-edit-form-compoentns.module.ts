@@ -11,6 +11,10 @@ import { PdfPreviewPageModule } from '../../shared/pdf-preview/pdf-preview.modul
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { LongPressModule } from 'ionic-long-press';
+import { QuotePrintModalPageModule } from '../quote-print-modal/quote-print-modal.module';
+import { QuoteOptionsModalPageModule } from '../quote-options-modal/quote-options-modal.module';
+import { AssegnaGaranteModalPageModule } from '../assegna-garante-modal/assegna-garante-modal.module';
+import { GestioneAutonomaModalPageModule } from '../gestione-autonoma-modal/gestione-autonoma-modal.module';
 
 
 @NgModule({
@@ -27,8 +31,12 @@ import { LongPressModule } from 'ionic-long-press';
     PdfPreviewPageModule,
     NgxChartsModule,
     LazyLoadImageModule,
-    LongPressModule
-  ],  
+    LongPressModule,
+    QuotePrintModalPageModule,
+    QuoteOptionsModalPageModule,
+    AssegnaGaranteModalPageModule,
+    GestioneAutonomaModalPageModule
+  ],
 	exports: [
     OutlookTabComponet,
     QuoteTabComponent,
